@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Matomo Analytics - The Google Analytics alternative that protects your
+      data
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://static.matomo.org/wp-content/cache/min/1/208e0d6e3e5b53d96ba5a1972b5625fe.css"
+      media="all"
+      data-minify="1"
+    />
+    <meta
+      name="description"
+      content="Don’t damage your reputation with Google Analytics. Matomo is the ethical alternative where you won’t make privacy sacrifices or compromise your site."
+    />
+    <link rel="canonical" href="https://matomo.org/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Matomo - The Google Analytics alternative that protects your data"
+    />
+    <meta
+      property="og:description"
+      content="Matomo&#039;s the Google Analytics alternative that protects your data and your customer&#039;s privacy. A powerful web analytics platform with 100% data ownership."
+    />
+    <meta property="og:url" content="https://matomo.org/" />
+    <meta property="og:site_name" content="Analytics Platform - Matomo" />
+    <meta
+      property="article:publisher"
+      content="https://www.facebook.com/Matomo.org"
+    />
+    <meta
+      property="article:modified_time"
+      content="2022-05-26T00:48:56+00:00"
+    />
+    <meta
+      name="twitter:title"
+      content="Matomo - The Google Analytics alternative that protects your data"
+    />
+    <meta
+      name="twitter:description"
+      content="Matomo&#039;s the Google Analytics alternative that protects your data and your customer&#039;s privacy. A powerful web analytics platform with 100% data ownership."
+    />
+    <meta
+      name="twitter:image"
+      content="https://static.matomo.org/wp-content/uploads/2020/06/website-graphics-2020-v5-1-e1611111459689.png"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta name="twitter:site" content="@matomo_org" />
+    <meta name="twitter:label1" content="Est. reading time" />
+    <meta name="twitter:data1" content="8 minutes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Sigmar+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: Inter, sans-serif;
+      }
+      a,
+      div,
+      p {
+        font-family: Roboto, sans-serif;
+      }
+      :visited {
+        color: #1f00ff;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      if (typeof Mozilla === "undefined") {
+        var Mozilla = {};
+      }
+      Mozilla.dntEnabled = function (dnt, ua) {
+        "use strict";
+        var dntStatus =
+          dnt ||
+          navigator.doNotTrack ||
+          window.doNotTrack ||
+          navigator.msDoNotTrack;
+        var userAgent = ua || navigator.userAgent;
+        var anomalousWinVersions = [
+          "Windows NT 6.1",
+          "Windows NT 6.2",
+          "Windows NT 6.3",
+        ];
+        var fxMatch = userAgent.match(/Firefox\/(\d+)/);
+        var ieRegEx = /MSIE|Trident/i;
+        var isIE = ieRegEx.test(userAgent);
+        var platform = userAgent.match(/Windows.+?(?=;)/g);
+        if (isIE && typeof Array.prototype.indexOf !== "function") {
+          return false;
+        } else if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
+          dntStatus = "Unspecified";
+        } else if (
+          isIE &&
+          platform &&
+          anomalousWinVersions.indexOf(platform.toString()) !== -1
+        ) {
+          dntStatus = "Unspecified";
+        } else {
+          dntStatus =
+            { 0: "Disabled", 1: "Enabled" }[dntStatus] || "Unspecified";
+        }
+        return dntStatus === "Enabled" ? true : false;
+      };
+      // only load if DNT is not enabled
+      if (Mozilla && !Mozilla.dntEnabled()) {
+        var _paq = (window._paq = window._paq || []);
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(["setCookieDomain", "*.iamashley.xyz"]);
+        _paq.push(["trackPageView"]);
+        (function () {
+          var u = "https://iamashleyxyz.matomo.cloud/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = "//cdn.matomo.cloud/iamashleyxyz.matomo.cloud/matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+        var _paq = _paq || [];
+        _paq.push([
+          "AbTesting::create",
+          {
+            name: "1", // you can also use '1' (ID of the experiment) to hide the name
+            percentage: 100,
+            includedTargets: [
+              { attribute: "url", inverted: "0", type: "any", value: "" },
+            ],
+            excludedTargets: [],
+            variations: [
+              {
+                name: "original",
+                activate: function (event) {
+                  // usually nothing needs to be done here
+                },
+              },
+              {
+                name: "1", // you can also use '1' (ID of the variation) to hide the name
+                activate: function (event) {},
+              },
+            ],
+            trigger: function () {
+              return true; // here you can further customize which of your visitors will participate in this experiment
+            },
+          },
+        ]);
+      }
+    </script>
+    <noscript
+      ><img
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://iamashleyxyz.matomo.cloud/matomo.php?idsite=1&amp;rec=1"
+        style="border: 0"
+        alt=""
+    /></noscript>
+    <h1>Hey there!</h1>
+
+    <p>
+      This website does not track you. No cookies. No data collection. No
+      statistics. 100% handcrafted without JavaScript. but we use matomo to see
+      how many users are in on this website (we respect do not track! see the
+      page source for more info)
+    </p>
+  </body>
+</html>

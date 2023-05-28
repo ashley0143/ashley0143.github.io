@@ -1,0 +1,312 @@
+/*
+This file is released to the public domain.
+
+the css is mostly stolen from https://stallman.org :^
+*/
+body {
+  color: #ffffff;
+ /* background-color: #FFFFFF; */
+  background-color:#161616;
+  /* margin: 0px 20px 0px 20px; */
+}
+
+body.dark {
+  color: #ddd;
+  background-color: #333;
+}
+
+a{
+  color:#0ab7f0;
+}
+
+a.glossary {
+  
+  border: 1px solid red;
+  padding: 2px 2px;
+  display: inline-block;
+}
+
+a.dark {
+  color: #ff0;
+}
+
+a.dark:visited {
+  color: #aa0;
+}
+
+img {
+  border-radius:6pc
+}
+
+:visited { color: #00c0ff }
+
+
+
+/* Need hover for accessibility */
+a:link:hover {
+  color: #9932CC;
+}
+
+@media screen and (max-device-width: 480px) {
+  body {
+    font-size: 175%;
+  }
+}
+ 
+li {
+    margin-bottom: 8px;
+}
+
+/* Header columns */
+
+.columnt1 {
+    width: 66%;
+    float: left;
+    text-align: center;
+    border: solid 1px;
+    border-radius: 4px 4px 4px 4px;
+}
+ 
+
+.columnt2 {
+	  width: 33%;
+	  float: right;
+	  text-align: center;
+}
+
+.nobr {
+      white-space: nowrap;
+}
+
+/* urgent action items*/
+.column1 {
+  width: 31%;
+  float: left;
+}
+
+/* long term action items */
+.column2 {
+  width: 31%;
+  float: left;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
+}
+
+/* misc */
+.column3 {
+  width: 31%;
+  float: left;
+}
+
+/* rest */
+.rest {
+  width: 100%;
+  float: left;
+}
+
+:link { color:#0ab7f0 }
+div.c3 { margin-left: 2em }
+.c2 {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  font-style: italic;
+}
+h3.c1 {
+  text-align: center;
+  font-size: 30px;
+}
+.titlelink {
+    color: #000000;
+}
+.fullwide {
+  /* width: 900px; */
+  width: 100%;
+}
+
+#comic-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin-bottom: 4px;
+}
+#comic {
+  position: absolute;
+  max-width: 245px;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #fff;
+}
+#comic-expand img {
+  display: none;
+}
+@media screen and (max-width: 845px) {
+  #comic { right: 0px; }
+  #comic:hover {
+    width: 245px;
+    padding: 0;
+    transition: width .4s ease-out, box-shadow 1s ease, transform .8s ease;
+  }
+  #comic-expand {
+    position: absolute;
+    display: block;
+    right: 0;
+    width: 32px;
+    height: 250px;
+    top: 0;
+    border-right: 2px dashed gray;
+  }
+  #comic-expand img {
+    position: absolute;
+    display: block;
+    bottom: 70px;
+    width: 100%;
+  }
+}
+
+sub {
+  line-height: 0.25em;
+  font-size: 70%;
+  vertical-align: -.05em;
+}
+sup {
+  line-height: 0.25em;
+  font-size: 70%;
+  vertical-align: 0.7em;
+}
+.footnote {
+  font-size: 90%;
+  padding-left: 0.9em;
+  text-indent: -0.9em;
+}
+.footnote sup {
+  line-height: 0.25em;
+  font-size: 78%;
+  vertical-align: 0.4em;
+}
+
+.vol {
+  margin-left: 5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+div.comp {
+  margin: 0 auto;
+  width: 98%;
+}
+
+#talks {
+  display: block;
+  max-width: 100%;
+  margin: 4px auto;
+  background-color: #f5f5f5;
+  padding: 2px 4px 2px 4px;
+  border-radius: 2px;
+}
+
+h3 a {
+  text-decoration: none;
+}
+
+#talks:hover {
+  background-color: #fff;
+}
+
+h3 #talks {
+  text-align: center;
+  text-transform: uppercase;
+  /* background-color: #ccc; */
+}
+
+.talk {
+  border-radius: 4px;
+  margin: 8px;
+  padding: 8px;
+  font-family: sans-serif;
+  font-size: 18px;
+  background-color: #f2f2f2;
+  box-shadow: rgba(0,0,0,0.5) 0 0 3px;
+}
+
+.talk b {
+  font-size: 12pt;
+}
+
+.talk h2 {
+  font-size: 10pt;
+  text-transform: uppercase;
+}
+
+.talk h3 {
+  font-size: 14pt;
+  margin: 0;
+}
+
+.grey {
+  color: #555;
+  font-size: 12pt;
+}
+
+#polnotes-title {
+  text-align: center;
+}
+
+/*
+
+Copyright (C) 2006-2011, 2013-2017, 2019-2021 Free Software Foundation
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+*/
+
+/****************************************/
+/*  TEXT WITH BACKGROUND AND/OR BORDER  */
+/****************************************/
+
+/* Strip bottom margins of children. */
+
+.emph-box *, .highlight-para *, .lyrics *,
+.announcement *, .important * { margin-bottom: 0; }
+
+
+/** announcement, important **/
+
+.announcement, .important {
+   padding: .4em 1em;
+   margin-top: 1.5em;
+   margin-bottom: 1.5em;
+}
+.announcement blockquote { margin: 0; }
+.announcement p, .important p {
+   padding-top: .4em;
+   padding-bottom: .5em;
+   margin: 0;
+}
+.announcement > ul, .important > ul { margin: 0; }
+.announcement li, .important li {
+   padding-top: .2em;
+   padding-bottom: .3em;
+   margin-top: 0;
+}
+.announcement h3, .important h3 {
+   font-size: 1.25em;  /* 20px */
+   margin: .35em 0 .4em;
+}
+.announcement { border-left: .4em solid #5c5; }
+.important    { border-left: .4em solid #fc7; }
+
+@media (min-width: 48em) {
+   .announcement, .important { padding: .4em 1.5em; }
+}

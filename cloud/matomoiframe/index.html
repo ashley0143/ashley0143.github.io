@@ -1,0 +1,118 @@
+<!--
+Psst,enable do not track to disable request to here 
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+ <title>Matomo Analytics - The Google Analytics alternative that protects your data</title><link rel="stylesheet" href="https://static.matomo.org/wp-content/cache/min/1/208e0d6e3e5b53d96ba5a1972b5625fe.css" media="all" data-minify="1" />
+	<meta name="description" content="Don’t damage your reputation with Google Analytics. Matomo is the ethical alternative where you won’t make privacy sacrifices or compromise your site." />
+	<link rel="canonical" href="https://matomo.org/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Matomo - The Google Analytics alternative that protects your data" />
+	<meta property="og:description" content="Matomo&#039;s the Google Analytics alternative that protects your data and your customer&#039;s privacy. A powerful web analytics platform with 100% data ownership." />
+	<meta property="og:url" content="https://matomo.org/" />
+	<meta property="og:site_name" content="Analytics Platform - Matomo" />
+	<meta property="article:publisher" content="https://www.facebook.com/Matomo.org" />
+	<meta property="article:modified_time" content="2022-05-26T00:48:56+00:00" />
+	<meta name="twitter:title" content="Matomo - The Google Analytics alternative that protects your data" />
+	<meta name="twitter:description" content="Matomo&#039;s the Google Analytics alternative that protects your data and your customer&#039;s privacy. A powerful web analytics platform with 100% data ownership." />
+	<meta name="twitter:image" content="https://static.matomo.org/wp-content/uploads/2020/06/website-graphics-2020-v5-1-e1611111459689.png" />
+  <meta content="summary_large_image" name="twitter:card">
+	<meta name="twitter:site" content="@matomo_org" />
+	<meta name="twitter:label1" content="Est. reading time" />
+	<meta name="twitter:data1" content="8 minutes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+      h1,h2,h3,h4,h5{
+        font-family:Inter,sans-serif;
+      }
+      a,div,p{
+        font-family:Roboto,sans-serif;
+      }
+      :visited { color: #1F00FF }
+    </style>
+  </head>
+   <body>
+     <!-- our tracker -->
+    <script>
+      if (typeof Mozilla === "undefined") {
+        var Mozilla = {};
+      }
+      Mozilla.dntEnabled = function (dnt, ua) {
+        "use strict";
+        var dntStatus =
+          dnt ||
+          navigator.doNotTrack ||
+          window.doNotTrack ||
+          navigator.msDoNotTrack;
+        var userAgent = ua || navigator.userAgent;
+        var anomalousWinVersions = [
+          "Windows NT 6.1",
+          "Windows NT 6.2",
+          "Windows NT 6.3",
+        ];
+        var fxMatch = userAgent.match(/Firefox\/(\d+)/);
+        var ieRegEx = /MSIE|Trident/i;
+        var isIE = ieRegEx.test(userAgent);
+        var platform = userAgent.match(/Windows.+?(?=;)/g);
+        if (isIE && typeof Array.prototype.indexOf !== "function") {
+          return false;
+        } else if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
+          dntStatus = "Unspecified";
+        } else if (
+          isIE &&
+          platform &&
+          anomalousWinVersions.indexOf(platform.toString()) !== -1
+        ) {
+          dntStatus = "Unspecified";
+        } else {
+          dntStatus =
+            { 0: "Disabled", 1: "Enabled" }[dntStatus] || "Unspecified";
+        }
+        return dntStatus === "Enabled" ? true : false;
+      };
+      // only load if DNT is not enabled
+      if (Mozilla && !Mozilla.dntEnabled()) {
+        var _paq = (window._paq = window._paq || []);
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(["setCookieDomain", "*.iamashley.xyz"]);
+        _paq.push(["trackPageView"]);
+        (function () {
+          var u = "https://iamashleyxyz.matomo.cloud/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = "//cdn.matomo.cloud/iamashleyxyz.matomo.cloud/matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+        console.log("I LOVE YOU!")
+      }
+    </script>
+    <noscript>
+  <!-- Matomo Image Tracker-->
+<img referrerpolicy="no-referrer-when-downgrade" src="https://iamashleyxyz.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+<!-- End Matomo -->
+   </noscript>
+    <h1>Hey there!</h1>
+     <p>
+       I use Piwik, a free software Web analytics system, to monitor traffic on My Web site. Piwik records the general geographical vicinity of visitors as well as their browser and operating system, and records their navigation within the sites. This helps me gauge the impact of my materials and improve my work.<br>
+Piwik preserves privacy by anonymizing visitors' IP addresses. This means that it will not store any personally identifiable information about you, even though your visit produces a record that my site was visited by someone.<br>
+Piwik also respects the "Do Not Track" preference offered by some browsers, so if you have this option set, Piwik will ignore your visit.<br> <br>
+        also this iframe is only on the main page of my website,so "no statics" is still real lol (i only use piwik to see if ppl actully <b><i>Use my website</i></b>,i mean i would not a make a site if no one used it lol)<br>
+all of the <b>Requests being made to iamashleyxyz.matomo.cloud is anonymous </b> and i dont see your personal information.
+     </p>
+     <p>
+       and im not kidding,i dont see your ip adress lmao (see the link bellow for proof lmao our stats are public)
+     </p>
+    
+      <a href="https://iamashleyxyz.matomo.cloud/index.php?module=Widgetize&action=iframe&moduleToWidgetize=Dashboard&actionToWidgetize=index&idSite=1&period=week&date=yesterday">See our stats</a>
+  </body>
+</html>

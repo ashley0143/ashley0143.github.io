@@ -1,0 +1,80 @@
+                      PokeTale Free Software License
+                       Version 1, 28 March 2023
+
+ Copyright (C) 2023 PokeTale Software  
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+ 
+ Preamble
+
+ The Poketale Free Software License is a free software license that is based on the four essential freedoms of free software. These freedoms include:
+
+ -Freedom 0: The freedom to run the program as you wish, for any purpose.
+ -Freedom 1: The freedom to study how the program works, and change it so it does your computing as you wish. Access to the source code is a precondition for this.
+ -Freedom 2: The freedom to redistribute copies so you can help others.
+ -Freedom 3: The freedom to distribute copies of your modified versions to others. By doing this, you can give the whole community a chance to benefit from your changes. Access to the source code is a precondition for this.
+    
+ With these freedoms, the users (both individually and collectively) control the program and what it does for them. When users don't control the program, we call it a “nonfree” or “proprietary” program. The nonfree program controls the users, and the developer controls the program; this makes the program an instrument of unjust power.
+
+ “Open source” is something different: it has a very different philosophy based on different values. Its practical definition is different too, but nearly all open source programs are in fact free. We explain the difference in Why “Open Source” misses the point of Free Software here: https://www.gnu.org/philosophy/open-source-misses-the-point.html
+
+ 1. Definitions:
+
+    "Software" means the original work of authorship made available under this license.
+    
+    "License" means this PokeTale Free Software License.
+    
+    "Commercial Use" means using the Software in any way that is primarily intended for or directed toward commercial advantage or monetary compensation, including without limitation any use in connection with a business, trade, profession, or enterprise.
+    
+    "Contributor" means any person or entity that contributes to the Software. 
+    
+    “Free software” means software that respects users' freedom and community. Roughly, it means that the users have the freedom to run, copy, distribute, study, change and improve the software.  Thus, “free software” is a matter of liberty, not price. To understand the concept, you should think of “free” as in “free speech,” not as in “free beer.” We sometimes call it “libre software,” borrowing the French or Spanish word for “free” as in freedom, to show we do not mean the software is gratis. 
+
+2. Permissions:
+
+    The License hereby grants the following permissions:
+
+    -Commercial Use: You may use the Software for any commercial purpose, including selling, licensing, or distributing it as part of a commercial product or service.
+
+    -Modification: You may modify the Software and create derivative works based on the Software.
+
+    -Distribution: You may distribute the Software in any form.
+
+    -Patent Use: You may make use of any patents held by the Contributor, for the purpose of implementing the Software.
+
+    -Private Use: You may use the Software for private purposes.
+
+3. Limitations:
+
+    The License places the following limitations on the use of the Software:
+
+    -No Liability: The Software is provided "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the contributors be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the Software or the use or other dealings in the Software.
+
+    -No Warranty: The contributors of the Software do not provide any warranty or guarantee that the Software will be error-free, timely, or operate as described.
+
+4. Conditions:
+
+    The License requires the following conditions to be met:
+
+    -License and Copyright Notice: Any copy or significant portion of the Software must include the copyright notice and the License.
+
+    -State Changes: If you modify the Software, you must clearly indicate that you have made modifications to the Software.
+
+    -Disclose Source: If you distribute the Software in any form, you must make the source code available under the same License terms.
+
+    -Same License: Any derivative work of the Software must be distributed under the same License terms.
+    
+This license is not legal advice, and it is not provided by a lawyer. The use of this license does not create an attorney-client relationship between the parties. The parties are advised to consult with their own legal counsel to ensure that the use of this license is in compliance with all applicable laws and regulations.
+
+THIS LICENSE IS NOT LEGAL ADVICE AND WAS NOT MADE BY A LAWYER. USE OF THE SOFTWARE IS AT YOUR OWN RISK.
+
+EXTRAS
+How to apply this license to your software:
+
+To apply this license to your software, include a copy of the PokeTale Free Software License in your software's documentation or in a separate file. You should also include a copyright notice and license statement in your source code files, along with information on how to obtain a copy of the license.
+
+If you modify the software, make sure to clearly indicate that you have made modifications to the software. If you distribute the software in any form, you must make the source code available under the same license terms. Any derivative work of the software must be distributed under the same license terms as well.
+
+Remember that this license only applies to the software that you choose to license under this agreement. If you want to license other software under different terms, you will need to create a separate license agreement for that software.
+
+ 
