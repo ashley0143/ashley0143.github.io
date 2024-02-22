@@ -142,6 +142,7 @@
         <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Banner copyright © 2022 Luca Saiu, Egeyar Saiu.<br>
         <a href="/copyright.html">Copyright Info</a> - <p><a href="//www.fsf.org/about/dmca-notice">Copyright Infringement Notification</a>
         <br><br>
+        <p>Im not in any "webring" nor do i support em - please dont add my domain to "webrings"</p>
         <a name="nonfreedc"></a>
         *:not recommended to talk to me on: it requires nonfree JavaScript. i
         dont like discord because of it. but you can use a free client to talk
@@ -167,4 +168,30 @@
       <a href="https://www.venganza.org"><img style="border-radius: 0;height: auto;width: 168px;" src="https://www.venganza.org/wp-content/uploads/2007/12/proud.jpg"></a>
       <br><br>
     </center>
+    <!-- Matomo -->
+<script>
+      if(navigator.globalPrivacyControl) {
+  var gpcValue = navigator?.globalPrivacyControl 
+  } else {
+  var gpcValue = false
+  }
+
+if(!gpcValue) {
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["disableCookies"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//data.poketube.fun/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+}
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//data.poketube.fun/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
 </body></html>
