@@ -30,13 +30,21 @@
 </head>
 <body>
 
-<h1>CLANCY</h1>
+<h1 onmouseover="showDiscordLink()">CLANCY</h1>
 
 <div id="countdown"></div>
 
 <script>
   // Set the date we're counting down to
   var countDownDate = new Date("May 18, 2024 00:00:00").getTime();
+
+  // Function to show the Discord link
+  function showDiscordLink() {
+    // Decode the Base64 encoded Discord link
+    var decodedLink = atob("ZGlzY29yZC5nZy9QUEpVejk2WA==");
+    // Change the content of the h1 element to the decoded link
+    document.querySelector("h1").textContent = decodedLink;
+  }
 
   // Update the countdown every 1 second
   var x = setInterval(function() {
@@ -60,14 +68,6 @@
     if (timeRemaining < 0) {
       clearInterval(x);
       document.getElementById("countdown").innerHTML = "WELCOME BACK TO TRENCH.";
-    }
-
-    // Show the Discord link after one minute
-    if (timeRemaining < 59999 && timeRemaining > 58999) { // Check if it's been one minute
-      // Decode the Base64 encoded Discord link
-      var decodedLink = atob("aHR0cHM6Ly9kaXNjb3JkLmdnL1BQSldVejk2WA==");
-      // Display the link in an alert
-      alert("YOU. ARE. INVITED. NO ONE SHOULD KNOW.: " + decodedLink);
     }
   }, 1000);
 </script>
