@@ -57,9 +57,17 @@
     document.getElementById("countdown").innerHTML = days + ":" + hours + ":"
     + minutes + ":" + seconds;
 
-     if (timeRemaining < 0) {
+    if (timeRemaining < 0) {
       clearInterval(x);
       document.getElementById("countdown").innerHTML = "WELCOME BACK TO TRENCH.";
+    }
+
+    // Show the Discord link after one minute
+    if (timeRemaining < 59999 && timeRemaining > 58999) { // Check if it's been one minute
+      // Decode the Base64 encoded Discord link
+      var decodedLink = atob("aHR0cHM6Ly9kaXNjb3JkLmdnL1BQSldVejk2WA==");
+      // Display the link in an alert
+      alert("YOU. ARE. INVITED. NO ONE SHOULD KNOW.: " + decodedLink);
     }
   }, 1000);
 </script>
