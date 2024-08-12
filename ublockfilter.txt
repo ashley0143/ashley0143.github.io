@@ -1,6 +1,6 @@
 ##########
 ## ASHLEYS CUSTOM FILTER LIST FOR UBLOCK ORIGIN 
-# UPDATE DATE: 31-12-2022 (DD/MM/YYYY)
+# UPDATE DATE: 12-09-2024 (DD/MM/YYYY)
 # Copyright (C) 2022 - 20XX Ashley
 # This filter list is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
 #####
@@ -55,6 +55,10 @@
 ||chrome.com
 ||discord.com^$third-party
 ||opera.com
+
+# use git.lgbt, or prononuns.cc
+||git.gay
+||en.pronouns.page
 
 # ANTI-FACEBOOK
 ! License: http://creativecommons.org/licenses/by/3.0/
