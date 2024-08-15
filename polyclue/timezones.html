@@ -15,6 +15,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .container {
@@ -23,18 +25,19 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 90%;
+            width: 100%;
             max-width: 1000px;
         }
 
         h1 {
             color: #e2e8f0;
             margin-bottom: 20px;
+            font-size: 24px;
         }
 
         .time-list {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
         }
@@ -43,37 +46,60 @@
             background-color: #4a5568;
             padding: 20px;
             border-radius: 8px;
-            width: 200px;
+            width: 100%;
+            max-width: 200px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
         }
 
-        h2 {
+        h2, h1 {
             color: #edf2f7;
             font-size: 18px;
             margin: 0 0 10px 0;
+            font-size: 18px;
         }
 
         img {
             width: 15px;
-  height: 15px;
-}
-        
-        h1 {
-            color: #edf2f7;
-            font-size: 24px;
-            margin: 0 0 10px 0;
+            height: 15px;
+            vertical-align: middle;
         }
 
         .time {
-            font-size: 31px;
+            font-size: 24px;
             color: #fff;
             margin-bottom: 5px;
-            font-weight: bolder;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 16px;
+            color: #cbd5e0;
+            margin-bottom: 5px;
         }
 
         p {
             margin: 0;
             color: #e2e8f0;
             font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .time-item {
+                padding: 15px;
+            }
+
+            .time {
+                font-size: 20px;
+            }
+
+            .date {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -83,48 +109,57 @@
         <div class="time-list">
             <div class="time-item">
                 <h2>Iga <img src="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png"></h2>
+                <p class="date" data-timezone="Europe/Warsaw"></p>
                 <p class="time" data-timezone="Europe/Warsaw"></p>
                 <p>Poland (Europe/Warsaw)</p>
             </div>
             <div class="time-item">
                 <h2>Ashley Graves</h2>
+                <p class="date" data-timezone="Europe/Stockholm"></p>
                 <p class="time" data-timezone="Europe/Stockholm"></p>
                 <p>Sweden (Europe/Stockholm)</p>
             </div>
             <div class="time-item">
                 <h2>Stellie</h2>
+                <p class="date" data-timezone="America/New_York"></p>
                 <p class="time" data-timezone="America/New_York"></p>
                 <p>EST (America/New_York)</p>
             </div>
             <div class="time-item">
                 <h2>Amy</h2>
+                <p class="date" data-timezone="America/Santo_Domingo"></p>
                 <p class="time" data-timezone="America/Santo_Domingo"></p>
                 <p>Dominican Republic (America/Santo_Domingo)</p>
             </div>
             <div class="time-item">
-                <h1>Ashley <img src="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png"> </h1>
+                <h2>Ashley <img src="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png"></h2>
+                <p class="date" data-timezone="Europe/Istanbul"></p>
                 <p class="time" data-timezone="Europe/Istanbul"></p>
                 <p>Turkey (Europe/Istanbul)</p>
             </div>
             <div class="time-item">
                 <h2>Serenity & Ari</h2>
+                <p class="date" data-timezone="Europe/Vienna"></p>
                 <p class="time" data-timezone="Europe/Vienna"></p>
                 <p>Austria (Europe/Vienna)</p>
             </div>
             <div class="time-item">
-                <h2>Ashley G <img src="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png"> </h2>
+                <h2>Ashley G <img src="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png"></h2>
+                <p class="date" data-timezone="America/Los_Angeles"></p>
                 <p class="time" data-timezone="America/Los_Angeles"></p>
                 <p>PST (America/Los_Angeles)</p>
             </div>
             <div class="time-item">
                 <h2>Zu Ari</h2>
-                <p class="time">To be added</p>
-                <p>Timezone: TBA</p>
+                <p class="date" data-timezone="Etc/GMT-1"></p>
+                <p class="time" data-timezone="Etc/GMT-1"></p>
+                <p>UTC+1</p>
             </div>
             <div class="time-item">
                 <h2>Max</h2>
-                <p class="time">To be added</p>
-                <p>Timezone: TBA</p>
+                <p class="date" data-timezone="America/New_York"></p>
+                <p class="time" data-timezone="America/New_York"></p>
+                <p>EDT (America/New_York)</p>
             </div>
         </div>
     </div>
@@ -132,25 +167,34 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const timeElements = document.querySelectorAll(".time");
+            const dateElements = document.querySelectorAll(".date");
 
-            timeElements.forEach(element => {
+            timeElements.forEach((element, index) => {
                 const timezone = element.getAttribute("data-timezone");
                 if (timezone) {
-                    updateTime(element, timezone);
-                    setInterval(() => updateTime(element, timezone), 1000);
+                    updateTimeAndDate(element, dateElements[index], timezone);
+                    setInterval(() => updateTimeAndDate(element, dateElements[index], timezone), 1000);
                 }
             });
 
-            function updateTime(element, timezone) {
+            function updateTimeAndDate(timeElement, dateElement, timezone) {
                 const now = new Date();
-                const options = {
+                const timeOptions = {
                     timeZone: timezone,
                     hour: '2-digit',
                     minute: '2-digit',
                     second: '2-digit',
                     hour12: false
                 };
-                element.textContent = now.toLocaleTimeString('en-GB', options);
+                const dateOptions = {
+                    timeZone: timezone,
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                };
+                timeElement.textContent = now.toLocaleTimeString('en-GB', timeOptions);
+                dateElement.textContent = now.toLocaleDateString('en-GB', dateOptions);
             }
         });
     </script>
