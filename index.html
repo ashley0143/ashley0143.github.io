@@ -185,6 +185,12 @@
     /* Footer */
     footer {
       background: var(--bg-card);
+      width: 44em;
+  padding: 1em;
+  border-radius: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2em;
       text-align: center;
       padding: 1rem;
       box-shadow: 0 -4px 15px var(--shadow);
@@ -224,7 +230,7 @@
       <div class="info">
         <h2>Haai, I'm Ashley!</h2>
         <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
-        <p>🌈 im also anarco queer and libsoc</p>
+        <p>🌈  anarco queer and libsoc</p>
         <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
         <p>🌏 Asian & POC</p>
       </div>
@@ -239,7 +245,7 @@
       <h2>Projects</h2>
       <div class="cards">
          
-        <div class="card">
+<div class="card" style="width: 18em;margin-left: auto;margin-right: auto;">
            <div class="card-content">
             <h3><a href="https://poketube.fun">Poke</a></h3>
             <p>Privacy all-in-one front end</p>
@@ -249,7 +255,8 @@
       </div>
     </section>
     <section class="device-specs">
-      <h2>Device Specs</h2>
+      <h2>Devices</h2>
+      <p>for headphoens i use galaxy buds 3 pro.</p>
       <div class="cards">
         <div class="card">
           <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg" alt="Phone">
@@ -333,7 +340,7 @@
    function updateTime() {
    const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
   const timeStr = new Date().toLocaleTimeString('en-GB', options);
-  document.getElementById('time').textContent = 'Local time (Turkey): ' + timeStr;
+  document.getElementById('time').textContent = 'My Local time: ' + timeStr;
    }
     setInterval(updateTime,1000);
     updateTime();
