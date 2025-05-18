@@ -1,197 +1,357 @@
 <!DOCTYPE html>
-<html><head>
-    <title>Ashley's personal website</title>
-    <link rel="stylesheet" type="text/css" href="/style.css?">
-    <link rel="shortcut icon" href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">
-    <meta content="#ffacbb" name="theme-color">
-    <meta content="Ashley's Personal site" property="og:title">
-    <meta content="I am ashley,a member of fsf, and i love u <3" property="twitter:description">
-    <meta content="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png" property="og:image">
-     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&amp;family=Sigmar+One&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&amp;display=swap" rel="stylesheet">
-      <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
-      }
-      a,div,p{
-        font-family:Roboto,sans-serif;
-      }
-      :visited { color: #00c0ff }
-    </style>
-   </head><body style="min-width: 678px">
-    <center>
-    <a href="https://bsky.app/profile/ashley0143.bsky.social" style="display: flex;margin-left: auto;margin-right: auto;text-align: center;width: 11em;">Follow Me on bluesky</a><br> 
-        
-      <img src="https://codeberg.org/avatars/4b9eb8b90364b6f24f91c49d34f4679071ab67d17cf00001632fc2a67f47a961?size=512" style="border-radius: 20px;margin-left: -23px;" height="350">
-      <h3 class="c1">Ashley's Personal site - Haii!</h3>
-
-      <div style="text-align: center; font-size: 16pt; margin: 50px;padding: 15px;margin-top: 1px;background: #111;border-radius: 1em;border: solid 2px;">
-        yo ! i am ashley ^^ I love Free Software and privacy<br> <a href="https://pronouns.cc/@Ashley143"> see my pronouns.cc ! </a> <br> i am a piano
-        player, catgirl (nya~), shitposter, geography nerd ,and developer. im from
-        <a href="https://en.wikipedia.org/wiki/İzmir">İzmir</a>, Turkey btw.
-        <br>
-        i dont like
-        <a href="https://en.wikipedia.org/wiki/Big_Tech">big tech</a>, and i dont
-        support em!! everything i do is free software (<a href="https://github.com/ashley0143/ashley0143.github.io">Even this site!</a>)<br><br>
-        im also anarco queer and libsoc :3 <br>
-        my favoruite band is <a href="https://twentyonepilots.com">twenty one pilots</a>, and am a big fan of em :3 - sahlo folina
-<br>
-<hr style="width: calc(100% - 5em);color: #fff;">         
-        i support free software. I run Trisquel gnu/linux-libre on a acer aspire 5750G - i use the guix package manager as well.<br>
-        You may have heard or read critical statements about stallman; <a href="https://stallmansupport.org">Please make up your own mind</a>.<br>
-        Im also an <a href="//my.fsf.org/user/166804">Member On FSF</a> <br>
-        I am also the co-author of <a href="//doasktoask.com">do ask to ask</a>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashley's Personal Site</title>
+  <link rel="icon" href="/ashley.png">
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-light: #ffe4e6;
+      --pink-dark: #ff69b4;
+      --purple-accent: #d18aff;
+      --bg-image: url('');
+      --text-color: #333;
+      --bg-card: rgba(255, 255, 255, 1);
+      --drawer-bg: #fff;
+      --accent: var(--pink-dark);
+      --accent2: var(--purple-accent);
+      --shadow: rgba(0,0,0,0.2);
+      --font-body: 'Roboto', sans-serif;
+      --font-heading: 'Inter', sans-serif;
+      --font-script: 'Pacifico', cursive;
+      --transition: .3s ease;
+    }
+    [data-theme='dark'] {
+      --text-color: #eee;
+      --bg-card: rgba(30,30,30,1);
+      --drawer-bg: #222;
+      --shadow: rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-color);
+      background: var(--bg-image) center/cover fixed no-repeat;
+      transition: background var(--transition), color var(--transition);
+    }
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255,182,193,0.5);
+      z-index: -1;
+    }
+    /* Drawer */
+    #drawer {
+      position: fixed; top: 0; left: -260px;
+      width: 250px; height: 100%;
+      background: var(--drawer-bg);
+      box-shadow: 2px 0 5px var(--shadow);
+      transition: left var(--transition);
+      z-index: 1001;
+      padding: 1rem;
+    }
+    #drawer.open { left: 0; }
+    #drawer h3 { margin-bottom: 1rem; color: var(--accent); }
+    #drawer a {
+      display: block; margin: 0.5rem 0;
+      color: var(--text-color); text-decoration: none;
+    }
+    #drawer a:hover { color: var(--accent); }
+    #hamburger {
+      position: absolute; top: 1rem; left: 1rem;
+      border: none; padding: 0.5rem; border-radius: 4px;
+      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
+      z-index: 1002;
+    }
+    /* Header */
+    header {
+      text-align: center; padding: 2rem 1rem; position: relative;
+    }
+    header h1 {
+      font-family: var(--font-script);
+      font-size: 3.5rem;
+      color: var(--accent2);
+      text-shadow: 2px 2px 8px var(--shadow);
+    }
+    .theme-toggle {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--bg-card);
+      border: none; padding: 0.5rem 1rem;
+      border-radius: 20px; cursor: pointer;
+      box-shadow: 0 2px 5px var(--shadow);
+    }
+    /* Main */
+    .container {
+      max-width: 1000px; margin: 2rem auto;
+      padding: 2rem; background: var(--bg-card);
+      border-radius: 20px; box-shadow: 0 8px 30px var(--shadow);
+      display: grid; gap: 2rem;
+    }
+    .profile {
+      display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: center;
+    }
+    .profile img {
+      width: 160px; height: 160px; border-radius: 50%;
+      border: 4px solid var(--accent); box-shadow: 0 4px 15px var(--shadow);
+    }
+    .profile img:hover {
+      transform: rotate(10deg) scale(1.1);
+      transition: transform var(--transition);
+    }
+    .profile h2 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .profile p { margin: 0.5rem 0; }
+    /* Nav */
+    nav { text-align: center; }
+    nav a {
+      margin: 0 1rem; color: var(--text-color);
+      text-decoration: none; padding-bottom: 4px;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute; width: 0; height: 3px;
+      background: var(--accent); bottom: 0; left: 50%; transform: translateX(-50%);
+      transition: width var(--transition);
+    }
+    nav a:hover { color: var(--accent); }
+    nav a:hover::after { width: 80%; }
+    /* Sections */
+    section h2 {
+      font-family: var(--font-heading);
+      color: var(--accent2);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--bg-card);
+      box-shadow: 0 6px 20px var(--shadow);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px var(--shadow);
+    }
+    .card img { width: 100%; }
+    .card-content { padding: 1rem; }
+    .card-content h3 { margin-bottom: 0.5rem; }
+    .card-content h3 a { color: var(--accent2); text-decoration: none; }
+    .card-content p { margin: 0.5rem 0; }
+    .card-content a.source {
+      display: inline-block; margin-top: 0.5rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .card-content a.source:hover { background: var(--accent); color:#fff; }
+    /* Device specs */
+    .device-specs img { max-width: 120px; margin: 1rem auto; }
+    .device-specs p { font-weight: 500; }
+    /* Languages */
+    .languages .card { display: flex; flex-direction: column; align-items:center; padding: 1rem; }
+    .languages .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    /* Games */
+    .games .card-content { display: flex; flex-direction: column; align-items: center; }
+    .games button { margin: 0.5rem; padding: 0.5rem 1rem; border: none; background: var(--accent); color: #fff; border-radius: 4px; cursor: pointer; }
+    .games button:hover { background: var(--accent2); }
+    .games p { margin-top: 0.5rem; }
+    /* Contact & Follow */
+    .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
+    .contact-card {
+      background: var(--bg-card);
+      box-shadow: 0 6px 20px var(--shadow);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .contact-card h3 { margin-bottom: 1rem; color: var(--accent); }
+    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2); color: #fff; text-decoration: none; border-radius: 8px; transition: background var(--transition); width: 80%; }
+    .contact-card a:hover { background: var(--accent); }
+    /* Footer */
+    footer {
+      background: var(--bg-card);
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 -4px 15px var(--shadow);
+      margin-top: 2rem;
+    }
+    #toTop {
+      position: fixed; bottom: 20px; right: 20px;
+      background: var(--accent); color: #fff;
+      border: none; padding: 0.8rem;
+      border-radius: 50%; cursor: pointer;
+      box-shadow: 0 4px 10px var(--shadow);
+      display: none;
+    }
+    #toTop:hover { opacity: 0.8; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <button id="hamburger">☰</button>
+  <div id="drawer">
+    <h3>TO BE ADDED</h3>
+    <a href="#">PLACEHOLDER</a>
+    <a href="#">PLACEHOLDER</a>
+    <a href="#">PLACEHOLDER</a>
+  </div>
+  <header>
+    <h1>Ashley's Personal Site</h1>
+    <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+  </header>
+  <div class="container">
+    <script>
+      const config = { phone: 'Samsung Galaxy S23 FE Exynos, 256GB, Android 15 (One UI 7)', pc: 'Acer Aspire 5750G, Intel i5-2430M, 16GB RAM, 512GB HDD' };
+    </script>
+    <div class="profile">
+      <img src="https://codeberg.org/avatars/4b9eb8b90364b6f24f91c49d34f4679071ab67d17cf00001632fc2a67f47a961?size=512" alt="Ashley Avatar">
+      <div class="info">
+        <h2>Hi, I'm Ashley!</h2>
+        <p>💗 Lover of <strong>Free Software</strong> & privacy</p>
+        <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
+        <p>🌏 I’m Asian & POC</p>
       </div>
-      
-
-      <div class="columnt1" style=" display: flex; justify-content: center ;align-items: center;    position: relative;     transform: translateY(-13%);">
-        <p>
-          <a href="/opinion">Opinion</a> -
-          <a href="/memes">Memes n stuff</a> -
-          <a href="//poketube.fun">Poke</a> -
-          <a href="/drm">Do not use drm!</a> -
-          <a href="/gnuandlinux">Why Call it GNU/Linux?</a> -
-          <a href="https://www.gnu.org/philosophy/javascript-trap.html">The Javascript trap</a>
-          - <a href="https://upgradefromwindows.org">Upgrade from windows</a> -
-          <a href="/1984.pdf">1984 (pdf)</a> - <a href="/gpg"> GPG KEYS </a> -
-          <a href="/not-open-source">Why not ""open""" ""source""</a>
-        </p>
-      </div>
-
-      <div class="columnt2">
-        <form action="https://poketube.fun/api/search">
-          <div>
-            <label>Poke: <input type="text" size="30" name="query" data-ddg-inputtype="unknown"></label>
-            <input type="submit" value="go">
-            <img src="https://t.poketube.fun/t/rep.gif" style="width: 0;visibility: hidden;" id="form">
-            <p>
-              <a href="https://poketube.fun/privacy">
-                See The Poke Privacy Policy
-              </a>
-            </p>
+    </div>
+    <nav>
+      <a href="/gnuandlinux">GNU/Linux</a>
+      <a href="/not-open-source">Free Software?</a>
+      <a href="/1984.pdf">1984 (pdf)</a>
+    </nav>
+    <section class="projects">
+      <h2>Projects</h2>
+ 
+        <div class="card">
+           <div class="card-content">
+            <h3><a href="https://poketube.fun">Poke</a></h3>
+            <p>Privacy all-in-one front end</p>
+            <a href="https://github.com/ashley0143/poke" class="source">View Source</a>
           </div>
-        </form>
+        </div>
       </div>
-      <br><br>
-
-      <br>
-      <br style="clear:both">
-
-      <div class="c2">
-        <b>
-          whats bad about : <a href="/opinion/google">Google</a> -
-          <a href="/opinion/zuckbook">Facebook</a> -
-          <a href="/opinion/topgg">Top.gg</a> -
-          <a href="/opinion/apple">Apple</a> -
-          <a href="/opinion/netflix">Netflix</a> -
-          <a href="/opinion/spotify">Spotify</a> -
-          <a href="/opinion/discord">Discord</a> -
-          <a href="/opinion/zoom">Zoom</a>
-        </b>
+    </section>
+    <section class="device-specs">
+      <h2>Device Specs</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg" alt="Phone">
+          <div class="card-content"><h3>Phone</h3><p id="spec-phone"></p></div>
+        </div>
+        <div class="card">
+          <img src="https://external-content.duckduckgo.com/iu/?u=http://driver.clan.su/Acer_Aspire_V3-572.png&f=1&nofb=1" alt="Laptop">
+          <div class="card-content"><h3>PC</h3><p id="spec-pc"></p></div>
+        </div>
       </div>
-      <div style="background: #111;padding: 6px;border-radius: 1em;margin-top: 12px;margin-bottom: 15px;border: solid 2px;">
-<h1>TALK TO ME</h1>
-<p>
-        My Matrix: @ashleyfsf:mozilla.org<br>
-        My discord Name<a style="text-decoration: none;" href="#nonfreedc">*</a>:
-        Ashley0143 <br>
-        My revolt nickname: @Ashley#3600 (i am not active there anymore)<br>
-        <a href="mailto:%69%61%6d%61%73%68%6c%65%79%40%64%75%63%6b%2e%63%6f%6d">Mail me! (yes, i <i> try to </i> respond to these mails owo)</a>
-        (<a href="/gpg">GPG</a>)
-      </p>
-</div>
-    
-      <!-- Here begins column 2 Recent Pol-Notes -->
-      <div class="column2">
-        <h1>Recent Political notes</h1>
-         <p>          <a href="https://stallman.org/rss/rss.xml">See rss feed</a> -
-          <a href="#copy-pol">Copyright Notice</a>
-        </p>
-        <hr>
-
-        <p>
-          <iframe height="500" style="border-radius:10px;background:#fff;color:#fff" width="100%" frameborder="0" scrolling="auto" src="https://stallman.org/iframe-feed.html">If you can see this, your browser does not support iframes. You can
-            see the pol-notes on the
-            <a href="border-radiusarchives/polnotes.html">pol-notes pages</a
-            >.</iframe>
-        </p>
-
-        <hr>
-        <a name="copy-pol"></a>
-        <p>Copyright (C) 2024 Richard Stallman</p>
-        Verbatim copying and distribution of this entire page are permitted in
-        any medium, provided this notice is preserved.
+    </section>
+    <section class="languages">
+      <h2>Languages</h2>
+      <div class="cards">
+        <div class="card"><div class="icon">🇹🇷</div><div class="card-content"><h3>Turkish</h3><p>Native</p></div></div>
+        <div class="card"><div class="icon">🇬🇧</div><div class="card-content"><h3>English</h3><p>C2</p></div></div>
+        <div class="card"><div class="icon">🇧🇷</div><div class="card-content"><h3>Português</h3><p>B2</p></div></div>
+        <div class="card"><div class="icon">🇹🇼</div><div class="card-content"><h3>Mandarin</h3><p>A1</p></div></div>
       </div>
-      <a rel="me" href="https://github.com/ashley0143">Github</a> -
-      <a rel="me" href="https://social.poketube.fun/@ashley">Fediverse</a> - 
-      <a rel="me" href="https://discord.com/users/396571938081865741">Discord</a> -
-      <a rel="me" href="https://codeberg.org/ashley">Codeberg</a> - 
-      <a rel="me" href="https://rvlt.gg/poke">(Was) Revolt server</a> - 
-      <a rel="me" href="https://matrix.to/#/%23poke:vern.cc">Matrix Space</a> - 
-      <a href="https://teddit.net/user/Ash_Potter">Reddit</a><br>
-      <p>
-        i got inspired by https://stallman.org/ while making this site. This
-        website does not track you. No cookies. No data collection. 100%
-        handcrafted without JavaScript. <br><br>
-        GHM Banner released under
-        <a href="http://artlibre.org/licence/lal/en">FAL</a>,
-        <a href="https://www.gnu.org/copyleft/fdl.html">GFDL-1.3+</a>, or
-        <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>. Banner copyright © 2022 Luca Saiu, Egeyar Saiu.<br>
-        <a href="/copyright.html">Copyright Info</a> - <p><a href="//www.fsf.org/about/dmca-notice">Copyright Infringement Notification</a>
-        <br><br>
-        <p>Im not in any "webring" nor do i support em - please dont add my domain to "webrings"</p>
-        <a name="nonfreedc"></a>
-        *:not recommended to talk to me on: it requires nonfree JavaScript. i
-        dont like discord because of it. but you can use a free client to talk
-        to me like <a href="https://github.com/diamondburned/gtkcord4/">GTKCORD</a>.
-      </p>
-      <hr>
-      <p>
-        <span style="display:none">
-        ty glitch for hosting this website &lt;3
-        <a href="https://glitch.com/edit/#!/ashley-blog">Source Code</a> <br>
-        </span>
-        <br>Permission is granted to copy, distribute and/or modify this
-        document under the terms of the
-        <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>. My Profile Picture is licensed under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br><br>
-        <a href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">the image</a>
-        -
-        <a href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley_pfp_full.png?v=1718973110006">Full version </a>
-        the profile picture was made for kiwi_asli (instagram) for ashley (me!!) - it was commissioned :3
-          <br><br>
-      </p>
-      <img style="border-radius:0;" src="https://soopy.moe/images/buttons/socks.gif">
-      <img style="border-radius:0;" src="/no-facebook.svg" alt="Not f'd. You won't find us on Facebook" title="Not f'd. You won't find us on Facebook!" width="200">
-      <img title="My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" style="border-radius: 0;height: auto;width: 168px;">
-      <a href="https://www.venganza.org"><img style="border-radius: 0;height: auto;width: 168px;" src="https://www.venganza.org/wp-content/uploads/2007/12/proud.jpg"></a>
-      <br><br>
-    </center>
-    <!-- Matomo -->
-<script>
-      if(navigator.globalPrivacyControl) {
-  var gpcValue = navigator?.globalPrivacyControl 
-  } else {
-  var gpcValue = false
-  }
-
-if(!gpcValue) {
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["disableCookies"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//data.poketube.fun/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '3']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-}
-</script>
-<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//data.poketube.fun/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
-
-</body></html>
+    </section>
+    <section class="games">
+      <h2>Games</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-content">
+            <h3>Rock Paper Scissors</h3>
+            <div>
+              <button data-choice="Rock">✊ Rock</button>
+              <button data-choice="Paper">✋ Paper</button>
+              <button data-choice="Scissors">✌️ Scissors</button>
+            </div>
+            <p id="rps-result"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3>Dice Roller</h3>
+            <button id="dice-btn">🎲 Roll Dice</button>
+            <p id="dice-result"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact-follow">
+      <div class="contact-card">
+        <h3>Contact Me</h3>
+        <a href="mailto:iamashley@duck.com">✉️ Email</a>
+        <a href="matrix:@ashleyfsf:mozilla.org">💬 Matrix</a>
+        <a href="https://discord.com/users/396571938081865741">🎮 Discord</a>
+      </div>
+      <div class="contact-card">
+        <h3>Follow Me</h3>
+        <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
+        <a href="https://github.com/ashley0143">🐙 GitHub</a>
+         <a href="https://codeberg.org/ashley">🐙 GitHub</a>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection</p>
+    <p id="time">Local time: --:--:--</p>
+  </footer>
+  <button id="toTop">↑</button>
+  <script>
+    document.getElementById('hamburger').addEventListener('click',()=>{
+      document.getElementById('drawer').classList.toggle('open');
+    });
+    document.getElementById('spec-phone').textContent = config.phone;
+    document.getElementById('spec-pc').textContent = config.pc;
+    const toggle = document.getElementById('theme-toggle');
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    toggle.textContent = theme==='light'? 'Dark Mode':'Light Mode';
+    toggle.addEventListener('click', ()=>{
+      const newT = document.documentElement.getAttribute('data-theme')==='light'? 'dark':'light';
+      document.documentElement.setAttribute('data-theme', newT);
+      localStorage.setItem('theme', newT);
+      toggle.textContent = newT==='light'? 'Dark Mode':'Light Mode';
+    });
+    function updateTime(){
+      document.getElementById('time').textContent = 'Local time: ' + new Date().toLocaleTimeString();
+    }
+    setInterval(updateTime,1000);
+    updateTime();
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.style.display = window.scrollY > 300 ? 'block':'none';
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+    document.querySelectorAll('.games button[data-choice]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const u=btn.dataset.choice;
+        const o=['Rock','Paper','Scissors'];
+        const c=o[Math.floor(Math.random()*3)];
+        let res;
+        if(u===c) res=`Tie! Both chose ${c}.`;
+        else if((u==='Rock'&&c==='Scissors')||(u==='Paper'&&c==='Rock')||(u==='Scissors'&&c==='Paper')) res=`You win! Opp chose ${c}.`;
+        else res=`You lose! Opp chose ${c}.`;
+        document.getElementById('rps-result').textContent = res;
+      });
+    });
+    document.getElementById('dice-btn').addEventListener('click', ()=>{
+      const roll = Math.floor(Math.random()*6)+1;
+      document.getElementById('dice-result').textContent = `You rolled a ${roll}!`;
+    });
+  </script>
+</body>
+</html>
