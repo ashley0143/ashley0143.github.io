@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashley's Personal Site</title>
-  <link rel="icon" href="/ashley.png">
+  <link rel="shortcut icon" href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">
   <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -222,15 +222,17 @@
     <div class="profile">
       <img src="https://codeberg.org/avatars/4b9eb8b90364b6f24f91c49d34f4679071ab67d17cf00001632fc2a67f47a961?size=512" alt="Ashley Avatar">
       <div class="info">
-        <h2>Hi, I'm Ashley!</h2>
-        <p>💗 Lover of <strong>Free Software</strong> & privacy</p>
+        <h2>Haai, I'm Ashley!</h2>
+        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
+        <p>🌈 im also anarco queer and libsoc</p>
         <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
-        <p>🌏 I’m Asian & POC</p>
+        <p>🌏 Asian & POC</p>
       </div>
     </div>
     <nav>
+     <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
       <a href="/gnuandlinux">GNU/Linux</a>
-      <a href="/not-open-source">Free Software?</a>
+      <a href="/not-open-source">Not open source?</a>
       <a href="/1984.pdf">1984 (pdf)</a>
     </nav>
      <section class="projects">
@@ -302,7 +304,8 @@
         <h3>Follow Me</h3>
         <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
         <a href="https://github.com/ashley0143">🐙 GitHub</a>
-         <a href="https://codeberg.org/ashley">🐙 GitHub</a>
+         <a href="https://codeberg.org/ashley">🏔️ Codeberg</a>
+        <a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the year</a>
       </div>
     </section>
   </div>
@@ -327,9 +330,11 @@
       localStorage.setItem('theme', newT);
       toggle.textContent = newT==='light'? 'Dark Mode':'Light Mode';
     });
-    function updateTime(){
-      document.getElementById('time').textContent = 'Local time: ' + new Date().toLocaleTimeString();
-    }
+   function updateTime() {
+   const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
+  const timeStr = new Date().toLocaleTimeString('en-GB', options);
+  document.getElementById('time').textContent = 'Local time (Turkey): ' + timeStr;
+   }
     setInterval(updateTime,1000);
     updateTime();
     const toTop = document.getElementById('toTop');
