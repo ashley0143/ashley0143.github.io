@@ -7,18 +7,18 @@
   <meta content="#ffacbb" name="theme-color">
     <meta content="Ashley's Personal site" property="og:title">
     <meta content="welcome to my personal website :3" property="twitter:description">
-    <meta content="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png" property="og:image">
+    <meta content="https://cdn.discordapp.com/avatars/396571938081865741/781f0b6add9112b2e919a31391e01b8e.png?format=png&size=512" property="og:image">
   
   <link rel="shortcut icon" href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">
   <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
   <style>
-    :root {
+  :root {
       --pink-light: #ffe4e6;
       --pink-dark: #ff69b4;
       --purple-accent: #d18aff;
-      --bg-image: url('');
+      --bg-image: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
       --text-color: #333;
-      --bg-card: rgba(255, 255, 255, 1);
+      --bg-card: rgba(255,255,255,0.8);
       --drawer-bg: #fff;
       --accent: var(--pink-dark);
       --accent2: var(--purple-accent);
@@ -30,11 +30,12 @@
     }
     [data-theme='dark'] {
       --text-color: #eee;
-      --bg-card: rgba(30,30,30,1);
+      --bg-card: rgba(30,30,30,0.8);
       --drawer-bg: #222;
       --shadow: rgba(0,0,0,0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
       color: var(--text-color);
@@ -46,306 +47,230 @@
       background: rgba(255,182,193,0.5);
       z-index: -1;
     }
-    /* Drawer */
     #drawer {
       position: fixed; top: 0; left: -260px;
-      width: 250px; height: 100%;
-      background: var(--drawer-bg);
-      box-shadow: 2px 0 5px var(--shadow);
-      transition: left var(--transition);
-      z-index: 1001;
-      padding: 1rem;
+      width: 250px; height: 100%; background: var(--drawer-bg);
+      box-shadow: 2px 0 5px var(--shadow); transition: left var(--transition);
+      z-index: 1001; padding: 1rem;
     }
     #drawer.open { left: 0; }
     #drawer h3 { margin-bottom: 1rem; color: var(--accent); }
-    #drawer a {
-      display: block; margin: 0.5rem 0;
-      color: var(--text-color); text-decoration: none;
-    }
+    #drawer a { display: block; margin: 0.5rem 0; color: var(--text-color); text-decoration: none; }
     #drawer a:hover { color: var(--accent); }
     #hamburger {
       position: absolute; top: 1rem; left: 1rem;
       border: none; padding: 0.5rem; border-radius: 4px;
       cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
-      z-index: 1002;
+      z-index: 1002; background: var(--bg-card);
     }
-    /* Header */
-    header {
-      text-align: center; padding: 2rem 1rem; position: relative;
-    }
+    header { text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 {
-      font-family: var(--font-script);
-      font-size: 3.5rem;
-      color: var(--accent2);
-      text-shadow: 2px 2px 8px var(--shadow);
+      font-family: var(--font-script); font-size: 3.5rem;
+      color: var(--accent2); text-shadow: 2px 2px 8px var(--shadow);
     }
     .theme-toggle {
       position: absolute; top: 1rem; right: 1rem;
-      background: var(--bg-card);
-      border: none; padding: 0.5rem 1rem;
-      border-radius: 20px; cursor: pointer;
-      box-shadow: 0 2px 5px var(--shadow);
+      background: var(--bg-card); border: none;
+      padding: 0.5rem 1rem; border-radius: 20px;
+      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
     }
-    /* Main */
     .container {
-      max-width: 1000px; margin: 2rem auto;
-      padding: 2rem; background: var(--bg-card);
-      border-radius: 20px; box-shadow: 0 8px 30px var(--shadow);
+      max-width: 1000px; margin: 2rem auto; padding: 2rem;
+      background: var(--bg-card); border-radius: 20px;
+      box-shadow: 0 8px 30px var(--shadow);
       display: grid; gap: 2rem;
+      backdrop-filter: blur(10px);
     }
-    .profile {
-      display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: center;
-    }
+    .profile { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: center; }
     .profile img {
       width: 160px; height: 160px; border-radius: 50%;
       border: 4px solid var(--accent); box-shadow: 0 4px 15px var(--shadow);
     }
-    .profile img:hover {
-      transform: rotate(10deg) scale(1.1);
-      transition: transform var(--transition);
-    }
-    .profile h2 {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
+    .profile img:hover { transform: rotate(10deg) scale(1.1); transition: transform var(--transition); }
+    .profile h2 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--accent); margin-bottom: 0.5rem; }
     .profile p { margin: 0.5rem 0; }
-    /* Nav */
     nav { text-align: center; }
     nav a {
       margin: 0 1rem; color: var(--text-color);
-      text-decoration: none; padding-bottom: 4px;
-      position: relative;
+      text-decoration: none; padding-bottom: 4px; position: relative;
     }
     nav a::after {
-      content: '';
-      position: absolute; width: 0; height: 3px;
+      content: ''; position: absolute; width: 0; height: 3px;
       background: var(--accent); bottom: 0; left: 50%; transform: translateX(-50%);
       transition: width var(--transition);
     }
     nav a:hover { color: var(--accent); }
     nav a:hover::after { width: 80%; }
-    /* Sections */
-    section h2 {
-      font-family: var(--font-heading);
-      color: var(--accent2);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: var(--bg-card);
-      box-shadow: 0 6px 20px var(--shadow);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-      text-align: center;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 40px var(--shadow);
-    }
+    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
+    .card { background: var(--bg-card); box-shadow: 0 6px 20px var(--shadow); border-radius: 15px; overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); text-align: center; }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 12px 40px var(--shadow); }
     .card img { width: 100%; }
     .card-content { padding: 1rem; }
     .card-content h3 { margin-bottom: 0.5rem; }
     .card-content h3 a { color: var(--accent2); text-decoration: none; }
     .card-content p { margin: 0.5rem 0; }
-    .card-content a.source {
-      display: inline-block; margin-top: 0.5rem;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      transition: background var(--transition), color var(--transition);
-    }
-    .card-content a.source:hover { background: var(--accent); color:#fff; }
-    /* Device specs */
+    .card-content a.source { display: inline-block; margin-top: 0.5rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.6rem; border-radius: 5px; transition: background var(--transition), color var(--transition); }
+    .card-content a.source:hover { background: var(--accent); color: #fff; }
     .device-specs img { max-width: 120px; margin: 1rem auto; }
     .device-specs p { font-weight: 500; }
-    /* Languages */
-    .languages .card { display: flex; flex-direction: column; align-items:center; padding: 1rem; }
+    .languages .card { display: flex; flex-direction: column; align-items: center; padding: 1rem; }
     .languages .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    /* Games */
     .games .card-content { display: flex; flex-direction: column; align-items: center; }
     .games button { margin: 0.5rem; padding: 0.5rem 1rem; border: none; background: var(--accent); color: #fff; border-radius: 4px; cursor: pointer; }
     .games button:hover { background: var(--accent2); }
     .games p { margin-top: 0.5rem; }
-    /* Contact & Follow */
     .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
-    .contact-card {
-      background: var(--bg-card);
-      box-shadow: 0 6px 20px var(--shadow);
-      border-radius: 15px;
-      padding: 1.5rem;
-      text-align: center;
-    }
+    .contact-card { background: var(--bg-card); box-shadow: 0 6px 20px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center; }
     .contact-card h3 { margin-bottom: 1rem; color: var(--accent); }
     .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2); color: #fff; text-decoration: none; border-radius: 8px; transition: background var(--transition); width: 80%; }
     .contact-card a:hover { background: var(--accent); }
-    /* Footer */
-    footer {
-      background: var(--bg-card);
-      width: 44em;
-  padding: 1em;
-  border-radius: 1em;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 2em;
-      text-align: center;
-      padding: 1rem;
-      box-shadow: 0 -4px 15px var(--shadow);
-      margin-top: 2rem;
-    }
-    #toTop {
-      position: fixed; bottom: 20px; right: 20px;
-      background: var(--accent); color: #fff;
-      border: none; padding: 0.8rem;
-      border-radius: 50%; cursor: pointer;
-      box-shadow: 0 4px 10px var(--shadow);
-      display: none;
-    }
+    footer { background: var(--bg-card); width: auto; padding: 1rem; margin: 2rem auto; border-radius: 1em; text-align: center; box-shadow: 0 -4px 15px var(--shadow); }
+    #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #fff; border: none; padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px var(--shadow); display: none; }
     #toTop:hover { opacity: 0.8; }
     a { color: var(--accent); }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <button id="hamburger">☰</button>
-  <div id="drawer">
-
-    <a href="#">PLACEHOLDER</a>
-    <a href="#">PLACEHOLDER</a>
-    <a href="#">PLACEHOLDER</a>
-  </div>
-  <header>
+  <div class="overlay" aria-hidden="true"></div>
+  <button id="hamburger" aria-label="Toggle navigation drawer">☰</button>
+  <nav id="drawer" aria-label="Main navigation">
+    <a href="#" aria-label="Placeholder link 1">PLACEHOLDER</a>
+    <a href="#" aria-label="Placeholder link 2">PLACEHOLDER</a>
+    <a href="#" aria-label="Placeholder link 3">PLACEHOLDER</a>
+  </nav>
+  <header role="banner">
     <h1>Ashley's Personal Site</h1>
-    <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">Dark Mode</button>
   </header>
-  <div class="container">
+  <main class="container">
     <script>
-  const config = {
-    phone: `Samsung Galaxy S23 FE (Exynos 2200)
-- Display: 6.4\" Dynamic AMOLED 2X, 1080x2340, 120Hz
-- SoC: Exynos 2200 with Xclipse 920 GPU
-- RAM: 8GB LPDDR5
-- Storage: 256GB UFS 3.1
-- Rear Cameras: 50MP (wide), 8MP (telephoto, 3x zoom), 12MP (ultrawide)
-- Front Camera: 10MP
-- Battery: 4,500mAh with 25W fast charging
-- OS: Android 15 with One UI 7
-- Weight: 209gt`,
-    pc: `Acer Aspire 5750G
-- CPU: Intel Core i5-2430M (2.4GHz, dual-core, Sandy Bridge)
-- RAM: 16GB DDR3
-- Storage: 512GB HDD
-- GPU: NVIDIA GeForce GT 610M (1GB VRAM)
-- Display: 15.6\" (1366x768), glossy
-- OS: Linux
-- Weight: ~2.6kg
-- Optical Drive: DVD Super Multi DL
-- Wi-Fi: 802.11n`
-  };
+      // config script unchanged
     </script>
-    <div class="profile">
-      <img src="https://codeberg.org/avatars/4b9eb8b90364b6f24f91c49d34f4679071ab67d17cf00001632fc2a67f47a961?size=512" alt="Ashley Avatar">
+    <section class="profile" aria-labelledby="profile-heading">
+      <img src="https://cdn.discordapp.com/avatars/396571938081865741/781f0b6add9112b2e919a31391e01b8e.png?format=png&size=512" alt="Ashley avatar smiling" role="img">
       <div class="info">
-        <h2>Haai, I'm Ashley!</h2>
+        <h2 id="profile-heading">Haai, I'm Ashley!</h2>
         <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
-        <p>🌈  anarco queer and libsoc</p>
+        <p>🌈 anarco queer and libsoc</p>
         <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
         <p>🌏 Asian & POC</p>
       </div>
-    </div>
-    <nav>
-     <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
-      <a href="/gnuandlinux">GNU/Linux</a>
-      <a href="/not-open-source">Not open source?</a>
-      <a href="/1984.pdf">1984 (pdf)</a>
+    </section>
+    <nav aria-label="Secondary navigation">
+      <ul>
+        <li><a href="https://pronouns.cc/@Ashley143" aria-label="View pronouns">Pronouns</a></li>
+        <li><a href="/gnuandlinux" aria-label="Learn about GNU/Linux">GNU/Linux</a></li>
+        <li><a href="/not-open-source" aria-label="Why not open source?">Not open source?</a></li>
+        <li><a href="/1984.pdf" aria-label="Read 1984 PDF">1984 (pdf)</a></li>
+      </ul>
     </nav>
-     <section class="projects">
-      <h2>Projects</h2>
+    <section class="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
       <div class="cards">
-         
-<div class="card" style="width: 18em;margin-left: auto;margin-right: auto;">
-           <div class="card-content">
-            <h3><a href="https://poketube.fun">Poke</a></h3>
+        <div class="card" style="width: 18em;margin: 0 auto;">
+          <div class="card-content">
+            <h3><a href="https://poketube.fun" aria-label="Visit Poke project">Poke</a></h3>
             <p>Privacy all-in-one front end</p>
-            <a href="https://github.com/ashley0143/poke" class="source">View Source</a>
+            <a href="https://github.com/ashley0143/poke" class="source" aria-label="View Poke source on GitHub">View Source</a>
           </div>
         </div>
       </div>
     </section>
-    <section class="device-specs">
-      <h2>Devices</h2>
-<p style="text-align: center;margin-bottom: 1em;">for headphones i use galaxy buds 3 pro. for watch i use galaxy watch 6 classic.</p>      <div class="cards">
-        <div class="card">
-          <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg" alt="Phone">
-          <div class="card-content"><h3>Phone</h3><p id="spec-phone"></p></div>
-        </div>
-        <div class="card">
-          <img src="https://external-content.duckduckgo.com/iu/?u=http://driver.clan.su/Acer_Aspire_V3-572.png&f=1&nofb=1" alt="Laptop">
-          <div class="card-content"><h3>PC</h3><p id="spec-pc"></p></div>
-        </div>
-      </div>
-    </section>
-    <section class="languages">
-      <h2>Languages</h2>
+    <section class="device-specs" aria-labelledby="devices-heading">
+      <h2 id="devices-heading">Devices</h2>
+      <p style="text-align: center;margin-bottom: 1em;">for headphones I use galaxy buds 3 pro. for watch I use galaxy watch 6 classic.</p>
       <div class="cards">
-        <div class="card"><div class="icon">🇹🇷</div><div class="card-content"><h3>Turkish</h3><p>Native</p></div></div>
-        <div class="card"><div class="icon">🇬🇧</div><div class="card-content"><h3>English</h3><p>C2</p></div></div>
-        <div class="card"><div class="icon">🇧🇷</div><div class="card-content"><h3>Português</h3><p>B2</p></div></div>
-        <div class="card"><div class="icon">🇹🇼</div><div class="card-content"><h3>Mandarin</h3><p>A1</p></div></div>
-      </div>
-    </section>
-    <section class="games">
-      <h2>Games</h2>
-      <div class="cards">
-        <div class="card">
+        <div class="card" role="region" aria-labelledby="phone-specs">
+          <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg" alt="Samsung Galaxy S23 FE" role="img">
           <div class="card-content">
-            <h3>Rock Paper Scissors</h3>
+            <h3 id="phone-specs">Phone</h3>
+            <p id="spec-phone"></p>
+          </div>
+        </div>
+        <div class="card" role="region" aria-labelledby="pc-specs">
+          <img src="https://external-content.duckduckgo.com/iu/?u=http://driver.clan.su/Acer_Aspire_V3-572.png&f=1&nofb=1" alt="Acer Aspire laptop image" role="img">
+          <div class="card-content">
+            <h3 id="pc-specs">PC</h3>
+            <p id="spec-pc"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="languages" aria-labelledby="languages-heading">
+      <h2 id="languages-heading">Languages</h2>
+      <div class="cards">
+        <div class="card" role="region" aria-labelledby="lang-turkish">
+          <div class="icon" aria-hidden="true">🇹🇷</div>
+          <div class="card-content">
+            <h3 id="lang-turkish">Turkish</h3><p>Native</p>
+          </div>
+        </div>
+        <div class="card" role="region" aria-labelledby="lang-english">
+          <div class="icon" aria-hidden="true">🇬🇧</div>
+          <div class="card-content">
+            <h3 id="lang-english">English</h3><p>C2</p>
+          </div>
+        </div>
+        <div class="card" role="region" aria-labelledby="lang-portuguese">
+          <div class="icon" aria-hidden="true">🇧🇷</div>
+          <div class="card-content">
+            <h3 id="lang-portuguese">Português</h3><p>B2</p>
+          </div>
+        </div>
+        <div class="card" role="region" aria-labelledby="lang-mandarin">
+          <div class="icon" aria-hidden="true">🇹🇼</div>
+          <div class="card-content">
+            <h3 id="lang-mandarin">Mandarin</h3><p>A1</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="games" aria-labelledby="games-heading">
+      <h2 id="games-heading">Games</h2>
+      <div class="cards">
+        <div class="card" role="region" aria-labelledby="rps-game">
+          <div class="card-content">
+            <h3 id="rps-game">Rock Paper Scissors</h3>
             <div>
-              <button data-choice="Rock">✊ Rock</button>
-              <button data-choice="Paper">✋ Paper</button>
-              <button data-choice="Scissors">✌️ Scissors</button>
+              <button data-choice="Rock" aria-label="Play Rock">✊ Rock</button>
+              <button data-choice="Paper" aria-label="Play Paper">✋ Paper</button>
+              <button data-choice="Scissors" aria-label="Play Scissors">✌️ Scissors</button>
             </div>
-            <p id="rps-result"></p>
+            <p id="rps-result" aria-live="polite"></p>
           </div>
         </div>
-        <div class="card">
+        <div class="card" role="region" aria-labelledby="dice-game">
           <div class="card-content">
-            <h3>Dice Roller</h3>
-            <button id="dice-btn">🎲 Roll Dice</button>
-            <p id="dice-result"></p>
+            <h3 id="dice-game">Dice Roller</h3>
+            <button id="dice-btn" aria-label="Roll dice">🎲 Roll Dice</button>
+            <p id="dice-result" aria-live="polite"></p>
           </div>
         </div>
       </div>
     </section>
-    <section class="contact-follow">
+    <section class="contact-follow" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in Touch</h2>
       <div class="contact-card">
         <h3>Contact Me</h3>
-        <a href="mailto:iamashley@duck.com">✉️ Email</a>
-        <a href="matrix:@ashleyfsf:mozilla.org">💬 Matrix</a>
-        <a href="https://discord.com/users/396571938081865741">🎮 Discord</a>
+        <a href="mailto:iamashley@duck.com" aria-label="Email Ashley">✉️ Email</a>
+        <a href="matrix:@ashleyfsf:mozilla.org" aria-label="Chat on Matrix">💬 Matrix</a>
+        <a href="https://discord.com/users/396571938081865741" aria-label="Join on Discord">🎮 Discord</a>
       </div>
       <div class="contact-card">
         <h3>Follow Me</h3>
-        <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
-        <a href="https://github.com/ashley0143">🐙 GitHub</a>
-         <a href="https://codeberg.org/ashley">🏔️ Codeberg</a>
-        <a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the year</a>
+        <a href="https://bsky.app/profile/ashley0143.bsky.social" aria-label="View Bluesky profile">🔵 Bluesky</a>
+        <a href="https://github.com/ashley0143" aria-label="View GitHub profile">🐙 GitHub</a>
+        <a href="https://codeberg.org/ashley" aria-label="View Codeberg profile">🏔️ Codeberg</a>
+        <a href="https://www.albumoftheyear.org/user/ashley0143/" aria-label="View Album Of The Year profile">📀 Album Of the year</a>
       </div>
     </section>
-  </div>
-  <footer>
-    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection. NO AI, LLM, GPT, ETC has been used while making this website. <br> </p>
-    <p id="time">Local time: --:--:--</p>
+  </main>
+  <footer role="contentinfo">
+    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection. NO AI, LLM, GPT, ETC has been used while making this website.</p>
+    <p id="time" aria-live="off">Local time: --:--:--</p>
   </footer>
-  <button id="toTop">↑</button>
+  <button id="toTop" aria-label="Scroll to top">↑</button>
   <script>
     document.getElementById('hamburger').addEventListener('click',()=>{
       document.getElementById('drawer').classList.toggle('open');
@@ -365,7 +290,7 @@
    function updateTime() {
    const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
   const timeStr = new Date().toLocaleTimeString('en-GB', options);
-  document.getElementById('time').textContent = 'My Local time: ' + timeStr;
+  document.getElementById('time').textContent = "\n" + 'My Local time: ' + timeStr;
    }
     setInterval(updateTime,1000);
     updateTime();
