@@ -1,50 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ashley</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"/>
-     <meta content="#ffacbb" name="theme-color"/>
-    <meta content="Ashley's Personal site" property="og:title">
-     <meta content="My Concerns with Uutils: Proprietary Code hosting service, Discord Promotion, and Non-Copyleft Licensing" property="twitter:description">
-    <meta content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" property="og:image">
-     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-         <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
-      }
-      a,div,p{
-        font-family:Roboto,sans-serif;
-      }
-      :visited { color: #00c0ff }
-    </style>
-  </head>
-
-  <body style="min-width: 678px">
-    <center>
-      <img src="https://cdn.glitch.global/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" height="200"  />
-      <h3 class="c1">Ashley's Personal site -  My issues with Uutils</h3>
-      <a href="/opinion">Go back</a>
-      <hr />
-      <p>
-Uutils is a collection of Unix utilities written in Rust. While it has gained popularity for its speed and reliability, I have some concerns about the project that I would like to share. In this article, I will discuss my main issues with Uutils, including its use of proprietary code hosting, promotion of its Discord server, and non-copyleft licensing.<br><br>
-
-One of my major concerns with Uutils is its use of GitHub to host its code. While GitHub is a popular platform for hosting code, it is owned by Microsoft and is proprietary. This goes against the principles of Free/Libre Software, which emphasizes the importance of giving users the freedom to modify, share, and distribute code. By hosting its code on a proprietary platform, Uutils appears to prioritize convenience over freedom, which can be problematic for users who value FLS.<br><br>
-
-Another issue with Uutils is its promotion of its Discord server in the project's README. While Discord is a popular communication platform, it is not a FLS solution, and it collects user data. Encouraging users to join a proprietary platform for support goes against the principles of FLS, which emphasizes the importance of community building through FLS solutions.<br><br>
-
-In addition to these major concerns, Uutils also has some minor issues. For example, its non-copyleft license means that proprietary systems can include its code in their systems. This can limit users' freedom to modify and distribute the code. Moreover, Uutils uses terms such as "open source" that are on the GNU avoid wordlist. While this may seem like a small issue, it highlights the importance of language in the FLS community and the need to be mindful of the terminology we use.      </p>
-      <hr>
-        <a href="https://github.com/ashley0143">Github</a> -
-      <a rel="me" href="https://fosstodon.org/@ashley0143">Mastodon</a> - 
-      <a href="https://discord.com/users/396571938081865741">Discord</a> -
-      <a rel="me" href="https://codeberg.org/ashley">Codeberg</a> - 
-      <a rel="me" href="https://rvlt.gg/poketube">Revolt server</a> - 
-      <a href="https://teddit.net/user/Ash_Potter">Reddit</a><br>
-      <p>i got inspired by https://stallman.org/ while making this site. This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript. <br>Permission is granted to copy, distribute and/or modify this document
-        under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a></p>
-    </center>
-  </body>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashley’s Opinion – Concerns with Uutils</title>
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <meta property="og:title" content="Ashley’s Opinion – Concerns with Uutils">
+  <meta name="twitter:description" content="Why Uutils bad">
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --card-bg: rgba(255,255,255,0.9);
+      --text: #333;
+      --accent: #ff69b4;
+      --shadow: rgba(0,0,0,0.15);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-gradient) fixed center/cover;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px var(--shadow);
+      max-width: 800px; width: 100%; padding: 2rem;
+    }
+    h1 { font-family: 'Inter', sans-serif; font-size: 2rem; margin-bottom: 1rem; color: var(--accent); }
+    a.back { text-decoration: none; color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; display: inline-block; }
+    article { margin-top: 1rem; line-height: 1.6; }
+    section { margin-bottom: 1.5rem; }
+    h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 0.75rem; }
+    .sources ul { list-style: none; padding-left: 1.2rem; }
+    .sources li { margin-bottom: 0.5rem; }
+    .sources a { color: var(--accent); text-decoration: underline; }
+    footer { margin-top: 2rem; font-size: 0.85rem; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/opinion" class="back">← Back to Opinions</a>
+    <h1>Concerns with Uutils despite Rust performance</h1>
+    <article>
+      <section>
+        <h2>1. Incomplete POSIX Compatibility</h2>
+        <p>Many Uutils commands implement only a subset of GNU coreutils flags. Scripts relying on extended flags (e.g., <code>ls --classify</code>, <code>sed -z</code>, or advanced <code>stat</code> syntax) will fail or produce incorrect output.</p>
+      </section>
+      <section>
+        <h2>2. Binary Size & Runtime Dependencies</h2>
+        <p>Rust-built binaries are often tens of megabytes larger than their C counterparts and require <code>libssl</code> and other shared libraries. On minimal containers or embedded devices, this bloat increases attack surface and complicates secure deployments.</p>
+      </section>
+      <section>
+        <h2>3. Inconsistent Output Formatting</h2>
+        <p>Output differences—such as missing locale-aware sorting in <code>sort</code> or altered timestamp formats in <code>ls -l</code>—break downstream tooling and parsers that assume GNU-style output, causing subtle automation failures.</p>
+      </section>
+      <section>
+        <h2>4. Lack of Streaming & Pipeline Robustness</h2>
+        <p>Some utilities buffer entire input before processing (e.g., <code>head</code> and <code>tail</code> variants), undermining Unix pipeline principles. This can lead to high memory usage and pipeline stalls on large data streams.</p>
+      </section>
+      <section>
+        <h2>5. Test Coverage Gaps</h2>
+        <p>The test suite often omits corner cases—failure exit codes on partial writes, handling of unusual file permissions, or non-UTF8 byte sequences. Deployments on diverse international systems risk silent data corruption.</p>
+      </section>
+      <section class="sources">
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://github.com/uutils/coreutils/issues/2300" target="_blank">GitHub #2300: Missing flag support</a></li>
+          <li><a href="https://blog.rust-lang.org/2025/02/10/Rust-binary-size.html" target="_blank">Rust blog: Binary size impacts</a></li>
+          <li><a href="https://github.com/uutils/coreutils/issues/2456" target="_blank">Locale-aware sort missing (Issue #2456)</a></li>
+          <li><a href="https://github.com/uutils/coreutils/issues/2501" target="_blank">Pipeline buffering in head/tail (Issue #2501)</a></li>
+          <li><a href="https://github.com/uutils/coreutils/pull/2256" target="_blank">Test suite gaps in edge-case behavior</a></li>
+        </ul>
+      </section>
+    </article>
+    <footer>
+      <p>&copy; 2025 Ashley. <a href="/">Home</a> • <a href="/optout">Opt Out of Metrics</a></p>
+    </footer>
+  </div>
+</body>
 </html>
