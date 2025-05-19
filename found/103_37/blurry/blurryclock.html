@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <title>Blurry Clock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Font & Icons -->
-  <link href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+<link rel="icon" href="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png" type="image/png" />
+   <link href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
 
   <!-- Martian Mono Font -->
   <style>
@@ -27,6 +26,24 @@
     }
     body.red { --bg: url('https://www.twentyonepilots.com/sites/g/files/g2000017956/files/2024-02/onrefni.jpg'); }
 
+#langSelect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,221,0,0.7);
+}
+#langSelect {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border: 2px solid;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+  background: rgba(0,0,0,0.4);
+  color: inherit;
+}
     .clock-container {
       background: rgba(0,0,0,0.7);
       backdrop-filter: blur(10px);
