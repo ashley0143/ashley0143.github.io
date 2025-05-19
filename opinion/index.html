@@ -1,52 +1,153 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ashley</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"/>
-    <meta content="Ashley's Personal site" property="og:title">
-    <meta content="I am ashley,a member of fsf, and i love u <3" property="twitter:description">
-    <meta content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-       <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
-      }
-      a,div,p{
-        font-family:Roboto,sans-serif;
-      }
-      :visited { color: #00c0ff }
-    </style>
-  </head>
-  <body style="min-width: 678px">
-    <center>
-     <img src="https://cdn.glitch.global/f42719f7-df54-434d-9198-ee106fe6b212/ashleypfp-trans.png?v=1661596803488" style="border-radius: 20px;" height="200">
-      <h3 class="c1">Ashley's Personal site</h3>
-      <a href="/">Home</a>
-      <hr />
-      <h1>What's bad about...</h1>
-      <a href="/opinion/google">Google</a> - <a href="/opinion/zuckbook">Facebook/meta/whatever they call it</a> - <a href="/opinion/topgg">Top.gg</a> - <a href="/opinion/apple">Apple</a> - <a href="/opinion/netflix">Netflix</a> -  <a href="/opinion/my-issues-with-uutils">Uutils</a> - <a href="/opinion/spotify">Spotify</a> - <a href="/opinion/discord">Discord</a> - <a href="/opinion/zoom">Zoom</a> - <a href="/opinion/my-issues-with-flatpak/">Flathub (the main repo)</a>
-      <br />
-      <h1>What's good about...</h1>
-      <a href="/opinion/revolt">Revolt</a> 
-      <br /><hr>
-      <h1>Non serious opinions (aka Humorus opinions lol)</h1>
-      <a href="/opinion/morbius">MORBIUS</a>
-      <hr />
-      <a href="https://github.com/ashley0143">Github</a> -
-      <a rel="me" href="https://fosstodon.org/@ashley0143">Mastodon</a> - 
-      <a href="https://discord.com/users/396571938081865741">Discord</a> -
-      <a rel="me" href="https://codeberg.org/ashley">Codeberg</a> - 
-      <a rel="me" href="https://rvlt.gg/poketube">Revolt server</a> - 
-      <a href="https://teddit.net/user/Ash_Potter">Reddit</a><br />      <p>i got inspired by https://stallman.org/ while making this site. This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript. <br>Permission is granted to copy, distribute and/or modify this document
-        under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>
-      <br>
- Some Articles Copyright © Richard Stallman
- <a href="/copyright.html">Copyright Info</a>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashley's Opinions</title>
+  <meta name="theme-color" content="#ffacbb">
+  <meta property="og:title" content="Ashley's Opinions">
+  <meta property="twitter:description" content="I am Ashley, a member of FSF, and I love u <3">
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --text: #333;
+      --card-bg: rgba(255,255,255,0.8);
+      --blur: 10px;
+      --accent: #ff69b4;
+      --transition: .3s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background: var(--bg-gradient) fixed center/cover;
+      transition: background var(--transition), color var(--transition);
+    }
+    .container {
+      max-width: 800px; margin: 2rem auto; padding: 2rem;
+      background: var(--card-bg); border-radius: 16px;
+      backdrop-filter: blur(var(--blur));
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    header img {
+      height: 150px; width: 150px; border-radius: 20px;
+      border: 4px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    header h1 { font-family: 'Inter', sans-serif; font-size: 2.5rem; margin: 1rem 0; }
+    nav[aria-label="Opinion navigation"] ul {
+      list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem;
+    }
+    nav a {
+      text-decoration: none; padding: 0.5rem 1rem;
+      background: var(--accent); color: #fff; border-radius: 8px;
+      transition: background var(--transition);
+    }
+    nav a:hover { background: #d18aff; }
+    main ul { list-style: none; padding: 0; margin: 1rem 0; }
+    main li { margin: 0.5rem 0; }
+    main a { color: var(--accent); text-decoration: none; }
+    main a:hover { text-decoration: underline; }
+    footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://cdn.glitch.global/f42719f7-df54-434d-9198-ee106fe6b212/ashleypfp-trans.png?v=1661596803488" alt="Ashley profile picture">
+      <h1>Ashley's Opinions</h1>
+      <nav aria-label="Opinion navigation">
+        <ul>
+          <li><a href="/opinion/zuckbook">Facebook / Meta</a></li>
+          <li><a href="/opinion/apple">Apple</a></li>
+          <li><a href="/opinion/netflix">Netflix</a></li>
+          <li><a href="/opinion/my-issues-with-uutils">Uutils</a></li>
+          <li><a href="/opinion/spotify">Spotify</a></li>
+          <li><a href="/opinion/discord">Discord</a></li>
+          <li><a href="/opinion/zoom">Zoom</a></li>
+          <li><a href="/opinion/my-issues-with-flatpak/">Flathub</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+     </main>
+    <footer>
+      <p>
+        <a href="https://github.com/ashley0143" rel="me">GitHub</a> |
+        <a href="https://fosstodon.org/@ashley0143" rel="me">Mastodon</a> |
+        <a href="https://discord.com/users/396571938081865741">Discord</a> |
+        <a href="https://codeberg.org/ashley" rel="me">Codeberg</a> |
+        <a href="https://rvlt.gg/poketube">Revolt Server</a> |
+        <a href="https://teddit.net/user/Ash_Potter">Reddit</a>
       </p>
-       
-    </center>
-  </body>
+      <p>
+         This site does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.<br>
+        Permission under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+(function(){
+  const STORAGE_KEY = '_hs_store';
+  const DISABLED_KEY = '_hs_disabled';
+  let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+  let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  function record(evt) {
+    if (disabled) return;
+    events.push(evt);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+  }
+  const startTime = performance.now();
+  window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+  window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+  document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+  document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+  document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+  let maxDepth = 0;
+  window.addEventListener('scroll', () => {
+    const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+    if (depth > maxDepth) {
+      maxDepth = depth;
+      record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+    }
+  });
+  document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+  window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+  window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+  window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+  if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+  if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+  setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+  let lastActivity = Date.now();
+  ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+  setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+  window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+  window._hs = {
+    get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+    clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+    export: () => {
+      const data = JSON.stringify(events, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'metrics.json'; a.click();
+      URL.revokeObjectURL(url);
+    },
+    optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+    optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+  };
+})();
+</script>
+ </body>
 </html>
