@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Settings</title>
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --accent: #ff69b4;
+      --accent2: #d18aff;
+      --text: #333;
+      --radius: 12px;
+      --transition: 0.3s ease;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); padding: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-width: 500px; width: 100%; text-align: center;
+    }
+    h1 { font-family: 'Inter', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--accent2); }
+    .tldr {
+      background: #fff3f8;
+      border-left: 4px solid var(--accent);
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    p.description { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.4; }
+    .toggle { position: relative; display: inline-block; width: 60px; height: 34px; margin: 1rem 0; }
+    .toggle input { display: none; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; border-radius: var(--radius); transition: background var(--transition); }
+    .slider::before { content: ''; position: absolute; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: #fff; border-radius: 50%; transition: transform var(--transition); }
+    input:checked + .slider { background-color: var(--accent); }
+    input:checked + .slider::before { transform: translateX(26px); }
+    .status, #conn-status { margin-top: 1rem; font-weight: 500; }
+    details { text-align: left; margin: 1.5rem 0; font-size: 0.9rem; }
+    summary { cursor: pointer; font-weight: 600; color: var(--accent); font-size: 1rem; }
+    .data-list { margin-top: 0.5rem; padding-left: 1.2rem; }
+    .data-list li { margin-bottom: 0.4rem; }
+    .back { display: inline-block; margin-top: 1.5rem; font-size: 0.9rem; color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    .back:hover { color: var(--accent2); }
+    .policy-content h3 { margin-top: 1rem; font-size: 1.1rem; color: var(--accent2); }
+    .policy-content p { margin: 0.5rem 0; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Privacy Settings</h1>
+    
+    <p class="description">Use the toggle below to instantly enable or disable metrics collection. No site reload required.</p>
+    <label class="toggle">
+      <input type="checkbox" id="toggle-input">
+      <span class="slider"></span>
+    </label>
+    <div class="status" id="status"></div>
+    <div class="status" id="conn-status"></div>
+
+    <details>
+      <summary>Metrics Collected &amp; Purpose</summary>
+      <ul class="data-list">
+        <li><strong>Page Load Timings</strong>: Benchmark resource loading and optimize asset prioritization.</li>
+        <li><strong>Click Events</strong>: Identify interaction hotspots and refine UI/UX elements.</li>
+        <li><strong>Form Submissions</strong>: Streamline form processes and error handling flows.</li>
+        <li><strong>Copy & Paste Actions</strong>: Gauge content engagement and user workflows.</li>
+        <li><strong>Scroll Depth Measurements</strong>: Determine content visibility and adjust layout accordingly.</li>
+        <li><strong>Visibility & Focus Changes</strong>: Detect tab/window usage to manage background tasks.</li>
+        <li><strong>Orientation Events</strong>: Adapt layouts to device orientation changes.</li>
+        <li><strong>Device Memory & JS Heap Stats</strong>: Monitor client constraints to prevent performance degradation.</li>
+        <li><strong>Heartbeat & Idle Tracking</strong>: Distinguish active usage from idle periods for session analytics.</li>
+        <li><strong>JavaScript Error Logging</strong>: Capture runtime errors to prioritize bug fixes.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Privacy Policy </summary>
+      <div class="policy-content">
+        <p><strong>TL;DR:</strong> On-device metrics are collected solely locally for performance & UX improvements; data never leaves your browser. You may disable collection or clear data at any time.</p>
+      <div class="policy-content">
+        <h3>Effective Date</h3>
+        <p>This policy is effective as of May 19, 2025, and supersedes all prior versions.</p>
+
+        <h3>1. Introduction & Acceptance</h3>
+        <p>By accessing or using this website, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy and Terms of Service. If you do not agree with any part of these terms, you must cease usage immediately.</p>
+
+        <h3>2. Hosting &amp; Third-Party Resources</h3>
+        <p>This website is hosted on GitHub Pages. Third-party domains (e.g., font CDNs, image hosts) are exclusively used for serving static assets. These providers are contractually restricted from collecting any usage data or metrics related to this site.</p>
+
+        <h3>3. Data Collection Scope</h3>
+        <p>We collect non-identifiable, aggregated metrics locally in your browser’s <code>localStorage</code>. No data is ever transmitted to external servers, ensuring that all analytics remain on-device.</p>
+
+        <h3>4. Data Types &amp; Purpose</h3>
+        <p>The following anonymous data are collected with their respective purposes:</p>
+        <ul class="data-list">
+          <li><strong>Performance Metrics</strong> (e.g., load times): To enhance page speed and reduce latency.</li>
+          <li><strong>Interaction Events</strong> (clicks, submissions): To optimize UI placement and workflows.</li>
+          <li><strong>Scroll &amp; Visibility Data</strong>: To adjust content hierarchy and manage background tasks.</li>
+          <li><strong>Error Logs</strong>: To identify and fix JavaScript defects promptly.</li>
+        </ul>
+
+        <h3>5. Data Minimization &amp; Anonymity</h3>
+        <p>Adhering to data minimization principles, we only collect metadata necessary for improving the site. No personal identifiers, IP addresses, or geolocation data are ever recorded.</p>
+
+        <h3>6. Data Security &amp; Confidentiality</h3>
+        <p>Data stored in <code>localStorage</code> is sandboxed within your browser and domain context. It cannot be accessed by other origins or external scripts not served by this site.</p>
+
+        <h3>7. Retention Period</h3>
+        <p>Metrics persist indefinitely until you delete them. There is no automatic expiration to allow for long-term trend analysis if desired.</p>
+
+        <h3>8. User Rights &amp; Controls</h3>
+        <p>You have the right to control and manage your analytics data at any time through the following mechanisms:</p>
+        <ul class="data-list">
+          <li><code>_hs.get()</code> — Retrieve all stored metrics.</li>
+          <li><code>_hs.export()</code> — Download metrics as a JSON file.</li>
+          <li><code>_hs.clear()</code> — Permanently delete all metrics from <code>localStorage</code>.</li>
+          <li>Toggle Collection — Instantly enable or disable data collection via the switch above.</li>
+        </ul>
+
+        <h3>9. Privacy-by-Design &amp; Regulatory Alignment</h3>
+        <p>This policy reflects privacy-by-design practices. Although no PII is collected, we align with GDPR and CCPA principles by ensuring data minimization, transparency, and user consent mechanisms.</p>
+
+        <h3>10. Amendments &amp; Governing Law</h3>
+        <p>We reserve the right to revise this policy at any time. Updates will be indicated by a new Effective Date. Your continued use of the site constitutes acceptance of any amended terms. This policy is governed by the laws of the Republic of Turkey.</p>
+      </div>
+    </details>
+
+    <a href="/" class="back">← Back to Home</a>
+  </div>
+
+  <script>
+    const key = '_hs_disabled';
+     const input = document.getElementById('toggle-input');
+    const statusEl = document.getElementById('status');
+    const connEl = document.getElementById('conn-status');
+
+    function refresh() {
+      const off = localStorage.getItem(key) === '1';
+      input.checked = !off;
+      statusEl.textContent = off ? 'Metrics Disabled' : 'Metrics Enabled';
+      connEl.textContent = off ? 'Status: Inactive' : 'Status: Active';
+    }
+
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        localStorage.removeItem(key);
+      } else {
+        localStorage.setItem(key, '1');
+      }
+      refresh();
+    });
+
+     refresh();
+  </script>
+</body>
+</html>
