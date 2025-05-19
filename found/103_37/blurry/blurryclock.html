@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blurry Clock</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: #FFFFFF;
+      font-family: 'Martian Mono', monospace;
+      background: url('https://www.twentyonepilots.com/sites/g/files/g2000018171/files/2025-05/TOP_site_desktopupdate.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    .clock-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px 50px;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #FFDD00;
+      text-shadow: 0 0 20px rgba(255, 221, 0, 0.8), 0 0 30px rgba(255, 221, 0, 0.6);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .timer {
+      font-size: 2.2rem;
+      margin: 12px 0;
+    }
+
+    .label {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock-container">
+    <h1> Blurry Clock</h1>
+    <div class="timer" id="until">00:00:00</div>
+    <div class="label">Time until next 10 AM (ET)</div>
+
+    <div class="timer" id="since">00:00:00</div>
+    <div class="label">Time since last 10 AM (ET)</div>
+  </div>
+
+  <script>
+    function pad(n) { return n.toString().padStart(2, '0'); }
+
+    function updateClocks() {
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const etNow = new Date(utc - 4 * 3600000);
+
+      const today10 = new Date(etNow);
+      today10.setHours(10, 0, 0, 0);
+
+      let last10, next10;
+      if (etNow >= today10) {
+        last10 = today10;
+        next10 = new Date(today10);
+        next10.setDate(today10.getDate() + 1);
+      } else {
+        next10 = today10;
+        last10 = new Date(today10);
+        last10.setDate(today10.getDate() - 1);
+      }
+
+      const untilMs = next10 - etNow;
+      const sinceMs = etNow - last10;
+
+      function format(ms) {
+        const totalSec = Math.floor(ms / 1000);
+        const h = Math.floor(totalSec / 3600);
+        const m = Math.floor((totalSec % 3600) / 60);
+        const s = totalSec % 60;
+        return `${pad(h)}:${pad(m)}:${pad(s)}`;
+      }
+
+      document.getElementById('until').textContent = format(untilMs);
+      document.getElementById('since').textContent = format(sinceMs);
+    }
+
+    setInterval(updateClocks, 500);
+    updateClocks();
+  </script>
+</body>
+</html>
