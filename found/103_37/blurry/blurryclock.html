@@ -3,106 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <title>Blurry Clock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font & Icons -->
+  <link href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+
+  <!-- Martian Mono Font -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap');
+  </style>
 
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      color: #FFFFFF;
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
       font-family: 'Martian Mono', monospace;
-      background: url('https://www.twentyonepilots.com/sites/g/files/g2000018171/files/2025-05/TOP_site_desktopupdate.jpg') no-repeat center center fixed;
+      background: var(--bg);
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      --bg: url('https://www.twentyonepilots.com/sites/g/files/g2000018171/files/2025-05/TOP_site_desktopupdate.jpg');
     }
+    body.red { --bg: url('https://www.twentyonepilots.com/sites/g/files/g2000017956/files/2024-02/onrefni.jpg'); }
 
     .clock-container {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px 50px;
-      border-radius: 15px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      padding: 3rem;
+      border-radius: 1rem;
       text-align: center;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      width: 90%; max-width: 600px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+      position: relative; overflow: hidden;
     }
+    h1 { font-size:2.8rem; color:#FFDD00; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem; animation:pulse-glow 2s ease-in-out infinite; }
+    @keyframes pulse-glow { 0%,100%{text-shadow:0 0 10px rgba(255,221,0,0.8),0 0 20px rgba(255,221,0,0.6);}50%{text-shadow:0 0 20px rgba(255,221,0,1),0 0 30px rgba(255,221,0,0.8);} }
 
-    h1 {
-      margin-bottom: 15px;
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #FFDD00;
-      text-shadow: 0 0 20px rgba(255, 221, 0, 0.8), 0 0 30px rgba(255, 221, 0, 0.6);
-      display: inline-block;
-      padding-bottom: 5px;
-    }
+    .date-display { font-size:1rem; margin-bottom:0.5rem; opacity:0.8; display:flex; justify-content:center; gap:1rem; align-items:center; }
+    .timer { font-size:2.2rem; margin:1rem 0; }
+    .label { font-size:1rem; opacity:0.85; margin-bottom:1rem; }
 
-    .timer {
-      font-size: 2.2rem;
-      margin: 12px 0;
-    }
+    .buttons { display:flex; gap:1rem; justify-content:center; margin-top:1rem; flex-wrap:wrap; }
+    .btn, select.btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.4rem; font-size:1rem; border:2px solid; border-radius:999px; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease; cursor:pointer; background:rgba(0,0,0,0.4); color:inherit; }
+    .btn:hover, select.btn:hover { transform:scale(1.05); box-shadow:0 0 10px rgba(255,221,0,0.7); }
+    select { font-family: 'Martian Mono', monospace; }
 
-    .label {
-      font-size: 1.1rem;
-      opacity: 0.85;
-      margin-bottom: 8px;
-    }
+    .helpful-links { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.5rem; }
+    .helpful-links a { color:#FFDD00; text-decoration:underline; }
+
+    .progress-container { width:100%; background:rgba(255,255,255,0.2); border-radius:5px; overflow:hidden; margin:1rem 0; }
+    .progress-bar { height:10px; width:0; background:#FFDD00; transition:width .5s ease; }
+    canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+    .privacy { margin-top:1.5rem; font-size:.9rem; opacity:.7; }
+    .privacy a { text-decoration:underline; }
   </style>
 </head>
 <body>
-  <div class="clock-container">
-    <h1> Blurry Clock</h1>
-    <div class="timer" id="until">00:00:00</div>
-    <div class="label">Time until next 10 AM (ET)</div>
-
-    <div class="timer" id="since">00:00:00</div>
-    <div class="label">Time since last 10 AM (ET)</div>
+  <div class="clock-container" id="container">
+    <canvas id="confetti"></canvas>
+    <h1 id="title">Blurry Clock</h1>
+    <div class="date-display">
+      <span id="dateDisplay">Loading date…</span>
+      <span id="daysLeft">-- days left</span>
+    </div>
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="timer" id="timeValue">00:00:00</div>
+    <div class="label" id="timeLabel">Time until next 10 AM (ET)</div>
+    <div class="buttons">
+      <a href="#" class="btn" id="tweetBtn"><i class="fab fa-twitter"></i> Post Tweet</a>
+      <button class="btn" id="toggleTheme"><i class="fas fa-adjust"></i> Switch Theme</button>
+      <button class="btn" id="toggleMode"><i class="fas fa-sync-alt"></i> Toggle Mode</button>
+      <select id="langSelect"></select>
+    </div>
+    <div class="privacy"><a href="/optout" id="privacyLink">Privacy / Opt-out</a></div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    function pad(n) { return n.toString().padStart(2, '0'); }
+    const langs = [
+      {code:'en',name:'English', strings:{ until:'Time until next 10 AM (ET)', since:'Time since last 10 AM (ET)', post:'Post Tweet', switch:'Switch Theme', toggle:'Toggle Mode', privacy:'Privacy / Opt-out', days:'days left', self:'💥 Self-Destructed 💥', update:'Blurry Clock update!' }},
+      {code:'es',name:'Español', strings:{ until:'Tiempo hasta las 10 AM (ET)', since:'Tiempo desde las 10 AM (ET)', post:'Publicar Tweet', switch:'Cambiar Tema', toggle:'Cambiar Modo', privacy:'Privacidad / Opt-out', days:'días restantes', self:'💥 Autodestruido 💥', update:'¡Actualización de Reloj Borroso!' }},
+      {code:'fr',name:'Français', strings:{ until:'Temps avant 10h (ET)', since:'Temps depuis 10h (ET)', post:'Publier Tweet', switch:'Changer Thème', toggle:'Changer Mode', privacy:'Confidentialité / Opt-out', days:'jours restants', self:'💥 Auto-destruction 💥', update:'Mise à jour Horloge Floue!' }},
+      {code:'de',name:'Deutsch', strings:{ until:'Zeit bis 10 Uhr (ET)', since:'Zeit seit 10 Uhr (ET)', post:'Tweeten', switch:'Thema wechseln', toggle:'Modus wechseln', privacy:'Datenschutz / Opt-out', days:'Tage übrig', self:'💥 Selbstzerstört 💥', update:'Update Verschwommene Uhr!' }},
+      {code:'it',name:'Italiano', strings:{ until:'Tempo fino alle 10 AM (ET)', since:'Tempo da 10 AM (ET)', post:'Pubblica Tweet', switch:'Cambia Tema', toggle:'Cambia Modalità', privacy:'Privacy / Opt-out', days:'giorni rimanenti', self:'💥 Autodistruzione 💥', update:'Aggiornamento Orologio Sfocato!' }},
+      {code:'pt',name:'Português', strings:{ until:'Tempo até 10h (ET)', since:'Tempo desde 10h (ET)', post:'Postar Tweet', switch:'Mudar Tema', toggle:'Mudar Modo', privacy:'Privacidade / Opt-out', days:'dias restantes', self:'💥 Autodestruído 💥', update:'Atualização Relógio Borrado!' }},
+      {code:'ru',name:'Русский', strings:{ until:'Время до 10 утра (ET)', since:'Время после 10 утра (ET)', post:'Отправить Твит', switch:'Сменить Тему', toggle:'Сменить Режим', privacy:'Конфиденциальность / Opt-out', days:'дней осталось', self:'💥 Самоуничтожено 💥', update:'Обновление Размытых Часов!' }},
+      {code:'zh',name:'中文', strings:{ until:'距离上午10点 (ET)', since:'自上午10点起', post:'发布推文', switch:'切换主题', toggle:'切换模式', privacy:'隐私 / 退出', days:'天 剩余', self:'💥 自毁 💥', update:'模糊时钟 更新!' }},
+      {code:'ja',name:'日本語', strings:{ until:'次の午前10時まで', since:'最後の午前10時から', post:'ツイートする', switch:'テーマ切替', toggle:'モード切替', privacy:'プライバシー / オプトアウト', days:'日 残り', self:'💥 自爆 💥', update:'ぼやけ時計 更新!' }},
+      {code:'ko',name:'한국어', strings:{ until:'다음 오전10시까지', since:'지난 오전10시부터', post:'트윗하기', switch:'테마 전환', toggle:'모드 전환', privacy:'개인정보 / 옵트아웃', days:'일 남음', self:'💥 자폭 💥', update:'블러리 시계 업데이트!' }},
+      {code:'ar',name:'العربية', strings:{ until:'الوقت حتى 10 صباحًا (ET)', since:'الوقت منذ 10 صباحًا (ET)', post:'نشر تغريدة', switch:'تغيير الثيم', toggle:'تبديل الوضع', privacy:'الخصوصية / الانسحاب', days:'أيام متبقية', self:'💥 تم التدمير الذاتي 💥', update:'تحديث الساعة الضبابية!' }},
+      {code:'tr',name:'Türkçe', strings:{ until:"10 AM'ye Kalan Süre", since:"10 AM'den Beri Geçen Süre", post:'Tweet Gönder', switch:'Tema Değiştir', toggle:'Mod Değiştir', privacy:'Gizlilik / Opt-out', days:'gün kaldı', self:'💥 Kendini Yok Etti 💥', update:'Bulanık Saat Güncellemesi!' }},
+      {code:'nl',name:'Nederlands', strings:{ until:'Tijd tot 10 uur (ET)', since:'Tijd sinds 10 uur (ET)', post:'Tweeten', switch:'Thema wisselen', toggle:'Modus wisselen', privacy:'Privacy / Opt-out', days:'dagen over', self:'💥 Zelfvernietiging 💥', update:'Update Wazig Klok!' }},
+      {code:'pl',name:'Polski', strings:{ until:'Czas do 10:00 (ET)', since:'Czas od 10:00 (ET)', post:'Opublikuj Tweet', switch:'Zmień Motyw', toggle:'Przełącz Tryb', privacy:'Prywatność / Opt-out', days:'dni pozostało', self:'💥 Autodestrukcja 💥', update:'Aktualizacja Zamglonego Zegara!' }},
+      {code:'hi',name:'हिन्दी', strings:{ until:'अगले 10 AM तक', since:'पिछले 10 AM से', post:'ट्वीट करें', switch:'थीम बदलें', toggle:'मोड बदलें', privacy:'गोपनीयता / Opt-out', days:'दिन शेष', self:'💥 आत्म-विनाश 💥', update:'धुंधली घड़ी अपडेट!' }},
+      {code:'sv',name:'Svenska', strings:{ until:'Tid till kl 10 (ET)', since:'Tid sedan kl 10 (ET)', post:'Tweeta', switch:'Byt Tema', toggle:'Byt Läge', privacy:'Sekretess / Opt-out', days:'dagar kvar', self:'💥 Självförstörd 💥', update:'Uppdatering Suddig Klocka!' }}
+    ];
+    let langIndex = 0;
+    let modeUntil = true;
 
-    function updateClocks() {
-      const now = new Date();
-      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-      const etNow = new Date(utc - 4 * 3600000);
-
-      const today10 = new Date(etNow);
-      today10.setHours(10, 0, 0, 0);
-
-      let last10, next10;
-      if (etNow >= today10) {
-        last10 = today10;
-        next10 = new Date(today10);
-        next10.setDate(today10.getDate() + 1);
-      } else {
-        next10 = today10;
-        last10 = new Date(today10);
-        last10.setDate(today10.getDate() - 1);
-      }
-
-      const untilMs = next10 - etNow;
-      const sinceMs = etNow - last10;
-
-      function format(ms) {
-        const totalSec = Math.floor(ms / 1000);
-        const h = Math.floor(totalSec / 3600);
-        const m = Math.floor((totalSec % 3600) / 60);
-        const s = totalSec % 60;
-        return `${pad(h)}:${pad(m)}:${pad(s)}`;
-      }
-
-      document.getElementById('until').textContent = format(untilMs);
-      document.getElementById('since').textContent = format(sinceMs);
+    function populateLangSelect() {
+      const sel = document.getElementById('langSelect');
+      langs.forEach((l, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = l.name;
+        sel.appendChild(opt);
+      });
+      sel.value = langIndex;
+      sel.addEventListener('change', () => {
+        langIndex = parseInt(sel.value);
+        applyLang(); updateDate(); updateClocks();
+      });
     }
 
-    setInterval(updateClocks, 500);
-    updateClocks();
+    function applyLang(){
+      const s = langs[langIndex].strings;
+      document.getElementById('privacyLink').textContent = s.privacy;
+      document.getElementById('toggleTheme').innerHTML = `<i class="fas fa-adjust"></i> ${s.switch}`;
+      document.getElementById('toggleMode').innerHTML = `<i class="fas fa-sync-alt"></i> ${s.toggle}`;
+      document.getElementById('timeLabel').textContent = modeUntil ? s.until : s.since;
+      document.getElementById('tweetBtn').innerHTML = `<i class="fab fa-twitter"></i> ${s.post}`;
+    }
+
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function updateDate(){
+      const now = new Date();
+      const opt = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+      document.getElementById('dateDisplay').textContent = now.toLocaleDateString(langs[langIndex].code, opt);
+      const target = new Date('2025-05-24T00:00:00-04:00');
+      const diff = Math.ceil((target - now)/(1000*60*60*24));
+      document.getElementById('daysLeft').textContent = `${diff} ${langs[langIndex].strings.days}`;
+    }
+
+    function updateClocks(){
+      const now = new Date();
+      const destroy = new Date('2025-05-24T16:00:00-04:00');
+      if(now >= destroy){ document.body.innerHTML = `<h1 style=\"color:#f00;\">${langs[langIndex].strings.self}</h1>`; return; }
+      const utc = now.getTime() + now.getTimezoneOffset()*60000;
+      const etNow = new Date(utc - 4*3600000);
+      const t10 = new Date(etNow); t10.setHours(10,0,0,0);
+      let last10, next10;
+      if(etNow >= t10){ last10=t10; next10=new Date(t10); next10.setDate(t10.getDate()+1);
+      } else { next10=t10; last10=new Date(t10); last10.setDate(t10.getDate()-1); }
+      const untilMs = next10 - etNow, sinceMs = etNow - last10, dayMs = 24*3600*1000;
+      const fmt = ms => { const ts=Math.floor(ms/1000), h=Math.floor(ts/3600), m=Math.floor((ts%3600)/60), s=ts%60; return `${pad(h)}:${pad(m)}:${pad(s)}`; };
+      const val = modeUntil ? fmt(untilMs) : fmt(sinceMs);
+      document.getElementById('timeValue').textContent = val;
+      document.getElementById('progressBar').style.width = `${Math.min(100, Math.floor(sinceMs/dayMs*100))}%`;
+      if((sinceMs % dayMs) < 500) confetti({ particleCount:200, spread:200 });
+      const text = encodeURIComponent(`${langs[langIndex].strings.update} ${modeUntil ? langs[langIndex].strings.until : langs[langIndex].strings.since}: ${val}. ${window.location.href}`);
+      document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${text}`;
+    }
+
+    document.getElementById('toggleTheme').addEventListener('click', () => document.body.classList.toggle('red'));
+    document.getElementById('toggleMode').addEventListener('click', () => { modeUntil = !modeUntil; applyLang(); });
+
+    // Init
+    populateLangSelect(); applyLang(); updateDate(); updateClocks();
+    setInterval(() => { updateDate(); updateClocks(); }, 500);
   </script>
 </body>
 </html>
