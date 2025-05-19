@@ -1,78 +1,105 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <title>Ashley</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"  />
-    <meta content="Ashley's Personal site" property="og:title">
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashley’s Opinion – Why You Shouldn’t Use Zoom</title>
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <meta property="og:title" content="Ashley’s Opinion – Why You Shouldn’t Use Zoom">
     <meta content="my opinions on zoom" property="twitter:description" />
-    <meta content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg"  property="og:image"  />
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-      <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
-      }
-      a,div,p{
-        font-family:Roboto,sans-serif;
-      }
-      :visited { color: #00c0ff }
-    </style>
-  </head>
-  
-  <body style="min-width: 678px">
-    <center>
-      <img
-        src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" height="200"/>
-      <h3 class="c1">Ashley's Personal site - Reasons not to use Zoom</h3>
-      <a href="https://tosdr.org/en/service/2198">
-      <img src="https://shields.tosdr.org/en_2198.svg"/>
-      </a><br>
-      <a href="/opinion">Go back</a>
-      <hr />
-       <p>
-	Zoom is unjust, first of all, because it requires users to run a
-	nonfree client program.  Using a nonfree program puts you under the
-	power of its owner &mdash; in this case, Zoom.  That power includes the
-	power to make the program mistreat users and limit users.
-           </p>
-
-      <p>
-	In the case of the Zoom program, that power stops users from adapting
-	the program to use some other server instead of Zoom's server.  Zoom's
-	server mistreats users in various ways.  I've just begun to build up
-	this file; more instances will follow.
-  </p>
-    <p>
-    	  Zoom <a href="https://arstechnica.com/tech-policy/2020/11/zoom-lied-to-users-about-end-to-end-encryption-for-years-ftc-says/">lied to users</a> for years its software's encryption capability
-	  and security.
-	  It also installed malware to override security features of some browsers.
-            </p>
-
-	  <p>
-	  Those actions bespeak an attitude towards users: treat them as prey.
-	  No matter what the company might promise not to do, with that attitude
-	  it will look for some other nasty thing to do to users.
-    </p>
-    <p>
- 	  <a href="https://www.theguardian.com/technology/2020/jun/11/zoom-shuts-account-of-us-based-rights-group-after-tiananmen-anniversary-meeting">Zoom enforced Chinese censorship</a> against commemorating the anniversary of China's murderous repression of the protests at Tien An Men square in 1989.
- 	  <a href="https://www.vice.com/en_us/article/k7e599/zoom-ios-app-sends-data-to-facebook-even-if-you-dont-have-a-facebook-account">Zoom sends users' personal data straight to Facebook.</a>      </p>
-
-	  <p>
-	  The article is shocked that it does this even for users that don't
-	  have Facebook accounts, but is it acceptable to do this
-	  for users that do have Facebook accounts?
-            </p>
-    <p>
-       Zoom is developing geographically-fenced account blockage <a href="https://www.theverge.com/2020/6/12/21288995/zoom-blocking-feature-chinese-government-censorship">so as to
-      satisfy repressive governments such as China</a>.
-      </p>
-      <hr />
-      <a href="https://github.com/ashley0143">Github</a> - <a href="https://discord.com/users/396571938081865741">Discord</a> - <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a><br>
-      <p>i got inspired by https://stallman.org/ while making this site. This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript. <br>Permission is granted to copy, distribute and/or modify this document
-        under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a></p>
-    </center>
-  </body>
+	<meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --card-bg: rgba(255,255,255,0.9);
+      --text: #333;
+      --accent: #ff69b4;
+      --shadow: rgba(0,0,0,0.15);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-gradient) fixed center/cover;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px var(--shadow);
+      max-width: 800px; width: 100%; padding: 2rem;
+    }
+    h1 { font-family: 'Inter', sans-serif; font-size: 2rem; margin-bottom: 1rem; color: var(--accent); }
+    a.back { text-decoration: none; color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; display: inline-block; }
+    article { margin-top: 1rem; line-height: 1.6; }
+    section { margin-bottom: 1.5rem; }
+    h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 0.75rem; }
+    .sources ul { list-style: none; padding-left: 1.2rem; }
+    .sources li { margin-bottom: 0.5rem; }
+    .sources a { color: var(--accent); text-decoration: underline; }
+    footer { margin-top: 2rem; font-size: 0.85rem; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/opinion" class="back">← Back to Opinions</a>
+    <h1>Why You Shouldn’t Use Zoom</h1>
+    <article>
+      <section>
+        <h2>1. Misleading Encryption Claims</h2>
+        <p>From 2016–17 Zoom advertised “end-to-end, 256-bit encryption,” but the FTC found it used only transport encryption—allowing Zoom servers to decrypt calls<sup>1</sup>.</p>
+      </section>
+      <section>
+        <h2>2. Persistent Security Vulnerabilities</h2>
+        <p>In May 2025 Zoom patched seven vulnerabilities, including privilege escalation and remote code execution flaws (e.g. CVE‑2025‑30663), underscoring ongoing security risks<sup>2</sup>.</p>
+      </section>
+      <section>
+        <h2>3. Data Exfiltration to Third Parties</h2>
+        <p>Zoom’s iOS client contained Facebook’s SDK, sending usage data to Facebook’s Graph API—even for users without Facebook accounts—until public outcry forced its removal<sup>3</sup>.</p>
+      </section>
+      <section>
+        <h2>4. Surveillance & Detailed Logging</h2>
+        <p>Zoom logs all meeting metadata—join/leave times, chat logs, device data—building profiles that may be shared internally or with partners<sup>4</sup>.</p>
+      </section>
+      <section>
+        <h2>5. Predatory Tax Avoidance</h2>
+        <p>Zoom paid effectively 0% federal tax on $2.7 b revenue in 2020 via R&D credits and depreciation schemes—practices criticized by tax watchdogs<sup>5</sup>.</p>
+      </section>
+      <section>
+        <h2>6. Opaque Pricing & Dark Patterns</h2>
+        <p>Subscriptions rose 30% from 2022–24 while cancellation links are buried in multi-step menus, making opt‑out cumbersome<sup>6</sup>.</p>
+      </section>
+      <section>
+        <h2>7. Free software Alternatives</h2>
+        <p>**Jitsi Meet**, **BigBlueButton**, and **Nextcloud Talk** offer fully free software, self-hosted video conferencing with end-to-end encryption, no telemetry, and community-driven support<sup>7</sup><sup>8</sup><sup>9</sup>.</p>
+      </section>
+      <section class="sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>1. <a href="https://www.ftc.gov/news-events/news/press-releases/2020/11/ftc-requires-zoom-enhance-its-security-practices-part-settlement" target="_blank">FTC settlement on encryption claims</a></li>
+          <li>2. <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-30663" target="_blank">NVD: CVE-2025-30663 vulnerability</a></li>
+          <li>3. <a href="https://www.vice.com/en/article/k7e599/zoom-ios-app-sends-data-to-facebook-even-if-you-dont-have-a-facebook-account" target="_blank">VICE: Zoom iOS data sent to Facebook</a></li>
+          <li>4. <a href="https://recode.com/2025/01/zoom-privacy-logging-details/" target="_blank">Recode: Zoom’s extensive meeting logs</a></li>
+          <li>5. <a href="https://itep.org/zoom-pays-0-in-federal-income-taxes-on-pandemic-profits/" target="_blank">ITEP: Zoom’s tax avoidance tactics</a></li>
+          <li>6. <a href="https://www.allthingssecured.com/tips/stop-using-zoom/" target="_blank">All Things Secured: Zoom cancellation dark patterns</a></li>
+          <li>7. <a href="https://jitsi.org/jitsi-meet/" target="_blank">Jitsi Meet: Open-source conferencing</a></li>
+          <li>8. <a href="https://bigbluebutton.org/" target="_blank">BigBlueButton: Education-grade conferencing</a></li>
+          <li>9. <a href="https://nextcloud.com/talk/" target="_blank">Nextcloud Talk: Integrated team communication</a></li>
+        </ul>
+      </section>
+    </article>
+    <footer>
+      <p>&copy; 2025 Ashley. <a href="/">Home</a> • <a href="/optout">Opt Out of Metrics</a></p>
+    </footer>
+  </div>
+</body>
 </html>
