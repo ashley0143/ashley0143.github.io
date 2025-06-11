@@ -1,342 +1,445 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashley's Personal Site</title>
-  <meta content="#ffacbb" name="theme-color">
-    <meta content="Ashley's Personal site" property="og:title">
-    <meta content="welcome to my personal website :3" property="twitter:description">
-    <meta content="https://cdn.discordapp.com/avatars/396571938081865741/781f0b6add9112b2e919a31391e01b8e.png?format=png&size=512" property="og:image">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ <title id="page-title">Ashley Kai Iris</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Ashley Kai Iris's Personal site" />
+  <meta property="og:description" content="Haii Names Ashley — i am a genderfluid transfem kitty, programmer, music maker, and geography nerd :3" />
+  <meta property="og:image" content="https://codeberg.org/avatars/571c0b4d614c3bbb55c4fc641f9f2a4df7a5602aeb9563ba69128c13c1a8ed5a?size=512" />
+  <meta property="og:url" content="https://kai0143.xyz" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="pt_PT" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+  <meta property="og:locale:alternate" content="vi_VN" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ashley Kai Iris's Personal site" />
+  <meta name="twitter:description" content="Haii names Ashley — i am a genderfluid transfem kitty, programmer, music maker, and geography nerd :3" />
+  <meta name="twitter:image" content="https://codeberg.org/avatars/571c0b4d614c3bbb55c4fc641f9f2a4df7a5602aeb9563ba69128c13c1a8ed5a?size=512" />
+
+  <meta name="theme-color" content="#d3f8e2" />
   
-  <link rel="shortcut icon" href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">
-  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+
+  <link href="https://fonts.bunny.net/css?family=Nunito:400,700&display=swap" rel="stylesheet">
   <style>
-  :root {
-      --pink-light: #ffe4e6;
-      --pink-dark: #ff69b4;
-      --purple-accent: #d18aff;
-      --bg-image: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
-      --text-color: #333;
-      --bg-card: rgba(255,255,255,0.8);
-      --drawer-bg: #fff;
-      --accent: var(--pink-dark);
-      --accent2: var(--purple-accent);
-      --shadow: rgba(0,0,0,0.2);
-      --font-body: 'Roboto', sans-serif;
-      --font-heading: 'Inter', sans-serif;
-      --font-script: 'Pacifico', cursive;
-      --transition: .3s ease;
+    :root {
+      --mint: #d3f8e2;
+      --blush: #fbc4ab;
+      --lavender: #e4c1f9;
+      --blue: #a0ced9;
+      --text: #333;
+      --bg: #fff;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.1);
+      --font: 'Nunito', sans-serif;
     }
-    [data-theme='dark'] {
-      --text-color: #eee;
-      --bg-card: rgba(30,30,30,0.8);
-      --drawer-bg: #222;
-      --shadow: rgba(0,0,0,0.5);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-body);
-      color: var(--text-color);
-      background: var(--bg-image) center/cover fixed no-repeat;
-      transition: background var(--transition), color var(--transition);
+      margin: 0;
+      font-family: var(--font);
+      background: linear-gradient(to bottom right, var(--mint), var(--blush));
+      color: var(--text);
     }
-    .overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,182,193,0.5);
-      z-index: -1;
+    header {
+      background: var(--lavender);
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
     }
-    #drawer {
-      position: fixed; top: 0; left: -260px;
-      width: 250px; height: 100%; background: var(--drawer-bg);
-      box-shadow: 2px 0 5px var(--shadow); transition: left var(--transition);
-      z-index: 1001; padding: 1rem;
-    }
-    #drawer.open { left: 0; }
-    #drawer h3 { margin-bottom: 1rem; color: var(--accent); }
-    #drawer a { display: block; margin: 0.5rem 0; color: var(--text-color); text-decoration: none; }
-    #drawer a:hover { color: var(--accent); }
-    #hamburger {
-      position: absolute; top: 1rem; left: 1rem;
-      border: none; padding: 0.5rem; border-radius: 4px;
-      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
-      z-index: 1002; background: var(--bg-card);
-    }
-    header { text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 {
-      font-family: var(--font-script); font-size: 3.5rem;
-      color: var(--accent2); text-shadow: 2px 2px 8px var(--shadow);
+      margin: 0;
+      font-size: 3rem;
     }
-    .theme-toggle {
-      position: absolute; top: 1rem; right: 1rem;
-      background: var(--bg-card); border: none;
-      padding: 0.5rem 1rem; border-radius: 20px;
-      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
+    nav {
+      background: var(--blue);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
     }
-    .container {
-      max-width: 1000px; margin: 2rem auto; padding: 2rem;
-      background: var(--bg-card); border-radius: 20px;
-      box-shadow: 0 8px 30px var(--shadow);
-      display: grid; gap: 2rem;
-      backdrop-filter: blur(10px);
-    }
-    .profile { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: center; }
-    .profile img {
-      width: 160px; height: 160px; border-radius: 50%;
-      border: 4px solid var(--accent); box-shadow: 0 4px 15px var(--shadow);
-    }
-    .profile img:hover { transform: rotate(10deg) scale(1.1); transition: transform var(--transition); }
-    .profile h2 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--accent); margin-bottom: 0.5rem; }
-    .profile p { margin: 0.5rem 0; }
-    nav { text-align: center; }
     nav a {
-      margin: 0 1rem; color: var(--text-color);
-      text-decoration: none; padding-bottom: 4px; position: relative;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
     }
-    nav a::after {
-      content: ''; position: absolute; width: 0; height: 3px;
-      background: var(--accent); bottom: 0; left: 50%; transform: translateX(-50%);
-      transition: width var(--transition);
+    nav a:hover {
+      text-decoration: underline;
     }
-    nav a:hover { color: var(--accent); }
-    nav a:hover::after { width: 80%; }
-    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
-    .card { background: var(--bg-card); box-shadow: 0 6px 20px var(--shadow); border-radius: 15px; overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); text-align: center; }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 12px 40px var(--shadow); }
-    .card img { width: 100%; }
-    .card-content { padding: 1rem; }
-    .card-content h3 { margin-bottom: 0.5rem; }
-    .card-content h3 a { color: var(--accent2); text-decoration: none; }
-    .card-content p { margin: 0.5rem 0; }
-    .card-content a.source { display: inline-block; margin-top: 0.5rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.6rem; border-radius: 5px; transition: background var(--transition), color var(--transition); }
-    .card-content a.source:hover { background: var(--accent); color: #fff; }
-    .device-specs img { max-width: 120px; margin: 1rem auto; }
-    .device-specs p { font-weight: 500; }
-    .languages .card { display: flex; flex-direction: column; align-items: center; padding: 1rem; }
-    .languages .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .games .card-content { display: flex; flex-direction: column; align-items: center; }
-    .games button { margin: 0.5rem; padding: 0.5rem 1rem; border: none; background: var(--accent); color: #fff; border-radius: 4px; cursor: pointer; }
-    .games button:hover { background: var(--accent2); }
-    .games p { margin-top: 0.5rem; }
-    .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
-    .contact-card { background: var(--bg-card); box-shadow: 0 6px 20px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center; }
-    .contact-card h3 { margin-bottom: 1rem; color: var(--accent); }
-    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2); color: #fff; text-decoration: none; border-radius: 8px; transition: background var(--transition); width: 80%; }
-    .contact-card a:hover { background: var(--accent); }
-    footer { background: var(--bg-card); width: auto; padding: 1rem; margin: 2rem auto; border-radius: 1em; text-align: center; box-shadow: 0 -4px 15px var(--shadow); }
-    #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #fff; border: none; padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px var(--shadow); display: none; }
-    #toTop:hover { opacity: 0.8; }
-    a { color: var(--accent); }
+    .lang-switch select {
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--lavender);
+      color: #fff;
+      cursor: pointer;
+    }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    section {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .centered { text-align: center; }
+    .avatar-banner {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+      width: 96%;
+      max-width: 800px;
+      
+      min-height: 200px;
+    }
+    .avatar-banner img.bg {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .avatar-banner img.avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid var(--blush);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: var(--shadow);
+    }
+    .cat-ears-svg {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+    .music-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      align-items: center;
+      justify-items: center;
+    }
+    .music-grid img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid var(--blue);
+      box-shadow: var(--shadow);
+      margin-bottom: 0.5rem;
+    }
+    .projects a, .socials a {
+      display: block;
+      background: var(--lavender);
+      color: white;
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 0.5rem;
+    }
+    .projects a:hover, .socials a:hover {
+      background: var(--blush);
+    }
+    /* Video styles */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      padding-top: 56.25%; /* 16:9 Aspect */
+      margin: 0 auto;
+      background-image: url('https://img.youtube.com/vi/mix9YfaaNa0/hqdefault.jpg');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      border-radius: 50%;
+      font-size: 2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    /* Pronouns Modal Styles */
+    #pronouns-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+    #pronouns-modal .modal-content {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      max-width: 90%;
+    }
+    #close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <button id="hamburger">☰</button>
-  <div id="drawer">
-
-    <a href="#">PLACEHOLDER</a>
-    <a href="#">PLACEHOLDER</a>
-    <a href="#">PLACEHOLDER</a>
-  </div>
   <header>
-    <h1>Ashley's Personal Site</h1>
-    <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+    <h1 id="site-name">Ashley Kai Iris 🐾</h1>
   </header>
-  <div class="container">
-  
-    <div class="profile">
-      <img src="https://codeberg.org/avatars/b0e90b2a6e0c7f7fa2cc050de697bf36081aafe807a5b5b7b78e2383ab4cc487?size=512" alt="Ashley Avatar">
-      <div class="info">
-        <h2>Haai, I'm Ashley!</h2>
-        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
-        <p>🌈  anarco queer and libsoc</p>
-        <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
-       </div>
+  <nav>
+    <a href="#about" id="nav-about">About</a>
+    <a href="#music" id="nav-music">Music</a>
+    <a href="#projects" id="nav-projects">Projects</a>
+    <a href="#socials" id="nav-socials">Socials</a>
+    <div class="lang-switch">
+      <select onchange="setLang(this.value)">
+        <optgroup label="Common">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="pt">Português</option>
+        </optgroup>
+        <optgroup label="-- Asian Languages --">
+          <option value="tr">Türkçe</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="zh">中文</option>
+        </optgroup>
+      </select>
     </div>
-    <nav>
-    <a href="/opinion">Opinions</a>
-     <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
-      <a href="/gnuandlinux">GNU/Linux</a>
-      <a href="/not-open-source">Not open source?</a>
-      <a href="/1984.pdf">1984 (pdf)</a>
-    </nav>
-     <section class="projects">
-      <h2>Projects</h2>
-      <div class="cards">
-         
-<div class="card" style="width: 18em;margin-left: auto;margin-right: auto;">
-           <div class="card-content">
-            <h3><a href="https://poketube.fun">Poke</a></h3>
-            <p>Privacy all-in-one front end</p>
-            <a href="https://github.com/ashley0143/poke" class="source">View Source</a>
-          </div>
-        </div>
+  </nav>
+  <main>
+    <section class="centered" id="about">
+      <svg class="cat-ears-svg" width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 60 C30 10, 0 10, 0 60 Z" fill="#e4c1f9" />
+        <path d="M160 60 C170 10, 200 10, 200 60 Z" fill="#e4c1f9" />
+      </svg>
+      <div class="avatar-banner">
+        <img class="bg" src="https://codeberg.org/ashley/dotfiles/raw/branch/master/IMG-20250610-WA0017.jpg" alt="Banner">
+        <img class="avatar" src="https://codeberg.org/avatars/571c0b4d614c3bbb55c4fc641f9f2a4df7a5602aeb9563ba69128c13c1a8ed5a?size=512" alt="Ashley Avatar">
       </div>
+      <h2 id="bio-name">Hiya, I'm Ashley Kai Iris!</h2>
+      <p id="bio-desc">Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)</p>
+      <p id="bio-locale">🇹🇷 Born in Türkiye</p>
+      <p id="bio-about">I'm Ashley, a programmer, music maker, and total geography nerd~ 🌍🎶💻</p>
+      <button class="modal-btn" onclick="document.getElementById('pronouns-modal').style.display='flex'">Pronouns Guide 💬</button>
     </section>
-    <section class="device-specs">
-      <h2>Devices</h2>
-<p style="text-align: center;margin-bottom: 1em;">for headphones i use galaxy buds 3 pro. for watch i use galaxy watch 6 classic.</p>      <div class="cards">
-        <div class="card">
-          <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg" alt="Phone">
-          <div class="card-content"><h3>Phone</h3><p id="spec-phone">Samsung Galaxy S23 FE (Exynos 2200)<br>- Display: 6.4" Dynamic AMOLED 2X, 1080x2340, 120Hz<br>- SoC: Exynos 2200 with Xclipse 920 GPU<br>- RAM: 8GB LPDDR5<br>- Storage: 256GB UFS 3.1<br>- Rear Cameras: 50MP (wide), 8MP (telephoto, 3x zoom), 12MP (ultrawide)<br>- Front Camera: 10MP<br>- Battery: 4,500mAh with 25W fast charging<br>- OS: Android 15 with One UI 7<br>- Weight: 209 g</p></div>
-        </div>
-        <div class="card">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F1409%2F9796%2Fproducts%2FWatermark_401f7e80-bc13-4572-8029-a363771192e9_1024x1024.png%3Fv%3D1670486764&f=1&nofb=1&ipt=5bfcb45767af8b6c5659856e6c302007afb1a7a4e98cb7f02470e31e800b9f67" alt="Laptop">
-          <div class="card-content"><h3>PC</h3><p id="spec-pc">MacBook Pro (Retina, 15-inch, Mid 2015)<br>- CPU: Intel Core i7-4870HQ (2.5GHz base, up to 3.7GHz Turbo Boost)<br>- RAM: 16GB onboard<br>- Storage: 512GB SSD<br>- GPU: AMD Radeon R9 M370X (2GB GDDR5), Intel Iris Pro 5200<br>- Display: 15.4" Retina (2880x1800)<br>- Wi-Fi: 802.11ac wireless networking; IEEE 802.11a/b/g/n compatible<br>- OS: macOS Monterey<br>- Weight: 4.49 lbs (2.04 kg)</p></div>
-        </div>
+    <div id="pronouns-modal">
+      <div class="modal-content">
+        <button id="close-modal" onclick="document.getElementById('pronouns-modal').style.display='none'">×</button>
+        <h3>Pronouns Guide</h3>
+        <ul>
+          <li><strong>English:</strong> she/her, it/its, he/she/they<br>e.g. "She loves cats.", "It’s a cute bag.", "They are creative."</li>
+          <li><strong>French:</strong> she/her, it/its, he/she/they</li>
+          <li><strong>Turkish:</strong> she/her, it/its, he/she/they</li>
+          <li><strong>Portuguese:</strong> she/her, it/its, he/she/they</li>
+          <li><strong>Vietnamese:</strong> she/her, it/its, he/she/they</li>
+          <li><strong>Chinese:</strong> she/her, it/its, he/she/they</li>
+        </ul>
       </div>
-    </section>
-    <section class="languages">
-      <h2>Languages</h2>
-      <div class="cards">
-        <div class="card"><div class="icon">🇹🇷</div><div class="card-content"><h3>Turkish</h3><p>Native</p></div></div>
-        <div class="card"><div class="icon">🇬🇧</div><div class="card-content"><h3>English</h3><p>C2</p></div></div>
-        <div class="card"><div class="icon">🇧🇷</div><div class="card-content"><h3>Português</h3><p>B2</p></div></div>
-        <div class="card"><div class="icon">🇹🇼</div><div class="card-content"><h3>Mandarin</h3><p>A1</p></div></div>
-      </div>
-    </section>
-    <section class="games">
-      <h2>Games</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-content">
-            <h3>Rock Paper Scissors</h3>
-            <div>
-              <button data-choice="Rock">✊ Rock</button>
-              <button data-choice="Paper">✋ Paper</button>
-              <button data-choice="Scissors">✌️ Scissors</button>
-            </div>
-            <p id="rps-result"></p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <h3>Dice Roller</h3>
-            <button id="dice-btn">🎲 Roll Dice</button>
-            <p id="dice-result"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="contact-follow">
-      <div class="contact-card">
-        <h3>Contact Me</h3>
-        <a href="mailto:iamashley@duck.com">✉️ Email</a>
-        <a href="matrix:@ashleyfsf:mozilla.org">💬 Matrix</a>
-        <a href="https://discord.com/users/396571938081865741">🎮 Discord</a>
-      </div>
-      <div class="contact-card">
-        <h3>Follow Me</h3>
-        <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
-        <a href="https://github.com/ashley0143">🐙 GitHub</a>
-         <a href="https://codeberg.org/ashley">🏔️ Codeberg</a>
-        <a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the year</a>
-      </div>
-    </section>
+    </div><section id="music">
+  <h2 id="music-title">🎵 Favourite Artists</h2>
+  <div class="music-grid">
+    <div><a href="https://www.twentyonepilots.com" target="_blank"><img src="https://cdn.albumoftheyear.org/artists/sq/twenty-one-pilots_1749415182.jpg"><p>Twenty One Pilots</p></a></div>
+    <div><a href="https://www.eminem.com" target="_blank"><img src="https://cdn.albumoftheyear.org/artists/sq/eminem_1717533643.jpg"><p>Eminem</p></a></div>
+    <div><a href="https://www.kendricklamar.com" target="_blank"><img src="https://cdn.albumoftheyear.org/artists/sq/kendrick-lamar_1732363413.jpg"><p>Kendrick Lamar</p></a></div>
+    <div><a href="https://www.theweeknd.com" target="_blank"><img src="https://cdn.albumoftheyear.org/artists/sq/the-weeknd_1726735090.jpg"><p>The Weeknd</p></a></div>
+    <div><a href="https://www.linkinpark.com" target="_blank"><img src="https://cdn.albumoftheyear.org/artists/sq/linkin-park_1744429146.jpg"><p>Linkin Park</p></a></div>
   </div>
-  <footer>
-    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection. NO AI, LLM, GPT, ETC has been used while making this website. <br> </p>
-    <br>
-    <a href="/optout"> Privacy </a>
-    <p id="time">Local time: --:--:--</p>
-  </footer>
-  <button id="toTop">↑</button>
+</section>
+
+<section class="projects" id="projects">
+  <h2 id="projects-title">📁 Projects</h2>
+  <a href="https://poketube.fun">Poke – A Privacy YouTube Frontend</a>
+  <a href="https://github.com/ashley0143/poke">Poke on GitHub</a>
+</section>
+
+<section class="socials" id="socials">
+  <h2 id="socials-title">🌐 Connect With Me</h2>
+  <a href="mailto:iamashley@duck.com">✉️ Email</a>
+  <a href="https://matrix.to/#/@ashleyfsf:mozilla.org">💬 Matrix</a>
+  <a href="https://discord.com/users/396571938081865741">🎮 Discord</a>
+  <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
+  <a href="https://github.com/ashley0143">🐙 GitHub</a>
+  <a href="https://codeberg.org/ashley">🏔️ Codeberg</a>
+  <a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the Year</a>
+</section>
+
+<section id="video" class="centered">
+  <div class="video-container">
+    <button class="video-play-button" aria-label="Play Video">▶</button>
+  </div>
+</section>
+
+  </main>
   <script>
-    document.getElementById('hamburger').addEventListener('click',()=>{
-      document.getElementById('drawer').classList.toggle('open');
-    });
-    document.getElementById('spec-phone').textContent = config.phone;
-    document.getElementById('spec-pc').textContent = config.pc;
-    const toggle = document.getElementById('theme-toggle');
-    const theme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    toggle.textContent = theme==='light'? 'Dark Mode':'Light Mode';
-    toggle.addEventListener('click', ()=>{
-      const newT = document.documentElement.getAttribute('data-theme')==='light'? 'dark':'light';
-      document.documentElement.setAttribute('data-theme', newT);
-      localStorage.setItem('theme', newT);
-      toggle.textContent = newT==='light'? 'Dark Mode':'Light Mode';
-    });
-   function updateTime() {
-   const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
-  const timeStr = new Date().toLocaleTimeString('en-GB', options);
-  document.getElementById('time').textContent = "\n" + 'My Local time: ' + timeStr;
-   }
-    setInterval(updateTime,1000);
-    updateTime();
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      toTop.style.display = window.scrollY > 300 ? 'block':'none';
-    });
-    toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-    document.querySelectorAll('.games button[data-choice]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const u=btn.dataset.choice;
-        const o=['Rock','Paper','Scissors'];
-        const c=o[Math.floor(Math.random()*3)];
-        let res;
-        if(u===c) res=`Tie! Both chose ${c}.`;
-        else if((u==='Rock'&&c==='Scissors')||(u==='Paper'&&c==='Rock')||(u==='Scissors'&&c==='Paper')) res=`You win! Opp chose ${c}.`;
-        else res=`You lose! Opp chose ${c}.`;
-        document.getElementById('rps-result').textContent = res;
+    const translations = {
+      en: {
+        "page-title": "Ashley Kai Iris' Corner",
+        "site-name": "Ashley Kai Iris 🐾",
+        "nav-about": "About",
+        "nav-music": "Music",
+        "nav-projects": "Projects",
+        "nav-socials": "Socials",
+        "bio-name": "Hiya, I'm Ashley Kai Iris!",
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 Born in Türkiye",
+        "bio-about": "I'm Ashley, a programmer, music maker, and total geography nerd~ 🌍🎶💻",
+        "music-title": "🎵 Favourite Artists",
+        "projects-title": "📁 Projects",
+        "socials-title": "🌐 Connect With Me"
+      },
+      fr: {
+        "page-title": "Le coin d'Ashley Kai Iris",
+        "site-name": "Le coin d'Ashley Kai Iris 🐾",
+        "nav-about": "À propos",
+        "nav-music": "Musique",
+        "nav-projects": "Projets",
+        "nav-socials": "Réseaux",
+        "bio-name": "Salut, je suis Ashley Kai Iris !",
+        // keep pronouns in English across all languages
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 Née en Turquie",
+        "bio-about": "Je suis Ashley, programmeuse, créatrice de musique, et nerd de géographie~ 🌍🎶💻",
+        "music-title": "🎵 Artistes Préférés",
+        "projects-title": "📁 Projets",
+        "socials-title": "🌐 Contactez-moi"
+      },
+      pt: {
+        "page-title": "Cantinho da Ashley Kai Iris",
+        "site-name": "Cantinho da Ashley Kai Iris 🐾",
+        "nav-about": "Sobre",
+        "nav-music": "Música",
+        "nav-projects": "Projetos",
+        "nav-socials": "Redes",
+        "bio-name": "Oi, eu sou Ashley Kai Iris!",
+        // keep pronouns in English
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 Nascida na Turquia",
+        "bio-about": "Sou Ashley, programadora, criadora de música e nerd de geografia~ 🌍🎶💻",
+        "music-title": "🎵 Música Favorita / Artistas",
+        "projects-title": "📁 Projetos",
+        "socials-title": "🌐 Conecte-se Comigo"
+      },
+      tr: {
+        "page-title": "Ashley Kai Iris'in Köşesi",
+        "site-name": "Ashley Kai Iris'in Köşesi 🐾",
+        "nav-about": "Hakkında",
+        "nav-music": "Müzik",
+        "nav-projects": "Projeler",
+        "nav-socials": "Sosyal",
+        "bio-name": "Merhaba ben Ashley Kai Iris!",
+        // keep pronouns in English
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 Türkiye'de Doğdu",
+        "bio-about": "Ben Ashley, bir programcı, müzik yapımcısı ve tam bir coğrafya meraklısıyım~ 🌍🎶💻",
+        "music-title": "🎵 Favori Müzik / Sanatçılar",
+        "projects-title": "📁 Projeler",
+        "socials-title": "🌐 Benimle Bağlan"
+      },
+      vi: {
+        "page-title": "Góc của Ashley Kai Iris",
+        "site-name": "Góc của Ashley Kai Iris 🐾",
+        "nav-about": "Giới thiệu",
+        "nav-music": "Âm nhạc",
+        "nav-projects": "Dự án",
+        "nav-socials": "Mạng xã hội",
+        "bio-name": "Xin chào, mình là Ashley Kai Iris!",
+        // keep pronouns in English
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 Sinh ra ở Thổ Nhĩ Kỳ",
+        "bio-about": "Mình là Ashley, một lập trình viên, nhà sản xuất nhạc và mọt địa lý~ 🌍🎶💻",
+        "music-title": "🎵 Nhạc Yêu Thích / Nghệ Sĩ",
+        "projects-title": "📁 Dự án",
+        "socials-title": "🌐 Kết nối với mình"
+      },
+      zh: {
+        "page-title": "Ashley Kai Iris 的角落",
+        "site-name": "Ashley Kai Iris 的角落 🐾",
+        "nav-about": "关于",
+        "nav-music": "音乐",
+        "nav-projects": "项目",
+        "nav-socials": "社交",
+        "bio-name": "嗨，我是 Ashley Kai Iris！",
+        // keep pronouns in English
+        "bio-desc": "Genderfluid transfem kitty 💖 she/her • it/its • he/she/they (sometimes)",
+        "bio-locale": "🇹🇷 土耳其出生",
+        "bio-about": "我是 Ashley，一名程序员、音乐制作人和地理迷~ 🌍🎶💻",
+        "music-title": "🎵 最喜欢的音乐/艺术家",
+        "projects-title": "📁 项目",
+        "socials-title": "🌐 关注我"
+      }
+    };
+    function setLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      for (const id in t) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t[id];
+      }
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.video-container');
+      const button = document.querySelector('.video-play-button');
+      button.addEventListener('click', function() {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/mix9YfaaNa0?autoplay=1';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        container.innerHTML = '';
+        container.appendChild(iframe);
       });
     });
-    document.getElementById('dice-btn').addEventListener('click', ()=>{
-      const roll = Math.floor(Math.random()*6)+1;
-      document.getElementById('dice-result').textContent = `You rolled a ${roll}!`;
-    });
-    (function(){
-  const STORAGE_KEY = '_hs_store';
-  const DISABLED_KEY = '_hs_disabled';
-  let disabled = localStorage.getItem(DISABLED_KEY) === '1';
-  let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  function record(evt) {
-    if (disabled) return;
-    events.push(evt);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
-  }
-  const startTime = performance.now();
-  window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
-  window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
-  document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
-  document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
-  document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
-  let maxDepth = 0;
-  window.addEventListener('scroll', () => {
-    const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
-    if (depth > maxDepth) {
-      maxDepth = depth;
-      record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
-    }
-  });
-  document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
-  window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
-  window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
-  window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
-  if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
-  if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
-  setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
-  let lastActivity = Date.now();
-  ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
-  setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
-  window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
-  window._hs = {
-    get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-    clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
-    export: () => {
-      const data = JSON.stringify(events, null, 2);
-      const blob = new Blob([data], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'metrics.json'; a.click();
-      URL.revokeObjectURL(url);
-    },
-    optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
-    optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
-  };
-})();
   </script>
 </body>
-</html>
+</html>  
+    
