@@ -18,7 +18,7 @@
       --bg-image: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
       --text-color: #333;
       --card-bg: rgba(255,255,255,0.3);
-      --drawer-bg: rgba(255,255,255,0.9);
+      --drawer-bg: rgba(255,255,255,0.6);
       --accent: var(--pink-dark);
       --accent2: var(--purple-accent);
       --shadow: rgba(0,0,0,0.2);
@@ -30,7 +30,7 @@
     [data-theme='dark'] {
       --text-color: #eee;
       --card-bg: rgba(30,30,30,0.3);
-      --drawer-bg: rgba(30,30,30,0.9);
+      --drawer-bg: rgba(30,30,30,0.6);
       --shadow: rgba(0,0,0,0.5);
     }
     /* Reset & Base */
@@ -55,8 +55,10 @@
     @keyframes drift { to { background-position: 1000px 1000px; } }
     /* Drawer */
     #drawer {
-      position: fixed; top: 0; left: -280px;
-      width: 280px; height: 100%; background: var(--drawer-bg);
+      position: fixed;
+      top: 0; left: -100%;
+      width: 280px; max-width: 80%;
+      height: 100%; background: var(--drawer-bg);
       box-shadow: 2px 0 8px var(--shadow);
       transition: left var(--transition);
       z-index: 1001; padding: 2rem 1rem;
@@ -101,7 +103,7 @@
       transition: background var(--transition), transform var(--transition);
     }
     .theme-toggle:hover { transform: scale(1.05); background: var(--accent2); color: #fff; }
-    /* Top Nav */
+    /* Main Nav */
     nav.main {
       text-align: center; margin: 1rem 0;
     }
@@ -145,8 +147,7 @@
     .card {
       background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
       border-radius: 15px; padding: 1.5rem; text-align: center;
-      backdrop-filter: blur(14px);
-      transition: transform var(--transition);
+      backdrop-filter: blur(14px); transition: transform var(--transition);
     }
     .card:hover { transform: translateY(-5px) scale(1.02); }
     .artists .card:hover { transform: perspective(600px) rotateY(10deg) scale(1.05); }
