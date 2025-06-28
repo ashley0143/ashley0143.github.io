@@ -46,7 +46,12 @@
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255,182,193,0.3);
       backdrop-filter: blur(8px);
+      animation: drift 20s infinite linear;
       z-index: -1;
+    }
+    @keyframes drift {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
     #drawer {
       position: fixed; top: 0; left: -300px;
@@ -63,7 +68,7 @@
     #drawer nav a {
       display: block; margin: 0.8rem 0; color: var(--text-color);
       text-decoration: none; font-size: 1rem;
-      padding: 0.4rem 0.6rem; border-radius: 8px;
+      padding: 0.6rem; border-radius: 8px;
       transition: background var(--transition);
       text-align: center;
     }
@@ -79,10 +84,14 @@
     header { text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 {
       font-family: var(--font-script); font-size: 3rem;
-      color: var(--accent2); text-shadow: 2px 2px 12px var(--shadow);
-      animation: slideDown 0.8s;
+      background: linear-gradient(45deg, var(--pink-light), var(--purple-accent));
+      -webkit-background-clip: text; color: transparent;
+      animation: textGlow 2s infinite alternate;
     }
-    @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes textGlow {
+      from { text-shadow: 0 0 8px var(--pink-dark); }
+      to   { text-shadow: 0 0 16px var(--purple-accent); }
+    }
     .theme-toggle {
       position: absolute; top: 1rem; right: 1rem;
       background: var(--card-bg); border: none;
@@ -91,17 +100,29 @@
       transition: background var(--transition), transform var(--transition);
     }
     .theme-toggle:hover { transform: scale(1.05); background: var(--accent2); color: #fff; }
-    .container {
-      width: 90%; max-width: 1000px; margin: 2rem auto; padding: 2rem;
+    nav.top-nav {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      padding: 0.5rem 0; background: var(--card-bg);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav.top-nav a {
+      margin: 0 1rem; color: var(--text-color);
+      text-decoration: none; position: relative;
+      transition: color var(--transition);
+    }
+    nav.top-nav a::after {
+      content: ''; position: absolute; height: 3px; width: 0;
+      background: var(--accent2); bottom: -4px; left: 50%;
+      transform: translateX(-50%); transition: width var(--transition);
+    }
+    nav.top-nav a:hover { color: var(--accent2); }
+    nav.top-nav a:hover::after { width: 60%; }
+    .container { width: 90%; max-width: 1000px; margin: 2rem auto; padding: 2rem;
       background: var(--card-bg); border-radius: 20px;
       box-shadow: 0 12px 40px var(--shadow);
-      display: grid; gap: 2rem;
-      backdrop-filter: blur(16px);
-      animation: fadeIn 1.2s;
+      display: grid; gap: 2rem; backdrop-filter: blur(16px);
     }
-    .profile {
-      display: flex; align-items: center; gap: 1.5rem;
-    }
+    .profile { display: flex; align-items: center; gap: 1.5rem; }
     .profile img {
       width: 130px; height: 130px; border-radius: 50%;
       border: 4px solid var(--accent);
@@ -110,42 +131,20 @@
     }
     .profile img:hover { transform: scale(1.1) rotate(5deg); }
     .info h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--accent);
-        margin-bottom: 0.3rem;
-    }
-    .info p { margin: 0.4rem 0; color: var(--text-color); }
-    nav.top-nav { text-align: center; }
-    nav.top-nav a {
-      margin: 0 0.8rem; color: var(--text-color);
-      text-decoration: none; padding-bottom: 6px; position: relative;
-      transition: color var(--transition);
-    }
-    nav.top-nav a::after {
-      content: ''; position: absolute; width: 0; height: 3px;
-      background: var(--accent2); bottom: -2px; left: 50%; transform: translateX(-50%);
-      transition: width var(--transition);
-    }
-    nav.top-nav a:hover { color: var(--accent2); }
-    nav.top-nav a:hover::after { width: 70%; }
-    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem;
-    }
+      margin-bottom: 0.5rem; }
+    .info p { margin: 0.4rem 0; }
+    section { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+    section.visible { opacity:1; transform: translateY(0); }
+    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem; }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
-    .card {
-      background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
+    .card { background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
       border-radius: 15px; padding: 1.5rem; text-align: center;
       backdrop-filter: blur(14px);
-      transition: transform var(--transition), opacity var(--transition);
-      opacity: 1;
+      transition: transform var(--transition);
     }
-    .card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 12px 40px var(--shadow);
-    }
-    /* Artists tilt hover */
-    .artists .card:hover {
-      transform: perspective(600px) rotateY(10deg) scale(1.05);
-    }
-    .btn {
-      display: inline-block; margin-top: 0.8rem;
+    .card:hover { transform: translateY(-5px) scale(1.02); }
+    .artists .card:hover { transform: perspective(600px) rotateY(10deg) scale(1.05); }
+    .btn { display: inline-block; margin-top: 0.8rem;
       padding: 0.5rem 1rem; border: 2px solid var(--accent);
       border-radius: 8px; text-decoration: none;
       color: var(--accent); font-weight: 500;
@@ -153,27 +152,30 @@
     }
     .btn:hover { background: var(--accent); color: #fff; transform: scale(1.05); }
     .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
-    .contact-card { background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center;
-      backdrop-filter: blur(12px);
+    .contact-card { background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
+      border-radius: 15px; padding: 1.5rem; text-align: center; backdrop-filter: blur(12px);
     }
     .contact-card h3 { margin-bottom: 1rem; color: var(--accent); }
-    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2);
-      color: #fff; text-decoration: none; border-radius: 8px; width: 80%; transition: transform var(--transition);
+    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem;
+      background: var(--accent2); color: #fff; text-decoration: none;
+      border-radius: 8px; width: 80%; transition: transform var(--transition);
     }
     .contact-card a:hover { transform: scale(1.05); }
-    footer { background: var(--card-bg); padding: 1rem; margin: 2rem auto; border-radius: 1em; text-align: center;
+    footer { background: var(--card-bg); padding: 1rem; margin: 2rem auto;
+      border-radius: 1em; text-align: center;
       box-shadow: 0 -6px 20px var(--shadow); backdrop-filter: blur(12px);
     }
-    #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent2); color: #fff; border: none;
-      padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+    footer p { margin-bottom: 0.5rem; }
+    #toTop { position: fixed; bottom: 20px; right: 20px;
+      background: var(--accent2); color: #fff; border: none;
+      padding: 0.8rem; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 4px 15px var(--shadow);
       transition: transform var(--transition);
     }
     #toTop:hover { transform: scale(1.1); }
-    a { color: var(--accent); }
     @media (max-width: 600px) {
-      header h1 { font-size: 2.2rem; }
-      .container { padding: 1rem; margin: 1rem; }
-      nav.top-nav a { display: block; margin: 0.5rem 0; }
+      nav.top-nav { flex-direction: column; }
+      nav.top-nav a { margin: 0.5rem 0; }
       .cards { grid-template-columns: 1fr; }
       #drawer { width: 100%; left: -100%; }
       #drawer.open { left: 0; }
@@ -190,7 +192,8 @@
       <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
       <a href="/gnuandlinux">GNU/Linux</a>
       <a href="/1984.pdf">1984 (pdf)</a>
-      <a href="/#projects">Projects</a>\n      <a href="#artists">Artists</a>
+      <a href="#projects">Projects</a>
+      <a href="#artists">Artists</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -206,24 +209,21 @@
   </nav>
   <div class="container">
     <section class="profile">
-      <img src="https://codeberg.org/avatars/b0e90b2a6e0c7f7fa2cc050de697bf36081aafe807a5b5b7b78e2383ab4cc487?size=512" alt="Ashley Avatar">
+      <img src="https://codeberg.org/avatars/fab7a17d2170464ef5a9ef3e5774c2d3f09140e487186e7b067ab86300b8af1d?size=512" alt="Ashley Avatar">
       <div class="info">
         <h2>Haai, I'm Ashley!</h2>
         <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
+        <p>🌈 anarco queer and libsoc</p>
+        <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
       </div>
     </section>
-    <section id="projects">
+    <section id="projects" class="reveal">
       <h2>Projects</h2>
       <div class="cards">
-        <div class="card">
-          <div class="card-content">
-            <h3>Poke</h3>
-            <a href="https://poketube.fun" class="btn">Visit</a>
-          </div>
-        </div>
+        <div class="card"><div class="card-content"><h3>Poke</h3><a href="https://poketube.fun" class="btn">Visit</a></div></div>
       </div>
     </section>
-    <section id="artists" class="artists">
+    <section id="artists" class="artists reveal">
       <h2>Favourite Artists</h2>
       <div class="cards">
         <div class="card"><div class="card-content"><h3>Twenty One Pilots</h3></div></div>
@@ -233,55 +233,52 @@
         <div class="card"><div class="card-content"><h3>Eminem</h3></div></div>
       </div>
     </section>
-    <section id="contact" class="contact-follow">
+    <section id="contact" class="contact-follow reveal">
       <h2>Get in Touch</h2>
-      <div class="contact-card">
-        <h3>Contact Me</h3>
-        <a href="mailto:iamashley@duck.com">✉️ Email</a>
-        <a href="matrix:@ashleyfsf:mozilla.org">💬 Matrix</a>
-        <a href="https://discord.com/users/396571938081865741">🎮 Discord</a>
-      </div>
-      <div class="contact-card">
-        <h3>Follow Me</h3>
-        <a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a>
-        <a href="https://github.com/ashley0143">🐙 GitHub</a>
-        <a href="https://codeberg.org/ashley">🏔️ Codeberg</a>
-        <a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the year</a>
-      </div>
+      <div class="contact-card"><h3>Contact Me</h3><a href="mailto:iamashley@duck.com">✉️ Email</a><a href="matrix:@ashleyfsf:mozilla.org">💬 Matrix</a><a href="https://discord.com/users/396571938081865741">🎮 Discord</a></div>
+      <div class="contact-card"><h3>Follow Me</h3><a href="https://bsky.app/profile/ashley0143.bsky.social">🔵 Bluesky</a><a href="https://github.com/ashley0143">🐙 GitHub</a><a href="https://codeberg.org/ashley">🏔️ Codeberg</a><a href="https://www.albumoftheyear.org/user/ashley0143/">📀 Album Of the year</a></div>
     </section>
   </div>
   <footer>
-    <p>&copy; 2025 Ashley. Licensed under GNU FDL. No tracking, no cookies.</p>
+    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection. NO AI, LLM, GPT, ETC has been used while making this website.</p>
+    <br>
     <a href="/optout">Privacy</a>
-    <p id="time">My Local time: --:--:--</p>
+    <p id="time">Local time: --:--:--</p>
   </footer>
   <button id="toTop">↑</button>
   <script>
+    // Drawer toggle & auto-close on scroll
     const drawer = document.getElementById('drawer');
     const hamburger = document.getElementById('hamburger');
     hamburger.addEventListener('click', () => drawer.classList.toggle('open'));
-    window.addEventListener('scroll', () => {
-      if (drawer.classList.contains('open')) drawer.classList.remove('open');
-    });
-    const toggle = document.getElementById('theme-toggle');
-    const theme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    toggle.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
-    toggle.addEventListener('click', () => {
-      const newT = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newT);
-      localStorage.setItem('theme', newT);
-      toggle.textContent = newT === 'light' ? 'Dark Mode' : 'Light Mode';
-    });
-    function updateTime() {
-      const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
-      document.getElementById('time').textContent = 'My Local time: ' + new Date().toLocaleTimeString('en-GB', options);
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none');
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', () => { if (drawer.classList.contains('open')) drawer.classList.remove('open'); });// Theme toggle persists
+const toggle = document.getElementById('theme-toggle');
+const theme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', theme);
+toggle.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+toggle.addEventListener('click', () => {
+  const newT = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', newT);
+  localStorage.setItem('theme', newT);
+  toggle.textContent = newT === 'light' ? 'Dark Mode' : 'Light Mode';
+});
+
+// Smooth reveal animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+// Clock & scroll-to-top
+function updateTime() {
+  const opts = { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone:'Europe/Istanbul' };
+  document.getElementById('time').textContent = 'Local time: ' + new Date().toLocaleTimeString('en-GB', opts);
+}
+setInterval(updateTime,1000); updateTime();
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none');
+toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
   </script>
 </body>
 </html>
