@@ -4,82 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oops! Page Not Found</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
   <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
   <meta content="#ffacbb" name="theme-color">
   <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4, #ffd1dc);
+      --glass-bg: rgba(255,255,255,0.8);
+      --accent: #ff69b4;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
+      background: var(--bg-gradient);
       font-family: 'Roboto', sans-serif;
-      color: #333;
-      background: linear-gradient(135deg, #ff9ec4, #ffd1dc);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      margin: 0;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; text-align: center;
     }
-
     .container {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      max-width: 80%;
-      width: 400px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s ease;
+      background: var(--glass-bg);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 90%;
     }
-
-    .container:hover {
-      transform: scale(1.05);
-    }
-
     h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: var(--accent);
       margin-bottom: 1rem;
     }
-
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #555;
-    }
-
+    p { margin-bottom: 1.5rem; color: #555; }
     img {
-      border-radius: 20px;
-      width: 20em;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    .back-button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
       border-radius: 8px;
-      cursor: pointer;
       text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .back-button:hover {
-      background-color: #e85d99;
-    }
-
-    .hug-text {
-      font-size: 1.2rem;
-      color: #ff69b4;
-      margin-top: 1rem;
-    }
-
-    .hug-text span {
-      font-size: 1.3rem;
       font-weight: bold;
+      transition: background .3s;
     }
+    .btn:hover { background: #e85d99; }
+    .hug { margin-top: 1rem; font-size: 1.1rem; color: var(--accent); }
   </style>
 </head>
 <body>
@@ -87,8 +58,10 @@
     <h1>Oops! Page Not Found</h1>
     <p>Looks like you've hit a dead-end :(</p>
     <img src="https://safebooru.org//samples/4280/sample_5daae2ffb9f227c91adb531b63c019595cb5dcca.jpg?4468288" alt="Hug Image">
-    <a href="/" class="back-button">Go Back Home</a>
-    <p class="hug-text">Have a hug tho!!! :3 <span>(Ily)</span></p>
+    <div>
+      <a href="/" class="btn">Go Back Home</a>
+    </div>
+    <p class="hug">Have a hug tho!!! :3 (Ily)</p>
   </div>
 </body>
 </html>
