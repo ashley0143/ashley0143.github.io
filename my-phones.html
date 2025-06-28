@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Phones</title>
+  <meta name="theme-color" content="#ffacbb">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffd1dc 100%);
+      --glass-bg: rgba(255,255,255,0.3);
+      --glass-blur: 12px;
+      --accent: #ff69b4;
+      --accent2: #d18aff;
+      --text-color: #333;
+      --transition: 0.4s ease;
+    }
+    [data-theme="dark"] {
+      --text-color: #eee;
+      --glass-bg: rgba(30,30,30,0.3);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-gradient) fixed;
+      color: var(--text-color);
+      transition: background var(--transition), color var(--transition);
+    }
+    header {
+      position: sticky; top: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100;
+    }
+    header h1 {
+      font-family: 'Inter', sans-serif; font-size: 2rem;
+      background: linear-gradient(45deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; color: transparent;
+      animation: glow 3s infinite alternate ease-in-out;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 8px var(--accent); }
+      to   { text-shadow: 0 0 16px var(--accent2); }
+    }
+    .controls { display: flex; gap: 1rem; }
+    .btn {
+      background: var(--glass-bg); border: 2px solid var(--accent);
+      padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+      text-decoration: none; color: var(--text-color);
+    }
+    .btn:hover {
+      background: var(--accent); color: #fff; transform: scale(1.05);
+    }
+    .container {
+      max-width: 1000px; margin: 2rem auto; padding: 0 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.5rem;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .item {
+      background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
+      border-radius: 15px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeInUp 0.8s forwards;
+    }
+    .item:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .item img { width: 100%; height: auto; display: block; }
+    .info { padding: 1rem; text-align: center; }
+    .info h2 {
+      font-family: 'Inter', sans-serif; color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+    .info p { font-size: 0.9rem; margin: 0.5rem 0; }
+    .info .year {
+      font-size: 1.1rem; color: var(--accent);
+      margin-top: 0.3rem; font-weight: bold;
+    }
+    .info a {
+      display: inline-block; margin-top: 0.5rem;
+      color: var(--accent); text-decoration: none; font-weight: bold;
+    }
+    footer {
+      text-align: center; padding: 2rem 1rem; margin-top: 3rem;
+      background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
+      box-shadow: 0 -6px 20px rgba(0,0,0,0.1);
+    }
+    footer .controls { justify-content: center; margin-top: 1rem; }
+    .privacy-btn { text-decoration: none; color: var(--accent); font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Phones</h1>
+    <div class="controls">
+      <button class="btn" id="theme-toggle">Toggle Theme</button>
+    </div>
+  </header>
+  <div class="container">
+    <div class="grid">
+      <div class="item" style="animation-delay:.1s;">
+        <img src="https://fdn2.gsmarena.com/vv/bigpic/nokia-asha-303.jpg" alt="Nokia Asha 303">
+        <div class="info">
+          <h2>Nokia Asha 303</h2>
+          <p>2011’s sturdy QWERTY marvel, perfect for nonstop texting and calls.</p>
+          <span class="year">2011</span>
+          <a href="https://m.gsmarena.com/nokia_asha_303-4278.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.2s;">
+        <img src="https://resim.epey.com/25930/m_general-mobile-4g-1.png" alt="General Mobile 4G">
+        <div class="info">
+          <h2>General Mobile 4G</h2>
+          <p>2017’s Android One device: pure, up-to-date Android experience.</p>
+          <span class="year">2017</span>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.3s;">
+        <img src="https://resim.epey.com/4/m_apple-iphone-5s-8.png" alt="iPhone 5s">
+        <div class="info">
+          <h2>iPhone 5s</h2>
+          <p>2013’s Touch ID pioneer—powerful performance in a compact frame.</p>
+          <span class="year">2013</span>
+          <a href="https://m.gsmarena.com/apple_iphone_5s-5685.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.4s;">
+        <img src="https://resim.epey.com/410/m_samsung-galaxy-s5-1.png" alt="Galaxy S5">
+        <div class="info">
+          <h2>Galaxy S5</h2>
+          <p>2014 flagship: waterproof design plus built-in heart-rate sensor.</p>
+          <span class="year">2014</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_s5-6033.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.5s;">
+        <img src="https://resim.epey.com/3301/m_samsung-galaxy-note-4-sm-n910h-2.png" alt="Galaxy Note 4">
+        <div class="info">
+          <h2>Galaxy Note 4</h2>
+          <p>2014’s phablet powerhouse with precision S Pen functionality.</p>
+          <span class="year">2014</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_note_4-6434.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.6s;">
+        <img src="https://resim.epey.com/241715/m_samsung-galaxy-a20s-2.png" alt="Galaxy A20s">
+        <div class="info">
+          <h2>Galaxy A20s</h2>
+          <p>2019 budget champ: triple-lens cameras and all-day battery.</p>
+          <span class="year">2019</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_a20s-9852.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.7s;">
+        <img src="https://resim.epey.com/402688/m_samsung-galaxy-a71-1.png" alt="Galaxy A71">
+        <div class="info">
+          <h2>Galaxy A71</h2>
+          <p>2020’s AMOLED stunner with versatile quad-camera array.</p>
+          <span class="year">2020</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_a71-9995.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.8s;">
+        <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a23.jpg" alt="Galaxy A23">
+        <div class="info">
+          <h2>Galaxy A23</h2>
+          <p>2022’s 5G workhorse with massive 5000 mAh battery.</p>
+          <span class="year">2022</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_a23-11373.php" target="_blank">View Info</a>
+        </div>
+      </div>
+      <div class="item" style="animation-delay:.9s;">
+        <img src="https://resim.epey.com/872682/m_samsung-galaxy-s23-fe-2.png" alt="Galaxy S23 FE">
+        <div class="info">
+          <h2>Galaxy S23 FE</h2>
+          <p>2023 Fan Edition: flagship performance at a friendlier price.</p>
+          <span class="year">2023</span>
+          <a href="https://m.gsmarena.com/samsung_galaxy_s23_fe-12520.php" target="_blank">View Info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Ashley. All images credited to GSM Arena or epey</p>
+    <div class="controls">
+      <a href="https://ashley0143.xyz/optout" class="btn privacy-btn">Privacy</a>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+  </script>
+    <script>
+(function(){
+  const STORAGE_KEY = '_hs_store';
+  const DISABLED_KEY = '_hs_disabled';
+  let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+  let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  function record(evt) {
+    if (disabled) return;
+    events.push(evt);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+  }
+  const startTime = performance.now();
+  window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+  window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+  document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+  document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+  document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+  let maxDepth = 0;
+  window.addEventListener('scroll', () => {
+    const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+    if (depth > maxDepth) {
+      maxDepth = depth;
+      record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+    }
+  });
+  document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+  window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+  window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+  window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+  if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+  if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+  setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+  let lastActivity = Date.now();
+  ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+  setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+  window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+  window._hs = {
+    get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+    clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+    export: () => {
+      const data = JSON.stringify(events, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'metrics.json'; a.click();
+      URL.revokeObjectURL(url);
+    },
+    optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+    optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+  };
+})();
+    </script>
+</body>
+</html>
