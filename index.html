@@ -4,8 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashley's Personal Site</title>
   <meta name="theme-color" content="#ffacbb">
-  <meta property="og:title" content="Ashley's Personal site">
-  <meta property="twitter:description" content="Welcome to my personal website :3">
+  <meta property="og:title" content="Ashley's Personal Site">
+  <meta property="twitter:description" content="Welcome to my revamped personal website :3">
   <meta property="og:image" content="https://cdn.discordapp.com/avatars/396571938081865741/781f0b6add9112b2e919a31391e01b8e.png?format=png&size=512">
   <link rel="shortcut icon" href="https://cdn.glitch.global/302c6ee0-629f-453b-9024-bad1f8d7be36/ashley.png">
   <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -16,8 +16,7 @@
       --purple-accent: #d18aff;
       --bg-image: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
       --text-color: #333;
-      --bg-card: rgba(255,255,255,0.6);
-      --deck: rgba(255,255,255,0.2);
+      --card-bg: rgba(255,255,255,0.3);
       --drawer-bg: rgba(255,255,255,0.8);
       --accent: var(--pink-dark);
       --accent2: var(--purple-accent);
@@ -25,11 +24,11 @@
       --font-body: 'Roboto', sans-serif;
       --font-heading: 'Inter', sans-serif;
       --font-script: 'Pacifico', cursive;
-      --transition: .3s ease;
+      --transition: 0.4s ease;
     }
     [data-theme='dark'] {
       --text-color: #eee;
-      --bg-card: rgba(30,30,30,0.6);
+      --card-bg: rgba(30,30,30,0.3);
       --drawer-bg: rgba(30,30,30,0.8);
       --shadow: rgba(0,0,0,0.5);
     }
@@ -38,96 +37,143 @@
     body {
       font-family: var(--font-body);
       color: var(--text-color);
-      background: var(--bg-image) center/cover fixed no-repeat;
-      transition: background var(--transition), color var(--transition);
+      background: var(--bg-image) center/cover fixed;
       overflow-x: hidden;
+      animation: fadeIn 1s;
     }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255,182,193,0.3);
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
       z-index: -1;
     }
     #drawer {
-      position: fixed; top: 0; left: -260px;
-      width: 250px; height: 100%; background: var(--drawer-bg);
-      box-shadow: 2px 0 5px var(--shadow); transition: left var(--transition);
-      z-index: 1001; padding: 1rem;
-      backdrop-filter: blur(10px);
+      position: fixed; top: 0; left: -300px;
+      width: 280px; height: 100%; background: var(--drawer-bg);
+      box-shadow: 2px 0 8px var(--shadow); transition: left var(--transition);
+      z-index: 1001; padding: 2rem 1rem;
+      backdrop-filter: blur(12px);
     }
     #drawer.open { left: 0; }
-    #drawer h3 { margin-bottom: 1rem; color: var(--accent); }
-    #drawer a { display: block; margin: 0.5rem 0; color: var(--text-color); text-decoration: none; }
-    #drawer a:hover { color: var(--accent); }
+    #drawer h3 { margin-bottom: 1rem; color: var(--accent2); font-size: 1.5rem; }
+    #drawer nav a { display: block; margin: 0.8rem 0; color: var(--text-color); text-decoration: none; font-size: 1rem;
+        padding: 0.4rem 0.6rem; border-radius: 8px; transition: background var(--transition);
+    }
+    #drawer nav a:hover { background: var(--accent); color: #fff; }
     #hamburger {
       position: absolute; top: 1rem; left: 1rem;
-      border: none; padding: 0.5rem; border-radius: 4px;
-      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
-      z-index: 1002; background: var(--bg-card);
+      border: none; padding: 0.7rem; border-radius: 6px;
+      cursor: pointer; box-shadow: 0 2px 8px var(--shadow);
+      z-index: 1002; background: var(--card-bg);
+      transition: transform var(--transition);
     }
+    #hamburger:hover { transform: rotate(90deg); }
     header { text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 {
       font-family: var(--font-script); font-size: 3rem;
-      color: var(--accent2); text-shadow: 2px 2px 8px var(--shadow);
+      color: var(--accent2); text-shadow: 2px 2px 12px var(--shadow);
+      animation: slideDown 0.8s;
     }
+    @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     .theme-toggle {
       position: absolute; top: 1rem; right: 1rem;
-      background: var(--bg-card); border: none;
-      padding: 0.5rem 1rem; border-radius: 20px;
-      cursor: pointer; box-shadow: 0 2px 5px var(--shadow);
+      background: var(--card-bg); border: none;
+      padding: 0.6rem 1.2rem; border-radius: 20px;
+      cursor: pointer; box-shadow: 0 2px 8px var(--shadow);
+      transition: background var(--transition), transform var(--transition);
     }
+    .theme-toggle:hover { transform: scale(1.05); background: var(--accent2); color: #fff; }
     .container {
-      max-width: 1000px; margin: 2rem auto; padding: 2rem;
-      background: var(--bg-card); border-radius: 20px;
-      box-shadow: 0 8px 30px var(--shadow);
+      width: 90%; max-width: 1000px; margin: 2rem auto; padding: 2rem;
+      background: var(--card-bg); border-radius: 20px;
+      box-shadow: 0 12px 40px var(--shadow);
       display: grid; gap: 2rem;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(16px);
+      animation: fadeIn 1.2s;
     }
-    .profile { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; align-items: center; }
+    .profile {
+      display: flex; align-items: center; gap: 1.5rem;
+      animation: fadeIn 1s;
+    }
     .profile img {
-      width: 140px; height: 140px; border-radius: 50%;
-      border: 4px solid var(--accent); box-shadow: 0 4px 15px var(--shadow);
+      width: 130px; height: 130px; border-radius: 50%;
+      border: 4px solid var(--accent);
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: transform var(--transition);
     }
-    .profile h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--accent); margin-bottom: 0.3rem; }
-    .profile p { margin: 0.3rem 0; }
+    .profile img:hover { transform: scale(1.1) rotate(5deg); }
+    .info h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--accent);
+        margin-bottom: 0.3rem; animation: fadeIn 1.4s;
+    }
+    .info p { margin: 0.4rem 0; color: var(--text-color); }
     nav { text-align: center; }
     nav a {
-      margin: 0 1rem; color: var(--text-color);
-      text-decoration: none; padding-bottom: 4px; position: relative;
+      margin: 0 0.8rem; color: var(--text-color);
+      text-decoration: none; padding-bottom: 6px; position: relative;
+      transition: color var(--transition);
     }
     nav a::after {
       content: ''; position: absolute; width: 0; height: 3px;
-      background: var(--accent); bottom: 0; left: 50%; transform: translateX(-50%);
+      background: var(--accent2); bottom: -2px; left: 50%; transform: translateX(-50%);
       transition: width var(--transition);
     }
-    nav a:hover { color: var(--accent); }
-    nav a:hover::after { width: 80%; }
-    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem; }
+    nav a:hover { color: var(--accent2); }
+    nav a:hover::after { width: 70%; }
+    section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem;
+       animation: fadeIn 1.5s;
+    }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
     .card {
-      background: var(--deck); box-shadow: 0 6px 20px var(--shadow);
-      border-radius: 15px; overflow: hidden; transition: transform var(--transition), box-shadow var(--transition);
-      text-align: center; padding: 1rem;
-      backdrop-filter: blur(10px);
+      background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
+      border-radius: 15px; overflow: hidden;
+      padding: 1.5rem; text-align: center;
+      backdrop-filter: blur(14px);
+      transform: translateY(20px); opacity: 0;
+      animation: cardIn 0.8s forwards;
     }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 12px 40px var(--shadow); }
+    .card:nth-child(1) { animation-delay: 0.5s; }
+    .card:nth-child(2) { animation-delay: 0.7s; }
+    .card:nth-child(3) { animation-delay: 0.9s; }
+    .card:nth-child(4) { animation-delay: 1.1s; }
+    .card:nth-child(5) { animation-delay: 1.3s; }
+    @keyframes cardIn { to { transform: translateY(0); opacity: 1; } }
     .card-content h3 { margin-bottom: 0.5rem; font-size: 1.2rem; color: var(--accent2); }
+    .btn {
+      display: inline-block; margin-top: 0.8rem;
+      padding: 0.5rem 1rem; border: 2px solid var(--accent);
+      border-radius: 8px; text-decoration: none;
+      color: var(--accent); font-weight: 500;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .btn:hover { background: var(--accent); color: #fff; transform: scale(1.05); }
     .artists .card-content p { margin-top: 0.3rem; color: var(--text-color); }
     .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
-    .contact-card { background: var(--bg-card); box-shadow: 0 6px 20px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center; }
+    .contact-card { background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center;
+      backdrop-filter: blur(12px);
+    }
     .contact-card h3 { margin-bottom: 1rem; color: var(--accent); }
-    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2); color: #fff; text-decoration: none; border-radius: 8px; width: 80%; transition: background var(--transition); }
-    .contact-card a:hover { background: var(--accent); }
-    footer { background: var(--bg-card); width: auto; padding: 1rem; margin: 2rem auto; border-radius: 1em; text-align: center; box-shadow: 0 -4px 15px var(--shadow); }
-    #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #fff; border: none; padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px var(--shadow); display: none; }
-    #toTop:hover { opacity: 0.8; }
+    .contact-card a { display: block; margin: 0.5rem auto; padding: 0.6rem 1rem; background: var(--accent2);
+      color: #fff; text-decoration: none; border-radius: 8px; width: 80%; transition: transform var(--transition);
+    }
+    .contact-card a:hover { transform: scale(1.05); }
+    footer { background: var(--card-bg); padding: 1rem; margin: 2rem auto; border-radius: 1em; text-align: center;
+      box-shadow: 0 -6px 20px var(--shadow); backdrop-filter: blur(12px);
+    }
+    #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent2); color: #fff; border: none;
+      padding: 0.8rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+      transition: transform var(--transition);
+    }
+    #toTop:hover { transform: scale(1.1); }
     a { color: var(--accent); }
-    /* MOBILE RESPONSIVE */
+    /* MOBILE */
     @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
+      header h1 { font-size: 2.2rem; }
       .container { padding: 1rem; margin: 1rem; }
       nav a { display: block; margin: 0.5rem 0; }
       .cards { grid-template-columns: 1fr; }
+      #drawer { width: 100%; left: -100%; }
+      #drawer.open { left: 0; }
     }
   </style>
 </head>
@@ -135,12 +181,16 @@
   <div class="overlay"></div>
   <button id="hamburger">☰</button>
   <div id="drawer">
-    <h3>Menu</h3>
-    <a href="/opinion">Opinions</a>
-    <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
-    <a href="/gnuandlinux">GNU/Linux</a>
-    <a href="/not-free-software">Not free software?</a>
-    <a href="/1984.pdf">1984 (pdf)</a>
+    <h3>Quick Links</h3>
+    <nav>
+      <a href="/opinion">Opinions</a>
+      <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
+      <a href="/gnuandlinux">GNU/Linux</a>
+      
+      <a href="/1984.pdf">1984 (pdf)</a>
+      <a href="#artists">Artists</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
   <header>
     <h1>Ashley's Personal Site</h1>
@@ -151,31 +201,26 @@
       <img src="https://codeberg.org/avatars/b0e90b2a6e0c7f7fa2cc050de697bf36081aafe807a5b5b7b78e2383ab4cc487?size=512" alt="Ashley Avatar">
       <div class="info">
         <h2>Haai, I'm Ashley!</h2>
-        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
-        <p>🌈 anarco queer and libsoc</p>
-        <p>🎹 Piano player, catgirl (nya~), geography nerd, dev</p>
-      </div>
+        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>\n      </div>
     </div>
     <nav>
       <a href="/opinion">Opinions</a>
       <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
-      <a href="/gnuandlinux">GNU/Linux</a>
-      <a href="/not-free-software">Not free software?</a>
+    <a href="/not-open-source">Not open source?</a>
       <a href="/1984.pdf">1984 (pdf)</a>
     </nav>
-    <section class="projects">
+    <section id="projects">
       <h2>Projects</h2>
       <div class="cards">
         <div class="card">
           <div class="card-content">
-            <h3><a href="https://poketube.fun">Poke</a></h3>
+            <h3><a href="https://poketube.fun" class="btn">Poke</a></h3>
             <p>Privacy all-in-one front end</p>
-            <a href="https://github.com/ashley0143/poke" class="source">View Source</a>
           </div>
         </div>
       </div>
     </section>
-    <section class="artists">
+    <section id="artists" class="artists">
       <h2>Favourite Artists</h2>
       <div class="cards">
         <div class="card"><div class="card-content"><h3>Twenty One Pilots</h3></div></div>
@@ -185,7 +230,7 @@
         <div class="card"><div class="card-content"><h3>Eminem</h3></div></div>
       </div>
     </section>
-    <section class="contact-follow">
+    <section id="contact" class="contact-follow">
       <div class="contact-card">
         <h3>Contact Me</h3>
         <a href="mailto:iamashley@duck.com">✉️ Email</a>
@@ -202,17 +247,14 @@
     </section>
   </div>
   <footer>
-    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License. My Profile Picture is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. This website does not track you. No cookies. No data collection. NO AI, LLM, GPT, ETC has been used while making this website.<br></p>
-    <br>
+    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify under the terms of the GNU FDL. No tracking. No cookies. No data collection.</p>
     <a href="/optout">Privacy</a>
-    <p id="time">Local time: --:--:--</p>
+    <p id="time">My Local time: --:--:--</p>
   </footer>
   <button id="toTop">↑</button>
   <script>
     const drawer = document.getElementById('drawer');
-    document.getElementById('hamburger').addEventListener('click',()=>{
-      drawer.classList.toggle('open');
-    });
+    document.getElementById('hamburger').addEventListener('click', ()=> drawer.classList.toggle('open'));
     const toggle = document.getElementById('theme-toggle');
     const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
@@ -225,18 +267,12 @@
     });
     function updateTime() {
       const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
-      const timeStr = new Date().toLocaleTimeString('en-GB', options);
-      document.getElementById('time').textContent = 'My Local time: ' + timeStr;
+      document.getElementById('time').textContent = 'My Local time: ' + new Date().toLocaleTimeString('en-GB', options);
     }
-    setInterval(updateTime,1000);
-    updateTime();
+    setInterval(updateTime,1000); updateTime();
     const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      toTop.style.display = window.scrollY > 300 ? 'block':'none';
-    });
+    window.addEventListener('scroll', ()=> toTop.style.display = window.scrollY > 300 ? 'block':'none');
     toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-    document.querySelectorAll('.games button[data-choice]').forEach(btn=>{ btn.addEventListener('click', ()=>{ const u=btn.dataset.choice; const o=['Rock','Paper','Scissors']; const c=o[Math.floor(Math.random()*3)]; let res; if(u===c) res=`Tie! Both chose ${c}.`; else if((u==='Rock'&&c==='Scissors')||(u==='Paper'&&c==='Rock')||(u==='Scissors'&&c==='Paper')) res=`You win! Opp chose ${c}.`; else res=`You lose! Opp chose ${c}.`; document.getElementById('rps-result').textContent = res; }); });
-    document.getElementById('dice-btn')?.addEventListener('click', ()=>{ const roll = Math.floor(Math.random()*6)+1; document.getElementById('dice-result').textContent = `You rolled a ${roll}!`; });
   </script>
 </body>
 </html>
