@@ -17,7 +17,7 @@
       --bg-image: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
       --text-color: #333;
       --card-bg: rgba(255,255,255,0.3);
-      --drawer-bg: rgba(255,255,255,0.8);
+      --drawer-bg: rgba(255,255,255,0.9);
       --accent: var(--pink-dark);
       --accent2: var(--purple-accent);
       --shadow: rgba(0,0,0,0.2);
@@ -29,7 +29,7 @@
     [data-theme='dark'] {
       --text-color: #eee;
       --card-bg: rgba(30,30,30,0.3);
-      --drawer-bg: rgba(30,30,30,0.8);
+      --drawer-bg: rgba(30,30,30,0.9);
       --shadow: rgba(0,0,0,0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,9 +56,16 @@
       backdrop-filter: blur(12px);
     }
     #drawer.open { left: 0; }
-    #drawer h3 { margin-bottom: 1rem; color: var(--accent2); font-size: 1.5rem; }
-    #drawer nav a { display: block; margin: 0.8rem 0; color: var(--text-color); text-decoration: none; font-size: 1rem;
-        padding: 0.4rem 0.6rem; border-radius: 8px; transition: background var(--transition);
+    #drawer h3 {
+      margin-bottom: 1rem; color: var(--accent2);
+      font-size: 1.5rem; text-align: center;
+    }
+    #drawer nav a {
+      display: block; margin: 0.8rem 0; color: var(--text-color);
+      text-decoration: none; font-size: 1rem;
+      padding: 0.4rem 0.6rem; border-radius: 8px;
+      transition: background var(--transition);
+      text-align: center;
     }
     #drawer nav a:hover { background: var(--accent); color: #fff; }
     #hamburger {
@@ -94,7 +101,6 @@
     }
     .profile {
       display: flex; align-items: center; gap: 1.5rem;
-      animation: fadeIn 1s;
     }
     .profile img {
       width: 130px; height: 130px; border-radius: 50%;
@@ -104,41 +110,40 @@
     }
     .profile img:hover { transform: scale(1.1) rotate(5deg); }
     .info h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--accent);
-        margin-bottom: 0.3rem; animation: fadeIn 1.4s;
+        margin-bottom: 0.3rem;
     }
     .info p { margin: 0.4rem 0; color: var(--text-color); }
-    nav { text-align: center; }
-    nav a {
+    nav.top-nav { text-align: center; }
+    nav.top-nav a {
       margin: 0 0.8rem; color: var(--text-color);
       text-decoration: none; padding-bottom: 6px; position: relative;
       transition: color var(--transition);
     }
-    nav a::after {
+    nav.top-nav a::after {
       content: ''; position: absolute; width: 0; height: 3px;
       background: var(--accent2); bottom: -2px; left: 50%; transform: translateX(-50%);
       transition: width var(--transition);
     }
-    nav a:hover { color: var(--accent2); }
-    nav a:hover::after { width: 70%; }
+    nav.top-nav a:hover { color: var(--accent2); }
+    nav.top-nav a:hover::after { width: 70%; }
     section h2 { font-family: var(--font-heading); color: var(--accent2); text-align: center; margin-bottom: 1rem;
-       animation: fadeIn 1.5s;
     }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
     .card {
       background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow);
-      border-radius: 15px; overflow: hidden;
-      padding: 1.5rem; text-align: center;
+      border-radius: 15px; padding: 1.5rem; text-align: center;
       backdrop-filter: blur(14px);
-      transform: translateY(20px); opacity: 0;
-      animation: cardIn 0.8s forwards;
+      transition: transform var(--transition), opacity var(--transition);
+      opacity: 1;
     }
-    .card:nth-child(1) { animation-delay: 0.5s; }
-    .card:nth-child(2) { animation-delay: 0.7s; }
-    .card:nth-child(3) { animation-delay: 0.9s; }
-    .card:nth-child(4) { animation-delay: 1.1s; }
-    .card:nth-child(5) { animation-delay: 1.3s; }
-    @keyframes cardIn { to { transform: translateY(0); opacity: 1; } }
-    .card-content h3 { margin-bottom: 0.5rem; font-size: 1.2rem; color: var(--accent2); }
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 40px var(--shadow);
+    }
+    /* Artists tilt hover */
+    .artists .card:hover {
+      transform: perspective(600px) rotateY(10deg) scale(1.05);
+    }
     .btn {
       display: inline-block; margin-top: 0.8rem;
       padding: 0.5rem 1rem; border: 2px solid var(--accent);
@@ -147,7 +152,6 @@
       transition: background var(--transition), color var(--transition), transform var(--transition);
     }
     .btn:hover { background: var(--accent); color: #fff; transform: scale(1.05); }
-    .artists .card-content p { margin-top: 0.3rem; color: var(--text-color); }
     .contact-follow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
     .contact-card { background: var(--card-bg); box-shadow: 0 8px 30px var(--shadow); border-radius: 15px; padding: 1.5rem; text-align: center;
       backdrop-filter: blur(12px);
@@ -166,11 +170,10 @@
     }
     #toTop:hover { transform: scale(1.1); }
     a { color: var(--accent); }
-    /* MOBILE */
     @media (max-width: 600px) {
       header h1 { font-size: 2.2rem; }
       .container { padding: 1rem; margin: 1rem; }
-      nav a { display: block; margin: 0.5rem 0; }
+      nav.top-nav a { display: block; margin: 0.5rem 0; }
       .cards { grid-template-columns: 1fr; }
       #drawer { width: 100%; left: -100%; }
       #drawer.open { left: 0; }
@@ -186,9 +189,8 @@
       <a href="/opinion">Opinions</a>
       <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
       <a href="/gnuandlinux">GNU/Linux</a>
-      
       <a href="/1984.pdf">1984 (pdf)</a>
-      <a href="#artists">Artists</a>
+      <a href="/#projects">Projects</a>\n      <a href="#artists">Artists</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -196,26 +198,27 @@
     <h1>Ashley's Personal Site</h1>
     <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
   </header>
+  <nav class="top-nav">
+    <a href="/opinion">Opinions</a>
+    <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
+    <a href="/gnuandlinux">GNU/Linux</a>
+    <a href="/1984.pdf">1984 (pdf)</a>
+  </nav>
   <div class="container">
-    <div class="profile">
+    <section class="profile">
       <img src="https://codeberg.org/avatars/b0e90b2a6e0c7f7fa2cc050de697bf36081aafe807a5b5b7b78e2383ab4cc487?size=512" alt="Ashley Avatar">
       <div class="info">
         <h2>Haai, I'm Ashley!</h2>
-        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>\n      </div>
-    </div>
-    <nav>
-      <a href="/opinion">Opinions</a>
-      <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
-    <a href="/not-open-source">Not open source?</a>
-      <a href="/1984.pdf">1984 (pdf)</a>
-    </nav>
+        <p>💗 Lover of <strong>TwentyOnePilots</strong> & music</p>
+      </div>
+    </section>
     <section id="projects">
       <h2>Projects</h2>
       <div class="cards">
         <div class="card">
           <div class="card-content">
-            <h3><a href="https://poketube.fun" class="btn">Poke</a></h3>
-            <p>Privacy all-in-one front end</p>
+            <h3>Poke</h3>
+            <a href="https://poketube.fun" class="btn">Visit</a>
           </div>
         </div>
       </div>
@@ -231,6 +234,7 @@
       </div>
     </section>
     <section id="contact" class="contact-follow">
+      <h2>Get in Touch</h2>
       <div class="contact-card">
         <h3>Contact Me</h3>
         <a href="mailto:iamashley@duck.com">✉️ Email</a>
@@ -247,32 +251,37 @@
     </section>
   </div>
   <footer>
-    <p>&copy; 2025 Ashley. Permission is granted to copy, distribute and/or modify under the terms of the GNU FDL. No tracking. No cookies. No data collection.</p>
+    <p>&copy; 2025 Ashley. Licensed under GNU FDL. No tracking, no cookies.</p>
     <a href="/optout">Privacy</a>
     <p id="time">My Local time: --:--:--</p>
   </footer>
   <button id="toTop">↑</button>
   <script>
     const drawer = document.getElementById('drawer');
-    document.getElementById('hamburger').addEventListener('click', ()=> drawer.classList.toggle('open'));
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => drawer.classList.toggle('open'));
+    window.addEventListener('scroll', () => {
+      if (drawer.classList.contains('open')) drawer.classList.remove('open');
+    });
     const toggle = document.getElementById('theme-toggle');
     const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
-    toggle.textContent = theme==='light'? 'Dark Mode':'Light Mode';
-    toggle.addEventListener('click', ()=>{
-      const newT = document.documentElement.getAttribute('data-theme')==='light'? 'dark':'light';
+    toggle.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+    toggle.addEventListener('click', () => {
+      const newT = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', newT);
       localStorage.setItem('theme', newT);
-      toggle.textContent = newT==='light'? 'Dark Mode':'Light Mode';
+      toggle.textContent = newT === 'light' ? 'Dark Mode' : 'Light Mode';
     });
     function updateTime() {
       const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Europe/Istanbul' };
       document.getElementById('time').textContent = 'My Local time: ' + new Date().toLocaleTimeString('en-GB', options);
     }
-    setInterval(updateTime,1000); updateTime();
+    setInterval(updateTime, 1000);
+    updateTime();
     const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=> toTop.style.display = window.scrollY > 300 ? 'block':'none');
-    toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+    window.addEventListener('scroll', () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none');
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
