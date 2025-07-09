@@ -195,14 +195,15 @@
   <div class="overlay"></div>
   <button id="hamburger">☰</button>
   <div id="drawer">
-    <h3>ULTRA SUPER FAST AND QUICK LINKS 2000</h3>
+       <h3>ULTRA SUPER FAST AND QUICK LINKS 2000</h3>
     <nav>
       <a href="/opinion">Opinions</a>
       <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
       <a href="/gnuandlinux">GNU/Linux</a>
       <a href="/1984.pdf">1984 (pdf)</a>
       <a href="#projects">Projects</a>
-      <a href="/my-phones.html">Phone History</a>
+      <a href="/clancy.html"> Twenty One Pilots Archives </a>
+      <a href="/my-phones.html"> My Phone History</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -214,7 +215,7 @@
     <a href="/opinion">Opinions</a>
     <a href="https://pronouns.cc/@Ashley143">Pronouns</a>
     <a href="/gnuandlinux">GNU/Linux</a>
-    <a href="/my-phones.html">My Phones</a>
+    <a href="/my-phones.html"> My Phone History</a>
   </nav>
   <div class="container">
     <section class="profile reveal">
@@ -292,7 +293,7 @@
     // Time & toTop button
     function updateTime() {
       const opts = { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone:'Europe/Istanbul' };
-      document.getElementById('time').textContent = 'Local time: ' + new Date().toLocaleTimeString('en-GB', opts);
+      document.getElementById('time').textContent = '⏰️ My Local time: ' + new Date().toLocaleTimeString('en-GB', opts);
     }
     setInterval(updateTime, 1000); updateTime();
     const toTop = document.getElementById('toTop');
