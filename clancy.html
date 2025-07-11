@@ -1,55 +1,157 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<meta property="og:site_name" content="Clancy Archives" />
-<meta property="og:type" content="website" />
- <meta property="og:title" content="Clancy Archives" />
-<meta property="og:description" content="Clancy era archives" />
-<meta property="og:image" content="https://clancyalbumevent.twentyonepilots.com/sites/g/files/g2000018331/files/2024-05/FBOG.png" />
-<meta name="twitter:description" content="Clancy era archives" />
-<meta name="twitter:title" content="Clancy Archives" />
- <meta name="twitter:image" content="https://clancyalbumevent.twentyonepilots.com/sites/g/files/g2000018331/files/2024-05/FBOG.png" />
-<link rel="icon" href="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&amp;display=swap" rel="stylesheet">
-<title>clancy era archives </title>
-<style>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clancy Era Archives</title>
+  <meta property="og:site_name" content="Clancy Archives" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Clancy Archives" />
+  <meta property="og:description" content="Clancy era MP4 & video archives" />
+  <meta property="og:image" content="https://clancyalbumevent.twentyonepilots.com/sites/g/files/g2000018331/files/2024-05/FBOG.png" />
+  <meta name="twitter:description" content="Clancy era MP4 & video archives" />
+  <meta name="twitter:title" content="Clancy Archives" />
+  <meta name="twitter:image" content="https://clancyalbumevent.twentyonepilots.com/sites/g/files/g2000018331/files/2024-05/FBOG.png" />
+  <link rel="icon" href="https://www.twentyonepilots.com/sites/g/files/g2000018171/files/Favicon_6.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: url('https://www.twentyonepilots.com/sites/g/files/g2000017956/files/2024-02/onrefni.jpg') center/cover no-repeat;
+      --overlay: rgba(0,0,0,0.7);
+      --card-bg: rgba(255,255,255,0.15);
+      --accent: #ff69b4;
+      --accent2: #d18aff;
+      --text-light: #fff;
+      --transition: 0.3s ease;
+    }
+    [data-theme="dark"] {
+      --overlay: rgba(0,0,0,0.85);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Martian Mono', monospace;
+      background: var(--bg);
+      color: var(--text-light);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--overlay);
+      z-index: 0;
+    }
+    .container {
+      position: relative; z-index: 1;
+      max-width: 900px; margin: 0 auto;
+      padding: 3rem 1rem;
+      display: flex; flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+    .logo {
+      width: 180px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.4rem;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px var(--accent2);
+    }
+    p.subtitle {
+      font-size: 1rem;
+      color: #ddd;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      width: 100%;
+      padding: 1.5rem;
+      display: flex; flex-direction: column;
+      gap: 0.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    .card a.title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent2);
+      text-decoration: none;
+      word-break: break-word;
+      transition: color var(--transition);
+    }
+    .card a.title:hover {
+      color: var(--accent);
+    }
+    .card a.alt {
+      font-size: 0.85rem;
+      color: #ccc;
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .card a.alt:hover {
+      opacity: 1;
+      color: var(--text-light);
+    }
+    .footer-text {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 2rem 0.5rem; }
+      h1 { font-size: 1.8rem; }
+      .logo { width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <img src="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/main-logo.svg?v4" alt="Clancy Archives Logo" class="logo">
+    <h1>MP4 & Video Archives</h1>
+    <p class="subtitle">“I hope you're not done, 'cause I am not :3”</p>
 
+    <div class="card">
+      <a href="https://ashley0143.xyz/Trees%20(Live%20at%20the%20LC%20Pavilion)-ebco_m4ubBM.mp4?v=1" class="title" target="_blank">
+        Trees (Live at the LC Pavilion)
+      </a>
+      <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-vessel-bonus-tracks/Trees%20%28Live%20at%20the%20LC%20Pavilion%29-ebco_m4ubBM.mp4"
+         class="alt" target="_blank">(Alternate Link)</a>
+    </div>
 
-  body {
-    font-family: Martian mono, sans-serif;
-    text-align: center;
-    background-image:url("https://www.twentyonepilots.com/sites/g/files/g2000017956/files/2024-02/onrefni.jpg");
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    height: 100vh;
-  }
-  #countdown {
-    font-size: 36px;
-    margin-top: 78px;
-    margin-left: -162px;
-  }
-  a {
-  text-decoration: none
-  }
-  a:hover { 
-  color: gray !important;
-  }
-</style></head>
-<body><div style="display: flex;flex-direction: column;gap: 1em;color: #000 !important;">
-<div style="display: flex;flex-direction: column;background: #0009;padding: 2em;border-radius: 15px;color: #fff !important;">
-  <img src="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/main-logo.svg?v4" style="width: 26em;margin-left: auto;margin-right: auto;margin-bottom: -2em;color: #fff !important;fill: #000 !important;">
-  <h1 style="margin-top: 1.3em;margin-bottom: 1em;"> MP4 / VIDEO ARCHIVES </h1>
-  <p style="margin-top: -1.7em;">"i hope you're not done! cause i am not :3"</p>
- 
-  <a href="https://ashley0143.xyz/Trees%20(Live%20at%20the%20LC%20Pavilion)-ebco_m4ubBM.mp4?v=1" style="color: inherit;"> Trees (Live at the LC Pavilion) </a> <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-vessel-bonus-tracks/Trees%20%28Live%20at%20the%20LC%20Pavilion%29-ebco_m4ubBM.mp4" style="color:  inherit;margin-bottom: 1em;margin-top: 4px;"> (ALT LINK) </a> 
-  <a href="https://ashley0143.xyz/Guns%20for%20Hands%20(Live%20at%20the%20LC%20Pavilion)-nAXofLZ8ncU.mp4" style="color: inherit;"> Guns for hands (Live at the LC Pavilion) </a>  <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-vessel-bonus-tracks/Guns%20for%20Hands%20%28Live%20at%20the%20LC%20Pavilion%29-nAXofLZ8ncU.mp4" style="color:  inherit;margin-bottom: 1em;margin-top: 4px;"> (ALT LINK) </a>
-  <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-singles/Overcompensate%20%28edit%29-7ZCRjj7-Yow.mp4" style="color: inherit;"> Overcompensate (Edit) </a>
-  </div><p style="width: 39em;">archived by ashley :3 - sahlo folina :3</p>
- </html>
+    <div class="card">
+      <a href="https://ashley0143.xyz/Guns%20for%20Hands%20(Live%20at%20the%20LC%20Pavilion)-nAXofLZ8ncU.mp4"
+         class="title" target="_blank">
+        Guns for Hands (Live at the LC Pavilion)
+      </a>
+      <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-vessel-bonus-tracks/Guns%20for%20Hands%20%28Live%20at%20the%20LC%20Pavilion%29-nAXofLZ8ncU.mp4"
+         class="alt" target="_blank">(Alternate Link)</a>
+    </div>
+
+    <div class="card">
+      <a href="https://codeberg.org/ashley/twenty-one-pilots-archives/raw/branch/main/clancy-era-singles/Overcompensate%20%28edit%29-7ZCRjj7-Yow.mp4"
+         class="title" target="_blank">
+        Overcompensate (Edit)
+      </a>
+    </div>
+
+    <p class="footer-text">
+      Archived by Ashley :3 — sahlo folina :3
+    </p>
+  </div>
+</body>
+</html>
