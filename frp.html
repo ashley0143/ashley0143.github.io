@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Ashley — ANDROID FRP</title>
+  <meta name="theme-color" content="#ffacbb" />
+  <meta property="og:title" content="Ashley — Android Quick Launch & Tools" />
+  <meta property="twitter:description" content="Handy Android intent links and FRP/utility files" />
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --text:#333;
+      --card:#ffffffcc;
+      --muted:#555;
+      --accent:#ff69b4;
+      --ring:#ff69b4;
+      --radius:16px;
+      --shadow:0 8px 30px rgba(0,0,0,.2);
+      --hover:translateY(-2px);
+      --gap:14px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Roboto',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
+      color:var(--text);
+      background:var(--bg-gradient) fixed center/cover;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .wrap{
+      max-width:980px;
+      margin:auto;
+      padding:28px 18px 44px;
+    }
+    header{
+      text-align:center;
+      margin-bottom:22px;
+    }
+    header img{
+      width:120px;height:120px;object-fit:cover;border-radius:22px;
+      border:4px solid var(--accent);box-shadow:var(--shadow);
+    }
+    h1{
+      font-family:'Inter',sans-serif;
+      font-size:2.1rem;margin:.8rem 0 .25rem 0;
+      letter-spacing:.2px;
+    }
+    .sub{
+      color:var(--muted);font-size:.98rem;margin-bottom:10px;
+    }
+    .section{
+      background:var(--card);backdrop-filter:blur(10px);
+      border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:18px;margin-top:18px;
+    }
+    .section h2{
+      font-size:1.1rem;margin:0 0 10px 0;
+      font-weight:800;letter-spacing:.4px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:var(--gap);
+    }
+    .item{
+      display:flex;align-items:center;gap:12px;
+      border:1px solid #00000014;border-radius:14px;
+      padding:10px 12px;background:#fff;
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      text-decoration:none;color:inherit;
+    }
+    .item:hover{transform:var(--hover);box-shadow:0 6px 16px rgba(0,0,0,.15);border-color:#00000022}
+    .item:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+    .item img{width:28px;height:28px;border-radius:6px;object-fit:contain}
+    .label{display:flex;flex-direction:column}
+    .label b{font-weight:800}
+    .label span{font-size:.84rem;color:var(--muted)}
+    .downloads ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .downloads li{background:#fff;border:1px solid #00000014;border-radius:12px;padding:10px 12px}
+    .downloads a{color:#0b5fff;text-decoration:none}
+    .downloads a:hover{text-decoration:underline}
+    .twolinks{opacity:.7;margin-left:6px}
+    footer{
+      text-align:center;color:#333;margin-top:26px;font-size:.95rem
+    }
+    footer a{color:#0b5fff;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    .thanks{
+      margin-top:8px;font-size:.95rem;color:#2b2b2b;
+      background:#ffffffcc;border:1px solid #00000010;padding:10px 12px;border-radius:12px;display:inline-block
+    }
+    @media (prefers-color-scheme:dark){
+      :root{
+        --text:#f3f3f3;--card:#141416cc;--muted:#c8c8c8;
+      }
+      .item{background:#1d1f21;border-color:#ffffff1a}
+      .downloads li{background:#1d1f21;border-color:#ffffff1a}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="https://codeberg.org/avatars/fab7a17d2170464ef5a9ef3e5774c2d3f09140e487186e7b067ab86300b8af1d?size=512" alt="Ashley profile picture">
+      <h1>Android FRP </h1>
+    </header>
+
+    <section class="section">
+      <h2>Open Apps / Activities</h2>
+      <div class="grid">
+        <a class="item" href="intent://com.sec.android.app.samsungapps/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/galaxy-store.png" alt="Galaxy Store">
+          <div class="label"><b>Galaxy Store</b><span>com.sec.android.app.samsungapps</span></div>
+        </a>
+
+        <a class="item" href="intent://com.google.android.googlequicksearchbox/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/google-search.png" alt="Google Quick Search Box">
+          <div class="label"><b>Google Quick Search Box</b><span>com.google.android.googlequicksearchbox</span></div>
+        </a>
+
+        <a class="item" href="intent://com.android.settings/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/settings.png" alt="Settings">
+          <div class="label"><b>Settings</b><span>com.android.settings</span></div>
+        </a>
+
+        <a class="item" href="intent://com.google.android.setupwizard.qrprovision.QrScanActivity/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2024/07/qr-scan-activity.png" alt="QR Scan Activity">
+          <div class="label"><b>QR Scan Activity</b><span>Setup Wizard QR Provision</span></div>
+        </a>
+
+        <a class="item" href="intent://com.activitymanager/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2024/07/activity-manager.png" alt="Activity Manager">
+          <div class="label"><b>Activity Manager</b><span>com.activitymanager</span></div>
+        </a>
+
+        <a class="item" href="intent://com.google.android.gms/#Intent;scheme=promote_smartlock_scheme;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/screen-smartlock.png" alt="Screen Smartlock">
+          <div class="label"><b>Screen Smartlock</b><span>Google Play Services</span></div>
+        </a>
+
+        <a class="item" href="intent://com.sec.android.app.myfiles/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/samsung-my-file.png" alt="Samsung My Files">
+          <div class="label"><b>Samsung My Files</b><span>com.sec.android.app.myfiles</span></div>
+        </a>
+
+        <a class="item" href="intent://com.google.android.youtube/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/youtube.png" alt="YouTube">
+          <div class="label"><b>YouTube</b><span>com.google.android.youtube</span></div>
+        </a>
+
+        <a class="item" href="intent://com.android.chrome/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/chrome.png" alt="Chrome">
+          <div class="label"><b>Chrome</b><span>com.android.chrome</span></div>
+        </a>
+
+        <a class="item" href="intent://com.sec.android.app.popupcalculator/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/calculator.png" alt="Calculator">
+          <div class="label"><b>Calculator</b><span>com.sec.android.app.popupcalculator</span></div>
+        </a>
+
+        <a class="item" href="https://apps.samsung.com/appquery/appDetail.as?appId=com.sec.android.app.sbrowser&amp;cld-000005006635" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/samsung-internet.png" alt="Samsung Internet">
+          <div class="label"><b>Samsung Internet</b><span>Galaxy Store listing</span></div>
+        </a>
+
+        <a class="item" href="intent://com.rrivenllc.shieldx/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/alliance-shield.png" alt="Alliance Shield">
+          <div class="label"><b>Alliance Shield</b><span>com.rrivenllc.shieldx</span></div>
+        </a>
+
+        <a class="item" href="https://galaxy.store/setting" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/android-hidden-settings.png" alt="Android Hidden Settings">
+          <div class="label"><b>Android Hidden Settings</b><span>Galaxy Store shortlink</span></div>
+        </a>
+
+        <a class="item" href="intent://com.google.android.gsf.login.LoginActivity/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/google-search.png" alt="Google Login Activity">
+          <div class="label"><b>Login Account</b><span>GSF LoginActivity</span></div>
+        </a>
+
+        <a class="item" href="intent://com.sec.android.app.launcher/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/home-launcher.png" alt="Home Launcher">
+          <div class="label"><b>Home Launcher</b><span>Samsung One UI Home</span></div>
+        </a>
+
+        <a class="item" href="tel:100-000-000/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/dialer-call.png" alt="Dialer">
+          <div class="label"><b>*#85#</b><span>Enable ADB Tecno/Infinix</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- More System Tools -->
+    <section class="section">
+      <h2>More System Tools</h2>
+      <div class="grid">
+        <a class="item" href="//com.sec.android.app.modemui.activities.USB.settings/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/adb.png" alt="ADB">
+          <div class="label"><b>ADB</b><span>USB settings activity</span></div>
+        </a>
+
+        <a class="item" href="//com.sec.android.app.servicemodeapp/#Intent;scheme=promote_USBSettings_scheme;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/usb-setting.png" alt="USB Setting">
+          <div class="label"><b>USB Setting</b><span>ServiceMode app</span></div>
+        </a>
+
+        <a class="item" href="tel:*#0*#/#Intent;scheme=android-app;end">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/dialer-call.png" alt="*#0*#">
+          <div class="label"><b>*#0*#</b><span>Samsung HW test menu</span></div>
+        </a>
+
+        <a class="item" href="//com.google.android.apps.maps/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/google-map.png" alt="Google Maps">
+          <div class="label"><b>Google Maps</b><span>com.google.android.apps.maps</span></div>
+        </a>
+
+        <a class="item" href="//com.google.android.apps.googleassistant/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/google-assistant.png" alt="Google Assistant">
+          <div class="label"><b>Google Assistant</b><span>Assistant app</span></div>
+        </a>
+
+        <a class="item" href="//com.google.android.gm/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/gmail.png" alt="Gmail">
+          <div class="label"><b>Gmail</b><span>com.google.android.gm</span></div>
+        </a>
+
+        <a class="item" href="https://galaxystore.samsung.com/detail/com.s9launcher.dir.launcher" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/s9-launcher.png" alt="S9 Launcher">
+          <div class="label"><b>S9 Launcher</b><span>Galaxy Store listing</span></div>
+        </a>
+
+        <a class="item" href="//com.android.settings/com.samsung.android.settings.biometrics.fingerprint.FingerprintEntry/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/touch-id.png" alt="Samsung Touch ID">
+          <div class="label"><b>Samsung Touch ID</b><span>Fingerprint settings</span></div>
+        </a>
+
+        <a class="item" href="//com.samsung.knox.securefolder/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/secure-folder.png" alt="Secure Folder">
+          <div class="label"><b>Samsung Secure Folder</b><span>Knox</span></div>
+        </a>
+
+        <a class="item" href="//com.sec.android.easyMover/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/smart-switch.png" alt="Smart Switch">
+          <div class="label"><b>Smart Switch App</b><span>com.sec.android.easyMover</span></div>
+        </a>
+
+        <a class="item" href="//com.samsung.android.dialer/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/dialer-call.png" alt="Samsung Dialer">
+          <div class="label"><b>Samsung Dialer Call</b><span>Dialer</span></div>
+        </a>
+
+        <a class="item" href="//com.mi.android.globalFileexplorer/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/mi-file-manager.png" alt="Mi File Manager">
+          <div class="label"><b>Mi File Manager</b><span>com.mi.android.globalFileexplorer</span></div>
+        </a>
+
+        <a class="item" href="//com.xiaomi.midrop/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/xiaomi-share-me.png" alt="Xiaomi ShareMe">
+          <div class="label"><b>Xiaomi ShareMe</b><span>com.xiaomi.midrop</span></div>
+        </a>
+
+        <a class="item" href="//com.vivo.easyshare/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/vivo-easy-share.png" alt="Vivo EasyShare">
+          <div class="label"><b>Vivo EasyShare</b><span>com.vivo.easyshare</span></div>
+        </a>
+
+        <a class="item" href="//com.infinix.xshare/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/xshare-mini.png" alt="Xshare Mini">
+          <div class="label"><b>Xshare Mini</b><span>com.infinix.xshare</span></div>
+        </a>
+
+        <a class="item" href="//com.coloros.backuprestore/#Intent;scheme=android-app;end" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2023/08/oppo-phone-clone.png" alt="OPPO Phone Clone">
+          <div class="label"><b>OPPO Phone Clone</b><span>com.coloros.backuprestore</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Galaxy Store / Direct Links -->
+    <section class="section">
+      <h2>Galaxy Store / Direct Links</h2>
+      <div class="grid">
+        <a class="item" href="https://galaxystore.samsung.com/detail/com.rrivenllc.shieldx?session_id=W_0a719781bf2f739158262639f4c63d35" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/alliance-shield.png" alt="Alliance Shield">
+          <div class="label"><b>Alliance Shield — Galaxy Store</b><span>com.rrivenllc.shieldx</span></div>
+        </a>
+
+        <a class="item" href="https://galaxystore.samsung.com/detail/org.aospstudio.files" target="_blank" rel="noopener noreferrer">
+          <img src="https://vnrom.net/wp-content/uploads/2022/07/samsung-my-file.png" alt="Files Shortcut">
+          <div class="label"><b>Files Shortcut — Galaxy Store</b><span>org.aospstudio.files</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="section downloads">
+      <h2>Downloads (APKs / XML)</h2>
+      <ul>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Activity_Launcher.apk">Activity_Launcher.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Activity_Launcher.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Alliance_Shield_0.9.16.apk">Alliance_Shield.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Alliance_Shield_0.9.16.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Package_Manager_v7.0.apk">Package_Manager.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Package_Manager_v7.0.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Package_Disabler_Pro_13.5.apk">Package_Disabler_Pro.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Package_Disabler_Pro_13.5.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Package_Disabler_PDC.apk">Package_Disabler_PDC.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Package_Disabler_PDC.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Disable_systemUI.xml">Disable_systemUI.xml</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Disable_systemUI.xml">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Disable_GoogleService.xml">Disable_GoogleService.xml</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Disable_GoogleService.xml">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Disable_MDM_Knox.xml">Disable_MDM_Knox.xml</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Disable_MDM_Knox.xml">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Disable_PlayServices.xml">Disable_PlayServices.xml</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Disable_PlayServices.xml">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Android_5_GAM.apk">Android_5_GAM.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Android_5_GAM.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Android_6_GAM.apk">Android_6_GAM.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Android_6_GAM.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Android_8-9-10_GAM.apk">Android_8-9-10_GAM.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Android_8-9-10_GAM.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Notification_Bar_18.5.8.1.apk">Notification_Bar.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Notification_Bar_18.5.8.1.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Google_Setting.apk">Google_Setting.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Google_Setting.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/FRP_Bypass.apk">FRP_Bypass.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/FRP_Bypass.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/FRP_Android_7.apk">FRP_Android_7.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/FRP_Android_7.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/FRP_vnROM.apk">FRP_vnROM.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/FRP_vnROM.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Test_DPC.apk">Test_DPC.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Test_DPC.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/QuickShortcutMaker.apk">QuickShortcutMaker.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/QuickShortcutMaker.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Apex_Launcher.apk">Apex_Launcher.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Apex_Launcher.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Nova_Launcher.apk">Nova_Launcher.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Nova_Launcher.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Menu_Button.apk">Menu_Button.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Menu_Button.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/ES_File_Explorer_4.2.4.6.4.apk">ES_File_Explorer.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/ES_File_Explorer_4.2.4.6.4.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Setting.apk">Setting.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Setting.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/HushSMS.apk">HushSMS.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/HushSMS.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Phone_Clone.apk">Phone_Clone.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Phone_Clone.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/File_Commander_Manager_9.6.60050.apk">File_Commander_Manager.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/File_Commander_Manager_9.6.60050.apk">Backup</a></span></li>
+        <li><a href="https://github.com/vnrom/bypass/raw/master/Smart_Switch_Mobile_9.5.03.0.apk">Smart_Switch_Mobile.apk</a> <span class="twolinks">// <a href="https://vnrom.romhub.me/Smart_Switch_Mobile_9.5.03.0.apk">Backup</a></span></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>
+        <a href="https://github.com/ashley0143" rel="me">GitHub</a> &nbsp;|&nbsp;
+        <a href="https://fosstodon.org/@ashley0143" rel="me">Mastodon</a> &nbsp;|&nbsp;
+        <a href="https://discord.com/users/396571938081865741">Discord</a> &nbsp;|&nbsp;
+        <a href="https://codeberg.org/ashley" rel="me">Codeberg</a> &nbsp;|&nbsp;
+        <a href="https://rvlt.gg/poketube">Revolt</a> &nbsp;|&nbsp;
+        <a href="https://teddit.net/user/Ash_Potter">Reddit</a>
+      </p>
+      <div class="thanks">Thanks to <a href="https://vnrom.net" target="_blank" rel="noopener noreferrer">vnROM</a> for apk links and icons ♥</div>
+      <p style="margin-top:10px">This page does not track you. No cookies. No JS.</p>
+    </footer>
+  </div>
+</body>
+</html>
