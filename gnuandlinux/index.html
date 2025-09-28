@@ -1,46 +1,115 @@
-<!DOCTYPE html><html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About GNU/Linux — Ashley</title>
-  <meta name="theme-color" content="#ffacbb">
-  <meta property="og:title" content="About GNU/Linux — Ashley">
-  <meta property="twitter:description" content="Discover why GNU/Linux matters and how it all fits together">
-  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
-  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <meta name="theme-color" content="#ffacbb" />
+  <meta property="og:title" content="About GNU/Linux — Ashley" />
+  <meta property="twitter:description" content="Discover why GNU/Linux matters and how it all fits together" />
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent1:#ff9ec4;
+      --accent2:#ffd1dc;
+      --panel-bg: rgba(255,255,255,0.6);
+      --pink:#ff69b4;
+      --muted:#333;
+      --max-width:880px;
+    }
+    html,body{height:100%;margin:0;padding:0;font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--muted);}
+    body{
+      background: linear-gradient(135deg,var(--accent1),var(--accent2));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-width:360px;
+    }
+    .panel{
+      backdrop-filter: blur(12px);
+      background: var(--panel-bg);
+      min-height:100vh;
+      padding:2rem;
+      box-sizing:border-box;
+    }
+    header{text-align:center;margin-bottom:2rem;}
+    h1{
+      font-family:Pacifico, cursive;
+      font-size:3rem;
+      color:#d18aff;
+      text-shadow:2px 2px 8px rgba(0,0,0,0.18);
+      margin:0;
+    }
+    main{max-width:var(--max-width);margin:0 auto;background:transparent;}
+    .lead{margin-top:1rem;font-size:1rem;line-height:1.65;}
+    .essay-section{margin-bottom:1.25rem;line-height:1.7;}
+    strong{color:#000;}
+    a{color:var(--pink);text-decoration:none;}
+    .avatar{display:block;margin:1.25rem auto;border-radius:50%;width:140px;height:140px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+    footer{text-align:center;margin-top:2.5rem;font-size:0.9rem;color:#333;}
+    .meta-links{margin-top:0.75rem;text-align:center;}
+    .meta-links a{margin:0 0.5rem;color:var(--pink);}
+    hr{border:none;border-top:1px solid rgba(0,0,0,0.06);margin:1.25rem 0;}
+    .tagline{font-weight:500;margin:0.25rem 0 1rem 0;}
+    @media (min-width:900px){h1{font-size:3.4rem;} .avatar{width:200px;height:200px;}}
+  </style>
 </head>
-<body style="margin:0;padding:0;font-family:'Roboto',sans-serif;background:linear-gradient(135deg,#ff9ec4,#ffd1dc);color:#333;">
-  <div style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.6);min-height:100vh;padding:2rem;">
-    <header style="text-align:center;margin-bottom:2rem;">
-      <h1 style="font-family:'Pacifico',cursive;font-size:3rem;color:#d18aff;text-shadow:2px 2px 8px rgba(0,0,0,0.2);">About GNU/Linux</h1>
+<body>
+  <div class="panel">
+    <header>
+      <h1>About GNU/Linux</h1>
     </header>
-    <main style="max-width:800px;margin:0 auto;">
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        Every day, many people use a powerful, free operating system without realizing it’s really GNU with the Linux kernel at its core. While the kernel—Linux—handles hardware and low-level operations, the majority of tools, applications, and libraries shaping your experience come from the GNU Project.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        It’s common to hear “Linux” used for the entire system. This can obscure the fact that Linux alone is just one component. The GNU Project has pieced together compilers, shells, utilities, and more to create a complete, coherent platform. Linux fills the gap as the kernel, making GNU’s vision fully functional on modern hardware.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        If we measured contributions by code volume, GNU software often represents a significant portion—far more than the kernel itself. But beyond lines of code, GNU’s mission was to build an integrated system from the ground up, defining the standards and interfaces every part follows.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        After years of GNU development, the Linux kernel was released under a free license in 1992. Suddenly, the final piece was in place. Thousands of developers then worked on packaging, installation tools, and user-friendly installers, giving rise to a rich ecosystem of distributions. Each distro brings together GNU, Linux, and community contributions into a unified experience.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        Not all distributions follow the free-software philosophy to the same degree. Some include proprietary drivers or applications—others are fully committed to free software. When you choose a libre distribution, you’re honoring the principles set out by the GNU Project and ensuring every part of your system respects your freedom.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        Whether you’re a long-time enthusiast or just discovering free software, remember: the term “Linux” refers to the kernel. The complete system is <strong>GNU/Linux</strong>, an achievement built by a global community dedicated to software freedom.
-      </p>
-      <p style="margin-bottom:1rem;line-height:1.6;">
-        For more details, check the <a href="https://www.gnu.org/gnu/linux-and-gnu.html" style="color:#ff69b4;text-decoration:none;">official GNU/Linux overview</a> or the <a href="https://www.gnu.org/gnu/gnu-linux-faq.html" style="color:#ff69b4;text-decoration:none;">GNU/Linux FAQ</a>. You can also explore the history in <a href="https://www.gnu.org/gnu/thegnuproject.html" style="color:#ff69b4;text-decoration:none;">The GNU Project</a>.
-      </p>
+
+    <main>
+      <img src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" alt="Ashley" class="avatar" />
+      <p class="tagline" style="text-align:center;">Ashley's Personal site!</p>
+
+      <section class="lead">
+        <p class="essay-section">
+          Every day, many people use a powerful, free operating system without realizing it’s really GNU with the Linux kernel at its core. While the kernel—Linux—handles hardware and low-level operations, the majority of tools, applications, and libraries shaping your experience come from the GNU Project.
+        </p>
+
+        <p class="essay-section">
+          It’s common to hear “Linux” used for the entire system. This can obscure the fact that Linux alone is just one component. The GNU Project has pieced together compilers, shells, utilities, and more to create a complete, coherent platform. Linux fills the gap as the kernel, making GNU’s vision fully functional on modern hardware.
+        </p>
+
+        <p class="essay-section">
+          If we measured contributions by code volume, GNU software often represents a significant portion—far more than the kernel itself. But beyond lines of code, GNU’s mission was to build an integrated system from the ground up, defining the standards and interfaces every part follows.
+        </p>
+
+        <p class="essay-section">
+          After years of GNU development, the Linux kernel was released under a free license in 1992. Suddenly, the final piece was in place. Thousands of developers then worked on packaging, installation tools, and user-friendly installers, giving rise to a rich ecosystem of distributions. Each distro brings together GNU, Linux, and community contributions into a unified experience.
+        </p>
+
+        <p class="essay-section">
+          Not all distributions follow the free-software philosophy to the same degree. Some include proprietary drivers or applications—others are fully committed to free software. When you choose a libre distribution, you’re honoring the principles set out by the GNU Project and ensuring every part of your system respects your freedom.
+        </p>
+
+        <p class="essay-section">
+          Whether you’re a long-time enthusiast or just discovering free software, remember: the term “Linux” refers to the kernel. The complete system is <strong>GNU/Linux</strong>, an achievement built by a global community dedicated to software freedom.
+        </p>
+
+        <p class="essay-section">
+          For more details, check the <a href="https://www.gnu.org/gnu/linux-and-gnu.html">official GNU/Linux overview</a> or the <a href="https://www.gnu.org/gnu/gnu-linux-faq.html">GNU/Linux FAQ</a>. You can also explore the history in <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>.
+        </p>
+
+        <hr />
+
+        <div class="meta-links" aria-label="links">
+          <a href="/">← Back to Home</a> ·
+          <a href="https://github.com/ashley0143">GitHub</a> ·
+          <a href="https://discord.com/users/396571938081865741">Discord</a> ·
+          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
+        </div>
+
+        <footer>
+       <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
+          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
+          <p>&copy; 2025 Ashley.</p>
+        </footer>
+      </section>
     </main>
-    <footer style="text-align:center;margin-top:3rem;font-size:0.9rem;">
-      <p>&copy; 2025 Ashley. This content is released under the GNU Free Documentation License. No tracking, no cookies—just pure free software spirit.</p>
-      <p><a href="/" style="color:#ff69b4;text-decoration:none;">← Back to Home</a></p>
-    </footer>
   </div>
 </body>
 </html>
