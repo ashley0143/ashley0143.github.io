@@ -317,6 +317,31 @@
     window.addEventListener('scroll', () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none');
     toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
   </script>
+  <script>
+(() => {
+  if (!window.console) return;
+  const noop = () => {};
+  const methods = [
+    "log","info","warn","error","debug","trace",
+    "group","groupCollapsed","groupEnd",
+    "time","timeLog","timeEnd",
+    "table","dir","dirxml","assert","count","countReset","clear"
+  ];
+  for (const m of methods) {
+    try {
+      Object.defineProperty(console, m, {
+        value: noop,
+        writable: false,
+        configurable: false
+      });
+    } catch {
+      try { console[m] = noop; } catch {}
+    }
+  }
+  try { Object.seal(console); } catch {}
+})();
+</script>
+
   <!-- bacon -->
     <script src="/js/hs.js"></script>
  
