@@ -1628,6 +1628,16 @@
               println(`${t} up ${up}, 1 user, load averages: ${loads()}`);
               break;
             }
+          case "gaster": {
+             try {
+                localStorage.removeItem(SKEY.WM_STATE);
+                localStorage.removeItem(SKEY.BOOTED_ONCE);
+                localStorage.removeItem(SKEY.BOOTED_AT);
+              } catch {}
+              setTimeout(() => {
+                location.reload();
+              }, 400);
+            }
             case "reboot":
               println("Rebooting…");
               try {
