@@ -1642,6 +1642,19 @@
             default:
               println(`${cmd}: command not found`);
           }
+         case "gaster":
+              try {
+                localStorage.removeItem(SKEY.WM_STATE);
+                localStorage.removeItem(SKEY.BOOTED_ONCE);
+                localStorage.removeItem(SKEY.BOOTED_AT);
+              } catch {}
+              setTimeout(() => {
+                location.reload();
+              }, 400);
+              break;
+            default:
+              println(`${cmd}: command not found`);
+          }
         }
         if (input) {
           input.addEventListener("keydown", (e) => {
