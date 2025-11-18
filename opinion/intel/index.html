@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashley’s Opinion – Why You Should Think Twice Before Buying Intel</title>
+  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+  <meta property="og:title" content="Ashley’s Opinion – Why You Should Think Twice Before Buying Intel">
+  <meta name="twitter:description" content="Why you might want to reconsider buying Intel processors.">
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --card-bg: rgba(255,255,255,0.9);
+      --text: #333;
+      --accent: #ff69b4;
+      --shadow: rgba(0,0,0,0.15);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-gradient) fixed center/cover;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px var(--shadow);
+      max-width: 800px;
+      width: 100%;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    a.back {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    article {
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    article section {
+      margin-bottom: 1.5rem;
+    }
+    article h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    article p {
+      margin-bottom: 0.75rem;
+    }
+    .sources ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+    .sources li {
+      margin-bottom: 0.5rem;
+    }
+    .sources a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/opinion" class="back">← Back to Opinions</a>
+    <h1>Why You Should Think Twice Before Buying Intel</h1>
+    <article>
+      <section>
+        <h2>1. Ongoing Stability Problems in Recent Desktop Chips</h2>
+        <p>
+          Intel’s 13th and 14th generation Core desktop processors (Raptor Lake and Raptor Lake Refresh) have been at the center
+          of a long-running instability controversy. In 2024, Intel publicly acknowledged that elevated operating voltage caused
+          by its own microcode algorithm was leading to system instability and potential CPU degradation on some 13th and 14th gen
+          processors, forcing a global wave of BIOS and microcode updates for affected systems.*
+        </p>
+        <p>
+          Real-world effects were not just theoretical: engineers at Mozilla reported large spikes in crash reports from systems
+          running these chips, especially during heat waves in Europe, where timing and voltage issues appeared to become worse
+          under higher temperatures. Users reported browser crashes, application instability and general unreliability, even on
+          expensive “enthusiast” systems that were supposed to be high-end and robust.**
+        </p>
+        <p>
+          While firmware updates can mitigate some of these problems, the bigger issue is trust: when you buy a brand-new CPU and
+          motherboard, you do not expect months (or years) of debugging instability, microcode roulette and warranty worries just
+          to get the platform into a stable state.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. A Long History of Serious Security Vulnerabilities</h2>
+        <p>
+          Intel processors have been hit by a long list of high-profile security vulnerabilities over the last decade. Meltdown,
+          Spectre and related transient execution attacks showed that speculative execution could be abused to read data across
+          security boundaries, forcing operating systems, hypervisors and browsers to add mitigations that sometimes reduced
+          performance and increased complexity.
+        </p>
+        <p>
+          More recently, the <em>Downfall</em> vulnerability (Gather Data Sampling, CVE-2022-40982) targeted Intel’s 6th through
+          11th generation Core CPUs and several generations of Xeon server parts. Downfall exploits the gather instruction in AVX
+          to leak data from internal vector registers during speculative execution, potentially exposing sensitive information
+          such as cryptographic keys from other processes running on the same core.***
+        </p>
+        <p>
+          Another example, <em>Foreshadow</em> (also called L1 Terminal Fault), affects many modern Intel processors and can be
+          used to read data from Intel SGX enclaves, virtual machines, OS kernels and system management memory under the right
+          conditions. This effectively undermines the isolation guarantees these technologies are supposed to provide, and once
+          again required broad software and firmware mitigations.****
+        </p>
+        <p>
+          Security issues are not unique to Intel, but the sheer number and impact of speculative-execution vulnerabilities on
+          modern Intel architectures has forced users, sysadmins and cloud providers into a constant cycle of patching and
+          performance trade-offs.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Intel Management Engine: An Opaque, Always-On Subsystem</h2>
+        <p>
+          Almost all modern Intel platforms include the Intel Management Engine (ME), an autonomous subsystem running its own
+          firmware inside the chipset. The ME has deep access to system memory and hardware and can remain active even when the
+          main computer appears to be powered off, as long as the motherboard receives power.*****
+        </p>
+        <p>
+          Because the ME firmware is proprietary and not under user control, privacy and security advocates have described it as
+          a potential backdoor. The Electronic Frontier Foundation, Libreboot developers and several security researchers have
+          raised alarms about the ME’s ability to access memory and network interfaces independently of the main operating system,
+          bypassing local firewalls and user control altogether.****** Intel denies that it is a backdoor, but the fact remains:
+          users cannot easily inspect, replace or truly disable this subsystem on most Intel hardware.
+        </p>
+        <p>
+          On top of design concerns, multiple serious vulnerabilities have been discovered in the ME over the years, including
+          remotely exploitable privilege-escalation bugs that affected a huge range of systems from 2008 onward. These issues
+          forced emergency firmware updates and, in some environments, led to efforts to partially neutralize the ME using
+          unofficial methods just to reduce the attack surface.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Short-Lived Graphics Driver Support and Premature “Legacy” Status</h2>
+        <p>
+          In 2024–2025, Intel announced that integrated graphics on its 11th through 14th generation Core processors would be
+          moved into a “legacy” support model. That means no more day-zero game optimizations or feature updates; instead, users
+          get only quarterly driver releases focused on critical bug and security fixes.*******
+        </p>
+        <p>
+          This decision effectively deprioritizes integrated GPUs that are still relatively new in the market. Some of these chips
+          only launched in 2023 and 2024, yet Intel is already telling customers not to expect timely game support or meaningful
+          improvements going forward. For users who bought a recent Intel system expecting decent long-term integrated-graphics
+          support, this feels like a bait-and-switch.
+        </p>
+        <p>
+          At the same time, Intel is pushing its discrete Arc GPUs and upcoming architectures as the “real” gaming solution,
+          which may be good for Arc as a brand but leaves owners of fresh 11th–14th gen iGPUs with a much weaker support story
+          than they might have assumed when they purchased their hardware.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Platform Churn, Naming Confusion and Fragmented Ecosystem</h2>
+        <p>
+          Beyond specific bugs and vulnerabilities, Intel’s overall platform strategy can feel chaotic. Socket and chipset
+          changes arrive frequently, sometimes giving only one or two CPU generations per socket before users are pushed to a new
+          motherboard if they want to upgrade. That increases cost and electronic waste, especially compared with platforms where
+          the same socket can support multiple generations of processors over a longer period.
+        </p>
+        <p>
+          Intel’s branding has also become more confusing over time. Instead of a clear, simple naming scheme, users have to
+          navigate long strings of numbers and suffixes that mix desktop and mobile parts, “F” and “K” variants, and now new
+          naming conventions for “Core Ultra” and beyond. For an average buyer, knowing what they are really getting (and how it
+          compares to older generations) is harder than it should be.
+        </p>
+        <p>
+          When you combine regular socket churn, complex segmentation and a habit of quickly pushing still-recent hardware into
+          “legacy” support, it paints a picture of a company that prioritizes short upgrade cycles over long-term platform
+          stability.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Why I Personally Avoid Intel</h2>
+        <p>
+          No company is perfect, and every hardware vendor ships bugs. But with Intel, the pattern over the last decade has been
+          hard to ignore: serious speculative-execution vulnerabilities, opaque and powerful management subsystems, instability
+          in recent desktop flagships, and a willingness to move new hardware into reduced-support “legacy” status very quickly.
+        </p>
+        <p>
+          If you care about long-term stability, transparent security and good support, it is completely reasonable to look at
+          alternatives before buying an Intel-based system. Such as AMD. 
+        </p>
+      </section>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <p>Dead links? Report at https://github.com/ashley0143/ashley0143.github.io/issues/new</p>
+        <ul>
+          <li><a href="https://community.intel.com/t5/Mobile-and-Desktop-Processors/July-2024-Update-on-Instability-Reports-on-Intel-Core-13th-and/m-p/1617113" target="_blank">* Intel Community: July 2024 update on instability reports for 13th/14th gen Core</a></li>
+          <li><a href="https://www.techradar.com/computing/cpu/firefox-engineer-warns-intel-raptor-lake-cpus-are-crashing-more-often-because-of-the-summer-heat-and-its-making-me-worry-about-the-future-of-these-chips" target="_blank">** TechRadar: Firefox engineer warns about Raptor Lake crash spikes in summer heat</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Downfall_%28security_vulnerability%29" target="_blank">*** Wikipedia: Downfall (Gather Data Sampling) vulnerability overview</a></li>
+          <li><a href="https://downfall.page/" target="_blank">Downfall Project: Technical explanation of Downfall attacks</a></li>
+          <li><a href="https://access.redhat.com/solutions/7027704" target="_blank">Red Hat: Gather Data Sampling (GDS) transient execution side-channel vulnerability</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Foreshadow" target="_blank">**** Wikipedia: Foreshadow (L1 Terminal Fault) vulnerability overview</a></li>
+          <li><a href="https://foreshadowattack.eu/" target="_blank">Foreshadow Attack: Research site and technical details</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Intel_Management_Engine" target="_blank">***** Wikipedia: Intel Management Engine – architecture, capabilities and vulnerabilities</a></li>
+          <li><a href="https://www.techrepublic.com/article/is-the-intel-management-engine-a-backdoor/" target="_blank">****** TechRepublic: Is the Intel Management Engine a backdoor?</a></li>
+          <li><a href="https://proprivacy.com/privacy-news/intel-management-engine" target="_blank">ProPrivacy: Intel Management Engine as a privacy and security concern</a></li>
+          <li><a href="https://www.intel.com/content/www/us/en/support/articles/000101986/graphics.html" target="_blank">Intel: Graphics driver support update for 11th–14th gen processors</a></li>
+          <li><a href="https://www.tomshardware.com/pc-components/gpu-drivers/intel-drops-day-zero-game-driver-support-for-chips-released-last-year-last-gen-igpus-on-14th-gen-core-and-older-cpus-already-put-on-the-backburner-of-legacy-software-support" target="_blank">Tom’s Hardware: Intel drops day-zero game support for 11th–14th gen iGPUs</a></li>
+          <li><a href="https://www.pcgamer.com/hardware/graphics-cards/its-alchemist-battlemage-or-nothing-intel-driver-support-for-every-other-gpu-from-the-past-four-years-moves-into-legacy-mode/" target="_blank">PC Gamer: Intel moves most recent iGPUs to legacy driver support</a></li>
+        </ul>
+      </section>
+    </article>
+    <footer>
+      <p>&copy; 2025 Ashley. <a href="/">Home</a> • <a href="/optout">Opt Out of Metrics</a></p>
+    </footer>
+  </div>
+</body>
+</html>
