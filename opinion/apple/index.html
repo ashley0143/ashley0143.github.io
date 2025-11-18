@@ -36,19 +36,58 @@
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
       box-shadow: 0 8px 24px var(--shadow);
-      max-width: 800px; width: 100%; padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      padding: 2rem;
     }
-    h1 { font-family: 'Inter', sans-serif; font-size: 2rem; margin-bottom: 1rem; color: var(--accent); }
-    a.back { text-decoration: none; color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; display: inline-block; }
-    article { margin-top: 1rem; line-height: 1.6; }
-    section { margin-bottom: 1.5rem; }
-    h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
-    p { margin-bottom: 0.75rem; }
-    .sources ul { list-style: none; padding-left: 1.2rem; }
-    .sources li { margin-bottom: 0.5rem; }
-    .sources a { color: var(--accent); text-decoration: underline; }
-    footer { margin-top: 2rem; font-size: 0.85rem; text-align: center; }
-    footer a { color: var(--accent); text-decoration: none; }
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    a.back {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    article {
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    section {
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 0.75rem;
+    }
+    .sources ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+    .sources li {
+      margin-bottom: 0.5rem;
+    }
+    .sources a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -58,45 +97,62 @@
     <article>
       <section>
         <h2>1. Privacy Intrusions</h2>
-        <p>Despite Apple’s “privacy-first” branding, regulators fined Apple €150 M in France for self‑preferencing in its App Tracking Transparency feature<sup>1</sup>, and German authorities found similar breaches in 2025<sup>2</sup>.</p>
+        <p>Despite Apple’s “privacy-first” branding, regulators fined Apple €150 M in France over how it implemented its App Tracking Transparency (ATT) feature, finding that the framework abused Apple’s dominant position in mobile app distribution and advertising<sup>1</sup>. In 2025, Germany’s Bundeskartellamt raised similar competition concerns, issuing a preliminary assessment that Apple’s ATT framework may breach competition law and give Apple’s own services preferential treatment<sup>2</sup>.</p>
       </section>
+
       <section>
         <h2>2. Antitrust &amp; App Store Monopoly</h2>
-        <p>Under the EU’s Digital Markets Act, Apple was fined €500 M for anti‑steering—blocking developers from linking to cheaper payment options—and France imposed an additional €162 M penalty in 2025<sup>3</sup> for abusing its dominance.</p>
+        <p>Under the EU’s Digital Markets Act, Apple has faced significant fines and charges for anti-steering rules and App Store practices that restrict developers from telling users about cheaper payment options or alternative platforms<sup>3</sup><sup>27</sup>. France’s competition authority also imposed a €162 M penalty in 2025 tied to how ATT impacts third-party developers and advertisers<sup>3</sup>, reinforcing concerns that Apple uses privacy framing to tighten its ecosystem and disadvantage rivals.</p>
       </section>
+
       <section>
         <h2>3. Supply Chain &amp; Labor Abuses</h2>
-        <p>Apple’s reliance on low‑wage Chinese manufacturing exposed critical IP and empowered rivals<sup>4</sup>. Though Apple pledged $500 B for U.S. and Indian production in 2025<sup>5</sup>, labor reports continue to document forced overtime and underage work at key suppliers<sup>6</sup>.</p>
+        <p>Apple’s reliance on low-wage manufacturing in China has been documented for years. Reporting on Apple’s China strategy highlights how decades of investment created a deeply integrated supply chain that is hard to unwind, while also transferring industrial know-how to local competitors<sup>4</sup>. Working-conditions research and human-rights organizations continue to flag excessive overtime, dispatch-worker abuse, and labor-rights violations at major suppliers like Pegatron and Foxconn, even after repeated “improvement” pledges<sup>6</sup><sup>20</sup>.</p>
+        <p>In 2025, Apple announced a massive U.S. investment plan worth around $500 B, partly framed as a response to tariff pressure and political scrutiny<sup>5</sup>. But much of the high-volume device manufacturing still depends on Chinese and broader Asian supply chains, which means the underlying labor issues and geopolitical risks remain.</p>
       </section>
+
       <section>
         <h2>4. Security Vulnerabilities &amp; Stalking</h2>
-        <p>High‑profile bugs like the FaceTime eavesdropping flaw persisted into 2023<sup>7</sup>. Meanwhile, AirTag misuse for stalking rose by over 300 %, prompting new anti‑stalking laws in multiple states and Pennsylvania’s 2025 ban on non‑consensual tracking<sup>8</sup>.</p>
+        <p>Apple markets itself as a security leader, but its products are not immune to serious flaws. Past incidents like the Group FaceTime eavesdropping bug showed that even core communication features can accidentally enable surveillance until patched<sup>7</sup>. Hardware components such as the T2 security chip have also been subject to research showing unpatchable vulnerabilities under certain conditions<sup>2</sup>.</p>
+        <p>Meanwhile, AirTags and similar devices have been repeatedly misused for stalking and covert tracking. U.S. states have started drafting and passing laws that explicitly criminalize using tracking devices for stalking, with Pennsylvania’s 2025 bill creating a specific offense for tracking-device-based stalking reflecting the scale of misconduct seen by law enforcement<sup>8</sup>. Apple has added safety alerts and warnings, but critics say the design still makes it too easy to track people without consent.</p>
       </section>
+
       <section>
         <h2>5. Child Safety Scanning Reversal</h2>
-        <p>Apple abandoned its CSAM client‑side scanning plan after backlash in late 2023<sup>9</sup>. Its Communication Safety features for minors remain controversial due to false‑positive risks<sup>10</sup>.</p>
+        <p>Apple’s plan to deploy client-side CSAM scanning on users’ devices sparked widespread backlash from security experts, privacy advocates, and civil-society groups, who warned that such tools could be repurposed by governments for censorship and mass surveillance<sup>9</sup><sup>10</sup>. After initially “pausing” the rollout, Apple later confirmed it would not proceed with that scanning approach and instead focus on server-side protections and broader end-to-end encryption for iCloud.</p>
+        <p>However, some of Apple’s Communication Safety features for minors still raise concerns about false positives and the broader precedent of on-device content analysis, especially when deployed at scale in locked-down proprietary ecosystems.</p>
       </section>
+
       <section>
-        <h2>7 Alternative : Samsung</h2>
-        <p>Samsung’s One UI paired with the Good Lock suite delivers extensive customization—lock‑screen widgets, multi‑window tweaks, and theme engines—absent on iOS<sup>13</sup>. Knox security offers hardware‑backed encryption and enterprise controls more flexible than Apple’s closed ecosystem<sup>14</sup>. Regular monthly security patches and open Android frameworks ensure faster issue resolution and broader device support<sup>15</sup>.</p>
+        <h2>6. It’s Okay to Still Like Apple</h2>
+        <p>This page is an opinion piece, not a moral judgment on anyone’s personal choices. It is completely okay to like and use iPhones, Macs, iPads, macOS, or other Apple products if they fit your needs, accessibility requirements, or creative workflow. Many people rely on Apple hardware for work, art, accessibility features, or simply because they enjoy the experience.</p>
+       </section>
+
+      <section>
+        <h2>7. Alternative: Samsung</h2>
+        <p>Samsung’s One UI paired with the Good Lock suite delivers extensive customization—lock-screen layouts, multi-window behavior, and theme engines—that iOS does not expose in the same way<sup>13</sup><sup>16</sup>. For users who want deeper control over their phone’s interface, Good Lock and its modules (ClockFace, LockStar, Home Up, Theme Park, and more) allow per-screen and per-gesture tuning that goes well beyond what Apple offers.</p>
+        <p>On the security side, Samsung Knox provides a hardware-backed framework, integrating trusted boot, secure enclaves, and enterprise fleet management features<sup>14</sup><sup>4</sup>. Combined with Android’s monthly security bulletins and Samsung’s own update program, many flagship Samsung phones receive frequent patches and long-term security support comparable to or, in some cases, longer than older iPhone models<sup>15</sup><sup>3</sup>. For some users, that mix of openness, configurability, and strong security tooling makes Samsung (and Android in general) a compelling alternative to Apple’s closed ecosystem.</p>
       </section>
-<section class="sources">
+
+      <section class="sources">
         <h2>Sources</h2>
-  <p>deadlinks? report at https://github.com/ashley0143/ashley0143.github.io/issues/new</p>
+        <p>deadlinks? report at https://github.com/ashley0143/ashley0143.github.io/issues/new</p>
         <ul>
-          <li>1. <a href="https://apnews.com/article/d993553dc64b56b69f5266cf1fe79d95" target="_blank">AP: France fines Apple €150 M</a></li>
-          <li>2. <a href="https://www.reuters.com/technology/apple-faces-likely-french-antitrust-fine-privacy-tool-sources-say-2025-02-27/" target="_blank">Reuters: French antitrust fine & German charges</a></li>
-          <li>3. <a href="https://9to5mac.com/2025/03/31/apple-fined-162m-for-att/" target="_blank">9to5Mac: France’s €162 M ATT penalty</a></li>
-          <li>4. <a href="https://www.businessinsider.com/apple-china-tariff-supply-chain-book-patrick-mcgee-peter-kafka-2025-05" target="_blank">Business Insider: China supply-chain risks</a></li>
-          <li>5. <a href="https://www.theverge.com/news/618172/apple-500-billion-us-investment-tariffs-trump" target="_blank">The Verge: Apple’s $500 B US investment</a></li>
-          <li>6. <a href="https://www.business-humanrights.org/en/latest-news/china-working-conditions-at-electronics-factories-remain-concerning-with-reports-of-continuous-labor-rights-violations-at-apples-suppliers-pegatron-and-foxconn/" target="_blank">Business & Human Rights: Labor violations at Apple suppliers</a></li>
-          <li>7. <a href="https://en.wikipedia.org/wiki/FaceTime#Group_FaceTime_bug" target="_blank">Wikipedia: FaceTime bug</a></li>
-          <li>8. <a href="https://www.cityandstatepa.com/policy/2025/04/pa-bill-makes-stalking-with-airtags-illegal/404396/" target="_blank">City & State PA: AirTag stalking law</a></li>
-          <li>9. <a href="https://www.wired.com/story/apple-photo-scanning-csam-communication-safety-messages/" target="_blank">Wired: CSAM scanning cancellation</a></li>
-          <li>10. <a href="https://www.eff.org/deeplinks/2022/12/victory-apple-commits-encrypting-icloud-and-drops-phone-scanning-plans" target="_blank">EFF: Encryption & scanning reversal</a></li>
-          <li>13. <a href="https://en.wikipedia.org/wiki/Good_Lock" target="_blank">Wikipedia: Good Lock</a></li>
-          <li>14. <a href="https://en.wikipedia.org/wiki/Samsung_Knox" target="_blank">Wikipedia: Samsung Knox</a></li>
-          <li>15. <a href="https://source.android.com/docs/security/bulletin" target="_blank">Android Security Bulletins</a></li>
+          <li>1. <a href="https://apnews.com/article/d993553dc64b56b69f5266cf1fe79d95" target="_blank">AP: France fines Apple €150 M over ATT privacy tool</a></li>
+          <li>2. <a href="https://www.reuters.com/technology/german-cartel-office-warns-apple-app-tracking-tool-could-violate-rules-2025-02-13/" target="_blank">Reuters: German cartel office warns Apple’s ATT could violate competition rules</a></li>
+          <li>3. <a href="https://9to5mac.com/2025/03/31/apple-bizarrely-fined-162m-for-app-tracking-transparency-after-advertisers-complained/" target="_blank">9to5Mac: Apple fined $162 M for App Tracking Transparency</a></li>
+          <li>4. <a href="https://www.businessinsider.com/apple-china-tariff-supply-chain-book-patrick-mcgee-peter-kafka-2025-05" target="_blank">Business Insider: Apple’s China supply-chain risks</a></li>
+          <li>5. <a href="https://www.theverge.com/news/618172/apple-500-billion-us-investment-tariffs-trump" target="_blank">The Verge: Apple’s $500 B US investment amid tariff pressure</a></li>
+          <li>6. <a href="https://www.business-humanrights.org/en/latest-news/china-working-conditions-at-electronics-factories-remain-concerning-with-reports-of-continuous-labor-rights-violations-at-apples-suppliers-pegatron-and-foxconn/" target="_blank">Business &amp; Human Rights: Labor violations at Apple suppliers</a></li>
+          <li>7. <a href="https://en.wikipedia.org/wiki/FaceTime#Group_FaceTime_bug" target="_blank">Wikipedia: FaceTime Group-calling eavesdropping bug</a></li>
+          <li>8. <a href="https://www.cityandstatepa.com/policy/2025/04/pa-house-passes-bill-creating-criminal-offense-tracking-device-based-stalking/404396/" target="_blank">City &amp; State PA: PA bill creates tracking-device stalking offense</a></li>
+          <li>9. <a href="https://www.wired.com/story/apple-photo-scanning-csam-communication-safety-messages/" target="_blank">Wired: Apple kills plan to scan iCloud photos for CSAM</a></li>
+          <li>10. <a href="https://www.eff.org/deeplinks/2022/12/victory-apple-commits-encrypting-icloud-and-drops-phone-scanning-plans" target="_blank">EFF: Apple commits to encrypting iCloud and drops phone-scanning plans</a></li>
+          <li>13. <a href="https://en.wikipedia.org/wiki/Good_Lock" target="_blank">Wikipedia: Good Lock customization suite</a></li>
+          <li>14. <a href="https://en.wikipedia.org/wiki/Samsung_Knox" target="_blank">Wikipedia: Samsung Knox security framework</a></li>
+          <li>15. <a href="https://source.android.com/docs/security/bulletin" target="_blank">Android Security Bulletins (official)</a></li>
+          <li>20. <a href="https://chinalaborwatch.org/china-labor-watch-raises-serious-concerns-over-alleged-labor-violations-at-foxconn-iphone-17-factory/" target="_blank">China Labor Watch: Labor conditions at Foxconn iPhone 17 factory</a></li>
+          <li>27. <a href="https://en.wikipedia.org/wiki/Digital_Markets_Act" target="_blank">Wikipedia: EU Digital Markets Act overview</a></li>
         </ul>
       </section>
     </article>
