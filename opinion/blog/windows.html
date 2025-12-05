@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
@@ -8,10 +8,10 @@
   <meta name="description" content="How I bend Windows into a careful, privacy-conscious sidekick OS for school and gaming, while keeping GNU/Linux and free software at the center (plus some thoughts on Microsoft and macOS)." />
   <meta name="theme-color" content="#ffacbb" />
   <meta property="og:title" content="How do I use Windows? — Ashley" />
-   <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary" />
- 
+
   <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
@@ -70,8 +70,15 @@
       background:transparent;
     }
 
+    .tagline{
+      font-weight:500;
+      margin:0.35rem 0 0.75rem 0;
+      text-align:center;
+      font-size:0.97rem;
+    }
+
     .lead{
-      margin-top:1rem;
+      margin-top:0.5rem;
       font-size:1rem;
       line-height:1.65;
     }
@@ -101,13 +108,6 @@
     a:hover,
     a:focus{
       text-decoration:underline;
-    }
-
-    .tagline{
-      font-weight:500;
-      margin:0.25rem 0 0.25rem 0;
-      text-align:center;
-      font-size:0.97rem;
     }
 
     footer{
@@ -144,7 +144,7 @@
       margin-bottom:0.4rem;
     }
 
-     .qa-section-title{
+    .qa-section-title{
       font-weight:700;
       margin-bottom:0.75rem;
       font-size:1rem;
@@ -193,10 +193,10 @@
   <div class="panel">
     <header>
       <h1>How do I use Windows?</h1>
+      <p class="tagline">How I keep Windows as a fenced-off side OS for school and games, while my real life stays on GNU/Linux.</p>
     </header>
 
     <main>
- 
       <section class="lead">
         <p class="essay-section">
           On my laptop, Windows is <strong>not</strong> the main character. My real daily system is <strong>EndeavourOS GNU/Linux</strong>, where I live, work, and keep the things that actually matter to me. Windows sits beside it as a dual-boot guest: a tool I reach for only when I need a very specific piece of software, a particular game, or some school-related application that insists on running there. It is useful, but it is never in charge.
@@ -206,18 +206,30 @@
           Before anything else: this page is not an invitation to argue about operating systems or to get mad at me for having Windows installed at all. I am describing how I personally manage a system I sometimes have to use. It is not advice that everyone must follow, and it is definitely not a statement that Windows is “better” or that I am abandoning GNU/Linux. This is just the compromise that works for my hardware, my school life, and my gaming needs.
         </p>
 
+        <p class="essay-section">
+          Think of this as a threat model written in plain language: I accept that I sometimes have to touch nonfree software, but I do not hand it my whole life. I decide what data is allowed to be near Windows, which accounts are allowed to touch it, and how much network visibility it gets. Everything else stays safely on the GNU/Linux side, where I have far more control.
+        </p>
+
         <h2 class="subheading">Free software first</h2>
 
         <p class="essay-section">
-          My heart is firmly with <strong>free software</strong>. The GNU Project exists to give users the freedom to run, study, share, and modify the programs they rely on—the classic four freedoms that make software <em>free</em> in the sense of liberty, not just price. GNU itself is a complete operating system built from these principles, and adding the kernel Linux to it gave us the GNU/Linux systems we use today. When I talk about “my system,” I mean that world: code that respects my freedom and a community that believes users should be in control of their own machines.
+          My heart is firmly with <strong>free software</strong>. The GNU Project exists to give users the freedom to run, study, share, and modify the programs they rely on—the classic four freedoms that make software <em>free</em> in the sense of liberty, not just price. In the usual GNU wording, that means: the freedom to run the program for any purpose, to study and change how it works, to redistribute exact copies, and to distribute modified versions so that the whole community benefits from improvements. Those are not marketing slogans; they are concrete powers that a user either has or does not have.
         </p>
 
         <p class="essay-section">
-          I try to fight for that world in small, practical ways. Whenever I can, I choose programs under the <strong>GNU General Public License (GPL)</strong> or other strong copyleft licenses that guarantee that the code—and the freedoms around it—stay with every user down the line. The GPL exists specifically to protect the right to share and modify software and to make sure those rights cannot be taken away later. When I write or share my own software, I aim for that same model: if it helps people, it should help them in a way that keeps them free.
+          GNU itself is a complete operating system built from these principles, and adding the kernel Linux to it gave us the GNU/Linux systems we use today. When I talk about “my system,” I mean that world: code that respects my freedom and a community that believes users should be in control of their own machines. When I boot into EndeavourOS GNU/Linux, I feel like I am walking into my own house. When I boot Windows, I feel like I am borrowing a key to a locked office.
+        </p>
+
+        <p class="essay-section">
+          I try to fight for that free software world in small, practical ways. Whenever I can, I choose programs under the <strong>GNU General Public License (GPL)</strong> or other strong copyleft licenses that guarantee that the code—and the freedoms around it—stay with every user down the line. The GPL exists specifically to protect the right to share and modify software and to make sure those rights cannot be taken away later. When I write or share my own software, I aim for that same model: if it helps people, it should help them in a way that keeps them free.
         </p>
 
         <p class="essay-section">
           I also care about the layers <em>below</em> the operating system. Projects like <strong>Libreboot</strong>, which replace proprietary BIOS/UEFI firmware with free firmware, are steps toward laptops that are free all the way down to power-on. The same goes for <strong>GNU Linux-libre</strong>, which maintains versions of the kernel Linux with non-free blobs removed so that fully-free GNU/Linux distributions can exist. Even if my current hardware is not completely libre-bootable yet, I still think these efforts matter a lot and I try to support and amplify them where I can.
+        </p>
+
+        <p class="essay-section">
+          In day-to-day life, “free software first” means that my password manager, my note-taking tools, my development environment, my music player, and my browser setup all live in the free software world. That is the default. Proprietary tools only show up when there is no realistic alternative for a specific task, and even then I try to keep them boxed in and temporary.
         </p>
 
         <h2 class="subheading">Why I still touch Windows at all</h2>
@@ -230,10 +242,26 @@
           Using Windows this way changes how I think about it. I am not trying to “embrace” the platform as it is shipped; I am trying to <strong>contain</strong> it. I treat it as a compatibility layer that just happens to be a full proprietary operating system. That means I am careful about accounts, telemetry, and which online services get to see that machine. It means avoiding the trap of logging into everything, syncing everything, and letting the system turn into yet another data-gathering endpoint.
         </p>
 
+        <p class="essay-section">
+          Concretely, this also means that certain categories of data simply never cross the line into Windows. My long-term archives, my main password store, my private notes, and my “this is my life” photos live on the GNU/Linux side. Windows sees only what it needs for that session: a game library, a few documents for school, maybe a temporary copy of something I am testing. When I am done, that data either moves back to GNU/Linux storage or gets deleted.
+        </p>
+
+        <p class="essay-section">
+          I could try to pretend that I live in a world where all institutions respect free software and everything runs smoothly on GNU/Linux. I would love that world. But the one I actually live in has exam portals, proprietary launchers, and locked-down school tools. My answer is not to pretend they do not exist; it is to put them all in one fenced-off place and refuse to let them creep further into the rest of my life.
+        </p>
+
         <h2 class="subheading">What I dislike about Windows&nbsp;11</h2>
 
         <p class="essay-section">
           When I complain about Windows 11, I am not doing it for drama. A lot of the design goes in exactly the direction free software people have been warning about for years: stricter hardware requirements like TPM&nbsp;2.0 and “approved” CPU lists that quietly push people toward new machines, setup flows that try very hard to make you use a Microsoft account, default telemetry that is simply on unless you go hunting through settings, and a desktop full of suggestions, store entries, and “experiences” nobody asked for. That is not neutral design; it is a constant pressure to accept less control over a computer you supposedly own.
+        </p>
+
+        <p class="essay-section">
+          On top of that, the system keeps drifting toward “your computer as a service terminal.” Features are pushed through store-style mechanisms; advertising and recommendations creep into more places; and more parts of the system assume that you are always online, signed in, and happy to let remote services sit between you and your own files. For someone who cares about user freedom, this feels less like an operating system and more like a managed kiosk that happens to live on your desk.
+        </p>
+
+        <p class="essay-section">
+          Some of the newer “smart” features are just the same pattern in a louder form. Screen-scraping assistants, timeline-style activity logs, and features that record what you have on your display so they can search it later all have the same fundamental problem: they are watching you so that they can help you. Maybe some pieces run locally, some encrypted blob sits on disk, some rules exist about when data gets sent out—but the basic power structure is still upside down. I want tools that I command, not tools that observe me and then offer to be helpful.
         </p>
 
         <p class="essay-section">
@@ -248,6 +276,10 @@
 
         <p class="essay-section">
           The second decision is about trust. I do not pretend Windows is privacy-friendly; instead, I surround it with extra layers. On the network side, I use DNS filtering (for example, with services like NextDNS) to cut off obvious telemetry and tracking domains before they even reach the system. Inside the OS, I disable what I can, turn off unnecessary “experiences,” keep a close eye on permissions, and ignore any feature that exists mostly to serve the vendor rather than me. The goal is not perfection—it is to reduce the surface area to something I am willing to accept for this one specific machine.
+        </p>
+
+        <p class="essay-section">
+          Storage is another line I draw on purpose. My GNU/Linux partitions hold my real home directories and long-term data. Windows sees, at most, a separate shared data partition or a few specific folders I decide to expose. I do not mount my entire GNU/Linux home directory inside Windows; I do not hand the proprietary side full read–write access to my whole life. If a file lives only on the Windows partition, I treat it as disposable or backed up elsewhere.
         </p>
 
         <p class="essay-section">
@@ -266,6 +298,10 @@
           Media is one of the simpler parts. I prefer a single, solid free player that can open almost anything, rather than a pile of store-based apps and streaming-driven interfaces. One good player, locally installed, is enough for my use. It keeps things predictable and small: the machine plays what I give it and does not try to nudge me toward stores, libraries, or content I did not ask for.
         </p>
 
+        <p class="essay-section">
+          Finally, there is the “what I simply will not do on Windows” list. I will not generate or store long-term encryption keys there. I will not treat it as my main email or messaging workstation. I will not rely on it for the only copy of something important. When I boot that OS, I know I am stepping into a space where my freedom is limited, so I act accordingly.
+        </p>
+
         <h2 class="subheading">My complicated soft spot for Microsoft</h2>
 
         <p class="essay-section">
@@ -273,7 +309,11 @@
         </p>
 
         <p class="essay-section">
-          I also like some of the tools that have come out of Microsoft’s ecosystem, especially where they are released under free software licenses. Projects like <strong>PowerShell</strong> (as a cross-platform shell under the MIT License), <strong>winget</strong> (Windows Package Manager), and parts of the <strong>.NET</strong> stack show that the company is capable of publishing real, usable free software and not just talking about it. I still read the licenses, and I still keep my distance where I need to, but I do not pretend these projects do not exist or that they are automatically bad just because of the logo on the repository.
+          I also like some of the tools that have come out of Microsoft’s ecosystem, especially where they are released under free software licenses. Projects like <strong>PowerShell</strong> (as a cross-platform shell under the MIT License), <strong>winget</strong> (the Windows Package Manager), and parts of the <strong>.NET</strong> stack show that the company is capable of publishing real, usable free software and not just talking about it. I still read the licenses, and I still keep my distance where I need to, but I do not pretend these projects do not exist or that they are automatically bad just because of the logo on the repository.
+        </p>
+
+        <p class="essay-section">
+          I also enjoy some of the aesthetics: certain fonts, parts of the design language, bits of the terminal experience, and the way some tools feel in daily use. None of that cancels out my criticism of the nonfree parts, but it does mean my feelings are more complicated than “everything here is terrible.” Human beings built these systems. Some of them clearly care about craft and usability, even when the larger platform is heading in a direction I dislike.
         </p>
 
         <p class="essay-section">
@@ -281,17 +321,17 @@
         </p>
 
         <p class="essay-section">
-          If you think in FSF terms, you can picture this as separating feelings from strategy. Emotionally, I can enjoy a slick terminal font or a thoughtful UI detail from a proprietary system. Strategically, I try to put my time, code, and recommendations into software and communities that respect user freedom. Liking some of the art and engineering that comes out of a big nonfree vendor does not require me to stop criticizing the parts that take away control from users.
+          If you think in Free Software Foundation terms, you can picture this as separating feelings from strategy. Emotionally, I can enjoy a slick terminal font or a thoughtful UI detail from a proprietary system. Strategically, I try to put my time, code, and recommendations into software and communities that respect user freedom. Liking some of the art and engineering that comes out of a big nonfree vendor does not require me to stop criticizing the parts that take away control from users.
         </p>
 
         <h2 class="subheading">Why macOS still looks interesting (from a distance)</h2>
 
         <p class="essay-section">
-          I do not run macOS myself, but I still find it interesting for one big reason: under the glossy desktop, it is basically a Unix system. Apple’s Darwin base combines the XNU kernel with a lot of familiar Unix-style components, and macOS has gone through formal Unix certification. In practice, that means a real POSIX-style environment under the hood, a shell, standard tools, and a layout that feels much closer to traditional Unix than most people realize.
+          I do not run macOS myself, but I still find it interesting for one big reason: under the glossy desktop, it is basically a Unix system. Apple’s Darwin base combines the XNU kernel with a lot of familiar Unix-style components, and macOS has gone through formal Unix certification. In practice, that means a real POSIX-style environment under the hood, a shell, standard tools, and a layout that feels much closer to traditional Unix than many people realize.
         </p>
 
         <p class="essay-section">
-          Apple also publishes a significant amount of system code in public source form. If you are curious, you can browse through piles of macOS-related components in the company’s open source distributions and see how some parts of the system are structured. That does <em>not</em> magically make macOS a free operating system, and a lot of what matters most to users is still locked down and proprietary. But it does mean there is a concrete trail for people who want to study how a modern Unix-style desktop OS is assembled.
+          Apple also publishes a significant amount of system code in publicly available source releases. If you are curious, you can browse through Darwin-related components and see how some parts of the system are structured. That does <em>not</em> magically make macOS a free operating system, and a lot of what matters most to users is still locked down and proprietary. But it does mean there is a concrete trail for people who want to study how a modern Unix-style desktop OS is assembled.
         </p>
 
         <p class="essay-section">
@@ -369,7 +409,7 @@
         </details>
 
         <details class="qa-item">
-          <summary><span class="qa-label">Q</span>What is actually wrong with things like Copilot and Recall?</summary>
+          <summary><span class="qa-label">Q</span>What is actually wrong with things like Copilot and Recall-style features?</summary>
           <div class="qa-answer">
             <span class="qa-label">A</span>The problem is not “smart features” by themselves.
             The problem is the model: assistants that can see your screen, read what you are doing, and talk to remote services, all inside a proprietary system you cannot inspect or fix. Some parts run locally, some send data out, and you mostly have to trust that it behaves the way the marketing page says it does. I would rather put my energy into free, open-weight, on-device tools on GNU/Linux than build my workflow around a black box that lives inside a closed platform.
@@ -393,10 +433,26 @@
         </details>
 
         <details class="qa-item">
-          <summary><span class="qa-label">Q</span>What if someone else reads this and actually likes Windows?</summary>
+          <summary><span class="qa-label">Q</span>Why not run Windows in a virtual machine instead of dual-booting?</summary>
           <div class="qa-answer">
-            <span class="qa-label">A</span>Then this page is not an attack on them; it is just me explaining my own boundaries.
-            If Windows works for you and you are happy with it, I am not going to show up in your living room and uninstall it. My focus is on my own machine, my own ethics, and the ways I can quietly nudge things toward more free software in my corner of the world.
+            <span class="qa-label">A</span>I love the idea in theory, but in practice it is messy.
+            Some games and anti-cheat systems behave badly or refuse to run at all in virtual machines, and GPU performance can suffer unless you do complicated passthrough setups. For now, a small, carefully controlled dual-boot install is the least broken way for me to get the specific Windows-only tasks done without dragging that OS into the center of my life.
+          </div>
+        </details>
+
+        <details class="qa-item">
+          <summary><span class="qa-label">Q</span>Is it “wrong” if someone genuinely likes Windows and just uses that?</summary>
+          <div class="qa-answer">
+            <span class="qa-label">A</span>I am not interested in shaming individual users.
+            If Windows works for you and you are happy with it, I am not going to show up in your living room and uninstall it. My arguments are about power, control, and user freedom, not about judging people who are stuck with the defaults their school, job, or budget gives them. If anything, I hope pages like this simply show that other options exist and that you can push back a little, even inside a nonfree world.
+          </div>
+        </details>
+
+        <details class="qa-item">
+          <summary><span class="qa-label">Q</span>How do you decide what data never goes near Windows?</summary>
+          <div class="qa-answer">
+            <span class="qa-label">A</span>Anything that would really hurt to leak or lose stays on the GNU/Linux side.
+            That includes my long-term documents, my main password vault, my private notes, and anything that feels like a “core memory” instead of a throwaway file. Windows is allowed to see copies, exports, test data, and temporary files. The originals live on my GNU/Linux system, under tools I trust more.
           </div>
         </details>
 
@@ -431,18 +487,36 @@
           <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
         </div>
 
-        <footer>
+               <footer>
           <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
-          <p>
-            Permission is granted to copy, distribute and/or modify this document under the terms of the
-            <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
-          </p>
-          <p>
-      AI usage notice: parts of this page (structure and some phrasing) were drafted with light help from a locally-run large-language-model assistant, gpt-oss-120b (https://ollama.com/library/gpt-oss:120b). The ideas, opinions, and final wording choices are mine; the model was only used for trivial editing and a few wording suggestions, not for deciding what to say. I’m generally against using generative AI for essays, but I sometimes lean on a model as a wording/clarity helper when I get stuck.
-
-          </p>
+          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
           <p>&copy; 2025 Ashley.</p>
+
+          <details style="margin-top:1rem;font-size:0.85rem;line-height:1.6;">
+            <summary style="cursor:pointer;list-style:none;">
+              AI usage notice &mdash; <span style="text-decoration:underline;">...show more</span>
+            </summary>
+            <div style="margin-top:0.5rem;opacity:0.9;">
+              <p>
+                Parts of this page &mdash; mostly the overall structure and some bits of phrasing &mdash; were drafted with light help from a locally run large-language-model assistant,
+                <a href="https://ollama.com/library/gpt-oss:120b">gpt-oss-120b</a>. I ran it on my own machine, offline, as a writing helper. The ideas, opinions, and final wording choices are mine; the model was only used as a phrasing/clarity tool when I got stuck, not as something that decides what I think.
+              </p>
+              <p>
+                I am generally <strong>not</strong> a fan of using generative AI for essays, manifestos, political arguments, or anything that pretends to be a human point of view. I care about free software, authorship, and responsibility for what I publish. If my name is on a page, I want it to reflect what I actually believe, not whatever a remote text generator decided to make up. In that sense, I treat this model closer to a very aggressive spell-checker or thesaurus: it can suggest sentences, but it does not get to pick the message.
+              </p>
+              <p>
+                I am also not enthusiastic about AI-generated images, especially when they are used to flood the web with synthetic photos, replace illustrators, or muddy the line between real and fake. For personal projects I prefer photography, screenshots, drawings, or graphics made by actual people (including me), or at least clearly marked as machine-generated. If I ever use generated images at all, I aim to keep them minimal, clearly labelled, and never as a way to pretend something is real when it is not.
+              </p>
+              <p>
+                When I do experiment with language models, I prefer <strong>local, open-weight</strong> systems that I can run under my own control, on my own hardware, instead of cloud services that log prompts forever or try to turn every interaction into a product. That is why, for this page, I used a local model like <a href="https://ollama.com/library/gpt-oss:120b">gpt-oss-120b</a> as a tool I can start, stop, or delete at will, rather than a hosted service wired directly into a commercial platform.
+              </p>
+              <p>
+                In short: this text is hand-written, with a bit of local assistance for smoothing out sentences. No remote AI chose the arguments, and I am not trying to sneak in machine-generated opinions under my name. If you spot something awkward or strangely phrased, that is probably just me being human, not a model glitch &mdash; and I am okay with that.
+              </p>
+            </div>
+          </details>
         </footer>
+
       </section>
     </main>
   </div>
