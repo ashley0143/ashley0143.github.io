@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ashley's Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
+      --card-bg: rgba(255,255,255,0.9);
+      --text: #333;
+      --accent: #ff69b4;
+      --shadow: rgba(0,0,0,0.15);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-gradient);
+      color: var(--text);
+      text-align: center;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+
+    .time {
+      font-size: 6rem; /* BIGGER TIME */
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .date {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .timezone {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      .time {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">Ashley's Time</div>
+  <div class="subtitle">this is the time and date where i live :3</div>
+
+  <div id="time" class="time">--:--:--</div>
+  <div id="date" class="date">Loading date...</div>
+  <div class="timezone">GMT+3</div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const offsetHours = 3;
+      const gmt3 = new Date(utc + offsetHours * 60 * 60 * 1000);
+
+      const hours = String(gmt3.getHours()).padStart(2, "0");
+      const minutes = String(gmt3.getMinutes()).padStart(2, "0");
+      const seconds = String(gmt3.getSeconds()).padStart(2, "0");
+
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      const dayName = days[gmt3.getDay()];
+      const day = gmt3.getDate();
+      const monthName = months[gmt3.getMonth()];
+      const year = gmt3.getFullYear();
+
+      document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
+      document.getElementById("date").textContent = `${dayName}, ${day} ${monthName} ${year}`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+
+</body>
+</html>
