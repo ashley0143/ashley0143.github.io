@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Ashley's Macintosh</title>
+    <title>Ashley</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#55cdfc" />
+    <meta name="theme-color" content="#f7a8b8" />
     <link
       href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
       rel="stylesheet"
@@ -17,1906 +17,369 @@
       :root {
         --trans-blue: #55cdfc;
         --trans-pink: #f7a8b8;
-        --trans-white: #ffffff;
         --ink: #2b2b2b;
-        --glass: rgba(255, 255, 255, 0.68);
-        --glass-strong: rgba(255, 255, 255, 0.8);
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        --win-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-        --menu-glass: linear-gradient(#ffffffc9, #ffffff91);
-        --base-font-family: "Comic Neue", "Lucida Grande", "Geneva", Verdana,
-          sans-serif;
-        --base-font-size: 16px;
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
       }
+
       * {
         box-sizing: border-box;
       }
-      html,
-      body {
-        height: 100%;
-      }
+
       body {
         margin: 0;
-        font-family: var(--base-font-family);
-        font-size: var(--base-font-size);
+        font-family: var(--font-main);
         color: var(--ink);
-        background: repeating-linear-gradient(
+        background:
+          repeating-linear-gradient(
             0deg,
-            rgba(255, 255, 255, 0.12) 0 2px,
-            rgba(255, 255, 255, 0) 2px 8px
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
           ),
-          linear-gradient(
-            135deg,
-            #55cdfc 0%,
-            #f7a8b8 25%,
-            #fff 50%,
-            #f7a8b8 75%,
-            #55cdfc 100%
-          );
-        background-size: auto, 400% 400%;
-        animation: bgshift 18s ease infinite;
-        overflow: hidden;
+          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
       }
-      @keyframes bgshift {
-        0% {
-          background-position: 0 0, 0% 50%;
-        }
-        50% {
-          background-position: 0 0, 100% 50%;
-        }
-        100% {
-          background-position: 0 0, 0% 50%;
-        }
-      }
-      .boot {
+
+      /* Scanline effect overlay */
+      body::before {
+        content: "";
         position: fixed;
-        inset: 0;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 20000;
-        color: #fff;
-        flex-direction: column;
-        gap: 24px;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
       }
-      .boot .apple {
-        width: 64px;
-        height: 64px;
-        opacity: 0.95;
-      }
-      .boot .bar {
-        width: min(480px, 60vw);
-        height: 6px;
-        border-radius: 999px;
-        background: #111;
-        overflow: hidden;
-        border: 1px solid #222;
-      }
-      .boot .bar > span {
-        display: block;
-        height: 100%;
-        width: 0;
-        background: #fff;
-        animation: fill 2.2s ease forwards;
-      }
-      @keyframes fill {
-        to {
-          width: 100%;
-        }
-      }
-      .menubar {
-        position: fixed;
-        inset: 0 0 auto 0;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0 8px;
-        backdrop-filter: saturate(1.4) blur(10px);
-        -webkit-backdrop-filter: saturate(1.4) blur(10px);
-        background: var(--menu-glass);
-        border-bottom: 1px solid #ffffff;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-        z-index: 10000;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 8px;
-        border-radius: 6px;
-        cursor: default;
-        user-select: none;
-        font-weight: 700;
-      }
-      .brand:hover {
-        background: rgba(255, 255, 255, 0.6);
-      }
-      .brand img {
-        height: 14px;
-        width: auto;
-        display: block;
-      }
-      .menu-item {
-        position: relative;
-        padding: 4px 8px;
-        border-radius: 6px;
-        cursor: default;
-        user-select: none;
-      }
-      .menu-item:hover {
-        background: rgba(255, 255, 255, 0.6);
-      }
-      #clock {
-        margin-left: auto;
-      }
-      .menu {
-        position: absolute;
-        top: 28px;
-        left: 0;
-        min-width: 220px;
-        background: #fff;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-        padding: 6px 0;
-        display: none;
-        z-index: 10002;
-      }
-      .menu.open {
-        display: block;
-      }
-      .menu hr {
-        border: 0;
-        height: 1px;
-        background: linear-gradient(to right, #eee, #fafafa);
-        margin: 6px 0;
-      }
-      .menu button {
-        display: block;
-        width: 100%;
-        text-align: left;
-        background: transparent;
-        border: 0;
-        padding: 6px 12px;
-        cursor: pointer;
-        font: inherit;
-      }
-      .menu button:hover {
-        background: linear-gradient(#f7fbff, #eef7ff);
-      }
-      .ribbon {
-        position: fixed;
-        top: 34px;
-        left: 0;
-        right: 0;
-        height: 6px;
-        z-index: 1000;
-        background: linear-gradient(
-          90deg,
-          var(--trans-blue) 20%,
-          var(--trans-pink) 40%,
-          #fff 60%,
-          var(--trans-pink) 80%,
-          var(--trans-blue) 100%
-        );
-        box-shadow: 0 2px 10px rgba(85, 205, 252, 0.45);
-      }
-      .desktop {
-        position: fixed;
-        inset: 34px 0 70px 0;
-        padding: 18px;
-        overflow: hidden;
-      }
-      .mac-window {
-        position: absolute;
-        min-width: 300px;
-        min-height: 160px;
-        width: 420px;
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
         background: var(--glass);
-        border: 1px solid #ffffffaa;
-        border-radius: 14px;
-        box-shadow: var(--win-shadow);
-        overflow: hidden;
-        user-select: none;
-      }
-      .titlebar {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 0 0 4px var(--trans-pink),
+          0 0 20px rgba(0,0,0,0.1);
+        padding: 25px;
         position: relative;
-        height: 28px;
-        background: linear-gradient(#ffffff, #ffffffb8);
-        border-bottom: 1px solid #ffffffaa;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0 10px;
-        cursor: move;
+        z-index: 1;
       }
-      .traffic {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        margin-right: 6px;
+
+      header {
+        text-align: center;
+        border-bottom: 2px dashed var(--trans-blue);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
       }
-      .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        box-shadow: inset 0 0 2px #fff, 0 0 0 1px #00000020;
+
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        background: linear-gradient(to right, #55cdfc, #f7a8b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        letter-spacing: -1px;
       }
-      .dot.close {
-        background: #f7a8b8;
-        border: 1px solid #e98aa2;
-      }
-      .dot.min {
-        background: #ffffff;
-        border: 1px solid #d9d9d9;
-      }
-      .dot.max {
-        background: #55cdfc;
-        border: 1px solid #49bfe6;
-      }
-      .dot:hover {
-        filter: saturate(1.1);
-      }
-      .win-title {
-        font-weight: 700;
-        font-size: 13px;
-        color: #333;
-      }
-      .win-body {
-        padding: 12px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-      .mac-window.active {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
-      }
-      .mac-window.maximized {
-        left: 12px !important;
-        top: 52px !important;
-        width: calc(100vw - 24px) !important;
-        height: calc(100vh - 52px - 90px) !important;
-      }
-      .card {
-        background: var(--glass-strong);
-        border: 1px solid #ffffffb8;
-        border-radius: 12px;
-        padding: 10px;
-        margin: 8px 0;
-        box-shadow: inset 0 0 12px #fff8;
-      }
-      a.btn,
-      .btn {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 700;
-        color: #b91c8c;
-        background: linear-gradient(#fff, #eaf8ff);
+
+      .marquee-container {
+        background: #fff;
         border: 1px solid var(--trans-blue);
-        box-shadow: inset 0 0 6px #fff, 0 2px 6px rgba(0, 0, 0, 0.12);
+        border-radius: 999px;
+        padding: 5px 15px;
+        margin: 15px auto;
+        max-width: 400px;
+        overflow: hidden;
+        white-space: nowrap;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
       }
-      a.btn:hover,
-      .btn:hover {
-        transform: translateY(-1px);
+
+      .marquee-content {
+        display: inline-block;
+        animation: scroll 10s linear infinite;
+        font-weight: bold;
         color: #ff4fa0;
       }
-      .dock {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 10px;
-        height: 60px;
-        padding: 6px 10px;
-        border-radius: 14px;
-        background: linear-gradient(#ffffffcc, #ffffff88);
-        border: 1px solid #ffffffb8;
-        backdrop-filter: blur(10px) saturate(1.2);
-        -webkit-backdrop-filter: blur(10px) saturate(1.2);
-        box-shadow: var(--shadow);
+
+      @keyframes scroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+
+      .profile-section {
         display: flex;
-        align-items: flex-end;
-        gap: 10px;
-        z-index: 10001;
-      }
-      .dock .icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        cursor: pointer;
-        user-select: none;
-        position: relative;
-        background: linear-gradient(var(--trans-blue), var(--trans-pink));
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22),
-          inset 0 0 10px #ffffffaa;
-        border: 1px solid #ffffffaa;
-        transition: transform 0.12s ease;
-      }
-      .dock .icon:hover {
-        transform: translateY(-6px) scale(1.08);
-      }
-      .icon .lamp {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #fff;
-        bottom: -8px;
-        opacity: 0;
-        box-shadow: 0 0 8px #fff;
-      }
-      .icon.active .lamp {
-        opacity: 1;
-      }
-      .linkchip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 12px;
-        margin: 6px 6px 0 0;
-        border-radius: 999px;
-        background: linear-gradient(#fff, #ffeef8);
-        border: 1px solid var(--trans-pink);
-        box-shadow: inset 0 0 6px #fff, 0 2px 6px rgba(0, 0, 0, 0.08);
-      }
-      .linkchip .copy {
-        border: 1px dashed var(--trans-blue);
-        border-radius: 6px;
-        padding: 2px 6px;
-        font-size: 12px;
-        cursor: pointer;
-      }
-      .sparkle {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(
-          circle,
-          #fff 0 40%,
-          var(--trans-blue) 40% 60%,
-          transparent 60%
-        );
-        filter: drop-shadow(0 0 5px var(--trans-pink));
-        animation: pop 0.6s ease-out forwards;
-      }
-      @keyframes pop {
-        0% {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(0.6);
-        }
-        80% {
-          opacity: 1;
-          transform: translate(var(--tx), var(--ty)) scale(1);
-        }
-        100% {
-          opacity: 0;
-          transform: translate(var(--tx), var(--ty)) scale(0.6);
-        }
-      }
-      hr.dots {
-        border: 0;
-        height: 0;
-        margin: 12px 0;
-        border-top: 1px dotted var(--trans-pink);
-        border-bottom: 1px dotted var(--trans-blue);
-      }
-      .small {
-        font-size: 12px;
-        color: #444;
-      }
-      .icon-emoji {
-        filter: drop-shadow(0 1px 0 #fff)
-          drop-shadow(0 0 6px rgba(85, 205, 252, 0.6));
-      }
-      .terminal {
-        background: #111a22cc;
-        color: #d9f0ff;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New",
-          monospace;
-        border-radius: 10px;
-        border: 1px solid #1f3340;
-        padding: 10px;
-        min-height: 160px;
-        box-shadow: inset 0 0 12px rgba(85, 205, 252, 0.15);
-      }
-      .term-output {
-        max-height: 220px;
-        overflow: auto;
-        white-space: pre-wrap;
-        line-height: 1.35;
-      }
-      .term-line {
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        margin-top: 6px;
-      }
-      .term-prompt {
-        color: #55cdfc;
-      }
-      .term-input {
-        background: transparent;
-        color: #fff;
-        border: 0;
-        outline: none;
-        flex: 1;
-        font: inherit;
-      }
-      .safari-chrome {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        margin-bottom: 8px;
-        background: linear-gradient(#ffffff, #f6fbff);
-        border: 1px solid #e8f4ff;
-        border-radius: 10px;
-        padding: 6px;
-      }
-      #safari-url {
-        flex: 1;
-        border: 1px solid #cfe9fb;
-        background: #fff;
-        border-radius: 8px;
-        padding: 6px 8px;
-        font: inherit;
-      }
-      .safari-btn {
-        border: 1px solid #cfe9fb;
-        background: linear-gradient(#fff, #eef8ff);
-        border-radius: 8px;
-        padding: 6px 10px;
-        cursor: pointer;
-        font-weight: 700;
-      }
-      .safari-tabs {
-        display: flex;
-        gap: 6px;
         flex-wrap: wrap;
-        margin: 6px 0 10px;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 30px;
       }
-      .tab {
-        border: 1px solid #cfe0f3;
-        background: linear-gradient(#fff, #f7fbff);
-        border-radius: 8px;
-        padding: 4px 8px;
-        cursor: pointer;
-        font-size: 13px;
+
+      .avatar-box {
+        flex: 0 0 auto;
+        width: 150px;
+        text-align: center;
       }
-      .tab.active {
-        box-shadow: inset 0 0 0 2px #b7d8ff;
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
+        transition: transform 0.2s;
       }
-      .tab .x {
-        margin-left: 6px;
-        opacity: 0.7;
+
+      .avatar:hover {
+        transform: rotate(-3deg) scale(1.05);
       }
-      .safari-frame {
-        width: 100%;
-        height: 60vh;
-        border: 1px solid #e8f4ff;
-        border-radius: 10px;
-        background: #fff;
+
+      .bio-box {
+        flex: 1;
+        background: rgba(255,255,255,0.6);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #fff;
       }
-      .set-row {
+
+      h2 {
+        color: #b91c8c;
+        border-left: 5px solid var(--trans-blue);
+        padding-left: 10px;
+        margin-top: 0;
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .links-grid {
         display: grid;
-        grid-template-columns: 160px 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 10px;
-        align-items: center;
-        margin: 8px 0;
+        margin-bottom: 30px;
       }
-      .set-row input[type="text"],
-      .set-row select,
-      .set-row input[type="number"] {
-        padding: 6px 8px;
-        border-radius: 8px;
-        border: 1px solid #cfe0f3;
-        font: inherit;
+
+      .link-card {
+        display: block;
+        text-decoration: none;
         background: #fff;
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 2px solid var(--trans-blue);
+        color: var(--ink);
+        font-weight: bold;
+        transition: 0.2s;
+        box-shadow: 4px 4px 0 var(--trans-pink);
       }
+
+      .link-card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--trans-pink);
+      }
+
+      .link-card:active {
+        transform: translate(2px, 2px);
+        box-shadow: 0 0 0 var(--trans-pink);
+      }
+
+      .link-card span {
+        float: right;
+      }
+
+      .fake-terminal {
+        background: #111;
+        color: #0f0;
+        font-family: monospace;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        font-size: 0.9em;
+      }
+
+      .fake-terminal span.p { color: #f7a8b8; }
+      .fake-terminal span.b { color: #55cdfc; }
+
+      .projects {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .project-item {
+        background: linear-gradient(to right, #fff, #f0f8ff);
+        border: 1px solid var(--trans-blue);
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .project-item a {
+        color: #b91c8c;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .project-item a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+
+      .small {
+        font-size: 0.8em;
+        opacity: 0.8;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed var(--trans-pink);
+        font-size: 0.85rem;
+      }
+
+      /* Web buttons mimicking 88x31 */
+      .badges {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 6px;
+        font-size: 10px;
+        font-family: "Verdana", sans-serif;
+        color: #fff;
+        background: #333;
+        border: 1px solid #fff;
+        text-decoration: none;
+        image-rendering: pixelated;
+      }
+
     </style>
   </head>
   <body>
-    <div id="boot" class="boot" style="display: none">
-      <svg
-        class="apple"
-        xmlns="http://www.w3.org/2000/svg"
-        xml:space="preserve"
-        width="64"
-        height="64"
-        viewBox="0 0 814 1000"
-        fill="#ffffff"
-      >
-        <path
-          d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"
-        />
-      </svg>
-      <div class="bar"><span></span></div>
-    </div>
 
-    <div class="menubar" id="menubar">
-      <div class="brand" data-menu="apple" title="Apple menu">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-          alt="Apple"
-        />
-        Ashley’s Macintosh
-        <div class="menu" id="menu-apple">
-          <button data-cmd="about-mac">About This Mac</button>
-          <hr />
-          <button data-cmd="new-safari">Safari</button>
-          <button data-cmd="new-links">Links & Opinions</button>
-          <button data-cmd="new-terminal">Terminal</button>
-          <button data-cmd="new-settings">System Settings</button>
-          <button data-cmd="new-privacy">Privacy Policy</button>
-          <hr />
-          <button data-cmd="quit-all">Hide/Minimize All</button>
-        </div>
-      </div>
-
-      <div class="menu-item" data-menu="file">
-        File
-        <div class="menu" id="menu-file">
-          <button data-cmd="new-about">New About Window</button>
-          <button data-cmd="new-projects">New Projects Window</button>
-          <button data-cmd="new-messaging">New Messaging Window</button>
-          <button data-cmd="new-social">New Social Window</button>
-          <button data-cmd="new-safari">New Safari Window</button>
-          <button data-cmd="new-links">New Links & Opinions</button>
-          <button data-cmd="new-terminal">New Terminal</button>
-          <button data-cmd="new-settings">New System Settings</button>
-          <button data-cmd="new-privacy">Privacy Policy</button>
-          <hr />
-          <button data-cmd="close-front">Close Window</button>
-          <button data-cmd="min-front">Minimize Window</button>
-          <button data-cmd="max-front">Zoom (Maximize)</button>
-          <hr />
-          <button data-cmd="quit-all">Quit All (Minimize)</button>
-        </div>
-      </div>
-
-      <div class="menu-item" data-menu="edit">
-        Edit
-        <div class="menu" id="menu-edit">
-          <button data-cmd="copy">Copy</button>
-          <button data-cmd="paste">Paste</button>
-          <button data-cmd="selectall">Select All</button>
-        </div>
-      </div>
-
-      <div class="menu-item" data-menu="view">
-        View
-        <div class="menu" id="menu-view">
-          <button data-cmd="tile">Arrange Windows (Tile)</button>
-          <button data-cmd="center">Center Front Window</button>
-        </div>
-      </div>
-
-      <div class="menu-item" data-menu="help">
-        Help
-        <div class="menu" id="menu-help">
-          <button data-cmd="about-desktop">About This Desktop</button>
-          <button data-cmd="open-website">Open Website (AOTY)</button>
-        </div>
-      </div>
-
-      <div id="clock" class="menu-item" style="margin-left: auto">--:--:--</div>
-    </div>
-    <div class="ribbon"></div>
-
-    <div class="desktop" id="desktop">
-      <section
-        class="mac-window"
-        id="win-about"
-        style="left: 24px; top: 70px; width: 460px"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
+    <div class="container">
+      <header>
+        <h1>Ashley Íris</h1>
+        <div class="marquee-container">
+          <div class="marquee-content">
+            ✨ Welcome to ashleyirispup.cat! ~ nyaa~ ✨
           </div>
-          <div class="win-title">About Me</div>
         </div>
-        <div class="win-body">
-          <div style="text-align: center">
-            <img
-              src="https://codeberg.org/avatars/3c9d8065945ff1630f8070cfc9a2fb5bc8f4124cb21ad1d598168f7b45e7e0dd?size=512"
-              alt="Avatar"
-              lazy
-              style="
-                width: 110px;
-                height: 110px;
-                border-radius: 20px;
-                border: 3px solid var(--trans-blue);
-                box-shadow: 0 0 18px var(--trans-pink), 0 0 18px #fff inset;
-              "
-            />
-          </div>
-          <h3 style="margin: 10px 0 6px">Haai, I'm Ashley Íris Celeste!</h3>
-          <p style="font-size:7px">real/turkish name: Güneş Arjinya Melisoy</p>
+      </header>
+
+      <div class="profile-section">
+        <div class="avatar-box">
+          <img
+            src="https://codeberg.org/avatars/3c9d8065945ff1630f8070cfc9a2fb5bc8f4124cb21ad1d598168f7b45e7e0dd?size=512"
+            alt="Ashley's Avatar"
+            class="avatar"
+          />
+          <br><br>
+          <small><b>ashleyirispup</b></small>
+        </div>
+        <div class="bio-box">
+          <h2>About Me 💗</h2>
           <p>
-            💗 Lover of <b>alt pop</b> &
-            <a href="https://www.albumoftheyear.org/user/ashley0143/"
-              >more music!</a
-            >
+            <b>Haai!</b> I'm <b>Güneş Arjinya Melisoy</b> (Ashley). <br>
+            🌈 Anarco queer & libsoc.<br>
+            🎹 I play piano & love <b>alt pop</b>.<br>
+            ✈️ Geography, Space & Aviation geek.<br>
+            🐧 GNU/Linux & Privacy fighter.
           </p>
-          <p>🌈 anarco queer and libsoc!</p>
-          <p>
-            🎹 Piano player, POC, catgirl (nya~), geography/space & aviation
-            geek, privacy fighter!!, dev
-          </p>
-          <p id="localtime" class="small">⏰ Local time: --:--:--</p>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-projects"
-        style="left: 520px; top: 90px; width: 420px"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Projects</div>
-        </div>
-        <div class="win-body">
-          <div class="card">
-            <h4 style="margin: 0 0 6px">Poke</h4>
-            <a class="btn" href="https://poketube.fun">Visit</a>
-          </div>
-          <div class="card">
-            <h4 style="margin: 0 0 6px">
-              Discord Unspy <span class="small">[not being worked on!]</span>
-            </h4>
-            <a class="btn" href="https://github.com/discord-unspy/discord-unspy"
-              >Visit</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-msg"
-        style="left: 60px; top: 300px; width: 480px"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Messaging</div>
-        </div>
-        <div class="win-body">
-          <div class="linkchip">
-            ✉️ <a href="mailto:iamashley@duck.com">Email</a>
-            <span class="copy" data-copy="iamashley@duck.com">copy</span>
-          </div>
-          <div class="linkchip">
-            💬 <a href="matrix:@iamashley:mozilla.org">Matrix</a>
-            <span class="copy" data-copy="@iamashley:mozilla.org">copy</span>
-          </div>
-          <div class="linkchip">
-            🎮
-            <a href="https://discord.com/users/1456363852794040580">Discord</a>
-            <span class="copy" data-copy="1456363852794040580">copy</span>
-          </div>
-          <div class="linkchip">
-            ♨️ <a href="https://steamcommunity.com/id/iamashley0">Steam</a>
-            <span class="copy" data-copy="iamashley0">copy</span>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-social"
-        style="left: 560px; top: 320px; width: 420px"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Social</div>
-        </div>
-        <div class="win-body">
-          <div class="linkchip">
-            🌐 <a href="https://social.poketube.fun/@ashley">Fediverse</a>
-          </div>
-          <div class="linkchip">
-            🔵
-            <a href="https://bsky.app/profile/ashley0143.bsky.social">Bluesky</a>
-          </div>
-          <div class="linkchip">
-            ⬆️ <a href="https://www.reddit.com/u/Ash_Potter/">Reddit</a>
-          </div>
-          <div class="linkchip">
-            📀
-            <a href="https://www.albumoftheyear.org/user/ashley0143/">AOTY</a>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-links"
-        style="left: 280px; top: 140px; width: 560px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Links & Opinions</div>
-        </div>
-        <div class="win-body">
-          <nav class="main" style="display: flex; flex-wrap: wrap; gap: 8px">
-            <a class="btn" href="https://ashley0143.xyz/opinion">Opinions</a>
-            <a class="btn" href="https://pronouns.cc/@Ashley143">Pronouns</a>
-            <a class="btn" href="https://ashley0143.xyz/gnuandlinux"
-              >GNU/Linux</a
-            >
-            <a class="btn" href="https://ashley0143.xyz/not-open-source"
-              >Not Open Source!</a
-            >
-            <a class="btn" href="https://ashley0143.xyz/frp.html">FRP</a>
-            <a class="btn" href="https://ashley0143.xyz/my-phones.html"
-              >My Phone History</a
-            >
-            <a class="btn" href="https://ashley0143.xyz/1984.pdf">1984 (pdf)</a>
-            <a class="btn" href="https://ashley0143.xyz/clancy.html"
-              >Twenty One Pilots Archives</a
-            >
-            <a class="btn" href="https://poketube.fun" id="projects">Projects</a>
-            <a
-              class="btn"
-              href="https://www.albumoftheyear.org/user/ashley0143/"
-              id="contact"
-              >Contact</a
-            >
-          </nav>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-safari"
-        style="left: 120px; top: 80px; width: 820px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Safari</div>
-        </div>
-        <div class="win-body">
-          <div class="safari-chrome">
-            <button class="safari-btn" id="safari-back" title="Back">◀</button>
-            <button class="safari-btn" id="safari-fwd" title="Forward">▶</button>
-            <input id="safari-url" placeholder="Enter a URL (https://…)" />
-            <button class="safari-btn" id="safari-go">Go</button>
-            <button class="safari-btn" id="safari-newtab">+ Tab</button>
-          </div>
-          <div class="safari-tabs" id="safari-tabs"></div>
-          <iframe
-            id="safari-frame"
-            class="safari-frame"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          ></iframe>
-          <div class="small" style="opacity: 0.75; margin-top: 6px">
-            Some sites block being embedded in an iframe; those will appear
-            blank.
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-term"
-        style="left: 260px; top: 120px; width: 520px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Terminal</div>
-        </div>
-        <div class="win-body">
-          <div class="terminal">
-            <div class="term-output" id="term-out">
-              Type <b>help</b> for commands.
-            </div>
-            <div class="term-line">
-              <span class="term-prompt" id="prompt">ashley@mac ~ %</span
-              ><input class="term-input" id="term-in" autocomplete="off" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-dev"
-        style="left: 260px; top: 120px; width: 420px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Dev</div>
-        </div>
-        <div class="win-body">
-          <div class="linkchip">
-            🐙 <a href="https://github.com/ashley0143">GitHub</a>
-          </div>
-          <div class="linkchip">
-            🏔️ <a href="https://codeberg.org/ashley">Codeberg</a>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-settings"
-        style="left: 200px; top: 90px; width: 560px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">System Settings</div>
-        </div>
-        <div class="win-body">
-          <div class="card">
-            <h4 style="margin: 0 0 6px">Appearance</h4>
-            <div class="set-row">
-              <label for="set-font">Font family</label>
-              <select id="set-font">
-                <option
-                  value='"Comic Neue","Lucida Grande","Geneva",Verdana,sans-serif'
-                >
-                  Comic Neue (default)
-                </option>
-                <option
-                  value='-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif'
-                >
-                  System UI
-                </option>
-                <option
-                  value='"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-                >
-                  Inter (if installed)
-                </option>
-                <option value='Georgia, "Times New Roman", Times, serif'>
-                  Serif
-                </option>
-                <option
-                  value='Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
-                >
-                  Monospace
-                </option>
-              </select>
-            </div>
-            <div class="set-row">
-              <label for="set-size">Base font size</label>
-              <input
-                id="set-size"
-                type="number"
-                min="12"
-                max="22"
-                step="1"
-                value="16"
-              />
-              px
-            </div>
-          </div>
-          <div class="card">
-            <h4 style="margin: 0 0 6px">Safari</h4>
-            <div class="set-row">
-              <label for="set-home">Home page</label>
-              <input id="set-home" type="text" placeholder="https://example.com" />
-            </div>
-            <div class="set-row">
-              <button class="btn" id="btn-home-now">Set Home to Current Tab</button>
-              <button class="btn" id="btn-open-home">Open Home</button>
-            </div>
-          </div>
-          <div class="card">
-            <h4 style="margin: 0 0 6px">Privacy</h4>
-            <div class="set-row">
-              <button class="btn" id="btn-privacy">View Privacy Policy</button>
-              <button class="btn" id="btn-clear">Clear Saved Data</button>
-              <button class="btn" id="btn-reset-boot">Re-run Boot Screen</button>
-            </div>
-            <p class="small">
-              This desktop stores settings, window layout, and Safari session
-              locally using your browser’s storage. Nothing is sent anywhere.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-privacy"
-        style="left: 220px; top: 120px; width: 560px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">Privacy Policy</div>
-        </div>
-        <div class="win-body">
-          <div class="card">
-            <p>
-              <b>What’s stored:</b> your window positions/sizes & which are
-              open, Safari tabs and history, font & size preferences, and home
-              page. All of this is stored locally in your browser via
-              <code>localStorage</code>.
-            </p>
-            <p>
-              <b>What’s not stored:</b> I don’t collect or transmit analytics,
-              IPs, or identifiers. External sites you open in “Safari” are
-              third-party and follow <i>their</i> own policies.
-            </p>
-            <p>
-              <b>How to control:</b> Use System Settings → Privacy to clear
-              saved data or re-run the boot. Your browser may evict storage if
-              space is tight.
-            </p>
-            <p class="small">
-              Powered by Web Storage; third-party pages in iframes may have
-              their own storage/cookie limitations.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mac-window"
-        id="win-aboutmac"
-        style="left: 140px; top: 70px; width: 520px; display: none"
-      >
-        <div class="titlebar" data-role="titlebar">
-          <div class="traffic">
-            <div class="dot close" data-action="close"></div>
-            <div class="dot min" data-action="minimize"></div>
-            <div class="dot max" data-action="maximize"></div>
-          </div>
-          <div class="win-title">About This Mac</div>
-        </div>
-        <div class="win-body">
-          <div style="display: flex; gap: 14px; align-items: center">
-            <div
-              style="
-                width: 72px;
-                height: 72px;
-                border-radius: 16px;
-                background: linear-gradient(135deg, #55cdfc, #f7a8b8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-                border: 1px solid #ffffffb8;
-              "
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-                alt="Apple"
-                width="36"
-                height="36"
-              />
-            </div>
-            <div>
-              <div style="font-size: 18px; font-weight: 700">
-                Ashley’s Macintosh
-              </div>
-              <div class="small">macOS Monterey</div>
-              <div class="small">Version 12.7.6</div>
-            </div>
-          </div>
-          <hr class="dots" />
-          <div
-            style="
-              display: grid;
-              grid-template-columns: 160px 1fr;
-              row-gap: 6px;
-              column-gap: 10px;
-            "
-          >
-            <div class="small">Model Name</div>
-            <div>MacBook Pro (Retina, 13-inch, Early 2015)</div>
-            <div class="small">Processor</div>
-            <div>2.7 GHz Dual-Core Intel Core i5</div>
-            <div class="small">Cores</div>
-            <div>2 cores (4 threads)</div>
-            <div class="small">Memory</div>
-            <div>8 GB 1867 MHz LPDDR3</div>
-            <div class="small">Graphics</div>
-            <div>Intel Iris Graphics 6100 1536 MB</div>
-            <div class="small">Display</div>
-            <div>13.3″ 2560×1600 Retina</div>
-            <div class="small">Storage</div>
-            <div>256 GB PCIe SSD</div>
-            <div class="small">Serial Number</div>
-            <div>tra-143-nyaa</div>
-            <div class="small">Boot ROM</div>
-            <div>MBP121.0173.B00</div>
-          </div>
-          <hr class="dots" />
-          <div style="display: flex; gap: 8px; flex-wrap: wrap">
-            <button class="btn" onclick="DesktopWM.openWindow('win-settings')">
-              System Settings…
-            </button>
-            <button class="btn" onclick="DesktopWM.openWindow('win-term')">
-              Open Terminal
-            </button>
-          </div>
-          <p class="small" style="margin-top: 10px">
-            © 2025 Ashley Íris. Made with 💗, 💙, and 🤍.
+          <p class="small">
+            <i>(she/her) • Turkish • Catgirl (nya~)</i>
           </p>
         </div>
-      </section>
+      </div>
+
+      <h2>Contact & Socials 🌐</h2>
+      <div class="links-grid">
+        <a href="mailto:ashley@ggtylerr.dev" class="link-card">
+          ✉️ Email
+          <span>➜</span>
+        </a>
+        <a href="https://social.poketube.fun/@ashley" class="link-card">
+          🐘 Fediverse
+          <span>➜</span>
+        </a>
+        <a href="https://bsky.app/profile/ashley0143.bsky.social" class="link-card">
+          ☁️ Bluesky
+          <span>➜</span>
+        </a>
+        <a href="matrix:@iamashley:mozilla.org" class="link-card">
+          💬 Matrix
+          <span>➜</span>
+        </a>
+        <a href="https://discord.com/users/1456363852794040580" class="link-card">
+          🎮 Discord
+          <span>➜</span>
+        </a>
+        <a href="https://www.albumoftheyear.org/user/ashley0143/" class="link-card">
+          💿 AOTY
+          <span>➜</span>
+        </a>
+      </div>
+
+<h2>Sys Info 🖥️</h2>
+      <div class="fake-terminal">
+        <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch</div>
+        <br>
+        <div>OS: <span class="p">Windows 11 Pro (25H2) x86_64</span></div>
+        <div>Host: <span class="p">Victus by HP Gaming Laptop 15</span></div>
+        <div>Kernel: <span class="p">WIN32_NT 10.0.26220</span></div>
+        <div>Uptime: <span class="p">7 hours, 49 mins</span></div>
+        <div>Packages: <span class="p">26 (scoop)</span></div>
+        <div>Shell: <span class="p">hyfetch</span></div>
+        <div>Display: <span class="p">1920x1080 @ 144 Hz</span></div>
+        <div>WM Theme: <span class="p">Custom - #FFABCC</span></div>
+        <div>CPU: <span class="p">AMD Ryzen 5 8645HS (12) @ 5.0GHz</span></div>
+        <div>GPU: <span class="p">NVIDIA GeForce RTX 3050 6GB</span></div>
+        <div>Memory: <span class="p">16GB</span></div>
+        <br>
+        <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span class="blink">_</span></div>
+      </div>
+      
+      <h2>Projects 🛠️</h2>
+      <div class="projects">
+        <div class="project-item">
+          <strong>Poke</strong><br>
+          <a href="https://poketube.fun">poketube.fun</a> — A video platform project.
+        </div>
+        <div class="project-item">
+          <strong>Discord Unspy</strong> <span class="small">[Archived]</span><br>
+          <a href="https://github.com/discord-unspy/discord-unspy">View Source</a> — Better privacy for Discord.
+        </div>
+      </div>
+
+      <h2>Links & Opinions 🔗</h2>
+      <ul style="line-height: 1.8;">
+        <li><a href="https://ashleyirispup.cat/opinion" style="color:#b91c8c">My Opinions</a></li>
+        <li><a href="https://ashleyirispup.cat/gnuandlinux" style="color:#b91c8c">GNU/Linux Rants</a></li>
+        <li><a href="https://ashleyirispup.cat/not-open-source" style="color:#b91c8c">Not Open Source!</a></li>
+        <li><a href="https://pronouns.cc/@Ashley143" style="color:#b91c8c">Pronouns.cc</a></li>
+      </ul>
+
+      <footer>
+        <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
+        <p class="small">Hosted at ashleyirispup.cat</p>
+
+ 
+      </footer>
     </div>
 
-    <div class="dock" id="dock">
-      <div class="icon icon-emoji" data-open="win-about" title="About">
-        💖
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-projects" title="Projects">
-        🧰
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-msg" title="Messaging">
-        💬
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-social" title="Social">
-        🌐
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-links" title="Links & Opinions">
-        🔗
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-safari" title="Safari">
-        🧭
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-term" title="Terminal">
-        ⌨️
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-settings" title="Settings">
-        ⚙️
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-privacy" title="Privacy">
-        🔒
-        <div class="lamp"></div>
-      </div>
-      <div class="icon icon-emoji" data-open="win-dev" title="Dev">
-        🛠️
-        <div class="lamp"></div>
-      </div>
-    </div>
-
-    <script>
-      const SKEY = {
-        BOOTED_ONCE: "bootedOnce",
-        BOOTED_AT: "bootedAt",
-        WM_STATE: "wm_state_v1",
-        SAFARI: "safari_state_v2",
-        SETTINGS: "settings_v1",
-      };
-      function saveJSON(k, o) {
-        try {
-          localStorage.setItem(k, JSON.stringify(o));
-        } catch {}
-      }
-      function loadJSON(k, d) {
-        try {
-          const v = localStorage.getItem(k);
-          return v ? JSON.parse(v) : d;
-        } catch {
-          return d;
-        }
-      }
-      (function () {
-        if (!localStorage.getItem(SKEY.BOOTED_ONCE)) {
-          const boot = document.getElementById("boot");
-          boot.style.display = "flex";
-          setTimeout(() => {
-            boot.style.opacity = "0";
-            boot.style.transition = "opacity .5s";
-          }, 2100);
-          setTimeout(() => {
-            boot.remove();
-          }, 2650);
-          localStorage.setItem(SKEY.BOOTED_ONCE, "1");
-          localStorage.setItem(SKEY.BOOTED_AT, Date.now().toString());
-        } else {
-          if (!localStorage.getItem(SKEY.BOOTED_AT))
-            localStorage.setItem(SKEY.BOOTED_AT, Date.now().toString());
-        }
-      })();
-      (function () {
-        const s = loadJSON(SKEY.SETTINGS, {
-          font: getComputedStyle(document.body).fontFamily,
-          size: 16,
-          home: "https://ashley0143.xyz",
-        });
-        document.documentElement.style.setProperty(
-          "--base-font-family",
-          s.font ||
-            '"Comic Neue","Lucida Grande","Geneva",Verdana,sans-serif'
-        );
-        document.documentElement.style.setProperty(
-          "--base-font-size",
-          (s.size || 16) + "px"
-        );
-      })();
-      function updateClocks() {
-        const mb = document.getElementById("clock");
-        const lt = document.getElementById("localtime");
-        const now = new Date();
-        try {
-          const ist = now.toLocaleTimeString("en-GB", {
-            hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            timeZone: "Europe/Istanbul",
-          });
-          if (lt) lt.textContent = "⏰ Local time: " + ist;
-        } catch {}
-        const sys = now.toLocaleTimeString("en-GB", {
-          hour12: false,
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-        if (mb) mb.textContent = sys;
-      }
-      setInterval(updateClocks, 1000);
-      updateClocks();
-      (function () {
-        const desktop = document.getElementById("desktop");
-        const dock = document.getElementById("dock");
-        let dragInfo = null,
-          z = 10;
-        function focus(win) {
-          document
-            .querySelectorAll(".mac-window")
-            .forEach((w) => w.classList.remove("active"));
-          if (win) {
-            win.classList.add("active");
-            win.style.zIndex = ++z;
-            saveLayout();
-          }
-        }
-        function openWindow(id) {
-          const w = document.getElementById(id);
-          if (!w) return;
-          w.style.display = "block";
-          w.classList.remove("maximized");
-          focus(w);
-          dock
-            .querySelectorAll(".icon")
-            .forEach((i) => {
-              if (i.dataset.open === id) i.classList.add("active");
-            });
-          saveLayout();
-        }
-        function closeWindow(win) {
-          win.style.display = "none";
-          dock
-            .querySelectorAll(".icon")
-            .forEach((i) => {
-              if (document.getElementById(i.dataset.open) === win)
-                i.classList.remove("active");
-            });
-          saveLayout();
-        }
-        function minimizeWindow(win) {
-          win.animate(
-            [
-              { transform: "translateY(0)", opacity: 1 },
-              { transform: "translateY(20px)", opacity: 0.0 },
-            ],
-            { duration: 150 }
-          );
-          setTimeout(() => {
-            win.style.display = "none";
-            saveLayout();
-          }, 140);
-          dock
-            .querySelectorAll(".icon")
-            .forEach((i) => {
-              if (document.getElementById(i.dataset.open) === win)
-                i.classList.add("active");
-            });
-        }
-        function toggleMaximize(win) {
-          if (win.classList.contains("maximized"))
-            win.classList.remove("maximized");
-          else win.classList.add("maximized");
-          focus(win);
-          saveLayout();
-        }
-        function frontWindow() {
-          let top = null,
-            topZ = -1;
-          document.querySelectorAll(".mac-window").forEach((w) => {
-            const zi = parseInt(w.style.zIndex || 0, 10);
-            if (w.style.display !== "none" && zi >= topZ) {
-              top = w;
-              topZ = zi;
-            }
-          });
-          return top;
-        }
-        function tileWindows() {
-          const wins = [...document.querySelectorAll(".mac-window")].filter(
-            (w) => getComputedStyle(w).display !== "none"
-          );
-          const area = desktop.getBoundingClientRect();
-          const cols = Math.ceil(Math.sqrt(wins.length)) || 1;
-          const rows = Math.ceil(wins.length / cols) || 1;
-          const pad = 10,
-            wW = (area.width - pad * (cols + 1)) / cols,
-            wH = (area.height - pad * (rows + 1)) / rows;
-          wins.forEach((w, i) => {
-            const c = i % cols,
-              r = Math.floor(i / cols);
-            w.classList.remove("maximized");
-            w.style.left = pad + c * (wW + pad) + "px";
-            w.style.top = pad + r * (wH + pad) + 18 + "px";
-            w.style.width = Math.max(320, wW) + "px";
-            w.style.height = Math.max(160, wH) + "px";
-            focus(w);
-          });
-          saveLayout();
-        }
-        function centerFront() {
-          const w = frontWindow();
-          if (!w) return;
-          const area = desktop.getBoundingClientRect(),
-            rect = w.getBoundingClientRect();
-          const x = (area.width - rect.width) / 2,
-            y = (area.height - rect.height) / 2;
-          w.style.left = Math.max(6, x) + "px";
-          w.style.top = Math.max(6, y) + "px";
-          focus(w);
-          saveLayout();
-        }
-        function saveLayout() {
-          const data = {};
-          document.querySelectorAll(".mac-window").forEach((w) => {
-            data[w.id] = {
-              left: w.style.left,
-              top: w.style.top,
-              width: w.style.width,
-              height: w.style.height,
-              shown: getComputedStyle(w).display !== "none",
-              z: w.style.zIndex || "10",
-              maximized: w.classList.contains("maximized"),
-            };
-          });
-          saveJSON(SKEY.WM_STATE, data);
-        }
-        function restoreLayout() {
-          const data = loadJSON(SKEY.WM_STATE, null);
-          if (!data) {
-            ["win-about", "win-projects", "win-msg", "win-social"].forEach(
-              openWindow
-            );
-            return;
-          }
-          Object.entries(data).forEach(([id, s]) => {
-            const w = document.getElementById(id);
-            if (!w) return;
-            if (s.left) w.style.left = s.left;
-            if (s.top) w.style.top = s.top;
-            if (s.width) w.style.width = s.width;
-            if (s.height) w.style.height = s.height;
-            if (s.maximized) w.classList.add("maximized");
-            else w.classList.remove("maximized");
-            if (s.shown) openWindow(id);
-            else w.style.display = "none";
-            w.style.zIndex = s.z || "10";
-          });
-        }
-        window.DesktopWM = {
-          openWindow,
-          closeWindow,
-          minimizeWindow,
-          toggleMaximize,
-          frontWindow,
-          tileWindows,
-          centerFront,
-        };
-        desktop.addEventListener("mousedown", (e) => {
-          const tb = e.target.closest(".titlebar");
-          const win = e.target.closest(".mac-window");
-          if (tb && win) {
-            focus(win);
-            const rect = win.getBoundingClientRect();
-            dragInfo = { win, ox: e.clientX - rect.left, oy: e.clientY - rect.top };
-          }
-        });
-        window.addEventListener("mousemove", (e) => {
-          if (!dragInfo) return;
-          if (dragInfo.win.classList.contains("maximized")) return;
-          const bounds = desktop.getBoundingClientRect();
-          let x = e.clientX - bounds.left - dragInfo.ox;
-          let y = e.clientY - bounds.top - dragInfo.oy;
-          x = Math.max(6, Math.min(x, bounds.width - 120));
-          y = Math.max(6, Math.min(y, bounds.height - 80));
-          dragInfo.win.style.left = x + "px";
-          dragInfo.win.style.top = y + "px";
-        });
-        window.addEventListener("mouseup", () => {
-          if (dragInfo) {
-            saveLayout();
-          }
-          dragInfo = null;
-        });
-        desktop.addEventListener("click", (e) => {
-          const btn = e.target.closest(".dot");
-          if (!btn) return;
-          const win = e.target.closest(".mac-window");
-          if (!win) return;
-          const act = btn.dataset.action;
-          if (act === "close") closeWindow(win);
-          if (act === "minimize") minimizeWindow(win);
-          if (act === "maximize") toggleMaximize(win);
-        });
-        desktop.addEventListener("mousedown", (e) => {
-          const win = e.target.closest(".mac-window");
-          if (win) focus(win);
-        });
-        dock.addEventListener("click", (e) => {
-          const icon = e.target.closest(".icon");
-          if (!icon) return;
-          const id = icon.dataset.open;
-          const win = document.getElementById(id);
-          if (
-            win.style.display === "none" ||
-            getComputedStyle(win).display === "none"
-          ) {
-            openWindow(id);
-          } else {
-            minimizeWindow(win);
-          }
-          icon.animate(
-            [
-              { transform: "translateY(0)" },
-              { transform: "translateY(-10px)" },
-              { transform: "translateY(0)" },
-            ],
-            { duration: 250 }
-          );
-        });
-        restoreLayout();
-      })();
-      (function () {
-        const bar = document.getElementById("menubar");
-        function closeAllMenus() {
-          document
-            .querySelectorAll(".menu")
-            .forEach((m) => m.classList.remove("open"));
-        }
-        bar.addEventListener("click", (e) => {
-          const item = e.target.closest("[data-menu]");
-          if (!item) return;
-          const m = item.querySelector(".menu");
-          if (!m) return;
-          const open = m.classList.contains("open");
-          closeAllMenus();
-          if (!open) m.classList.add("open");
-          e.stopPropagation();
-        });
-        document.addEventListener("click", closeAllMenus);
-        const cmdMap = {
-          "about-mac": () => DesktopWM.openWindow("win-aboutmac"),
-          "new-about": () => DesktopWM.openWindow("win-about"),
-          "new-projects": () => DesktopWM.openWindow("win-projects"),
-          "new-messaging": () => DesktopWM.openWindow("win-msg"),
-          "new-social": () => DesktopWM.openWindow("win-social"),
-          "new-safari": () => DesktopWM.openWindow("win-safari"),
-          "new-links": () => DesktopWM.openWindow("win-links"),
-          "new-terminal": () => DesktopWM.openWindow("win-term"),
-          "new-settings": () => DesktopWM.openWindow("win-settings"),
-          "new-privacy": () => DesktopWM.openWindow("win-privacy"),
-          "close-front": () => {
-            const w = DesktopWM.frontWindow();
-            if (w) DesktopWM.closeWindow(w);
-          },
-          "min-front": () => {
-            const w = DesktopWM.frontWindow();
-            if (w) DesktopWM.minimizeWindow(w);
-          },
-          "max-front": () => {
-            const w = DesktopWM.frontWindow();
-            if (w) DesktopWM.toggleMaximize(w);
-          },
-          "quit-all": () =>
-            document
-              .querySelectorAll(".mac-window")
-              .forEach((w) => DesktopWM.minimizeWindow(w)),
-          copy: () => document.execCommand && document.execCommand("copy"),
-          paste: () => document.execCommand && document.execCommand("paste"),
-          selectall: () =>
-            document.execCommand && document.execCommand("selectAll"),
-          tile: () => DesktopWM.tileWindows(),
-          center: () => DesktopWM.centerFront(),
-          "about-desktop": () => DesktopWM.openWindow("win-about"),
-          "open-website": () =>
-            openInSafari("https://www.albumoftheyear.org/user/ashley0143/"),
-        };
-        document.querySelectorAll(".menu button").forEach((b) => {
-          b.addEventListener("click", (e) => {
-            const c = b.dataset.cmd;
-            if (cmdMap[c]) cmdMap[c]();
-            closeAllMenus();
-            e.stopPropagation();
-          });
-        });
-      })();
-      (function () {
-        function sparkleAt(el, x, y) {
-          const s = document.createElement("span");
-          s.className = "sparkle";
-          const dx = Math.random() * 40 - 20,
-            dy = Math.random() * 40 - 20;
-          s.style.left = x + "px";
-          s.style.top = y + "px";
-          s.style.setProperty("--tx", dx + "px");
-          s.style.setProperty("--ty", dy + "px");
-          el.appendChild(s);
-          setTimeout(() => s.remove(), 650);
-        }
-        document.body.addEventListener("mousemove", (e) => {
-          const chip = e.target.closest(".linkchip");
-          if (!chip) return;
-          if (Math.random() < 0.07) {
-            const r = chip.getBoundingClientRect();
-            sparkleAt(chip, e.clientX - r.left, e.clientY - r.top);
-          }
-        });
-        document.querySelectorAll(".copy").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const val = btn.getAttribute("data-copy") || "";
-            if (!val) return;
-            navigator.clipboard.writeText(val).then(() => {
-              const p = btn.parentElement,
-                r = p.getBoundingClientRect();
-              for (let i = 0; i < 8; i++) {
-                const rx = r.width / 2 + Math.random() * 40 - 20;
-                const ry = r.height / 2 + Math.random() * 16 - 8;
-                sparkleAt(p, rx, ry);
-              }
-            });
-          });
-        });
-      })();
-      (function () {
-        const input = document.getElementById("term-in");
-        const out = document.getElementById("term-out");
-        const host = "Ashleys-MacBook-Pro";
-        const user = "ashley";
-        const bootAt = parseInt(
-          localStorage.getItem(SKEY.BOOTED_AT) || Date.now(),
-          10
-        );
-        function println(s) {
-          out.textContent += (out.textContent ? "\n" : "") + s;
-          out.scrollTop = out.scrollHeight;
-        }
-        function fmtUptime(ms) {
-          const secs = Math.floor(ms / 1000);
-          const days = Math.floor(secs / 86400);
-          const hrs = Math.floor((secs % 86400) / 3600);
-          const mins = Math.floor((secs % 3600) / 60);
-          const parts = [];
-          if (days) parts.push(days + " day" + (days > 1 ? "s" : ""));
-          if (hrs) parts.push(hrs + " hour" + (hrs > 1 ? "s" : ""));
-          if (mins || (!days && !hrs)) parts.push(mins + " min");
-          return parts.join(", ");
-        }
-        function loads() {
-          return (
-            (Math.random() * 1.5 + 0.1).toFixed(2) +
-            " " +
-            (Math.random() * 1.5 + 0.1).toFixed(2) +
-            " " +
-            (Math.random() * 1.5 + 0.1).toFixed(2)
-          );
-        }
-        const unameBasic = `Darwin ${host} 21.6.0`;
-        const unameFull = `Darwin ${host} 21.6.0 Darwin Kernel Version 21.6.0; root:xnu-8020.240.18~1/RELEASE_X86_64 x86_64`;
-        function handle(cmdline) {
-          const line = cmdline.trim();
-          const [cmd, ...argv] = line.split(/\s+/);
-          const args = argv.join(" ");
-          switch ((cmd || "").toLowerCase()) {
-            case "":
-              break;
-            case "help":
-              println(
-                `Available commands:
-  help, clear, echo …
-  whoami, pwd, ls
-  about, mac, settings, privacy
-  safari <url>
-  uname [-a]
-  uptime
-  reboot`
-              );
-              break;
-            case "about":
-              DesktopWM.openWindow("win-about");
-              println("opened About");
-              break;
-            case "mac":
-              DesktopWM.openWindow("win-aboutmac");
-              println("opened About This Mac");
-              break;
-            case "settings":
-              DesktopWM.openWindow("win-settings");
-              println("opened System Settings");
-              break;
-            case "privacy":
-              DesktopWM.openWindow("win-privacy");
-              println("opened Privacy Policy");
-              break;
-            case "safari":
-              if (args) {
-                openInSafari(args);
-                println("Safari → " + args);
-              } else println("usage: safari https://example.com");
-              break;
-            case "whoami":
-              println(user);
-              break;
-            case "pwd":
-              println("/Users/" + user);
-              break;
-            case "ls":
-              println("Desktop  Documents  Downloads  Music  Pictures  Public");
-              break;
-            case "echo":
-              println(argv.join(" "));
-              break;
-            case "clear":
-              out.textContent = "";
-              break;
-            case "uname":
-              if (argv[0] === "-a") println(unameFull);
-              else println(unameBasic);
-              break;
-            case "uptime": {
-              const now = Date.now();
-              const up = fmtUptime(now - bootAt);
-              const t = new Date().toTimeString().slice(0, 8);
-              println(`${t} up ${up}, 1 user, load averages: ${loads()}`);
-              break;
-            }
-          case "gaster": {
-             try {
-                localStorage.removeItem(SKEY.WM_STATE);
-                localStorage.removeItem(SKEY.BOOTED_ONCE);
-                localStorage.removeItem(SKEY.BOOTED_AT);
-              } catch {}
-              setTimeout(() => {
-                location.reload();
-              }, 400);
-            }
-            case "reboot":
-              println("Rebooting…");
-              try {
-                localStorage.removeItem(SKEY.WM_STATE);
-                localStorage.removeItem(SKEY.BOOTED_ONCE);
-                localStorage.removeItem(SKEY.BOOTED_AT);
-              } catch {}
-              setTimeout(() => {
-                location.reload();
-              }, 400);
-              break;
-            default:
-              println(`${cmd}: command not found`);
-          }
-        }
-        if (input) {
-          input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-              const v = input.value;
-              println("ashley@mac ~ % " + v);
-              handle(v);
-              input.value = "";
-            }
-          });
-        }
-      })();
-      document.getElementById("desktop").addEventListener("mousedown", (e) => {
-        const w = e.target.closest("#win-term");
-        if (w && getComputedStyle(w).display !== "none") {
-          const i = document.getElementById("term-in");
-          setTimeout(() => i && i.focus(), 0);
-        }
-      });
-      (function () {
-        const $ = (s) => document.querySelector(s);
-        const setFont = $("#set-font");
-        const setSize = $("#set-size");
-        const setHome = $("#set-home");
-        const btnHomeNow = $("#btn-home-now");
-        const btnOpenHome = $("#btn-open-home");
-        const btnPrivacy = $("#btn-privacy");
-        const btnClear = $("#btn-clear");
-        const btnBoot = $("#btn-reset-boot");
-        function loadSettings() {
-          const s = loadJSON(SKEY.SETTINGS, {
-            font: getComputedStyle(document.body).fontFamily,
-            size: 16,
-            home: "https://ashley0143.xyz",
-          });
-          setFont.value = s.font || setFont.value;
-          setSize.value = s.size || 16;
-          setHome.value = s.home || "https://ashley0143.xyz";
-        }
-        function applySettings() {
-          const s = {
-            font: setFont.value,
-            size: parseInt(setSize.value, 10) || 16,
-            home: setHome.value || "https://ashley0143.xyz",
-          };
-          saveJSON(SKEY.SETTINGS, s);
-          document.documentElement.style.setProperty("--base-font-family", s.font);
-          document.documentElement.style.setProperty(
-            "--base-font-size",
-            s.size + "px"
-          );
-        }
-        setFont.addEventListener("change", applySettings);
-        setSize.addEventListener("change", applySettings);
-        setHome.addEventListener("change", applySettings);
-        btnHomeNow.addEventListener("click", () => {
-          const st = loadJSON(SKEY.SAFARI, null);
-          if (st && st.tabs && st.tabs.length) {
-            const url = st.tabs[st.active]?.url || st.tabs[0].url;
-            setHome.value = url;
-            applySettings();
-          }
-        });
-        btnOpenHome.addEventListener("click", () =>
-          openInSafari(loadJSON(SKEY.SETTINGS, {}).home || "https://ashley0143.xyz")
-        );
-        btnPrivacy.addEventListener("click", () =>
-          DesktopWM.openWindow("win-privacy")
-        );
-        btnClear.addEventListener("click", () => {
-          if (confirm("Clear saved layout, tabs, and settings?")) {
-            localStorage.removeItem(SKEY.WM_STATE);
-            localStorage.removeItem(SKEY.SAFARI);
-            localStorage.removeItem(SKEY.SETTINGS);
-            alert("Cleared! Reload the page to see defaults.");
-          }
-        });
-        btnBoot.addEventListener("click", () => {
-          localStorage.removeItem(SKEY.BOOTED_ONCE);
-          alert("Boot screen will show next reload.");
-        });
-        const settingsWin = document.getElementById("win-settings");
-        const observer = new MutationObserver(() => {
-          if (getComputedStyle(settingsWin).display !== "none") loadSettings();
-        });
-        observer.observe(settingsWin, {
-          attributes: true,
-          attributeFilter: ["style", "class"],
-        });
-      })();
-      (function () {
-        const urlInput = document.getElementById("safari-url");
-        const frame = document.getElementById("safari-frame");
-        const backBtn = document.getElementById("safari-back");
-        const fwdBtn = document.getElementById("safari-fwd");
-        const tabsEl = document.getElementById("safari-tabs");
-        const newTabBtn = document.getElementById("safari-newtab");
-        let state = loadJSON(SKEY.SAFARI, null);
-        const defaults = loadJSON(SKEY.SETTINGS, { home: "https://ashley0143.xyz" });
-        if (!state) {
-          state = {
-            tabs: [
-              {
-                url: defaults.home || "https://ashley0143.xyz",
-                title: "Home",
-                history: [],
-                index: -1,
-              },
-            ],
-            active: 0,
-          };
-          save();
-        }
-        function normalize(u) {
-          try {
-            if (!/^https?:\/\//i.test(u))
-              u = (u.startsWith("/") ? location.origin : "https://") + u;
-            return new URL(u, location.href).href;
-          } catch {
-            return null;
-          }
-        }
-        function save() {
-          saveJSON(SKEY.SAFARI, state);
-          updateNav();
-          renderTabs();
-        }
-        function current() {
-          return state.tabs[state.active];
-        }
-        function load(url, push = true) {
-          const n = normalize(url);
-          if (!n) return;
-          const t = current();
-          frame.src = n;
-          urlInput.value = n;
-          if (push) {
-            if (!t.history) t.history = [];
-            if (t.index >= 0 && t.index < t.history.length - 1) {
-              t.history = t.history.slice(0, t.index + 1);
-            }
-            t.history.push(n);
-            t.index = t.history.length - 1;
-          }
-          t.url = n;
-          t.title = safeTabTitle(n);
-          save();
-          DesktopWM.openWindow("win-safari");
-        }
-        function updateNav() {
-          const t = current();
-          const at = t.index || 0;
-          backBtn.disabled = !(t.history && at > 0);
-          fwdBtn.disabled = !(t.history && at < t.history.length - 1);
-        }
-        function safeTabTitle(u) {
-          try {
-            const { hostname } = new URL(u);
-            return hostname.replace(/^www\./, "");
-          } catch {
-            return "Tab";
-          }
-        }
-        function renderTabs() {
-          tabsEl.innerHTML = "";
-          state.tabs.forEach((t, i) => {
-            const b = document.createElement("button");
-            b.className = "tab" + (state.active === i ? " active" : "");
-            b.textContent = t.title || safeTabTitle(t.url) || "Tab";
-            const x = document.createElement("span");
-            x.className = "x";
-            x.textContent = "×";
-            b.appendChild(x);
-            b.addEventListener("click", (e) => {
-              if (e.target === x) {
-                closeTab(i);
-              } else switchTab(i);
-            });
-            tabsEl.appendChild(b);
-          });
-        }
-        function switchTab(i) {
-          state.active = i;
-          const t = current();
-          if (t.url) frame.src = t.url;
-          else frame.removeAttribute("src");
-          urlInput.value = t.url || "";
-          save();
-        }
-        function newTab(u) {
-          const url =
-            u || loadJSON(SKEY.SETTINGS, {}).home || "https://ashley0143.xyz";
-          state.tabs.push({
-            url,
-            title: safeTabTitle(url),
-            history: [url],
-            index: 0,
-          });
-          state.active = state.tabs.length - 1;
-          save();
-          frame.src = url;
-          urlInput.value = url;
-        }
-        function closeTab(i) {
-          if (state.tabs.length === 1) {
-            state.tabs[0].history = [];
-            state.tabs[0].index = -1;
-            state.tabs[0].url = "";
-            state.tabs[0].title = "New Tab";
-            frame.removeAttribute("src");
-            urlInput.value = "";
-            save();
-            return;
-          }
-          state.tabs.splice(i, 1);
-          if (state.active >= state.tabs.length) state.active = state.tabs.length - 1;
-          const t = current();
-          frame.src = t.url || "";
-          urlInput.value = t.url || "";
-          save();
-        }
-        backBtn.addEventListener("click", () => {
-          const t = current();
-          if (!(t.history && t.index > 0)) return;
-          t.index--;
-          const u = t.history[t.index];
-          t.url = u;
-          frame.src = u;
-          urlInput.value = u;
-          save();
-        });
-        fwdBtn.addEventListener("click", () => {
-          const t = current();
-          if (!(t.history && t.index < t.history.length - 1)) return;
-          t.index++;
-          const u = t.history[t.index];
-          t.url = u;
-          frame.src = u;
-          urlInput.value = u;
-          save();
-        });
-        document
-          .getElementById("safari-go")
-          .addEventListener("click", () => load(urlInput.value));
-        urlInput.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") load(urlInput.value);
-        });
-        newTabBtn.addEventListener("click", () => newTab());
-        renderTabs();
-        switchTab(state.active);
-        window.openInSafari = function (u, newtab = false) {
-          DesktopWM.openWindow("win-safari");
-          if (newtab) newTab(u);
-          else load(u, true);
-        };
-        document.addEventListener("click", (e) => {
-          const a = e.target.closest("a[href]");
-          if (!a) return;
-          const href = a.getAttribute("href");
-          if (/^mailto:|^matrix:|^tel:/.test(href)) return;
-          e.preventDefault();
-          openInSafari(href, false);
-        });
-      })();
-    </script>
   </body>
 </html>
