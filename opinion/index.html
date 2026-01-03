@@ -1,157 +1,286 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashley's Opinions</title>
-  <meta name="theme-color" content="#ffacbb">
-  <meta property="og:title" content="Ashley's Opinions">
-   <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
-  <meta name="twitter:card" content="summary_large_image">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ashley's Opinions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7a8b8" />
+    
+    <meta property="og:title" content="Ashley's Opinions">
+    <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
 
-  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png">
-  <link href="https://fonts.bunny.net/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.bunny.net/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
- 
-  <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #ff9ec4 0%, #ffa8c5 50%, #ffd1dc 100%);
-      --text: #333;
-      --card-bg: rgba(255,255,255,0.8);
-      --blur: 10px;
-      --accent: #ff69b4;
-      --transition: .3s ease;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: 'Roboto', sans-serif;
-      color: var(--text);
-      background: var(--bg-gradient) fixed center/cover;
-      transition: background var(--transition), color var(--transition);
-    }
-    .container {
-      max-width: 800px; margin: 2rem auto; padding: 2rem;
-      background: var(--card-bg); border-radius: 16px;
-      backdrop-filter: blur(var(--blur));
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    }
-    header { text-align: center; margin-bottom: 2rem; }
-    header img {
-      height: 150px; width: 150px; border-radius: 20px;
-      border: 4px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    header h1 { font-family: 'Inter', sans-serif; font-size: 2.5rem; margin: 1rem 0; }
-    nav[aria-label="Opinion navigation"] ul {
-      list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 1rem;
-    }
-    nav a {
-      text-decoration: none; padding: 0.5rem 1rem;
-      background: var(--accent); color: #fff; border-radius: 8px;
-      transition: background var(--transition);
-    }
-    nav a:hover { background: #d18aff; }
-    main ul { list-style: none; padding: 0; margin: 1rem 0; }
-    main li { margin: 0.5rem 0; }
-    main a { color: var(--accent); text-decoration: none; }
-    main a:hover { text-decoration: underline; }
-    footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; }
-    footer a { color: var(--accent); }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <img src="https://codeberg.org/avatars/fab7a17d2170464ef5a9ef3e5774c2d3f09140e487186e7b067ab86300b8af1d?size=512" alt="Ashley profile picture">
-      <h1>Ashley's Opinions</h1>
+    <link
+      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      :root {
+        --trans-blue: #55cdfc;
+        --trans-pink: #f7a8b8;
+        --ink: #2b2b2b;
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
+        --alert-red: #ff4d4d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--ink);
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+          ),
+          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      /* Scanline effect overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 0 0 4px var(--trans-pink),
+          0 0 20px rgba(0,0,0,0.1);
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        text-align: center;
+        border-bottom: 2px dashed var(--trans-blue);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
+        transition: transform 0.2s;
+        margin-bottom: 10px;
+      }
+
+      .avatar:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        background: linear-gradient(to right, #55cdfc, #f7a8b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        letter-spacing: -1px;
+      }
+
+      /* Styled Grid for Opinions */
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .link-card {
+        display: block;
+        text-decoration: none;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid var(--trans-blue);
+        color: var(--ink);
+        font-weight: bold;
+        transition: 0.2s;
+        box-shadow: 4px 4px 0 var(--trans-pink);
+        text-align: left;
+      }
+
+      .link-card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--trans-pink);
+      }
+
+      .link-card:active {
+        transform: translate(2px, 2px);
+        box-shadow: 0 0 0 var(--trans-pink);
+      }
+
+      .link-card span {
+        float: right;
+        color: #b91c8c;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed var(--trans-pink);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+
+      footer a {
+        color: #b91c8c;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+      
+      .small {
+        font-size: 0.8em;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <header>
+        <img 
+          src="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" 
+          alt="Ashley profile picture"
+          class="avatar"
+        >
+        <h1>Ashley's Opinions</h1>
+      </header>
+
       <nav aria-label="Opinion navigation">
-        <ul>
-          <li><a href="/opinion/zuckbook">Facebook / Meta</a></li>
-          <li><a href="/opinion/apple">Apple</a></li>
-          <li><a href="/opinion/my-issues-with-uutils">Uutils</a></li>
-           <li><a href="/opinion/netflix">Netflix</a></li>
-          <li><a href="/opinion/zoom">Zoom</a></li>
-          <li><a href="/opinion/intel">Intel</a></li>
-
-
-    <!--
-                <li><a href="/opinion/spotify">Spotify</a></li>
-          <li><a href="/opinion/discord">Discord</a></li>         
-
-          <li><a href="/opinion/my-issues-with-flatpak/">Flathub</a></li>
-          -->
-        </ul>
+        <div class="links-grid">
+          <a href="/opinion/zuckbook" class="link-card">
+            👎 Facebook / Meta
+            <span>➜</span>
+          </a>
+          <a href="/opinion/apple" class="link-card">
+            🍎 Apple
+            <span>➜</span>
+          </a>
+          <a href="/opinion/my-issues-with-uutils" class="link-card">
+            🦀 Uutils
+            <span>➜</span>
+          </a>
+          <a href="/opinion/netflix" class="link-card">
+            🍿 Netflix
+            <span>➜</span>
+          </a>
+          <a href="/opinion/zoom" class="link-card">
+            📹 Zoom
+            <span>➜</span>
+          </a>
+          <a href="/opinion/intel" class="link-card">
+            💾 Intel
+            <span>➜</span>
+          </a>
+          </div>
       </nav>
-    </header>
-    <main>
-     </main>
-    <footer>
-      <p>
-        <a href="https://github.com/ashley0143" rel="me">GitHub</a> |
-        <a href="https://fosstodon.org/@ashley0143" rel="me">Mastodon</a> |
-        <a href="https://discord.com/users/1456363852794040580"">Discord</a> |
-        <a href="https://codeberg.org/ashley" rel="me">Codeberg</a> |
-        <a href="https://rvlt.gg/poketube">Revolt Server</a> |
-        <a href="https://teddit.net/user/Ash_Potter">Reddit</a>
-      </p>
-      <p>
-         This site does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.<br>
-        Permission under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
-      </p>
-    </footer>
-  </div>
 
-  <script>
-(function(){
-  const STORAGE_KEY = '_hs_store';
-  const DISABLED_KEY = '_hs_disabled';
-  let disabled = localStorage.getItem(DISABLED_KEY) === '1';
-  let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  function record(evt) {
-    if (disabled) return;
-    events.push(evt);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
-  }
-  const startTime = performance.now();
-  window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
-  window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
-  document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
-  document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
-  document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
-  let maxDepth = 0;
-  window.addEventListener('scroll', () => {
-    const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
-    if (depth > maxDepth) {
-      maxDepth = depth;
-      record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
-    }
-  });
-  document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
-  window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
-  window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
-  window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
-  if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
-  if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
-  setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
-  let lastActivity = Date.now();
-  ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
-  setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
-  window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
-  window._hs = {
-    get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-    clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
-    export: () => {
-      const data = JSON.stringify(events, null, 2);
-      const blob = new Blob([data], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'metrics.json'; a.click();
-      URL.revokeObjectURL(url);
-    },
-    optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
-    optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
-  };
-})();
-</script>
- </body>
+      <footer>
+        <p>
+          <a href="https://github.com/ashley0143" rel="me">GitHub</a> •
+          <a href="https://fosstodon.org/@ashley0143" rel="me">Mastodon</a> •
+          <a href="https://discord.com/users/1456363852794040580">Discord</a> •
+          <a href="https://codeberg.org/ashley" rel="me">Codeberg</a> •
+          <a href="https://rvlt.gg/poketube">Revolt Server</a> •
+          <a href="https://teddit.net/user/Ash_Potter">Reddit</a>
+        </p>
+        <p class="small">
+          This site does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.<br>
+          Permission under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+    (function(){
+      const STORAGE_KEY = '_hs_store';
+      const DISABLED_KEY = '_hs_disabled';
+      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      function record(evt) {
+        if (disabled) return;
+        events.push(evt);
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+      }
+      const startTime = performance.now();
+      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+      let maxDepth = 0;
+      window.addEventListener('scroll', () => {
+        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+        if (depth > maxDepth) {
+          maxDepth = depth;
+          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        }
+      });
+      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+      let lastActivity = Date.now();
+      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+      window._hs = {
+        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+        export: () => {
+          const data = JSON.stringify(events, null, 2);
+          const blob = new Blob([data], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'metrics.json'; a.click();
+          URL.revokeObjectURL(url);
+        },
+        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+      };
+    })();
+    </script>
+  </body>
 </html>
