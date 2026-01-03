@@ -21,6 +21,7 @@
         --glass: rgba(255, 255, 255, 0.75);
         --glass-border: rgba(255, 255, 255, 0.9);
         --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
+        --alert-red: #ff4d4d;
       }
 
       * {
@@ -161,6 +162,18 @@
         margin-bottom: 10px;
       }
 
+      /* Alert Box for Compromised Account */
+      .alert-box {
+        background: rgba(255, 77, 77, 0.1);
+        border: 2px solid var(--alert-red);
+        color: #b30000;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 0.9em;
+        text-align: center;
+      }
+
       .links-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -194,6 +207,68 @@
       .link-card span {
         float: right;
       }
+
+      /* Custom Details/Summary Styles for Info Popup */
+      details.info-popup {
+        margin-bottom: 20px;
+      }
+
+      details.info-popup summary {
+        cursor: pointer;
+        list-style: none; /* Hide default triangle */
+        outline: none;
+      }
+
+      details.info-popup summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details.info-popup[open] summary {
+         margin-bottom: 10px;
+      }
+
+      .info-content {
+        background: rgba(255, 255, 255, 0.8);
+        border: 2px dashed #b91c8c;
+        border-radius: 10px;
+        padding: 15px;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        font-size: 0.9em;
+      }
+
+      .info-category h3 {
+        font-size: 1rem;
+        margin: 0 0 5px 0;
+        color: #55cdfc;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .info-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .tag {
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 0.85em;
+      }
+      .tag.fav { background: #ffe6ea; border-color: #ffb3c1; color: #d63384; }
 
       .fake-terminal {
         background: #111;
@@ -245,28 +320,6 @@
         border-top: 2px dashed var(--trans-pink);
         font-size: 0.85rem;
       }
-
-      /* Web buttons mimicking 88x31 */
-      .badges {
-        display: flex;
-        justify-content: center;
-        gap: 5px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 2px 6px;
-        font-size: 10px;
-        font-family: "Verdana", sans-serif;
-        color: #fff;
-        background: #333;
-        border: 1px solid #fff;
-        text-decoration: none;
-        image-rendering: pixelated;
-      }
-
     </style>
   </head>
   <body>
@@ -276,10 +329,15 @@
         <h1>Ashley Íris</h1>
         <div class="marquee-container">
           <div class="marquee-content">
-            ✨ Welcome to ashleyirispup.cat! ~ nyaa~ ✨
+            ✨ Welcome to ashleyirispup.cat! ~ woof~ ✨
           </div>
         </div>
       </header>
+
+      <div class="alert-box">
+        ⚠️ <strong>SECURITY ALERT:</strong> My old Discord account (ID starts with <code>39...</code>) has been <strong>COMPROMISED</strong>. <br>
+        Please do not interact with it. Use the new link below!
+      </div>
 
       <div class="profile-section">
         <div class="avatar-box">
@@ -301,7 +359,7 @@
             🐧 GNU/Linux & Privacy fighter.
           </p>
           <p class="small">
-            <i>(she/her) • Turkish • Catgirl (nya~)</i>
+            <i>(it/its or she/her) • Turkish • Doggirl (woof~)</i>
           </p>
         </div>
       </div>
@@ -320,21 +378,105 @@
           ☁️ Bluesky
           <span>➜</span>
         </a>
+        <a href="https://discord.com/users/1456363852794040580" class="link-card">
+          🎮 Discord (NEW)
+          <span>➜</span>
+        </a>
+
+        <a href="https://codeberg.org/ashleyirispuppy" class="link-card">
+          💻 Codeberg
+          <span>➜</span>
+        </a>
+        <a href="https://steamcommunity.com/id/ashleyirispup/" class="link-card">
+          🚂 Steam
+          <span>➜</span>
+        </a>
+        <a href="https://reddit.com/user/ash_potter" class="link-card">
+          👽 Reddit
+          <span>➜</span>
+        </a>
+
         <a href="matrix:@iamashley:mozilla.org" class="link-card">
           💬 Matrix
           <span>➜</span>
         </a>
-        <a href="https://discord.com/users/1456363852794040580" class="link-card">
-          🎮 Discord
-          <span>➜</span>
-        </a>
-        <a href="https://www.albumoftheyear.org/user/ashley0143/" class="link-card">
-          💿 AOTY
-          <span>➜</span>
-        </a>
       </div>
 
-<h2>Sys Info 🖥️</h2>
+      <details class="info-popup">
+        <summary class="link-card" style="text-align: center; color: #b91c8c;">
+           🏷️ <b>My Identity & Pronouns (Click Me!)</b> <span>▼</span>
+        </summary>
+        <div class="info-content">
+          <p style="text-align: center; font-weight: bold; color: #d63384; margin-bottom: 15px;">
+            ⚠️ I am NOT okay with any pronouns other than it/its and she/her (sometimes)!
+          </p>
+
+          <div class="info-grid">
+            <div class="info-category">
+              <h3>Preferred Names</h3>
+              <div class="info-tags">
+                <span class="tag fav">Ashley</span>
+                <span class="tag fav">Ashley Íris</span>
+                <span class="tag fav">Íris</span>
+                <span class="tag fav">Ashy</span>
+                <span class="tag fav">Güneş Şevval Arjinya Melisoy</span>
+                <span class="tag">Mizuki</span>
+              </div>
+            </div>
+
+            <div class="info-category">
+              <h3>Pronouns</h3>
+              <div class="info-tags">
+                <span class="tag fav">it/its</span>
+                <span class="tag fav">she/her</span>
+                <span class="tag">per/pers</span>
+              </div>
+            </div>
+
+            <div class="info-category">
+              <h3>Honorifics</h3>
+              <div class="info-tags">
+                <span class="tag fav">[none]</span>
+                <span class="tag fav">Ms.</span>
+                <span class="tag fav">Ma'am</span>
+              </div>
+            </div>
+
+            <div class="info-category">
+              <h3>Descriptions</h3>
+              <div class="info-tags">
+                <span class="tag fav">doggirl/puppy</span>
+                <span class="tag fav">women</span>
+                <span class="tag fav">girl</span>
+                <span class="tag fav">robot</span>
+                <span class="tag fav">Bandito</span>
+              </div>
+            </div>
+
+             <div class="info-category">
+              <h3>Compliments</h3>
+              <div class="info-tags">
+                <span class="tag fav">cute</span>
+                <span class="tag fav">sexy</span>
+                <span class="tag fav">hottie</span>
+                <span class="tag fav">beautiful</span>
+              </div>
+            </div>
+
+            <div class="info-category">
+              <h3>Relationship Terms</h3>
+              <div class="info-tags">
+                <span class="tag fav">Wifey</span>
+                <span class="tag fav">Darling</span>
+                <span class="tag fav">Doll</span>
+                <span class="tag fav">Pet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <h2>Sys Info 🖥️</h2>
       <div class="fake-terminal">
         <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch</div>
         <br>
@@ -351,14 +493,16 @@
         <div>Memory: <span class="p">16GB</span></div>
         <br>
         <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span class="blink">_</span></div>
-      </div>        <a href="https://ashleyirispup.cat/opinion/blog/windows.html" style="  padding: 16em;"> wonder how i use windows?</a>
+      </div>
+      <div style="text-align: right; margin-top: -20px; margin-bottom: 20px;">
+        <a href="https://ashleyirispup.cat/opinion/blog/windows.html" class="small">wonder how i use windows?</a>
+      </div>
 
-      
       <h2>Projects 🛠️</h2>
       <div class="projects">
         <div class="project-item">
           <strong>Poke</strong><br>
-          <a href="https://poketube.fun">poketube.fun</a> — A video platform project.
+          <a href="https://poketube.fun">poketube.fun</a> — Your all-in-one privacy app.
         </div>
         <div class="project-item">
           <strong>Discord Unspy</strong> <span class="small">[Archived]</span><br>
@@ -368,17 +512,15 @@
 
       <h2>Links & Opinions 🔗</h2>
       <ul style="line-height: 1.8;">
-        <li><a href="https://ashleyirispup.cat/opinion" style="color:#b91c8c">My Opinions</a></li>
+        <li><a href="my-phones.html" style="color:#b91c8c; font-weight:bold;">📱 My Phone History</a></li>
+        <li><a href="https://ashleyirispup.cat/opinion" style="color:#b91c8c">My Opinions</a> — Most of my website lives here.</li>
         <li><a href="https://ashleyirispup.cat/gnuandlinux" style="color:#b91c8c">GNU/Linux Rants</a></li>
         <li><a href="https://ashleyirispup.cat/not-open-source" style="color:#b91c8c">Not Open Source!</a></li>
-        <li><a href="https://pronouns.cc/@Ashley143" style="color:#b91c8c">Pronouns.cc</a></li>
       </ul>
 
       <footer>
         <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
         <p class="small">Hosted at ashleyirispup.cat</p>
-
- 
       </footer>
     </div>
 
