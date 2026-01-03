@@ -1,41 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Ashley</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"/>
-    <meta content="Ashley's Personal site" property="og:title">
-    <meta content="these are articles that aim to fix misinformation and clear any confusions" property="twitter:description">
-    <meta content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-         <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
+    <meta charset="utf-8" />
+    <title>Ashley — Misinformation Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7a8b8" />
+    
+    <meta property="og:title" content="Ashley's Personal site - Misinformation Hub" />
+    <meta property="twitter:description" content="Articles aimed at fixing misinformation and clearing up confusion." />
+    <meta property="og:image" content="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="shortcut icon" href="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
+
+    <link
+      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      :root {
+        --trans-blue: #55cdfc;
+        --trans-pink: #f7a8b8;
+        --ink: #2b2b2b;
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
+        --alert-red: #ff4d4d;
       }
-      a,div,p{
-        font-family:Roboto,sans-serif;
+
+      * {
+        box-sizing: border-box;
       }
-      :visited { color: #00c0ff }
+
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--ink);
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+          ),
+          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      /* Scanline effect overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 0 0 4px var(--trans-pink),
+          0 0 20px rgba(0,0,0,0.1);
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        text-align: center;
+        border-bottom: 2px dashed var(--trans-blue);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .avatar {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 140px;
+        height: 140px;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
+        transition: transform 0.2s;
+        object-fit: cover;
+      }
+
+      .avatar:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        background: linear-gradient(to right, #55cdfc, #f7a8b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        letter-spacing: -1px;
+      }
+
+      .tagline {
+        text-align: center;
+        color: #b91c8c;
+        font-weight: bold;
+        margin-top: -15px;
+        margin-bottom: 25px;
+      }
+      
+      .lead {
+        text-align: center;
+        font-size: 1.1em;
+        margin-bottom: 30px;
+      }
+
+      /* Link Cards for Topics */
+      .links-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .link-card {
+        display: block;
+        text-decoration: none;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid var(--trans-blue);
+        color: var(--ink);
+        font-weight: bold;
+        transition: 0.2s;
+        box-shadow: 4px 4px 0 var(--trans-pink);
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .link-card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--trans-pink);
+      }
+
+      .link-card:active {
+        transform: translate(2px, 2px);
+        box-shadow: 0 0 0 var(--trans-pink);
+      }
+      
+      .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: var(--ink);
+        background: #fff;
+        padding: 8px 15px;
+        border-radius: 99px;
+        border: 1px solid var(--trans-blue);
+        font-weight: bold;
+      }
+      .back-btn:hover { background: #f0f8ff; }
+
+      .meta-links {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .meta-links a {
+        display: inline-block;
+        margin: 5px 10px;
+        color: #b91c8c;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      .meta-links a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed var(--trans-pink);
+        margin: 30px 0;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed var(--trans-pink);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
     </style>
   </head>
-  <body style="min-width: 678px">
-    <center>
-      <img src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"  height="200"  />
-      <h3 class="c1">Ashley's Personal site - Misinformation</h3>
-      <a href="/">Home</a>
-      <hr />
-      <h1>Misinformations about</h1>
-      <a href="/misinformation/the-rumors-about-duckduckgo">Duckduckgo </a>
-      <br />
-      <hr />
-        <a href="https://github.com/ashley0143">Github</a> - <a href="https://discord.com/users/396571938081865741">Discord</a> - <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a><br>
-      <p>
-        i got inspired by https://stallman.org/ while making this site. This
-        website does not track you. No cookies. No data collection. No
-        statistics. 100% handcrafted without JavaScript.
-      </p>
-    </center>
+  <body>
+
+    <div class="container">
+      <header>
+        <img src="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" alt="Ashley" class="avatar" />
+        <h1>Misinformation Hub</h1>
+      </header>
+      
+      <p class="tagline">Ashley's Personal site :D</p>
+      
+      <main>
+        <div style="text-align: center;">
+            <a href="/" class="back-btn">⬅ Back to Home</a>
+        </div>
+
+        <p class="lead">
+            Articles aiming to fix misinformation and clear up confusion.
+        </p>
+
+        <div class="links-grid">
+            <a href="duckduckgo.html" class="link-card">
+                🦆 The rumors about DuckDuckGo
+                <span>➜</span>
+            </a>
+            </div>
+
+        <hr />
+        
+        <div class="meta-links" aria-label="links">
+          <a href="https://github.com/ashley0143">Github</a> •
+          <a href="https://discord.com/users/1456363852794040580">Discord</a> •
+          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
+        </div>
+        
+        <footer>
+          <p>Inspired by https://stallman.org/ while making this site.</p>
+          <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
+          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
+          <p>&copy; 2026 Ashley.</p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+    (function(){
+      const STORAGE_KEY = '_hs_store';
+      const DISABLED_KEY = '_hs_disabled';
+      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      function record(evt) {
+        if (disabled) return;
+        events.push(evt);
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+      }
+      const startTime = performance.now();
+      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+      let maxDepth = 0;
+      window.addEventListener('scroll', () => {
+        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+        if (depth > maxDepth) {
+          maxDepth = depth;
+          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        }
+      });
+      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+      let lastActivity = Date.now();
+      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+      window._hs = {
+        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+        export: () => {
+          const data = JSON.stringify(events, null, 2);
+          const blob = new Blob([data], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'metrics.json'; a.click();
+          URL.revokeObjectURL(url);
+        },
+        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+      };
+    })();
+    </script>
   </body>
 </html>
