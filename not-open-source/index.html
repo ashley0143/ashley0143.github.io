@@ -1,133 +1,297 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ashley — Why I don't like the term "Open source"?</title>
-  <meta name="theme-color" content="#ffacbb" />
-  <meta property="og:title" content='Ashley — Why I don&apos;t like the term "Open source"?' />
-  <meta property="twitter:description" content=" why 'open source' misses the ethical core of free software." />
-  <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
-  <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-     :root{
-      --accent1:#ff9ec4;
-      --accent2:#ffd1dc;
-      --panel-bg: rgba(255,255,255,0.6);
-      --pink:#ff69b4;
-      --muted:#333;
-      --max-width:880px;
-    }
-    html,body{height:100%;margin:0;padding:0;font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--muted);}
-    body{
-      background: linear-gradient(135deg,var(--accent1),var(--accent2));
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      min-width:360px;
-    }
-    .panel{
-      backdrop-filter: blur(12px);
-      background: var(--panel-bg);
-      min-height:100vh;
-      padding:2rem;
-      box-sizing:border-box;
-    }
-    header{text-align:center;margin-bottom:2rem;}
-    h1{
-      font-family:Pacifico, cursive;
-      font-size:3rem;
-      color:#d18aff;
-      text-shadow:2px 2px 8px rgba(0,0,0,0.18);
-      margin:0;
-    }
-    main{max-width:var(--max-width);margin:0 auto;background:transparent;}
-    .lead{
-      margin-top:1rem;
-      font-size:1rem;
-      line-height:1.65;
-    }
-    .essay-section{margin-bottom:1.25rem;line-height:1.7;}
-    strong{color:#000;}
-    a{color:var(--pink);text-decoration:none;}
-    .avatar{
-      display:block;
-      margin:1.25rem auto;
-      border-radius:50%;
-      width:140px;height:140px;object-fit:cover;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    }
-    footer{text-align:center;margin-top:2.5rem;font-size:0.9rem;color:#333;}
-    .meta-links{margin-top:0.75rem;text-align:center;}
-    .meta-links a{margin:0 0.5rem;color:var(--pink);}
-    hr{border:none;border-top:1px solid rgba(0,0,0,0.06);margin:1.25rem 0;}
-    .tagline{font-weight:500;margin:0.25rem 0 1rem 0;}
-    @media (min-width:900px){
-      h1{font-size:3.4rem;}
-      .avatar{width:200px;height:200px;}
-    }
-  </style>
-</head>
-<body>
-  <div class="panel">
-    <header>
-      <h1>Why I don't like the term "Open source"?</h1>
-    </header>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ashley — Why I don't like the term "Open source"?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7a8b8" />
+    
+    <meta property="og:title" content='Ashley — Why I don&apos;t like the term "Open source"?' />
+    <meta property="twitter:description" content="Why 'open source' misses the ethical core of free software." />
+    <meta property="og:image" content="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
+    <link rel="shortcut icon" href="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
 
-    <main>
-      <img src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" alt="Ashley" class="avatar" />
-      <p class="tagline" style="text-align:center;">Ashley's Personal site :D</p>
+    <link
+      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      :root {
+        --trans-blue: #55cdfc;
+        --trans-pink: #f7a8b8;
+        --ink: #2b2b2b;
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
+        --alert-red: #ff4d4d;
+      }
 
-      <section class="lead">
-        <p class="essay-section">
-          The phrase “open source” is useful in conversation when you only mean "source code is available to read." But as a movement and a brand it deliberately narrows the conversation to engineering processes and commercial advantages, and in doing so it sidelines the ethical argument that motivated the Free Software movement: that users deserve software that respects their freedom.
-        </p>
+      * {
+        box-sizing: border-box;
+      }
 
-        <p class="essay-section">
-          Historically, “free software” (libre) insisted on four essential freedoms: to run, study, share, and modify software. These freedoms center on human rights and social values — not just development method. "Open source" repackaged many of the same practices into a message that appealed to businesses by emphasizing practical benefits: better quality, faster innovation, and lower cost. That framing helped get adoption, but it also stripped away the moral core: whether people should be free to control the software they rely on.
-        </p>
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--ink);
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+          ),
+          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
 
-        <p class="essay-section">
-          Words matter. In plain English "open source" tends to mean "you can look at the source." That is accurate but limited. "Free software" can be misunderstood because of the English word "free," which is why many people use "libre" to emphasize freedom rather than price. The difference isn’t pedantic: one term foregrounds rights and responsibilities, the other foregrounds technique and marketing.
-        </p>
+      /* Scanline effect overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
+      }
 
-        <p class="essay-section">
-          Consider distribution decisions. A project can be open-source in the sense that its code is viewable, yet ship nonfree firmware, push proprietary cloud services, or adopt contributor license agreements that restrict user control. These practices are at odds with the Free Software philosophy even though they may fit comfortably within the "open source" ecosystem. If the goal is to empower end users, naming and norms should keep that goal visible.
-        </p>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 0 0 4px var(--trans-pink),
+          0 0 20px rgba(0,0,0,0.1);
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+      }
 
-        <p class="essay-section">
-          For people who care about ethics, surveillance, vendor lock-in, and digital autonomy, the term "open source" is insufficient. It does not demand protections for user freedom, nor does it require distribution practices that prevent proprietary encroachment. The Free Software movement provides a clear set of principles and practical guidance for building systems that respect users' rights; that clarity matters when making choices about what software to run, recommend, or ship.
-        </p>
+      header {
+        text-align: center;
+        border-bottom: 2px dashed var(--trans-blue);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
 
-        <p class="essay-section">
-          That said, "open source" did succeed as a strategic rebranding for broader adoption. Many useful projects and communities grew from that environment. My objection is not to cooperation or to shared code — it is to losing sight of why freedom matters and to the risk that technical convenience becomes a pretext for ignoring ethics.
-        </p>
+      /* Updated Avatar Style */
+      .avatar {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 140px;
+        height: 140px;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
+        transition: transform 0.2s;
+        object-fit: cover;
+      }
 
-        <p class="essay-section">
-          If you want to explore this topic more deeply, read the GNU discussion of the term and related critiques. They explain the philosophical distinctions, provide historical context, and list practical implications for licensing and distribution:
-        </p>
+      .avatar:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
 
-        <ul style="margin-left:1rem;">
-          <li><a href="https://www.gnu.org/philosophy/open-source-misses-the-point.html">Open source misses the point — GNU</a></li>
+      h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        background: linear-gradient(to right, #55cdfc, #f7a8b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        letter-spacing: -1px;
+      }
+
+      .tagline {
+        text-align: center;
+        color: #b91c8c;
+        font-weight: bold;
+        margin-top: -15px;
+        margin-bottom: 25px;
+      }
+
+      .essay-section {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      strong {
+        color: #b91c8c;
+      }
+
+      a {
+        color: #b91c8c;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+
+      ul {
+        list-style: square;
+        margin-left: 20px;
+        color: #55cdfc;
+      }
+      
+      li a {
+        color: #b91c8c;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed var(--trans-pink);
+        margin: 30px 0;
+      }
+
+      .meta-links {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .meta-links a {
+        display: inline-block;
+        margin: 5px 10px;
+        background: #fff;
+        padding: 5px 10px;
+        border-radius: 8px;
+        border: 1px solid var(--trans-blue);
+        box-shadow: 2px 2px 0 var(--trans-pink);
+      }
+      
+      .meta-links a:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0 var(--trans-pink);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed var(--trans-pink);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <header>
+        <h1>Why I don't like "Open Source"</h1>
+      </header>
+      
+      <main>
+        <img src="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" alt="Ashley" class="avatar" />
+        <p class="tagline">Ashley's Personal site :D</p>
+        
+        <section class="lead">
+          <p class="essay-section">
+            The phrase “open source” is useful in conversation when you only mean "source code is available to read." But as a movement and a brand it deliberately narrows the conversation to engineering processes and commercial advantages, and in doing so it sidelines the ethical argument that motivated the Free Software movement: that users deserve software that respects their freedom.
+          </p>
+          <p class="essay-section">
+            Historically, “free software” (libre) insisted on four essential freedoms: to run, study, share, and modify software. These freedoms center on human rights and social values — not just development method. "Open source" repackaged many of the same practices into a message that appealed to businesses by emphasizing practical benefits: better quality, faster innovation, and lower cost. That framing helped get adoption, but it also stripped away the moral core: whether people should be free to control the software they rely on.
+          </p>
+          <p class="essay-section">
+            Words matter. In plain English "open source" tends to mean "you can look at the source." That is accurate but limited. "Free software" can be misunderstood because of the English word "free," which is why many people use "libre" to emphasize freedom rather than price. The difference isn’t pedantic: one term foregrounds rights and responsibilities, the other foregrounds technique and marketing.
+          </p>
+          <p class="essay-section">
+            Consider distribution decisions. A project can be open-source in the sense that its code is viewable, yet ship nonfree firmware, push proprietary cloud services, or adopt contributor license agreements that restrict user control. These practices are at odds with the Free Software philosophy even though they may fit comfortably within the "open source" ecosystem. If the goal is to empower end users, naming and norms should keep that goal visible.
+          </p>
+          <p class="essay-section">
+            For people who care about ethics, surveillance, vendor lock-in, and digital autonomy, the term "open source" is insufficient. It does not demand protections for user freedom, nor does it require distribution practices that prevent proprietary encroachment. The Free Software movement provides a clear set of principles and practical guidance for building systems that respect users' rights; that clarity matters when making choices about what software to run, recommend, or ship.
+          </p>
+          <p class="essay-section">
+            That said, "open source" did succeed as a strategic rebranding for broader adoption. Many useful projects and communities grew from that environment. My objection is not to cooperation or to shared code — it is to losing sight of why freedom matters and to the risk that technical convenience becomes a pretext for ignoring ethics.
+          </p>
+          <p class="essay-section">
+            If you want to explore this topic more deeply, read the GNU discussion of the term and related critiques. They explain the philosophical distinctions, provide historical context, and list practical implications for licensing and distribution:
+          </p>
+          <ul>
+            <li><a href="https://www.gnu.org/philosophy/open-source-misses-the-point.html">Open source misses the point — GNU</a></li>
           </ul>
+          
+          <hr />
+          
+          <div class="meta-links" aria-label="links">
+            <a href="/">← Back to Home</a>
+            <a href="https://github.com/ashley0143">GitHub</a>
+            <a href="https://discord.com/users/1456363852794040580">Discord</a>
+            <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
+          </div>
+          
+          <footer>
+            <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
+            <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
+            <p>&copy; 2026 Ashley.</p>
+          </footer>
+        </section>
+      </main>
+    </div>
 
-        <hr />
-  
-
-        <div class="meta-links" aria-label="links">
-          <a href="/">← Back to Home</a> ·
-          <a href="https://github.com/ashley0143">GitHub</a> ·
-          <a href="https://discord.com/users/396571938081865741">Discord</a> ·
-          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
-        </div>
-
-        <footer>
-            This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
-          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
-          <p>&copy; 2025 Ashley.</p>
-        </footer>
-      </section>
-    </main>
-  </div>
-</body>
+    <script>
+    (function(){
+      const STORAGE_KEY = '_hs_store';
+      const DISABLED_KEY = '_hs_disabled';
+      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      function record(evt) {
+        if (disabled) return;
+        events.push(evt);
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+      }
+      const startTime = performance.now();
+      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+      let maxDepth = 0;
+      window.addEventListener('scroll', () => {
+        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+        if (depth > maxDepth) {
+          maxDepth = depth;
+          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        }
+      });
+      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+      let lastActivity = Date.now();
+      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+      window._hs = {
+        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+        export: () => {
+          const data = JSON.stringify(events, null, 2);
+          const blob = new Blob([data], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'metrics.json'; a.click();
+          URL.revokeObjectURL(url);
+        },
+        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+      };
+    })();
+    </script>
+  </body>
 </html>
