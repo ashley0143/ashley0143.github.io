@@ -313,6 +313,41 @@
         opacity: 0.8;
       }
 
+      /* Styles for the Content Links Section */
+      .content-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .content-link-item {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--trans-pink);
+        padding: 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--ink);
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .content-link-item:hover {
+        background: #fff;
+        transform: translateX(5px);
+        box-shadow: 2px 2px 0 var(--trans-blue);
+      }
+
+      .content-link-item b {
+        color: #b91c8c;
+        font-size: 1.1em;
+      }
+      
+      .content-link-item .icon {
+        font-size: 1.5em;
+      }
+
       footer {
         text-align: center;
         margin-top: 40px;
@@ -510,14 +545,50 @@
         </div>
       </div>
 
-      <h2>Links & Opinions 🔗</h2>
-      <ul style="line-height: 1.8;">
-        <li><a href="my-phones.html" style="color:#b91c8c; font-weight:bold;">📱 My Phone History</a></li>
-        <li><a href="https://ashleyirispup.cat/opinion" style="color:#b91c8c">My Opinions</a> — Most of my website lives here.</li>
-        <h3>Software Opinions</h3>
-        <li><a href="https://ashleyirispup.cat/gnuandlinux" style="color:#b91c8c">Why call it GNU/Linux instead of just..."linux"?</a></li>
-        <li><a href="https://ashleyirispup.cat/not-open-source" style="color:#b91c8c">Not Open Source!</a></li>
-      </ul>
+      <h2>Content & Articles 🔗</h2>
+      <div class="content-links">
+        <a href="my-phones.html" class="content-link-item">
+          <span class="icon">📱</span>
+          <div>
+            <b>My Phone History</b><br>
+            <span class="small">A showcase of devices I've daily driven.</span>
+          </div>
+        </a>
+        
+        <a href="misinformation/index.html" class="content-link-item">
+          <span class="icon">🕵️‍♀️</span>
+          <div>
+            <b>Misinformation Hub</b><br>
+            <span class="small">Clearing up rumors and confusion (e.g. DuckDuckGo).</span>
+          </div>
+        </a>
+
+        <a href="https://ashleyirispup.cat/opinion" class="content-link-item">
+          <span class="icon">🗣️</span>
+          <div>
+            <b>My Opinions</b><br>
+            <span class="small">Most of my website lives here.</span>
+          </div>
+        </a>
+
+        <h3 style="margin: 10px 0 5px 0; font-size: 1rem; color: #55cdfc; border-bottom: 1px dashed #bbb; padding-bottom:5px;">Software Rants</h3>
+        
+        <a href="https://ashleyirispup.cat/gnuandlinux" class="content-link-item">
+          <span class="icon">🐧</span>
+          <div>
+            <b>What is GNU/Linux?</b><br>
+            <span class="small">Why I don't just call it "Linux".</span>
+          </div>
+        </a>
+        
+        <a href="https://ashleyirispup.cat/not-open-source" class="content-link-item">
+          <span class="icon">🔓</span>
+          <div>
+            <b>"Open Source" misses the point</b><br>
+            <span class="small">Why I prefer Free Software (Libre).</span>
+          </div>
+        </a>
+      </div>
 
       <footer>
         <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
