@@ -1,83 +1,335 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <title>Ashley</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png"  />
-    <meta content="Ashley's Personal site" property="og:title">
-    <meta content="This article aims to fix the misinformation about duckduckgo" property="twitter:description" />
-    <meta content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg"  property="og:image"  />
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-      <style>
-      h1,h2,h3,h4,h5{
-        font-family:Inter,sans-serif;
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ashley — Addressing DuckDuckGo Misinformation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7a8b8" />
+    
+    <meta property="og:title" content="Ashley — Addressing DuckDuckGo Misinformation" />
+    <meta property="twitter:description" content="This article aims to fix misinformation about DuckDuckGo." />
+    <meta property="og:image" content="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleysitebanner.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="shortcut icon" href="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" />
+
+    <link
+      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      :root {
+        --trans-blue: #55cdfc;
+        --trans-pink: #f7a8b8;
+        --ink: #2b2b2b;
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
+        --alert-red: #ff4d4d;
       }
-      a,div,p{
-        font-family:Roboto,sans-serif;
+
+      * {
+        box-sizing: border-box;
       }
-      :visited { color: #00c0ff }
+
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--ink);
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+          ),
+          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      /* Scanline effect overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 0 0 4px var(--trans-pink),
+          0 0 20px rgba(0,0,0,0.1);
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        text-align: center;
+        border-bottom: 2px dashed var(--trans-blue);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .avatar {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 140px;
+        height: 140px;
+        border-radius: 15px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
+        transition: transform 0.2s;
+        object-fit: cover;
+      }
+
+      .avatar:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        background: linear-gradient(to right, #55cdfc, #f7a8b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        letter-spacing: -1px;
+      }
+
+      .tagline {
+        text-align: center;
+        color: #b91c8c;
+        font-weight: bold;
+        margin-top: -15px;
+        margin-bottom: 25px;
+      }
+      
+      .essay-section {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      strong {
+        color: #b91c8c;
+      }
+
+      a {
+        color: #b91c8c;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+
+      ul, ol {
+        margin-left: 20px;
+        color: #55cdfc;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+
+      li a {
+        color: #b91c8c;
+      }
+
+      blockquote {
+        background: rgba(255, 255, 255, 0.5);
+        border-left: 5px solid var(--trans-blue);
+        margin: 20px 0;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        white-space: pre-wrap; /* Preserve line breaks from original text */
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed var(--trans-pink);
+        margin: 30px 0;
+      }
+
+      .meta-links {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .meta-links a {
+        display: inline-block;
+        margin: 5px 10px;
+        background: #fff;
+        padding: 5px 10px;
+        border-radius: 8px;
+        border: 1px solid var(--trans-blue);
+        box-shadow: 2px 2px 0 var(--trans-pink);
+      }
+      
+      .meta-links a:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0 var(--trans-pink);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed var(--trans-pink);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
     </style>
   </head>
-  
-  <body style="min-width: 678px">
-    <center>
-      <img
-        src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" height="200"/>
-      <h3 class="c1">Ashley's Personal site - Misinformation bout ddg</h3>
- 
-      <a href="/misinformation">Go back</a>
-      <hr />
-      <p>
-        recently,there was alots (like,alot) of misinformation about duckduckgo,the privacy first search engine.
-      </p>
-      <p>
-        it all starts in feb,whit gabriels tweet about "how ddg is down-ranking the russian misinformations". but well,the people who use ddg <b>thinked that they were <a href="https://youtu.be/OjWDfIpwEAQ">Censored the results.</a></b>
-      </p>
-      <p>
-        they simply dont.<sup>1</sup>
-         They are not ranking based on any political agenda or my (or anyone else's) personal political opinions. They are also not assessing any individual news stories.<sup>1</sup>
-      </p>
-      <hr>
-      <h1>
-        About bing / microsoft stuff
-      </h1>
-      <p>
-        9to5mac.com made an article about how duckduckgo is giving permission to bing trackers. <sup>2</sup><br>
-        and alots,like lots of ppl thinked that duckduckgo is becoming un-trustworty. they thinked that the search engine <b>was</b> a "spyware". they are not a "spyware",and that article is about the mobile app. not the search engine.
-        the duckduckgo ceo,gabriel wrote a comment about it on reddit. 
-      </p>
-      <code>Hi, I'm the CEO and Founder of DuckDuckGo. To be clear (since I already see confusion in the comments), when you <br>load our search results, you are anonymous, including ads. Also on 3rd-party websites we actually do block Microsoft 3rd-party <br>cookies in our browsers plus more protections including fingerprinting protection. That is, this article is not about our search<br> engine, but about our browsers -- we have browsers (really all-in-one privacy apps) for iOS, Android, and now Mac (in beta).<br><br>
+  <body>
 
-When most other browsers on the market talk about tracking protection they are usually referring to 3rd-party cookie protection <br>and fingerprinting protection, and our browsers impose these same restrictions on all third-party tracking scripts, <br>including those from Microsoft. We also have a lot of other above-and-beyond web protections that also apply to Microsoft <br>scripts (and everyone else), e.g., Global Privacy Control, first-party cookie expiration, referrer header trimming, new cookie consent handling (in our Mac beta), fire button (one-click) data clearing, and more.<br><br>
+    <div class="container">
+      <header>
+        <img src="https://cdn.glitch.com/6713522c-ff2f-4788-b553-a77acb1ec74a/ashleypfp.png" alt="Ashley" class="avatar" />
+        <h1>Addressing DuckDuckGo Misinformation</h1>
+      </header>
+      
+      <p class="tagline">Ashley's Personal site :D</p>
+      
+      <main>
+        <p style="text-align: center;">
+          <a href="/misinformation">← Go back to Misinformation Hub</a>
+        </p>
+        
+        <p class="essay-section">
+          Recently, there has been a significant amount of misinformation circulating regarding DuckDuckGo, the privacy-first search engine.
+        </p>
+        <p class="essay-section">
+          It started in February with a tweet from Gabriel Weinberg, DuckDuckGo's CEO, about down-ranking Russian disinformation. Many users incorrectly interpreted this as <b><a href="https://youtu.be/OjWDfIpwEAQ">censoring results.</a></b>
+        </p>
+        <p class="essay-section">
+          They simply do not censor results.<sup>1</sup> They do not rank results based on any political agenda or personal opinions, nor do they assess individual news stories.<sup>1</sup>
+        </p>
+        
+        <hr>
+        
+        <h1>About the Bing / Microsoft Situation</h1>
+        <p class="essay-section">
+          An article from 9to5mac.com reported that DuckDuckGo was allowing Bing trackers.<sup>2</sup> This led many people to believe DuckDuckGo had become untrustworthy, with some even calling it "spyware."
+        </p>
+        <p class="essay-section">
+          It is important to clarify that DuckDuckGo is not "spyware," and the article referred specifically to their mobile browsing app, not the search engine itself. Gabriel Weinberg, CEO of DuckDuckGo, addressed this directly in a Reddit comment:
+        </p>
 
-What this article is talking about specifically is another above-and-beyond protection that most browsers don't even attempt to <br>do for web protection— stopping third-party tracking scripts from even loading on third-party websites -- because this can <br>easily cause websites to break. But we've taken on that challenge because it makes for better privacy, and faster downloads <br>-- we wrote a blog post about it here. Because we're doing this above-and-beyond protection where we can, and offer many other unique protections (e.g., Google AMP/FLEDGE/Topics protection, automatic HTTPS upgrading, tracking protection for *other* apps in Android, email protection to block trackers for emails sent to your regular inbox, etc.), users get way more privacy protection with our app than they would using other browsers. Our goal has always been to provide the most privacy we can in one download.<br><br>
+        <blockquote>Hi, I'm the CEO and Founder of DuckDuckGo. To be clear (since I already see confusion in the comments), when you load our search results, you are anonymous, including ads. Also on 3rd-party websites we actually do block Microsoft 3rd-party cookies in our browsers plus more protections including fingerprinting protection. That is, this article is not about our search engine, but about our browsers -- we have browsers (really all-in-one privacy apps) for iOS, Android, and now Mac (in beta).
 
-The issue at hand is, while most of our protections like 3rd-party cookie blocking apply to Microsoft scripts on 3rd-party sites <br>(again, this is off of DuckDuckGo,com, i.e., not related to search), we are currently contractually restricted by Microsoft<br> from completely stopping them from loading (the one above-and-beyond protection explained in the last paragraph)<br> on 3rd party sites. We still restrict them though (e.g., no 3rd party cookies allowed). The original example was Workplace.com loading a LinkedIn.com script. Nevertheless, we have been and are working with Microsoft as we speak to reduce or remove this limited restriction.<br><br>
+When most other browsers on the market talk about tracking protection they are usually referring to 3rd-party cookie protection and fingerprinting protection, and our browsers impose these same restrictions on all third-party tracking scripts, including those from Microsoft. We also have a lot of other above-and-beyond web protections that also apply to Microsoft scripts (and everyone else), e.g., Global Privacy Control, first-party cookie expiration, referrer header trimming, new cookie consent handling (in our Mac beta), fire button (one-click) data clearing, and more.
 
-I understand this is all rather confusing because it is a search syndication contract that is preventing us from doing a non-search thing. That's because our product is a bundle of multiple privacy protections, and this is a distribution requirement imposed on us as part of the search syndication agreement that helps us privately use some Bing results to provide you with better private search results overall. While a lot of what you see on our results page privately incorporates content from other sources, including our own indexes (e.g., Wikipedia, Local listings, Sports, etc.), we source most of our traditional links and images privately from Bing (though because of other search technology our link and image results still may look different). Really only two companies (Google and Microsoft) have a high-quality global web link index (because I believe it costs upwards of a billion dollars a year to do), and so literally every other global search engine needs to bootstrap with one or both of them to provide a mainstream search product. The same is true for maps btw -- only the biggest companies can similarly afford to put satellites up and send ground cars to take streetview pictures of every neighborhood.<br><br>
+What this article is talking about specifically is another above-and-beyond protection that most browsers don't even attempt to do for web protection— stopping third-party tracking scripts from even loading on third-party websites -- because this can easily cause websites to break. But we've taken on that challenge because it makes for better privacy, and faster downloads -- we wrote a blog post about it here. Because we're doing this above-and-beyond protection where we can, and offer many other unique protections (e.g., Google AMP/FLEDGE/Topics protection, automatic HTTPS upgrading, tracking protection for *other* apps in Android, email protection to block trackers for emails sent to your regular inbox, etc.), users get way more privacy protection with our app than they would using other browsers. Our goal has always been to provide the most privacy we can in one download.
 
-Anyway, I hope this provides some helpful context. Taking a step back, I know our product is not perfect and will never be. Nothing can provide 100% protection. And we face many constraints: platform constraints (we can't offer all protections on every platform do to limited APIs or other restrictions), limited contractual constraints (like in this case), breakage constraints (blocking some things totally breaks web experiences), and of course the evolving tracking arms race that we constantly work to keep ahead of. That's why we have always been extremely careful to never promise anonymity when browsing outside our search engine, because that frankly isn’t possible. We're also working on updates to our app store descriptions to make this more clear. Holistically though I believe what we offer is the best thing out there for mainstream users who want simple privacy protection without breaking things, and that is our product vision.<pre>3</pre></code>
-    
-    <p>
-      and well,people that did not see <a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for/i9xxjsn/?context=3">This Comment</a> thinked that duckduckgo was becoming untrustworty and was thinking to ditch ddg.
-      </p>
-      <hr>
-      <h1>
-        Sources
-              </h1>
-      <p>
-                1:<a href="https://twitter.com/yegg/status/1515635886855233537">Hoping to clear up some misconceptions about our private search engine.</a><br>
-          2:<a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for">DuckDuckGo caught giving Microsoft permission for trackers despite strong privacy reputation</a><br>
-        3:<a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for/i9xxjsn/?context=3">Comment of u/yegg</a>
-              </p>
+The issue at hand is, while most of our protections like 3rd-party cookie blocking apply to Microsoft scripts on 3rd-party sites (again, this is off of DuckDuckGo,com, i.e., not related to search), we are currently contractually restricted by Microsoft from completely stopping them from loading (the one above-and-beyond protection explained in the last paragraph) on 3rd party sites. We still restrict them though (e.g., no 3rd party cookies allowed). The original example was Workplace.com loading a LinkedIn.com script. Nevertheless, we have been and are working with Microsoft as we speak to reduce or remove this limited restriction.
 
-      <hr />
-      <a href="https://github.com/ashley0143">Github</a> - <a href="https://discord.com/users/396571938081865741">Discord</a> - <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a><br>
-      <p>i got inspired by https://stallman.org/ while making this site. This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript. <br>Permission is granted to copy, distribute and/or modify this document
-        under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a></p>
-    </center>
+I understand this is all rather confusing because it is a search syndication contract that is preventing us from doing a non-search thing. That's because our product is a bundle of multiple privacy protections, and this is a distribution requirement imposed on us as part of the search syndication agreement that helps us privately use some Bing results to provide you with better private search results overall. While a lot of what you see on our results page privately incorporates content from other sources, including our own indexes (e.g., Wikipedia, Local listings, Sports, etc.), we source most of our traditional links and images privately from Bing (though because of other search technology our link and image results still may look different). Really only two companies (Google and Microsoft) have a high-quality global web link index (because I believe it costs upwards of a billion dollars a year to do), and so literally every other global search engine needs to bootstrap with one or both of them to provide a mainstream search product. The same is true for maps btw -- only the biggest companies can similarly afford to put satellites up and send ground cars to take streetview pictures of every neighborhood.
+
+Anyway, I hope this provides some helpful context. Taking a step back, I know our product is not perfect and will never be. Nothing can provide 100% protection. And we face many constraints: platform constraints (we can't offer all protections on every platform do to limited APIs or other restrictions), limited contractual constraints (like in this case), breakage constraints (blocking some things totally breaks web experiences), and of course the evolving tracking arms race that we constantly work to keep ahead of. That's why we have always been extremely careful to never promise anonymity when browsing outside our search engine, because that frankly isn’t possible. We're also working on updates to our app store descriptions to make this more clear. Holistically though I believe what we offer is the best thing out there for mainstream users who want simple privacy protection without breaking things, and that is our product vision.<sup>3</sup></blockquote>
+
+        <p class="essay-section">
+          Unfortunately, many people who did not see <a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for/i9xxjsn/?context=3">this comment</a> concluded that DuckDuckGo was untrustworthy and considered abandoning the service.
+        </p>
+
+        <hr>
+
+        <h1>Sources</h1>
+        <ol>
+          <li><a href="https://twitter.com/yegg/status/1515635886855233537">Hoping to clear up some misconceptions about our private search engine.</a> (Twitter thread by Gabriel Weinberg)</li>
+          <li><a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for">DuckDuckGo caught giving Microsoft permission for trackers despite strong privacy reputation</a> (Reddit post linking to 9to5Mac article)</li>
+          <li><a href="https://www.reddit.com/r/technology/comments/uxiah9/duckduckgo_caught_giving_microsoft_permission_for/i9xxjsn/?context=3">Comment by u/yegg (Gabriel Weinberg) on Reddit</a></li>
+          <li><a href="https://duckduckgo.com/duckduckgo-help-pages/misconceptions/does-duckduckgo-share-my-search-history-with-microsoft">Does DuckDuckGo share my search history with Microsoft?</a> (Official DuckDuckGo Help Page)</li>
+        </ol>
+        
+        <hr />
+        
+        <div class="meta-links" aria-label="links">
+          <a href="/">← Back to Home</a>
+          <a href="https://github.com/ashley0143">GitHub</a>
+          <a href="https://discord.com/users/1456363852794040580">Discord</a>
+          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
+        </div>
+        
+        <footer>
+          <p>Inspired by https://stallman.org/ while making this site.</p>
+          <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
+          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
+          <p>&copy; 2026 Ashley.</p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+    (function(){
+      const STORAGE_KEY = '_hs_store';
+      const DISABLED_KEY = '_hs_disabled';
+      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
+      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      function record(evt) {
+        if (disabled) return;
+        events.push(evt);
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
+      }
+      const startTime = performance.now();
+      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
+      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
+      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
+      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
+      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
+      let maxDepth = 0;
+      window.addEventListener('scroll', () => {
+        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
+        if (depth > maxDepth) {
+          maxDepth = depth;
+          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        }
+      });
+      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
+      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
+      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
+      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
+      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
+      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
+      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
+      let lastActivity = Date.now();
+      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
+      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
+      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
+      window._hs = {
+        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
+        export: () => {
+          const data = JSON.stringify(events, null, 2);
+          const blob = new Blob([data], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'metrics.json'; a.click();
+          URL.revokeObjectURL(url);
+        },
+        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
+        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
+      };
+    })();
+    </script>
   </body>
 </html>
