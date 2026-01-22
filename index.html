@@ -1,595 +1,635 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Ashley </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7a8b8" />
-    <link
-      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet" 
-    />
-    <link
-      rel="icon"
-      href="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-    />
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley Íris 🌸</title>
+    <meta name="theme-color" content="#ffc2d1">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-      :root {
-        --trans-blue: #55cdfc;
-        --trans-pink: #f7a8b8;
-        --ink: #2b2b2b;
-        --glass: rgba(255, 255, 255, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.9);
-        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
-        --alert-red: #ff4d4d;
-      }
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #fff5f8 100%);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --primary-pink: #ff8fab;
+            --deep-pink: #fb6f92;
+            --soft-blue: #a2d2ff;
+            --text-main: #594a4e;
+            --text-dim: #8c7b7f;
+            --shadow: 0 8px 32px 0 rgba(255, 143, 171, 0.15);
+            --radius: 24px;
+        }
 
-      * {
-        box-sizing: border-box;
-      }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-      body {
-        margin: 0;
-        font-family: var(--font-main);
-        color: var(--ink);
-        background:
-          repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.03) 0px,
-            rgba(0, 0, 0, 0.03) 1px,
-            transparent 1px,
-            transparent 2px
-          ),
-          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        padding: 20px;
-        overflow-x: hidden;
-      }
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--primary-pink) 1px, transparent 1px);
+            background-size: 30px 30px; /* Cute dot pattern */
+        }
 
-      /* Scanline effect overlay */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 999;
-      }
+        /* --- Floating Navigation --- */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid white;
+        }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: var(--glass);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 2px solid #fff;
-        border-radius: 20px;
-        box-shadow:
-          0 0 0 4px var(--trans-pink),
-          0 0 20px rgba(0,0,0,0.1);
-        padding: 25px;
-        position: relative;
-        z-index: 1;
-      }
+        .nav-logo { font-family: 'Comic Neue', cursive; font-weight: bold; font-size: 1.2rem; color: var(--deep-pink); }
+        
+        .nav-links { display: flex; gap: 20px; font-size: 0.95rem; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 700; }
+        .nav-links a:hover { color: var(--deep-pink); transform: translateY(-2px); }
 
-      header {
-        text-align: center;
-        border-bottom: 2px dashed var(--trans-blue);
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-      }
+        .lang-select {
+            background: #fff;
+            border: 2px solid var(--primary-pink);
+            border-radius: 20px;
+            padding: 5px 10px;
+            color: var(--deep-pink);
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
 
-      h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        background: linear-gradient(to right, #55cdfc, #f7a8b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
-        letter-spacing: -1px;
-      }
+        /* --- Layout Container --- */
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-      .marquee-container {
-        background: #fff;
-        border: 1px solid var(--trans-blue);
-        border-radius: 999px;
-        padding: 5px 15px;
-        margin: 15px auto;
-        max-width: 400px;
-        overflow: hidden;
-        white-space: nowrap;
-        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-      }
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
 
-      .marquee-content {
-        display: inline-block;
-        animation: scroll 10s linear infinite;
-        font-weight: bold;
-        color: #ff4fa0;
-      }
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
 
-      @keyframes scroll {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-      }
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
+            animation: float 6s ease-in-out infinite;
+        }
 
-      .profile-section {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        align-items: flex-start;
-        margin-bottom: 30px;
-      }
+        .status-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: float 6s ease-in-out infinite reverse;
+        }
 
-      .avatar-box {
-        flex: 0 0 auto;
-        width: 150px;
-        text-align: center;
-      }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
 
-      .avatar {
-        width: 140px;
-        height: 140px;
-        border-radius: 15px;
-        border: 4px solid #fff;
-        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
-        transition: transform 0.2s;
-      }
+        h1 { margin: 15px 0 5px 0; font-size: 1.8rem; color: var(--text-main); }
+        .aka { color: var(--deep-pink); font-family: 'Comic Neue', cursive; font-size: 2.2rem; margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        .bio-short { max-width: 600px; margin: 15px auto; line-height: 1.6; }
 
-      .avatar:hover {
-        transform: rotate(-3deg) scale(1.05);
-      }
+        /* --- Cards & Sections --- */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
 
-      .bio-box {
-        flex: 1;
-        background: rgba(255,255,255,0.6);
-        padding: 15px;
-        border-radius: 12px;
-        border: 1px solid #fff;
-      }
+        h2 {
+            color: var(--deep-pink);
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.8rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-      h2 {
-        color: #b91c8c;
-        border-left: 5px solid var(--trans-blue);
-        padding-left: 10px;
-        margin-top: 0;
-      }
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: repeating-linear-gradient(to right, var(--primary-pink) 0, var(--primary-pink) 5px, transparent 5px, transparent 10px);
+            opacity: 0.5;
+        }
 
-      p {
-        line-height: 1.6;
-        margin-bottom: 10px;
-      }
+        /* --- Identity Tags --- */
+        .tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .tag {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            border: 1px solid #ffe5ec;
+            color: var(--text-dim);
+        }
+        .tag.fav { background: #ffe5ec; color: var(--deep-pink); border-color: var(--primary-pink); font-weight: bold; }
+        
+        .pronoun-alert {
+            background: #fff0f3;
+            border-left: 5px solid var(--deep-pink);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
 
-      /* Alert Box for Compromised Account */
-      .alert-box {
-        background: rgba(255, 77, 77, 0.1);
-        border: 2px solid var(--alert-red);
-        color: #b30000;
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        font-size: 0.9em;
-        text-align: center;
-      }
+        /* --- Multilingual Pronoun Explainer --- */
+        .lang-pronoun-guide {
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            border: 2px dashed var(--soft-blue);
+        }
 
-      .links-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        margin-bottom: 30px;
-      }
+        /* --- Social Grid --- */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
 
-      .link-card {
-        display: block;
-        text-decoration: none;
-        background: #fff;
-        padding: 10px 15px;
-        border-radius: 10px;
-        border: 2px solid var(--trans-blue);
-        color: var(--ink);
-        font-weight: bold;
-        transition: 0.2s;
-        box-shadow: 4px 4px 0 var(--trans-pink);
-      }
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 15px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 2px solid transparent;
+            font-weight: 700;
+            gap: 8px;
+        }
 
-      .link-card:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 6px 6px 0 var(--trans-pink);
-      }
+        .social-link:hover {
+            border-color: var(--primary-pink);
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(255, 143, 171, 0.25);
+        }
 
-      .link-card:active {
-        transform: translate(2px, 2px);
-        box-shadow: 0 0 0 var(--trans-pink);
-      }
+        .social-link i { font-size: 1.5rem; color: var(--soft-blue); }
+        .social-link:hover i { color: var(--deep-pink); }
 
-      .link-card span {
-        float: right;
-      }
+     /* --- Cute Terminal & Sys Info --- */
+.kawaii-terminal {
+    background: #1e1e2e; /* Catppuccin Mocha Dark */
+    color: #cdd6f4;
+    padding: 0;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    border: 2px solid #fab387; /* Peach border */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
 
-      /* Custom Details/Summary Styles for Info Popup */
-      details.info-popup {
-        margin-bottom: 20px;
-      }
+.term-bar {
+    background: #181825;
+    padding: 8px 15px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid #313244;
+}
 
-      details.info-popup summary {
-        cursor: pointer;
-        list-style: none; /* Hide default triangle */
-        outline: none;
-      }
+.term-dot { width: 12px; height: 12px; border-radius: 50%; }
+.term-dot.red { background: #f38ba8; }
+.term-dot.yellow { background: #f9e2af; }
+.term-dot.green { background: #a6e3a1; }
 
-      details.info-popup summary::-webkit-details-marker {
-        display: none;
-      }
+.term-content { padding: 20px; }
 
-      details.info-popup[open] summary {
-         margin-bottom: 10px;
-      }
+.term-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+    margin-top: 15px;
+}
 
-      .info-content {
-        background: rgba(255, 255, 255, 0.8);
-        border: 2px dashed #b91c8c;
-        border-radius: 10px;
-        padding: 15px;
-        animation: fadeIn 0.3s ease-in-out;
-      }
+/* Mobile: Stack columns */
+@media (max-width: 600px) {
+    .term-grid { grid-template-columns: 1fr; }
+}
 
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
+.p { color: #f5c2e7; font-weight: bold; } /* Pink Keys */
+.b { color: #89b4fa; } /* Blue Values */
+.g { color: #a6e3a1; } /* Green Accents */
+.y { color: #f9e2af; } /* Yellow Accents */
 
-      .info-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        font-size: 0.9em;
-      }
+        /* --- Projects & Articles --- */
+        .project-list { display: flex; flex-direction: column; gap: 15px; }
+        .project-item {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            border-left: 4px solid var(--soft-blue);
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .project-item:hover { border-left-color: var(--deep-pink); transform: translateX(5px); }
+        .project-icon { font-size: 1.5rem; width: 40px; text-align: center; }
 
-      .info-category h3 {
-        font-size: 1rem;
-        margin: 0 0 5px 0;
-        color: #55cdfc;
-        text-transform: uppercase;
-        border-bottom: 1px solid #ddd;
-      }
+        footer { text-align: center; margin-top: 50px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-dim); }
+        
+        /* RTL Support */
+        body[dir="rtl"] { text-align: right; font-family: 'Tahoma', 'Nunito', sans-serif; }
+        body[dir="rtl"] h2::after { margin-right: 10px; margin-left: 0; }
+        body[dir="rtl"] .project-item { border-left: none; border-right: 4px solid var(--soft-blue); }
+        body[dir="rtl"] .project-item:hover { border-right-color: var(--deep-pink); transform: translateX(-5px); }
 
-      .info-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-
-      .tag {
-        background: #eee;
-        padding: 2px 6px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        font-size: 0.85em;
-      }
-      .tag.fav { background: #ffe6ea; border-color: #ffb3c1; color: #d63384; }
-
-      .fake-terminal {
-        background: #111;
-        color: #0f0;
-        font-family: monospace;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-        font-size: 0.9em;
-      }
-
-      .fake-terminal span.p { color: #f7a8b8; }
-      .fake-terminal span.b { color: #55cdfc; }
-
-      .projects {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .project-item {
-        background: linear-gradient(to right, #fff, #f0f8ff);
-        border: 1px solid var(--trans-blue);
-        padding: 10px;
-        border-radius: 8px;
-      }
-
-      .project-item a {
-        color: #b91c8c;
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      .project-item a:hover {
-        text-decoration: underline;
-        text-decoration-style: wavy;
-      }
-
-      .small {
-        font-size: 0.8em;
-        opacity: 0.8;
-      }
-
-      /* Styles for the Content Links Section */
-      .content-links {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .content-link-item {
-        background: rgba(255, 255, 255, 0.5);
-        border: 1px solid var(--trans-pink);
-        padding: 12px;
-        border-radius: 8px;
-        text-decoration: none;
-        color: var(--ink);
-        transition: 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .content-link-item:hover {
-        background: #fff;
-        transform: translateX(5px);
-        box-shadow: 2px 2px 0 var(--trans-blue);
-      }
-
-      .content-link-item b {
-        color: #b91c8c;
-        font-size: 1.1em;
-      }
-      
-      .content-link-item .icon {
-        font-size: 1.5em;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 2px dashed var(--trans-pink);
-        font-size: 0.85rem;
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">woof~</div>
+        <div class="nav-links">
+            <a href="#about" data-t="nav_about">About</a>
+            <a href="#projects" data-t="nav_projects">Projects</a>
+            <a href="#contact" data-t="nav_contact">Socials</a>
+        </div>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en">🇨🇦 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="pt">🇧🇷 PT</option>
+            <option value="id">🇮🇩 ID</option>
+            <option value="ar">🇸🇦 AR</option>
+        </select>
+    </nav>
 
     <div class="container">
-      <header>
-        <h1>Ashley Íris</h1>
-        <div class="marquee-container">
-          <div class="marquee-content">
-            ✨ Welcome to ashleyirispup.cat! ~ woof~ ✨
-          </div>
-        </div>
-      </header>
- 
-      <div class="profile-section">
-        <div class="avatar-box">
-          <img
-            src="https://codeberg.org/avatars/6faeff434a11fb732c1799f250ee923eaae3d5545cc2ea116d7b42a1b2b1e814?size=512"
-            alt="Ashley's Avatar"
-            class="avatar"
-          />
-          <br><br>
-          <small><b>ashleyirispup</b></small>
-        </div>
-        <div class="bio-box">
-          <h2>About Me 💗</h2>
-          <p>
-            <b>Haai!</b> I'm <b>Güneş Arjinya Melisoy</b> (Ashley). <br>
-            🌈 Anarco queer & libsoc.<br>
-            🎹 I play piano & love <b>alt pop </b>.<br>
-            ✈️ Geography, Space & Aviation geek.<br>
-            🐧 GNU/Linux & Privacy fighter.
-          </p>
-          <p class="small">
-            <i>(it/its or she/her) • Turkish • Doggirl (woof~)</i>
-          </p>
-        </div>
-      </div>
+        
+        <header class="hero" id="about">
+            <div class="avatar-container">
+                <img src="https://codeberg.org/avatars/6faeff434a11fb732c1799f250ee923eaae3d5545cc2ea116d7b42a1b2b1e814?size=512" alt="Ashley Avatar" class="avatar">
+                <div class="status-badge">🏳️‍⚧️</div>
+            </div>
+            <h1 id="legalName">Güneş Şevval Arjinya Melisoy</h1>
+            <p class="aka">aka Ashley Íris ✨</p>
+            
+            <div class="bio-short">
+                <p data-t="bio_main">
+                    <b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 I play piano & love <b>alt pop</b>. 
+                    ✈️ Geography, Space & Aviation geek. 🐧 GNU/Linux & Privacy fighter.
+                </p>
+                <p style="opacity: 0.7; font-size: 0.9em;" data-t="bio_sub">
+                    (it/its or she/her) • Turkish • Doggirl (woof~)
+                </p>
+            </div>
+        </header>
 
-      <h2>Contact & Socials 🌐</h2>
-      <div class="links-grid">
-        <a href="mailto:ashley@ggtylerr.dev" class="link-card">
-          ✉️ Email
-          <span>➜</span>
-        </a>
-        <a href="https://social.poketube.fun/@ashley" class="link-card">
-          🐘 Fediverse
-          <span>➜</span>
-        </a>
-        <a href="https://bsky.app/profile/ashley0143.bsky.social" class="link-card">
-          ☁️ Bluesky
-          <span>➜</span>
-        </a>
-        <a href="https://discord.com/users/1456363852794040580" class="link-card">
-          🎮 Discord (NEW)
-          <span>➜</span>
-        </a>
+        <section class="card">
+            <h2 data-t="identity_title">Identity & Pronouns 💗</h2>
+            
+            <div class="pronoun-alert">
+                <i class="fas fa-exclamation-circle"></i> 
+                <span data-t="pronoun_warning">⚠️ I am NOT okay with any pronouns other than <b>it/its</b> and <b>she/her</b> (sometimes)!</span>
+            </div>
 
-        <a href="https://codeberg.org/ashleyirispuppy" class="link-card">
-          💻 Codeberg
-          <span>➜</span>
-        </a>
-        <a href="https://steamcommunity.com/id/ashleyirispup/" class="link-card">
-          🚂 Steam
-          <span>➜</span>
-        </a>
-        <a href="https://reddit.com/user/ash_potter" class="link-card">
-          👽 Reddit
-          <span>➜</span>
-        </a>
-
-        <a href="matrix:@iamashley:mozilla.org" class="link-card">
-          💬 Matrix
-          <span>➜</span>
-        </a>
-      </div>
-
-      <details class="info-popup">
-        <summary class="link-card" style="text-align: center; color: #b91c8c;">
-           🏷️ <b>My Identity & Pronouns (Click Me!)</b> <span>▼</span>
-        </summary>
-        <div class="info-content">
-          <p style="text-align: center; font-weight: bold; color: #d63384; margin-bottom: 15px;">
-            ⚠️ I am NOT okay with any pronouns other than it/its and she/her (sometimes)!
-          </p>
-
-          <div class="info-grid">
-            <div class="info-category">
-              <h3>Preferred Names</h3>
-              <div class="info-tags">
+            <div class="tags-group">
+                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="pref_names">Preferred Names:</strong>
                 <span class="tag fav">Ashley</span>
                 <span class="tag fav">Ashley Íris</span>
                 <span class="tag fav">Íris</span>
                 <span class="tag fav">Ashy</span>
                 <span class="tag fav">Güneş Şevval Arjinya Melisoy</span>
                 <span class="tag">Mizuki</span>
-              </div>
             </div>
 
-            <div class="info-category">
-              <h3>Pronouns</h3>
-              <div class="info-tags">
+            <div class="tags-group">
+                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="pronouns_header">Pronouns:</strong>
                 <span class="tag fav">it/its</span>
                 <span class="tag fav">she/her</span>
                 <span class="tag">per/pers</span>
-              </div>
             </div>
 
-            <div class="info-category">
-              <h3>Honorifics</h3>
-              <div class="info-tags">
-                <span class="tag fav">[none]</span>
-                <span class="tag fav">Ms.</span>
-                <span class="tag fav">Ma'am</span>
-              </div>
-            </div>
-
-            <div class="info-category">
-              <h3>Descriptions</h3>
-              <div class="info-tags">
+            <div class="tags-group">
+                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="terms_header">Terms:</strong>
                 <span class="tag fav">doggirl/puppy</span>
                 <span class="tag fav">women</span>
                 <span class="tag fav">girl</span>
                 <span class="tag fav">robot</span>
                 <span class="tag fav">Bandito</span>
-              </div>
-            </div>
-
-             <div class="info-category">
-              <h3>Compliments</h3>
-              <div class="info-tags">
-                <span class="tag fav">cute</span>
-                <span class="tag fav">sexy</span>
-                <span class="tag fav">hottie</span>
-                <span class="tag fav">beautiful</span>
-              </div>
-            </div>
-
-            <div class="info-category">
-              <h3>Relationship Terms</h3>
-              <div class="info-tags">
                 <span class="tag fav">Wifey</span>
-                <span class="tag fav">Darling</span>
-                <span class="tag fav">Doll</span>
                 <span class="tag fav">Pet</span>
-              </div>
             </div>
-          </div>
+
+            <div class="lang-pronoun-guide" id="pronounGuide" style="display:none;">
+                <b data-t="guide_title">🌍 How to refer to me in this language:</b>
+                <p id="guideText" style="margin-top: 5px; line-height: 1.5;"></p>
+            </div>
+        </section>
+
+        <section class="card" id="contact">
+            <h2 data-t="socials_title">Contact & Socials 🌐</h2>
+            <div class="social-grid">
+                <a href="mailto:ashley@ggtylerr.dev" class="social-link">
+                    <i class="fas fa-envelope"></i> <span>Email</span>
+                </a>
+                <a href="https://social.poketube.fun/@ashley" class="social-link">
+                    <i class="fab fa-mastodon"></i> <span>Fediverse</span>
+                </a>
+                <a href="https://bsky.app/profile/ashley0143.bsky.social" class="social-link">
+                    <i class="fas fa-cloud"></i> <span>Bluesky</span>
+                </a>
+                <a href="https://discord.com/users/1456363852794040580" class="social-link">
+                    <i class="fab fa-discord"></i> <span>Discord</span>
+                </a>
+                <a href="https://codeberg.org/ashleyirispuppy" class="social-link">
+                    <i class="fas fa-code"></i> <span>Codeberg</span>
+                </a>
+                <a href="https://steamcommunity.com/id/ashleyirispup/" class="social-link">
+                    <i class="fab fa-steam"></i> <span>Steam</span>
+                </a>
+                <a href="https://reddit.com/user/ash_potter" class="social-link">
+                    <i class="fab fa-reddit-alien"></i> <span>Reddit</span>
+                </a>
+                <a href="https://www.albumoftheyear.org/user/ashley0143/" class="social-link">
+                    <i class="fas fa-record-vinyl"></i> <span>AOTY</span>
+                </a>
+                <a href="matrix:@iamashley:mozilla.org" class="social-link">
+                    <i class="fas fa-comments"></i> <span>Matrix</span>
+                </a>
+            </div>
+        </section>
+
+<section class="card">
+    <h2 data-t="sys_title">Sys Info 🖥️</h2>
+    
+    <div class="kawaii-terminal">
+        <div class="term-bar">
+            <div class="term-dot red"></div>
+            <div class="term-dot yellow"></div>
+            <div class="term-dot green"></div>
         </div>
-      </details>
 
-      <h2>Sys Info 🖥️</h2>
-      <div class="fake-terminal">
-        <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch</div>
-        <br>
-        <div>OS: <span class="p">Windows 11 Pro (25H2) x86_64</span></div>
-        <div>Host: <span class="p">Victus by HP Gaming Laptop 15</span></div>
-        <div>Kernel: <span class="p">WIN32_NT 10.0.26220</span></div>
-        <div>Uptime: <span class="p">7 hours, 49 mins</span></div>
-        <div>Packages: <span class="p">26 (scoop)</span></div>
-        <div>Shell: <span class="p">hyfetch</span></div>
-        <div>Display: <span class="p">1920x1080 @ 144 Hz</span></div>
-        <div>WM Theme: <span class="p">Custom - #FFABCC</span></div>
-        <div>CPU: <span class="p">AMD Ryzen 5 8645HS (12) @ 5.0GHz</span></div>
-        <div>GPU: <span class="p">NVIDIA GeForce RTX 3050 6GB</span></div>
-        <div>Memory: <span class="p">16GB</span></div>
-        <br>
-        <div><span class="p">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span class="blink">_</span></div>
-      </div>
-      <div style="text-align: right; margin-top: -20px; margin-bottom: 20px;">
-        <a href="https://ashleyirispup.cat/opinion/blog/windows.html" class="small">wonder how i use windows?</a>
-      </div>
+        <div class="term-content">
+            <div>
+                <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch
+            </div>
+            
+            <div class="term-grid">
+                <div>
+                    <div><span class="p">OS</span>: <span class="b">Windows 11 Pro (25H2)</span></div>
+                    <div><span class="p">Host</span>: <span class="b">Victus by HP 15-fb2xxx</span></div>
+                    <div><span class="p">Kernel</span>: <span class="b">WIN32_NT 10.0.26220</span></div>
+                    <div><span class="p">Shell</span>: <span class="b">hyfetch</span></div>
+                    <div><span class="p">Theme</span>: <span class="p">Custom - #FFABCC</span></div>
+                </div>
 
-      <h2>Projects 🛠️</h2>
-      <div class="projects">
-        <div class="project-item">
-          <strong>Poke</strong><br>
-          <a href="https://poketube.fun">poketube.fun</a> — Your all-in-one privacy app.
+                <div>
+                    <div><span class="p">CPU</span>: <span class="b">AMD Ryzen 5 8645HS (12)</span></div>
+                    <div><span class="p">GPU</span>: <span class="b">NVIDIA GeForce RTX 3050 6GB</span></div>
+                    <div><span class="p">Mem</span>: <span class="y">15.23 Gib</span></div>
+                    <div><span class="p">Display</span>: <span class="b">1920x1080 @ 144Hz (16")</span></div>
+                    <div><span class="p">Term</span>: <span class="b">Windows Terminal</span></div>
+                </div>
+            </div>
+
+            <br>
+            <div>
+                <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span style="animation: blink 1s infinite; background: #cdd6f4; width: 8px; height: 15px; display: inline-block; vertical-align: middle;"></span>
+            </div>
         </div>
-        <div class="project-item">
-          <strong>Discord Unspy</strong> <span class="small">[Archived]</span><br>
-          <a href="https://github.com/discord-unspy/discord-unspy">View Source</a> — Better privacy for Discord.
-        </div>
-      </div>
-
-      <h2>Content & Articles 🔗</h2>
-      <div class="content-links">
-        <a href="my-phones.html" class="content-link-item">
-          <span class="icon">📱</span>
-          <div>
-            <b>My Phone History</b><br>
-            <span class="small">A showcase of devices I've daily driven.</span>
-          </div>
-        </a>
-        
-        <a href="misinformation/index.html" class="content-link-item">
-          <span class="icon">🕵️‍♀️</span>
-          <div>
-            <b>Misinformation Hub</b><br>
-            <span class="small">Clearing up rumors and confusion (e.g. DuckDuckGo).</span>
-          </div>
-        </a>
-
-        <a href="https://ashleyirispup.cat/opinion" class="content-link-item">
-          <span class="icon">🗣️</span>
-          <div>
-            <b>My Opinions</b><br>
-            <span class="small">Most of my website lives here.</span>
-          </div>
-        </a>
-
-        <h3 style="margin: 10px 0 5px 0; font-size: 1rem; color: #55cdfc; border-bottom: 1px dashed #bbb; padding-bottom:5px;">Software Rants</h3>
-        
-        <a href="https://ashleyirispup.cat/gnuandlinux" class="content-link-item">
-          <span class="icon">🐧</span>
-          <div>
-            <b>What is GNU/Linux?</b><br>
-            <span class="small">Why I don't just call it "Linux".</span>
-          </div>
-        </a>
-        
-        <a href="https://ashleyirispup.cat/not-open-source" class="content-link-item">
-          <span class="icon">🔓</span>
-          <div>
-            <b>"Open Source" misses the point</b><br>
-            <span class="small">Why I prefer Free Software (Libre).</span>
-          </div>
-        </a>
-      </div>
-
-      <footer>
-        <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
-        <p class="small">Hosted at ashleyirispup.cat</p>
-      </footer>
     </div>
 
-  </body>
+    <div style="text-align: right; margin-top: 10px;">
+        <a href="https://ashleyirispup.cat/opinion/blog/windows.html" style="font-size: 0.85rem; font-weight:bold; color: var(--deep-pink); text-decoration:none;" data-t="windows_link">
+            ✨ wonder how i use windows? ➜
+        </a>
+    </div>
+</section>
+
+        <section class="card" id="projects">
+            <h2 data-t="projects_title">Projects & Content 🔗</h2>
+            <div class="project-list">
+                
+                <a href="https://poketube.fun" class="project-item">
+                    <div class="project-icon">📺</div>
+                    <div>
+                        <b>poketube.fun</b><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="proj_poke">Your all-in-one privacy app.</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/discord-unspy/discord-unspy" class="project-item">
+                    <div class="project-icon">🛡️</div>
+                    <div>
+                        <b>Discord Unspy</b> <span style="font-size:0.7em; background:#eee; padding:2px 5px; border-radius:4px;">Archived</span><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="proj_unspy">Better privacy for Discord.</span>
+                    </div>
+                </a>
+
+                <a href="my-phones.html" class="project-item">
+                    <div class="project-icon">📱</div>
+                    <div>
+                        <b data-t="link_phones">My Phone History</b><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_phones_desc">A showcase of devices I've daily driven.</span>
+                    </div>
+                </a>
+
+                <a href="misinformation/index.html" class="project-item">
+                    <div class="project-icon">🕵️‍♀️</div>
+                    <div>
+                        <b data-t="link_misinfo">Misinformation Hub</b><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_misinfo_desc">Clearing up rumors (e.g. DuckDuckGo).</span>
+                    </div>
+                </a>
+
+                <a href="https://ashleyirispup.cat/opinion" class="project-item">
+                    <div class="project-icon">🗣️</div>
+                    <div>
+                        <b data-t="link_opinions">My Opinions</b><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_opinions_desc">Most of my website lives here.</span>
+                    </div>
+                </a>
+
+                <div style="margin-top: 10px; border-top: 2px dashed #ffcfe0; padding-top: 10px;">
+                    <small style="color: var(--soft-blue); font-weight: bold; text-transform: uppercase;" data-t="rants_header">Software Rants</small>
+                </div>
+
+                <a href="https://ashleyirispup.cat/gnuandlinux" class="project-item" style="border-left-color: var(--text-main);">
+                    <div class="project-icon">🐧</div>
+                    <div>
+                        <b>What is GNU/Linux?</b><br>
+                        <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_linux">Why I don't just call it "Linux".</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
+        <p>Hosted at ashleyirispup.cat</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_about: "About", nav_projects: "Projects", nav_contact: "Socials",
+                bio_main: "<b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 I play piano & love <b>alt pop</b>. ✈️ Geography, Space & Aviation geek. 🐧 GNU/Linux & Privacy fighter.",
+                bio_sub: "(it/its or she/her) • Turkish • Doggirl (woof~)",
+                identity_title: "Identity & Pronouns 💗",
+                pronoun_warning: "⚠️ I am NOT okay with any pronouns other than <b>it/its</b> and <b>she/her</b> (sometimes)!",
+                pref_names: "Preferred Names:", pronouns_header: "Pronouns:", terms_header: "Terms:",
+                socials_title: "Contact & Socials 🌐", sys_title: "Sys Info 🖥️", windows_link: "wonder how i use windows?",
+                projects_title: "Projects & Content 🔗",
+                proj_poke: "Your all-in-one privacy app.", proj_unspy: "Better privacy for Discord.",
+                link_phones: "My Phone History", link_phones_desc: "A showcase of devices I've daily driven.",
+                link_misinfo: "Misinformation Hub", link_misinfo_desc: "Clearing up rumors (e.g. DuckDuckGo).",
+                link_opinions: "My Opinions", link_opinions_desc: "Most of my website lives here.",
+                rants_header: "Software Rants", link_linux: "Why I don't just call it \"Linux\".",
+                guide_title: "", guide_text: ""
+            },
+            es: {
+                nav_about: "Sobre Mí", nav_projects: "Proyectos", nav_contact: "Sociales",
+                bio_main: "<b>¡Hola!</b> 🌈 Anarco queer & libsoc. 🎹 Toco el piano y amo el <b>alt pop</b>. ✈️ Fan de geografía, espacio y aviación. 🐧 GNU/Linux & Privacidad.",
+                bio_sub: "(it/its o ella) • Turca • Doggirl (guau~)",
+                identity_title: "Identidad y Pronombres 💗",
+                pronoun_warning: "⚠️ ¡NO acepto otros pronombres que no sean <b>it/its</b> y <b>ella</b> (a veces)!",
+                pref_names: "Nombres Preferidos:", pronouns_header: "Pronombres:", terms_header: "Términos:",
+                socials_title: "Contacto 🌐", sys_title: "Info Sistema 🖥️", windows_link: "¿cómo uso windows?",
+                projects_title: "Proyectos y Contenido 🔗",
+                proj_poke: "Tu app de privacidad todo en uno.", proj_unspy: "Mejor privacidad para Discord.",
+                link_phones: "Historial de Teléfonos", link_phones_desc: "Dispositivos que he usado a diario.",
+                link_misinfo: "Centro de Desinformación", link_misinfo_desc: "Aclarando rumores (ej. DuckDuckGo).",
+                link_opinions: "Mis Opiniones", link_opinions_desc: "La mayor parte de mi web está aquí.",
+                rants_header: "Quejas de Software", link_linux: "Por qué no lo llamo solo \"Linux\".",
+                guide_title: "🌍 Guía de Pronombres en Español:",
+                guide_text: "En español, prefiero el trato femenino (Ella/La). Si usas lenguaje neutro, 'Elle' es aceptable, pero por favor evita el masculino. 'It' (eso/aquello) es difícil de traducir directamente como pronombre personal, así que el femenino es la opción más segura."
+            },
+            pt: {
+                nav_about: "Sobre", nav_projects: "Projetos", nav_contact: "Social",
+                bio_main: "<b>Oie!</b> 🌈 Anarco queer & libsoc. 🎹 Toco piano e amo <b>alt pop</b>. ✈️ Geek de geografia, espaço e aviação. 🐧 GNU/Linux & Privacidade.",
+                bio_sub: "(it/its ou ela) • Turca • Doggirl (woof~)",
+                identity_title: "Identidade e Pronomes 💗",
+                pronoun_warning: "⚠️ NÃO aceito outros pronomes além de <b>it/its</b> e <b>ela</b> (às vezes)!",
+                pref_names: "Nomes Preferidos:", pronouns_header: "Pronomes:", terms_header: "Termos:",
+                socials_title: "Contato 🌐", sys_title: "Info Sistema 🖥️", windows_link: "como uso windows?",
+                projects_title: "Projetos e Conteúdo 🔗",
+                proj_poke: "Sua app de privacidade tudo-em-um.", proj_unspy: "Melhor privacidade para Discord.",
+                link_phones: "Histórico de Celulares", link_phones_desc: "Dispositivos que usei no dia a dia.",
+                link_misinfo: "Hub de Desinformação", link_misinfo_desc: "Esclarecendo rumores (ex. DuckDuckGo).",
+                link_opinions: "Minhas Opiniões", link_opinions_desc: "A maior parte do meu site vive aqui.",
+                rants_header: "Rants de Software", link_linux: "Por que não chamo apenas de \"Linux\".",
+                guide_title: "🌍 Guia de Pronomes em Português:",
+                guide_text: "Em português, por favor use o feminino (Ela/Dela). Se usar linguagem neutra (elu/delu), também está ok, mas evite o masculino. A tradução literal de 'It' não funciona bem para pessoas em PT, então o feminino é preferido."
+            },
+            id: {
+                nav_about: "Tentang", nav_projects: "Proyek", nav_contact: "Sosial",
+                bio_main: "<b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 Main piano & suka <b>alt pop</b>. ✈️ Geek geografi, angkasa & penerbangan. 🐧 GNU/Linux & Privasi.",
+                bio_sub: "(it/its atau dia/nya) • Turki • Doggirl (guk~)",
+                identity_title: "Identitas & Kata Ganti 💗",
+                pronoun_warning: "⚠️ Saya TIDAK oke dengan kata ganti selain <b>it/its</b> dan <b>she/her</b>!",
+                pref_names: "Nama Pilihan:", pronouns_header: "Kata Ganti:", terms_header: "Istilah:",
+                socials_title: "Kontak & Sosial 🌐", sys_title: "Info Sistem 🖥️", windows_link: "kok pake windows?",
+                projects_title: "Proyek & Konten 🔗",
+                proj_poke: "Aplikasi privasi all-in-one.", proj_unspy: "Privasi lebih baik untuk Discord.",
+                link_phones: "Riwayat HP", link_phones_desc: "Showcase perangkat harian saya.",
+                link_misinfo: "Pusat Misinformasi", link_misinfo_desc: "Meluruskan rumor (cth. DuckDuckGo).",
+                link_opinions: "Opini Saya", link_opinions_desc: "Sebagian besar web saya ada di sini.",
+                rants_header: "Keluhan Software", link_linux: "Kenapa gak cuma panggil \"Linux\".",
+                guide_title: "🌍 Panduan Kata Ganti (Indonesian):",
+                guide_text: "Bahasa Indonesia umumnya netral gender (Dia/Nya), jadi ini mudah! Silakan gunakan Dia/Nya. Jika berbicara dalam konteks Inggris campur, tetap gunakan it/its atau she/her."
+            },
+            ar: {
+                nav_about: "عني", nav_projects: "مشاريع", nav_contact: "تواصل",
+                bio_main: "<b>أهلاً!</b> 🌈 أناركو كوير & اشتراكية تحررية. 🎹 أعزف البيانو وأحب الـ <b>alt pop</b>. ✈️ مهووسة بالجغرافيا والفضاء والطيران. 🐧 GNU/Linux والخصوصية.",
+                bio_sub: "(هي/ها) • تركية • Doggirl (woof~)",
+                identity_title: "الهوية والضمائر 💗",
+                pronoun_warning: "⚠️ لا أقبل أي ضمائر غير <b>it/its</b> و <b>هي/ها</b> (أحياناً)!",
+                pref_names: "الأسماء المفضلة:", pronouns_header: "الضمائر:", terms_header: "المصطلحات:",
+                socials_title: "التواصل الاجتماعي 🌐", sys_title: "نظام التشغيل 🖥️", windows_link: "كيف أستعمل ويندوز؟",
+                projects_title: "المحتوى والمشاريع 🔗",
+                proj_poke: "تطبيق الخصوصية الشامل.", proj_unspy: "خصوصية أفضل لـ Discord.",
+                link_phones: "تاريخ هواتفي", link_phones_desc: "عرض للأجهزة التي استخدمتها.",
+                link_misinfo: "مركز المعلومات المضللة", link_misinfo_desc: "توضيح الشائعات (مثل DuckDuckGo).",
+                link_opinions: "آرائي", link_opinions_desc: "معظم موقعي موجود هنا.",
+                rants_header: "نقد البرمجيات", link_linux: "لماذا لا أسميه \"Linux\" فقط.",
+                guide_title: "🌍 دليل الضمائر بالعربية:",
+                guide_text: "بما أن اللغة العربية تعتمد على الجنس القواعدي، يرجى استخدام صيغة المؤنث (هي/أنتِ) عند الحديث معي أو عني. استخدام المذكر غير مقبول."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Handle RTL for Arabic
+            if(lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+            }
+
+            // Update text elements
+            const elements = document.querySelectorAll('[data-t]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Handle Pronoun Guide Visibility
+            const guideBox = document.getElementById('pronounGuide');
+            const guideText = document.getElementById('guideText');
+            
+            if (lang !== 'en') {
+                guideBox.style.display = 'block';
+                guideBox.querySelector('[data-t="guide_title"]').innerText = translations[lang].guide_title;
+                guideText.innerText = translations[lang].guide_text;
+            } else {
+                guideBox.style.display = 'none';
+            }
+        }
+    </script>
+</body>
 </html>
