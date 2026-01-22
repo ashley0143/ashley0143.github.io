@@ -1,281 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About GNU/Linux — Ashley</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7a8b8" />
+    <meta name="theme-color" content="#ffc2d1">
     
-    <meta property="og:title" content="About GNU/Linux — Ashley" />
-    <meta property="twitter:description" content="Discover why GNU/Linux matters and how it all fits together" />
-    <meta property="og:image" content="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
-    <link rel="shortcut icon" href="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link
-      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    
     <style>
-      :root {
-        --trans-blue: #55cdfc;
-        --trans-pink: #f7a8b8;
-        --ink: #2b2b2b;
-        --glass: rgba(255, 255, 255, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.9);
-        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
-        --alert-red: #ff4d4d;
-      }
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #fff5f8 100%);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --primary-pink: #ff8fab;
+            --deep-pink: #fb6f92;
+            --soft-blue: #a2d2ff;
+            --text-main: #594a4e;
+            --text-dim: #8c7b7f;
+            --shadow: 0 8px 32px 0 rgba(255, 143, 171, 0.15);
+            --radius: 24px;
+        }
 
-      * {
-        box-sizing: border-box;
-      }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-      body {
-        margin: 0;
-        font-family: var(--font-main);
-        color: var(--ink);
-        background:
-          repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.03) 0px,
-            rgba(0, 0, 0, 0.03) 1px,
-            transparent 1px,
-            transparent 2px
-          ),
-          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        padding: 20px;
-        overflow-x: hidden;
-      }
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            background-image: radial-gradient(var(--primary-pink) 1px, transparent 1px);
+            background-size: 30px 30px;
+            line-height: 1.8;
+        }
 
-      /* Scanline effect overlay */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 999;
-      }
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid white;
+        }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: var(--glass);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 2px solid #fff;
-        border-radius: 20px;
-        box-shadow:
-          0 0 0 4px var(--trans-pink),
-          0 0 20px rgba(0,0,0,0.1);
-        padding: 25px;
-        position: relative;
-        z-index: 1;
-      }
+        .nav-logo { font-family: 'Comic Neue', cursive; font-weight: bold; font-size: 1.1rem; color: var(--deep-pink); text-decoration: none;}
+        
+        .lang-select {
+            background: #fff;
+            border: 2px solid var(--primary-pink);
+            border-radius: 20px;
+            padding: 5px 10px;
+            color: var(--deep-pink);
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
 
-      header {
-        text-align: center;
-        border-bottom: 2px dashed var(--trans-blue);
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-      }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
 
-      .avatar {
-        display: block;
-        margin: 0 auto 15px auto;
-        width: 140px;
-        height: 140px;
-        border-radius: 15px;
-        border: 4px solid #fff;
-        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
-        transition: transform 0.2s;
-        object-fit: cover;
-      }
+        /* Header */
+        header { text-align: center; margin-bottom: 40px; }
+        
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
+            margin-bottom: 15px;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        
+        h1 { color: var(--deep-pink); font-family: 'Comic Neue', cursive; font-size: 2.5rem; margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        .tagline { color: var(--soft-blue); font-weight: bold; margin-top: 5px; font-size: 1.1rem; }
 
-      .avatar:hover {
-        transform: rotate(-3deg) scale(1.05);
-      }
+        /* Warning Box */
+        .lang-warning {
+            display: none;
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-      h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        background: linear-gradient(to right, #55cdfc, #f7a8b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
-        letter-spacing: -1px;
-      }
-      
-      .tagline {
-        text-align: center;
-        color: #b91c8c;
-        font-weight: bold;
-        margin-top: -15px;
-        margin-bottom: 25px;
-      }
+        /* Article Card */
+        .article-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            font-size: 1.1rem;
+        }
 
-      .essay-section {
-        line-height: 1.8;
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-      }
+        .article-card p { margin-bottom: 25px; }
+        
+        strong { color: var(--deep-pink); font-weight: 800; }
+        
+        .article-card a {
+            color: var(--deep-pink);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px dashed var(--soft-blue);
+        }
+        .article-card a:hover { border-bottom-style: solid; background: #fff0f3; }
 
-      strong {
-        color: #b91c8c;
-      }
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            border-top: 2px dashed var(--primary-pink);
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+        footer a { color: var(--deep-pink); text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; text-decoration-style: wavy; }
 
-      a {
-        color: #b91c8c;
-        text-decoration: none;
-        font-weight: bold;
-      }
+        /* RTL Support */
+        body[dir="rtl"] { text-align: right; }
+        body[dir="rtl"] .lang-warning { border-left: none; border-right: 5px solid #ffc107; }
 
-      a:hover {
-        text-decoration: underline;
-        text-decoration-style: wavy;
-      }
-
-      hr {
-        border: none;
-        border-top: 2px dashed var(--trans-pink);
-        margin: 30px 0;
-      }
-
-      .meta-links {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .meta-links a {
-        display: inline-block;
-        margin: 5px 10px;
-        background: #fff;
-        padding: 5px 10px;
-        border-radius: 8px;
-        border: 1px solid var(--trans-blue);
-        box-shadow: 2px 2px 0 var(--trans-pink);
-      }
-      
-      .meta-links a:hover {
-        transform: translate(-1px, -1px);
-        box-shadow: 3px 3px 0 var(--trans-pink);
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 2px dashed var(--trans-pink);
-        font-size: 0.85rem;
-        line-height: 1.6;
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">⬅ Back to Home</a>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en">🇨🇦 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="pt">🇧🇷 PT</option>
+            <option value="id">🇮🇩 ID</option>
+            <option value="ar">🇸🇦 AR</option>
+        </select>
+    </nav>
 
     <div class="container">
-      <header>
-        <img src="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" alt="Ashley" class="avatar" />
-        <h1>About GNU/Linux</h1>
-      </header>
-      
-      <p class="tagline">Ashley's Personal site!</p>
+        
+        <header>
+            <img src="https://codeberg.org/avatars/6faeff434a11fb732c1799f250ee923eaae3d5545cc2ea116d7b42a1b2b1e814?size=512" alt="Ashley Avatar" class="avatar">
+            <h1 data-t="page_title">About GNU/Linux</h1>
+            <div class="tagline" data-t="tagline">Ashley's Personal Site!</div>
+        </header>
 
-      <main>
-        <p class="essay-section">
-          Every day, many people use a powerful, free operating system without realizing it’s really GNU with the Linux kernel at its core. While the kernel—Linux—handles hardware and low-level operations, the majority of tools, applications, and libraries shaping your experience come from the GNU Project.
-        </p>
-        <p class="essay-section">
-          It’s common to hear “Linux” used for the entire system. This can obscure the fact that Linux alone is just one component. The GNU Project has pieced together compilers, shells, utilities, and more to create a complete, coherent platform. Linux fills the gap as the kernel, making GNU’s vision fully functional on modern hardware.
-        </p>
-        <p class="essay-section">
-          If we measured contributions by code volume, GNU software often represents a significant portion—far more than the kernel itself. But beyond lines of code, GNU’s mission was to build an integrated system from the ground up, defining the standards and interfaces every part follows.
-        </p>
-        <p class="essay-section">
-          After years of GNU development, the Linux kernel was released under a free license in 1992. Suddenly, the final piece was in place. Thousands of developers then worked on packaging, installation tools, and user-friendly installers, giving rise to a rich ecosystem of distributions. Each distro brings together GNU, Linux, and community contributions into a unified experience.
-        </p>
-        <p class="essay-section">
-          Not all distributions follow the free-software philosophy to the same degree. Some include proprietary drivers or applications—others are fully committed to free software. When you choose a libre distribution, you’re honoring the principles set out by the GNU Project and ensuring every part of your system respects your freedom.
-        </p>
-        <p class="essay-section">
-          Whether you’re a long-time enthusiast or just discovering free software, remember: the term “Linux” refers to the kernel. The complete system is <strong>GNU/Linux</strong>, an achievement built by a global community dedicated to software freedom.
-        </p>
-        <p class="essay-section">
-          For more details, check the <a href="https://www.gnu.org/gnu/linux-and-gnu.html">official GNU/Linux overview</a> or the <a href="https://www.gnu.org/gnu/gnu-linux-faq.html">GNU/Linux FAQ</a>. You can also explore the history in <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>.
-        </p>
-        
-        <hr />
-        
-        <div class="meta-links" aria-label="links">
-          <a href="/">← Back to Home</a>
-          <a href="https://github.com/ashley0143">GitHub</a>
-          <a href="https://discord.com/users/1456363852794040580">Discord</a>
-          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
+        <div id="langWarning" class="lang-warning">
+            <i class="fas fa-robot"></i> <span data-t="lang_warning_text">Note: Machine translation has been used.</span>
         </div>
-      </main>
 
-      <footer>
-        <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
-        <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
-        <p>&copy; 2026 Ashley.</p>
-      </footer>
+        <main class="article-card" id="articleBody">
+            <p>
+                Every day, many people use a powerful, free operating system without realizing it’s really GNU with the Linux kernel at its core. While the kernel—Linux—handles hardware and low-level operations, the majority of tools, applications, and libraries shaping your experience come from the GNU Project.
+            </p>
+            <p>
+                It’s common to hear “Linux” used for the entire system. This can obscure the fact that Linux alone is just one component. The GNU Project has pieced together compilers, shells, utilities, and more to create a complete, coherent platform. Linux fills the gap as the kernel, making GNU’s vision fully functional on modern hardware.
+            </p>
+            <p>
+                If we measured contributions by code volume, GNU software often represents a significant portion—far more than the kernel itself. But beyond lines of code, GNU’s mission was to build an integrated system from the ground up, defining the standards and interfaces every part follows.
+            </p>
+            <p>
+                After years of GNU development, the Linux kernel was released under a free license in 1992. Suddenly, the final piece was in place. Thousands of developers then worked on packaging, installation tools, and user-friendly installers, giving rise to a rich ecosystem of distributions. Each distro brings together GNU, Linux, and community contributions into a unified experience.
+            </p>
+            <p>
+                Not all distributions follow the free-software philosophy to the same degree. Some include proprietary drivers or applications—others are fully committed to free software. When you choose a libre distribution, you’re honoring the principles set out by the GNU Project and ensuring every part of your system respects your freedom.
+            </p>
+            <p>
+                Whether you’re a long-time enthusiast or just discovering free software, remember: the term “Linux” refers to the kernel. The complete system is <strong>GNU/Linux</strong>, an achievement built by a global community dedicated to software freedom.
+            </p>
+            <p>
+                For more details, check the <a href="https://www.gnu.org/gnu/linux-and-gnu.html">official GNU/Linux overview</a> or the <a href="https://www.gnu.org/gnu/gnu-linux-faq.html">GNU/Linux FAQ</a>. You can also explore the history in <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>.
+            </p>
+        </main>
+
+        <footer>
+            <p>
+                <a href="https://github.com/ashley0143" rel="me"><i class="fab fa-github"></i> GitHub</a> •
+                <a href="https://discord.com/users/1456363852794040580"><i class="fab fa-discord"></i> Discord</a> •
+                <a href="https://www.reddit.com/user/Ash_Potter"><i class="fab fa-reddit"></i> Reddit</a>
+            </p>
+            <p style="opacity: 0.8; font-size: 0.8em;" data-t="footer_privacy">
+                This site does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.<br>
+                Permission under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
+            </p>
+        </footer>
+
     </div>
 
     <script>
-    (function(){
-      const STORAGE_KEY = '_hs_store';
-      const DISABLED_KEY = '_hs_disabled';
-      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
-      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      function record(evt) {
-        if (disabled) return;
-        events.push(evt);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
-      }
-      const startTime = performance.now();
-      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
-      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
-      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
-      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
-      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
-      let maxDepth = 0;
-      window.addEventListener('scroll', () => {
-        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
-        if (depth > maxDepth) {
-          maxDepth = depth;
-          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        const translations = {
+            en: {
+                page_title: "About GNU/Linux",
+                tagline: "Ashley's Personal Site!",
+                footer_privacy: "This site does not track you. No cookies. No data collection.<br>Permission under <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>.",
+                body_content: `
+                    <p>Every day, many people use a powerful, free operating system without realizing it’s really GNU with the Linux kernel at its core. While the kernel—Linux—handles hardware and low-level operations, the majority of tools, applications, and libraries shaping your experience come from the GNU Project.</p>
+                    <p>It’s common to hear “Linux” used for the entire system. This can obscure the fact that Linux alone is just one component. The GNU Project has pieced together compilers, shells, utilities, and more to create a complete, coherent platform. Linux fills the gap as the kernel, making GNU’s vision fully functional on modern hardware.</p>
+                    <p>If we measured contributions by code volume, GNU software often represents a significant portion—far more than the kernel itself. But beyond lines of code, GNU’s mission was to build an integrated system from the ground up, defining the standards and interfaces every part follows.</p>
+                    <p>After years of GNU development, the Linux kernel was released under a free license in 1992. Suddenly, the final piece was in place. Thousands of developers then worked on packaging, installation tools, and user-friendly installers, giving rise to a rich ecosystem of distributions. Each distro brings together GNU, Linux, and community contributions into a unified experience.</p>
+                    <p>Not all distributions follow the free-software philosophy to the same degree. Some include proprietary drivers or applications—others are fully committed to free software. When you choose a libre distribution, you’re honoring the principles set out by the GNU Project and ensuring every part of your system respects your freedom.</p>
+                    <p>Whether you’re a long-time enthusiast or just discovering free software, remember: the term “Linux” refers to the kernel. The complete system is <strong>GNU/Linux</strong>, an achievement built by a global community dedicated to software freedom.</p>
+                    <p>For more details, check the <a href="https://www.gnu.org/gnu/linux-and-gnu.html">official GNU/Linux overview</a> or the <a href="https://www.gnu.org/gnu/gnu-linux-faq.html">GNU/Linux FAQ</a>. You can also explore the history in <a href="https://www.gnu.org/gnu/thegnuproject.html">The GNU Project</a>.</p>
+                `
+            },
+            es: {
+                page_title: "Sobre GNU/Linux",
+                tagline: "¡Sitio personal de Ashley!",
+                lang_warning_text: "Nota: Se ha utilizado traducción automática.",
+                footer_privacy: "Este sitio no te rastrea. Sin cookies. Sin recolección de datos.<br>Permiso bajo <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>.",
+                body_content: `
+                    <p>Cada día, muchas personas utilizan un sistema operativo libre y potente sin darse cuenta de que en realidad es GNU con el núcleo Linux en su base. Mientras que el núcleo —Linux— gestiona el hardware y las operaciones de bajo nivel, la mayoría de las herramientas, aplicaciones y bibliotecas que conforman tu experiencia provienen del Proyecto GNU.</p>
+                    <p>Es común escuchar "Linux" para referirse a todo el sistema. Esto puede ocultar el hecho de que Linux por sí solo es solo un componente. El Proyecto GNU ha reunido compiladores, shells, utilidades y más para crear una plataforma completa y coherente. Linux llena el vacío como el núcleo, haciendo que la visión de GNU sea completamente funcional en hardware moderno.</p>
+                    <p>Si midiéramos las contribuciones por volumen de código, el software GNU a menudo representa una porción significativa, mucho más que el propio núcleo. Pero más allá de las líneas de código, la misión de GNU fue construir un sistema integrado desde cero, definiendo los estándares e interfaces que cada parte sigue.</p>
+                    <p>Después de años de desarrollo de GNU, el núcleo Linux fue lanzado bajo una licencia libre en 1992. De repente, la pieza final estaba en su lugar. Miles de desarrolladores trabajaron entonces en el empaquetado, herramientas de instalación e instaladores fáciles de usar, dando lugar a un rico ecosistema de distribuciones. Cada distro reúne GNU, Linux y contribuciones de la comunidad en una experiencia unificada.</p>
+                    <p>No todas las distribuciones siguen la filosofía del software libre en el mismo grado. Algunas incluyen controladores o aplicaciones propietarias; otras están totalmente comprometidas con el software libre. Cuando eliges una distribución libre, estás honrando los principios establecidos por el Proyecto GNU y asegurando que cada parte de tu sistema respete tu libertad.</p>
+                    <p>Ya seas un entusiasta de mucho tiempo o acabes de descubrir el software libre, recuerda: el término "Linux" se refiere al núcleo. El sistema completo es <strong>GNU/Linux</strong>, un logro construido por una comunidad global dedicada a la libertad del software.</p>
+                    <p>Para más detalles, consulta el <a href="https://www.gnu.org/gnu/linux-and-gnu.html">resumen oficial de GNU/Linux</a> o las <a href="https://www.gnu.org/gnu/gnu-linux-faq.html">Preguntas Frecuentes de GNU/Linux</a>.</p>
+                `
+            },
+            pt: {
+                page_title: "Sobre GNU/Linux",
+                tagline: "Site pessoal da Ashley!",
+                lang_warning_text: "Nota: Foi utilizada tradução automática.",
+                footer_privacy: "Este site não rastreia você. Sem cookies. Sem coleta de dados.<br>Permissão sob <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>.",
+                body_content: `
+                    <p>Todos os dias, muitas pessoas usam um sistema operacional livre e poderoso sem perceber que é realmente o GNU com o kernel Linux em seu núcleo. Enquanto o kernel—Linux—lida com hardware e operações de baixo nível, a maioria das ferramentas, aplicativos e bibliotecas que moldam sua experiência vem do Projeto GNU.</p>
+                    <p>É comum ouvir "Linux" sendo usado para todo o sistema. Isso pode obscurecer o fato de que o Linux sozinho é apenas um componente. O Projeto GNU reuniu compiladores, shells, utilitários e muito mais para criar uma plataforma completa e coerente. O Linux preenche a lacuna como o kernel, tornando a visão do GNU totalmente funcional em hardware moderno.</p>
+                    <p>Se medíssemos as contribuições por volume de código, o software GNU frequentemente representa uma porção significativa—muito mais do que o próprio kernel. Mas além das linhas de código, a missão do GNU era construir um sistema integrado do zero, definindo os padrões e interfaces que cada parte segue.</p>
+                    <p>Após anos de desenvolvimento do GNU, o kernel Linux foi lançado sob uma licença livre em 1992. De repente, a peça final estava no lugar. Milhares de desenvolvedores trabalharam então em empacotamento, ferramentas de instalação e instaladores fáceis de usar, dando origem a um rico ecossistema de distribuições. Cada distro reúne GNU, Linux e contribuições da comunidade em uma experiência unificada.</p>
+                    <p>Nem todas as distribuições seguem a filosofia do software livre no mesmo grau. Algumas incluem drivers ou aplicativos proprietários—outras são totalmente comprometidas com o software livre. Quando você escolhe uma distribuição livre, você está honrando os princípios estabelecidos pelo Projeto GNU e garantindo que cada parte do seu sistema respeite sua liberdade.</p>
+                    <p>Seja você um entusiasta de longa data ou apenas descobrindo o software livre, lembre-se: o termo "Linux" refere-se ao kernel. O sistema completo é <strong>GNU/Linux</strong>, uma conquista construída por uma comunidade global dedicada à liberdade de software.</p>
+                    <p>Para mais detalhes, verifique a <a href="https://www.gnu.org/gnu/linux-and-gnu.html">visão geral oficial do GNU/Linux</a>.</p>
+                `
+            },
+            id: {
+                page_title: "Tentang GNU/Linux",
+                tagline: "Situs Pribadi Ashley!",
+                lang_warning_text: "Catatan: Terjemahan mesin telah digunakan.",
+                footer_privacy: "Situs ini tidak melacak Anda. Tanpa cookie. Tanpa koleksi data.<br>Izin di bawah <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>.",
+                body_content: `
+                    <p>Setiap hari, banyak orang menggunakan sistem operasi bebas yang kuat tanpa menyadari bahwa itu sebenarnya adalah GNU dengan kernel Linux sebagai intinya. Sementara kernel—Linux—menangani perangkat keras dan operasi tingkat rendah, sebagian besar alat, aplikasi, dan pustaka yang membentuk pengalaman Anda berasal dari Proyek GNU.</p>
+                    <p>Umumnya terdengar "Linux" digunakan untuk seluruh sistem. Ini dapat mengaburkan fakta bahwa Linux saja hanyalah satu komponen. Proyek GNU telah menyatukan kompiler, shell, utilitas, dan lainnya untuk menciptakan platform yang lengkap dan koheren. Linux mengisi kekosongan sebagai kernel, membuat visi GNU berfungsi penuh pada perangkat keras modern.</p>
+                    <p>Jika kita mengukur kontribusi berdasarkan volume kode, perangkat lunak GNU sering kali mewakili porsi yang signifikan—jauh lebih banyak daripada kernel itu sendiri. Namun di luar baris kode, misi GNU adalah membangun sistem terintegrasi dari nol, menentukan standar dan antarmuka yang diikuti setiap bagian.</p>
+                    <p>Setelah bertahun-tahun pengembangan GNU, kernel Linux dirilis di bawah lisensi bebas pada tahun 1992. Tiba-tiba, bagian terakhir sudah terpasang. Ribuan pengembang kemudian bekerja pada pengemasan, alat instalasi, dan installer yang ramah pengguna, melahirkan ekosistem distribusi yang kaya. Setiap distro menyatukan GNU, Linux, dan kontribusi komunitas menjadi pengalaman yang terpadu.</p>
+                    <p>Tidak semua distribusi mengikuti filosofi perangkat lunak bebas pada tingkat yang sama. Beberapa menyertakan driver atau aplikasi berpemilik—yang lain sepenuhnya berkomitmen pada perangkat lunak bebas. Ketika Anda memilih distribusi libre, Anda menghormati prinsip-prinsip yang ditetapkan oleh Proyek GNU dan memastikan setiap bagian dari sistem Anda menghormati kebebasan Anda.</p>
+                    <p>Baik Anda penggemar lama atau baru menemukan perangkat lunak bebas, ingatlah: istilah "Linux" mengacu pada kernel. Sistem lengkapnya adalah <strong>GNU/Linux</strong>, sebuah pencapaian yang dibangun oleh komunitas global yang didedikasikan untuk kebebasan perangkat lunak.</p>
+                    <p>Untuk detail lebih lanjut, periksa <a href="https://www.gnu.org/gnu/linux-and-gnu.html">ikhtisar resmi GNU/Linux</a>.</p>
+                `
+            },
+            ar: {
+                page_title: "حول GNU/Linux",
+                tagline: "موقع Ashley الشخصي!",
+                lang_warning_text: "ملاحظة: تم استخدام الترجمة الآلية.",
+                footer_privacy: "هذا الموقع لا يتتبعك. لا ملفات تعريف ارتباط. لا جمع بيانات.<br>ترخيص تحت <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>.",
+                body_content: `
+                    <p>كل يوم، يستخدم العديد من الأشخاص نظام تشغيل قويًا ومجانيًا دون أن يدركوا أنه في الواقع GNU مع نواة Linux في جوهره. بينما تتعامل النواة - Linux - مع الأجهزة والعمليات منخفضة المستوى، فإن غالبية الأدوات والتطبيقات والمكتبات التي تشكل تجربتك تأتي من مشروع GNU.</p>
+                    <p>من الشائع سماع استخدام "Linux" للنظام بأكمله. وهذا يمكن أن يحجب حقيقة أن Linux وحده مجرد مكون واحد. قام مشروع GNU بتجميع المجمعات والأصداف والأدوات المساعدة والمزيد لإنشاء منصة كاملة ومتماسكة. يملأ Linux الفراغ باعتباره النواة، مما يجعل رؤية GNU تعمل بكامل طاقتها على الأجهزة الحديثة.</p>
+                    <p>إذا قمنا بقياس المساهمات حسب حجم الكود، فإن برمجيات GNU تمثل غالبًا جزءًا كبيرًا - أكثر بكثير من النواة نفسها. ولكن بعيدًا عن سطور الكود، كانت مهمة GNU هي بناء نظام متكامل من الألف إلى الياء، وتحديد المعايير والواجهات التي يتبعها كل جزء.</p>
+                    <p>بعد سنوات من تطوير GNU، تم إصدار نواة Linux بموجب ترخيص مجاني في عام 1992. فجأة، أصبحت القطعة الأخيرة في مكانها. ثم عمل آلاف المطورين على التغليف وأدوات التثبيت والمثبتات سهلة الاستخدام، مما أدى إلى ظهور نظام بيئي غني من التوزيعات. تجمع كل توزيعة بين GNU و Linux ومساهمات المجتمع في تجربة موحدة.</p>
+                    <p>لا تتبع جميع التوزيعات فلسفة البرمجيات الحرة بنفس الدرجة. تتضمن بعضها برامج تشغيل أو تطبيقات مملوكة - والبعض الآخر ملتزم تمامًا بالبرمجيات الحرة. عندما تختار توزيعة حرة، فإنك تحترم المبادئ التي وضعها مشروع GNU وتضمن أن كل جزء من نظامك يحترم حريتك.</p>
+                    <p>سواء كنت متحمسًا لفترة طويلة أو تكتشف البرمجيات الحرة للتو، تذكر: يشير مصطلح "Linux" إلى النواة. النظام الكامل هو <strong>GNU/Linux</strong>، وهو إنجاز بنته مجتمع عالمي مكرس لحرية البرمجيات.</p>
+                    <p>لمزيد من التفاصيل، تحقق من <a href="https://www.gnu.org/gnu/linux-and-gnu.html">نظرة عامة رسمية على GNU/Linux</a>.</p>
+                `
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Handle RTL
+            if(lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+            }
+
+            // Update Title/Tagline/Footer
+            if(translations[lang]) {
+                document.querySelector('[data-t="page_title"]').innerText = translations[lang].page_title;
+                document.querySelector('[data-t="tagline"]').innerText = translations[lang].tagline;
+                document.querySelector('[data-t="footer_privacy"]').innerHTML = translations[lang].footer_privacy;
+                
+                // Update Body Content (The whole article)
+                document.getElementById('articleBody').innerHTML = translations[lang].body_content;
+            }
+
+            // Handle Warning Box
+            const warningBox = document.getElementById('langWarning');
+            const warningText = document.querySelector('[data-t="lang_warning_text"]');
+
+            if (lang !== 'en') {
+                warningBox.style.display = 'block';
+                if(translations[lang].lang_warning_text) {
+                    warningText.innerText = translations[lang].lang_warning_text;
+                }
+            } else {
+                warningBox.style.display = 'none';
+            }
         }
-      });
-      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
-      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
-      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
-      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
-      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
-      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
-      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
-      let lastActivity = Date.now();
-      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
-      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
-      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
-      window._hs = {
-        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
-        export: () => {
-          const data = JSON.stringify(events, null, 2);
-          const blob = new Blob([data], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url; a.download = 'metrics.json'; a.click();
-          URL.revokeObjectURL(url);
-        },
-        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
-        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
-      };
-    })();
     </script>
-  </body>
+</body>
 </html>
