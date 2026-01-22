@@ -1,307 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Ashley — Misinformation Hub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7a8b8" />
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misinformation Hub — Ashley</title>
+    <meta name="theme-color" content="#ffc2d1">
     
-    <meta property="og:title" content="Ashley's Personal site - Misinformation Hub" />
-    <meta property="twitter:description" content="Articles aimed at fixing misinformation and clearing up confusion." />
-    <meta property="og:image" content="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="shortcut icon" href="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link
-      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    
     <style>
-      :root {
-        --trans-blue: #55cdfc;
-        --trans-pink: #f7a8b8;
-        --ink: #2b2b2b;
-        --glass: rgba(255, 255, 255, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.9);
-        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
-        --alert-red: #ff4d4d;
-      }
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #fff5f8 100%);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --primary-pink: #ff8fab;
+            --deep-pink: #fb6f92;
+            --soft-blue: #a2d2ff;
+            --text-main: #594a4e;
+            --text-dim: #8c7b7f;
+            --shadow: 0 8px 32px 0 rgba(255, 143, 171, 0.15);
+            --radius: 24px;
+        }
 
-      * {
-        box-sizing: border-box;
-      }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-      body {
-        margin: 0;
-        font-family: var(--font-main);
-        color: var(--ink);
-        background:
-          repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.03) 0px,
-            rgba(0, 0, 0, 0.03) 1px,
-            transparent 1px,
-            transparent 2px
-          ),
-          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        padding: 20px;
-        overflow-x: hidden;
-      }
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            background-image: radial-gradient(var(--primary-pink) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
 
-      /* Scanline effect overlay */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 999;
-      }
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid white;
+        }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: var(--glass);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 2px solid #fff;
-        border-radius: 20px;
-        box-shadow:
-          0 0 0 4px var(--trans-pink),
-          0 0 20px rgba(0,0,0,0.1);
-        padding: 25px;
-        position: relative;
-        z-index: 1;
-      }
+        .nav-logo { font-family: 'Comic Neue', cursive; font-weight: bold; font-size: 1.1rem; color: var(--deep-pink); text-decoration: none;}
+        
+        .lang-select {
+            background: #fff;
+            border: 2px solid var(--primary-pink);
+            border-radius: 20px;
+            padding: 5px 10px;
+            color: var(--deep-pink);
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
 
-      header {
-        text-align: center;
-        border-bottom: 2px dashed var(--trans-blue);
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-      }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
 
-      .avatar {
-        display: block;
-        margin: 0 auto 15px auto;
-        width: 140px;
-        height: 140px;
-        border-radius: 15px;
-        border: 4px solid #fff;
-        box-shadow: 0 4px 15px rgba(247, 168, 184, 0.6);
-        transition: transform 0.2s;
-        object-fit: cover;
-      }
+        /* Header */
+        header { text-align: center; margin-bottom: 40px; }
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
+            margin-bottom: 15px;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        
+        h1 { color: var(--deep-pink); font-family: 'Comic Neue', cursive; font-size: 2.5rem; margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        .tagline { color: var(--soft-blue); font-weight: bold; margin-top: 5px; font-size: 1.1rem; }
+        .lead { text-align: center; max-width: 600px; margin: 20px auto; font-size: 1.1em; line-height: 1.6; }
 
-      .avatar:hover {
-        transform: rotate(-3deg) scale(1.05);
-      }
+        /* Warning Box */
+        .lang-warning {
+            display: none;
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-      h1 {
-        margin: 0;
-        font-size: 2.2rem;
-        background: linear-gradient(to right, #55cdfc, #f7a8b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
-        letter-spacing: -1px;
-      }
+        /* Hub Grid */
+        .hub-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-      .tagline {
-        text-align: center;
-        color: #b91c8c;
-        font-weight: bold;
-        margin-top: -15px;
-        margin-bottom: 25px;
-      }
-      
-      .lead {
-        text-align: center;
-        font-size: 1.1em;
-        margin-bottom: 30px;
-      }
+        .hub-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
 
-      /* Link Cards for Topics */
-      .links-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-width: 600px;
-        margin: 0 auto;
-      }
+        .hub-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-pink);
+            box-shadow: 0 15px 30px rgba(255, 143, 171, 0.25);
+        }
 
-      .link-card {
-        display: block;
-        text-decoration: none;
-        background: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        border: 2px solid var(--trans-blue);
-        color: var(--ink);
-        font-weight: bold;
-        transition: 0.2s;
-        box-shadow: 4px 4px 0 var(--trans-pink);
-        font-size: 1.2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--deep-pink);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
 
-      .link-card:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 6px 6px 0 var(--trans-pink);
-      }
+        .card-text b { font-size: 1.2rem; display: block; margin-bottom: 5px; }
+        .card-text span { font-size: 0.95rem; opacity: 0.8; }
+        
+        .arrow { position: absolute; right: 25px; color: var(--soft-blue); opacity: 0.5; font-size: 1.2rem; }
+        .hub-card:hover .arrow { opacity: 1; color: var(--deep-pink); transform: translateX(5px); }
 
-      .link-card:active {
-        transform: translate(2px, 2px);
-        box-shadow: 0 0 0 var(--trans-pink);
-      }
-      
-      .back-btn {
-        display: inline-block;
-        margin-bottom: 20px;
-        text-decoration: none;
-        color: var(--ink);
-        background: #fff;
-        padding: 8px 15px;
-        border-radius: 99px;
-        border: 1px solid var(--trans-blue);
-        font-weight: bold;
-      }
-      .back-btn:hover { background: #f0f8ff; }
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            border-top: 2px dashed var(--primary-pink);
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        footer a { color: var(--deep-pink); text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; text-decoration-style: wavy; }
 
-      .meta-links {
-        text-align: center;
-        margin-bottom: 20px;
-      }
+        /* RTL */
+        body[dir="rtl"] { text-align: right; }
+        body[dir="rtl"] .arrow { right: auto; left: 25px; transform: rotate(180deg); }
+        body[dir="rtl"] .hub-card:hover .arrow { transform: translateX(-5px) rotate(180deg); }
+        body[dir="rtl"] .lang-warning { border-left: none; border-right: 5px solid #ffc107; }
 
-      .meta-links a {
-        display: inline-block;
-        margin: 5px 10px;
-        color: #b91c8c;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      
-      .meta-links a:hover {
-        text-decoration: underline;
-        text-decoration-style: wavy;
-      }
-
-      hr {
-        border: none;
-        border-top: 2px dashed var(--trans-pink);
-        margin: 30px 0;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 2px dashed var(--trans-pink);
-        font-size: 0.85rem;
-        line-height: 1.6;
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">⬅ Back to Home</a>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en">🇨🇦 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="pt">🇧🇷 PT</option>
+            <option value="id">🇮🇩 ID</option>
+            <option value="ar">🇸🇦 AR</option>
+        </select>
+    </nav>
 
     <div class="container">
-      <header>
-        <img src="https://codeberg.org/ashleyirispuppy/a/raw/branch/main/1767404148803.jpg" alt="Ashley" class="avatar" />
-        <h1>Misinformation Hub</h1>
-      </header>
-      
-      <p class="tagline">Ashley's Personal site :D</p>
-      
-      <main>
-        <div style="text-align: center;">
-            <a href="/" class="back-btn">⬅ Back to Home</a>
+        
+        <header>
+            <img src="https://codeberg.org/avatars/6faeff434a11fb732c1799f250ee923eaae3d5545cc2ea116d7b42a1b2b1e814?size=512" alt="Ashley Avatar" class="avatar">
+            <h1 data-t="page_title">Misinformation Hub</h1>
+            <div class="tagline" data-t="tagline">Ashley's Personal Site!</div>
+            <p class="lead" data-t="desc">
+                Articles aiming to fix misinformation and clear up confusion.
+            </p>
+        </header>
+
+        <div id="langWarning" class="lang-warning">
+            <i class="fas fa-language"></i> <span data-t="lang_warning_text">Note: The linked articles are in English.</span>
         </div>
 
-        <p class="lead">
-            Articles aiming to fix misinformation and clear up confusion.
-        </p>
-
-        <div class="links-grid">
-            <a href="https://ashleyirispup.cat/misinformation/the-rumors-about-duckduckgo/" class="link-card">
-                🦆 The rumors about DuckDuckGo
-                <span>➜</span>
+        <div class="hub-grid">
+            
+            <a href="https://ashleyirispup.cat/misinformation/the-rumors-about-duckduckgo/" class="hub-card">
+                <div class="icon-box"><i class="fas fa-search"></i></div>
+                <div class="card-text">
+                    <b data-t="ddg_title">The rumors about DuckDuckGo</b>
+                 </div>
+                <i class="fas fa-chevron-right arrow"></i>
             </a>
-            </div>
 
-        <hr />
-        
-        <div class="meta-links" aria-label="links">
-          <a href="https://github.com/ashley0143">Github</a> •
-          <a href="https://discord.com/users/1456363852794040580">Discord</a> •
-          <a href="https://www.reddit.com/user/Ash_Potter">Reddit</a>
         </div>
-        
+
         <footer>
-          <p>Inspired by https://stallman.org/ while making this site.</p>
-          <p>This website does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.</p>
-          <p>Permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.</p>
-          <p>&copy; 2026 Ashley.</p>
+            <p>Inspired by <a href="https://stallman.org/">stallman.org</a> while making this site.</p>
+            <p>
+                <a href="https://github.com/ashley0143" rel="me"><i class="fab fa-github"></i> GitHub</a> •
+                <a href="https://discord.com/users/1456363852794040580"><i class="fab fa-discord"></i> Discord</a> •
+                <a href="https://www.reddit.com/user/Ash_Potter"><i class="fab fa-reddit"></i> Reddit</a>
+            </p>
+            <p style="opacity: 0.8; font-size: 0.8em;" data-t="footer_privacy">
+                This site does not track you. No cookies. No data collection. 100% handcrafted without JavaScript.<br>
+                Permission under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.
+            </p>
         </footer>
-      </main>
+
     </div>
 
     <script>
-    (function(){
-      const STORAGE_KEY = '_hs_store';
-      const DISABLED_KEY = '_hs_disabled';
-      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
-      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      function record(evt) {
-        if (disabled) return;
-        events.push(evt);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
-      }
-      const startTime = performance.now();
-      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
-      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
-      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
-      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
-      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
-      let maxDepth = 0;
-      window.addEventListener('scroll', () => {
-        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
-        if (depth > maxDepth) {
-          maxDepth = depth;
-          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        const translations = {
+            en: {
+                page_title: "Misinformation Hub",
+                tagline: "Ashley's Personal Site!",
+                desc: "Articles aiming to fix misinformation and clear up confusion.",
+                ddg_title: "The rumors about DuckDuckGo",
+                footer_privacy: "This site does not track you. No cookies. No data collection.<br>Permission under <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>."
+            },
+            es: {
+                page_title: "Centro de Desinformación",
+                tagline: "¡Sitio personal de Ashley!",
+                desc: "Artículos destinados a corregir la desinformación y aclarar confusiones.",
+                ddg_title: "Los rumores sobre DuckDuckGo",
+                lang_warning_text: "Nota: Los artículos enlazados están en inglés.",
+                footer_privacy: "Este sitio no te rastrea. Sin cookies. Sin recolección de datos.<br>Permiso bajo <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>."
+            },
+            pt: {
+                page_title: "Hub de Desinformação",
+                tagline: "Site pessoal da Ashley!",
+                desc: "Artigos destinados a corrigir desinformação e esclarecer confusões.",
+                ddg_title: "Os rumores sobre DuckDuckGo",
+                lang_warning_text: "Nota: Os artigos vinculados estão em inglês.",
+                footer_privacy: "Este site não rastreia você. Sem cookies. Sem coleta de dados.<br>Permissão sob <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>."
+            },
+            id: {
+                page_title: "Pusat Misinformasi",
+                tagline: "Situs Pribadi Ashley!",
+                desc: "Artikel yang bertujuan untuk memperbaiki misinformasi dan meluruskan kebingungan.",
+                ddg_title: "Rumor tentang DuckDuckGo",
+                lang_warning_text: "Catatan: Artikel yang ditautkan dalam Bahasa Inggris.",
+                footer_privacy: "Situs ini tidak melacak Anda. Tanpa cookie. Tanpa koleksi data.<br>Izin di bawah <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>."
+            },
+            ar: {
+                page_title: "مركز المعلومات المضللة",
+                tagline: "موقع Ashley الشخصي!",
+                desc: "مقالات تهدف إلى تصحيح المعلومات المضللة وتوضيح الارتباك.",
+                ddg_title: "الشائعات حول DuckDuckGo",
+                lang_warning_text: "ملاحظة: المقالات المرتبطة مكتوبة باللغة الإنجليزية.",
+                footer_privacy: "هذا الموقع لا يتتبعك. لا ملفات تعريف ارتباط. لا جمع بيانات.<br>ترخيص تحت <a href='http://www.gnu.org/licenses/fdl.txt'>GNU Free Documentation License</a>."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Handle RTL
+            if(lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+            }
+
+            // Update Text Elements
+            const keys = ['page_title', 'tagline', 'desc', 'ddg_title', 'ddg_desc', 'footer_privacy'];
+            keys.forEach(key => {
+                if(translations[lang][key]) {
+                    document.querySelector(`[data-t="${key}"]`).innerHTML = translations[lang][key];
+                }
+            });
+
+            // Handle Warning Box
+            const warningBox = document.getElementById('langWarning');
+            const warningText = document.querySelector('[data-t="lang_warning_text"]');
+
+            if (lang !== 'en') {
+                warningBox.style.display = 'block';
+                if(translations[lang].lang_warning_text) {
+                    warningText.innerText = translations[lang].lang_warning_text;
+                }
+            } else {
+                warningBox.style.display = 'none';
+            }
         }
-      });
-      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
-      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
-      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
-      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
-      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
-      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
-      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
-      let lastActivity = Date.now();
-      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
-      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
-      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
-      window._hs = {
-        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
-        export: () => {
-          const data = JSON.stringify(events, null, 2);
-          const blob = new Blob([data], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url; a.download = 'metrics.json'; a.click();
-          URL.revokeObjectURL(url);
-        },
-        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
-        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
-      };
-    })();
     </script>
-  </body>
+</body>
 </html>
