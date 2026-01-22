@@ -1,408 +1,427 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashley's Phones</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7a8b8" />
-    <link
-      href="https://fonts.bunny.net/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      href="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-    />
+    <meta name="theme-color" content="#ffc2d1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-      :root {
-        --trans-blue: #55cdfc;
-        --trans-pink: #f7a8b8;
-        --ink: #2b2b2b;
-        --glass: rgba(255, 255, 255, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.9);
-        --font-main: "Comic Neue", "Lucida Grande", "Geneva", Verdana, sans-serif;
-        --alert-red: #ff4d4d;
-      }
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #fff5f8 100%);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --primary-pink: #ff8fab;
+            --deep-pink: #fb6f92;
+            --soft-blue: #a2d2ff;
+            --text-main: #594a4e;
+            --text-dim: #8c7b7f;
+            --shadow: 0 8px 32px 0 rgba(255, 143, 171, 0.15);
+            --radius: 24px;
+        }
 
-      * {
-        box-sizing: border-box;
-      }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-      body {
-        margin: 0;
-        font-family: var(--font-main);
-        color: var(--ink);
-        background:
-          repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.03) 0px,
-            rgba(0, 0, 0, 0.03) 1px,
-            transparent 1px,
-            transparent 2px
-          ),
-          linear-gradient(135deg, #55cdfc 0%, #f7a8b8 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        padding: 20px;
-        overflow-x: hidden;
-      }
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            background-image: radial-gradient(var(--primary-pink) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
 
-      /* Scanline effect overlay */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 999;
-      }
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid white;
+        }
 
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: var(--glass);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 2px solid #fff;
-        border-radius: 20px;
-        box-shadow:
-          0 0 0 4px var(--trans-pink),
-          0 0 20px rgba(0,0,0,0.1);
-        padding: 25px;
-        position: relative;
-        z-index: 1;
-      }
+        .nav-logo { font-family: 'Comic Neue', cursive; font-weight: bold; font-size: 1.1rem; color: var(--deep-pink); text-decoration: none;}
 
-      header {
-        text-align: center;
-        border-bottom: 2px dashed var(--trans-blue);
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-        display: block; /* Overriding previous flex */
-      }
+        .lang-select {
+            background: #fff;
+            border: 2px solid var(--primary-pink);
+            border-radius: 20px;
+            padding: 5px 10px;
+            color: var(--deep-pink);
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
 
-      h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        background: linear-gradient(to right, #55cdfc, #f7a8b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
-        letter-spacing: -1px;
-      }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-      }
+        /* Header */
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { color: var(--deep-pink); font-family: 'Comic Neue', cursive; font-size: 2.5rem; margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        .tagline { color: var(--soft-blue); font-weight: bold; margin-top: 5px; font-size: 1.1rem; }
 
-      .phone-card {
-        background: #fff;
-        border: 2px solid var(--trans-blue);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: 0.2s;
-        box-shadow: 4px 4px 0 var(--trans-pink);
-        display: flex;
-        flex-direction: column;
-      }
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-      .phone-card:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 6px 6px 0 var(--trans-pink);
-      }
+        .phone-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.5s forwards;
+            opacity: 0;
+        }
 
-      .img-container {
-        background: #fff;
-        padding: 20px;
-        text-align: center;
-        border-bottom: 2px dashed #eee;
-      }
+        .phone-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-pink);
+            box-shadow: 0 15px 30px rgba(255, 143, 171, 0.25);
+        }
 
-      .phone-card img {
-        max-width: 100%;
-        height: 150px;
-        object-fit: contain;
-      }
+        .img-container {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px dashed #ffe5ec;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-      .info {
-        padding: 15px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
+        .phone-card img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
 
-      .info h2 {
-        color: #b91c8c;
-        margin: 0 0 10px 0;
-        font-size: 1.4rem;
-      }
+        .info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-      .info p {
-        font-size: 0.95rem;
-        margin: 0 0 10px 0;
-        line-height: 1.4;
-        flex: 1;
-      }
+        .info h2 {
+            color: var(--deep-pink);
+            margin: 0 0 5px 0;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.4rem;
+        }
 
-      .year-badge {
-        display: inline-block;
-        background: var(--trans-pink);
-        color: white;
-        padding: 2px 8px;
-        border-radius: 99px;
-        font-weight: bold;
-        font-size: 0.8em;
-        margin-bottom: 10px;
-        align-self: flex-start;
-      }
+        .year-badge {
+            display: inline-block;
+            background: var(--soft-blue);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
 
-      .view-btn {
-        display: block;
-        text-align: center;
-        background: var(--trans-blue);
-        color: white;
-        text-decoration: none;
-        padding: 8px;
-        border-radius: 8px;
-        font-weight: bold;
-        margin-top: auto;
-        border: 2px solid transparent;
-      }
+        .info p {
+            font-size: 0.95rem;
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+            color: var(--text-main);
+            flex: 1;
+        }
 
-      .view-btn:hover {
-        background: white;
-        color: var(--trans-blue);
-        border-color: var(--trans-blue);
-      }
+        .view-btn {
+            display: block;
+            text-align: center;
+            background: #fff;
+            color: var(--deep-pink);
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: auto;
+            border: 2px solid var(--primary-pink);
+            transition: 0.2s;
+        }
 
-      .back-btn {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: var(--ink);
-        background: #fff;
-        padding: 8px 15px;
-        border-radius: 99px;
-        border: 2px solid var(--trans-blue);
-        font-weight: bold;
-        box-shadow: 2px 2px 0 var(--trans-pink);
-      }
+        .view-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+        }
 
-      .back-btn:hover {
-         transform: translate(-1px, -1px);
-         box-shadow: 3px 3px 0 var(--trans-pink);
-      }
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            border-top: 2px dashed var(--primary-pink);
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+        footer a { color: var(--deep-pink); }
 
-      footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 2px dashed var(--trans-pink);
-        font-size: 0.85rem;
-      }
-      
-      .privacy-btn {
-        color: #b91c8c;
-        text-decoration: underline;
-        text-decoration-style: wavy;
-      }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-      /* Animation for loading */
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      .phone-card {
-        animation: fadeInUp 0.5s forwards;
-        opacity: 0; /* hidden initially */
-      }
+        /* RTL */
+        body[dir="rtl"] { text-align: right; }
+        body[dir="rtl"] .year-badge { align-self: flex-start; } /* Logic flips automatically in flex */
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">⬅ Back to Home</a>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en">🇨🇦 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="pt">🇧🇷 PT</option>
+            <option value="id">🇮🇩 ID</option>
+            <option value="ar">🇸🇦 AR</option>
+        </select>
+    </nav>
 
     <div class="container">
-      <header>
-        <h1>📱 My Phones</h1>
-        <p>A history of the tech I've daily driven ~ woof!</p>
-      </header>
+        <header>
+            <h1 data-t="page_title">📱 My Phones</h1>
+            <div class="tagline" data-t="page_desc">A history of the tech I've daily driven!</div>
+        </header>
 
-      <div class="grid">
-        
-        <div class="phone-card" style="animation-delay: 0.1s;">
-          <div class="img-container">
-            <img src="https://fdn2.gsmarena.com/vv/bigpic/nokia-asha-303.jpg" alt="Nokia Asha 303">
-          </div>
-          <div class="info">
-            <h2>Nokia Asha 303</h2>
-            <span class="year-badge">2011</span>
-            <p>Sturdy QWERTY marvel, perfect for nonstop texting and calls.</p>
-            <a href="https://m.gsmarena.com/nokia_asha_303-4278.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
+        <div class="grid">
 
-        <div class="phone-card" style="animation-delay: 0.2s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/25930/m_general-mobile-4g-1.png" alt="General Mobile 4G">
-          </div>
-          <div class="info">
-            <h2>General Mobile 4G</h2>
-            <span class="year-badge">2017</span>
-            <p>Android One device: pure, up-to-date Android experience.</p>
+            <div class="phone-card" style="animation-delay: 0.1s;">
+                <div class="img-container">
+                    <img src="https://fdn2.gsmarena.com/vv/bigpic/nokia-asha-303.jpg" alt="Nokia Asha 303">
+                </div>
+                <div class="info">
+                    <h2>Nokia Asha 303</h2>
+                    <span class="year-badge">2011</span>
+                    <p data-t="desc_nokia">Sturdy QWERTY marvel, perfect for nonstop texting and calls.</p>
+                    <a href="https://m.gsmarena.com/nokia_asha_303-4278.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
             </div>
+
+            <div class="phone-card" style="animation-delay: 0.2s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/25930/m_general-mobile-4g-1.png" alt="General Mobile 4G">
+                </div>
+                <div class="info">
+                    <h2>General Mobile 4G</h2>
+                    <span class="year-badge">2017</span>
+                    <p data-t="desc_gm">Android One device: pure, up-to-date Android experience.</p>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.3s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/4/m_apple-iphone-5s-8.png" alt="iPhone 5s">
+                </div>
+                <div class="info">
+                    <h2>iPhone 5s</h2>
+                    <span class="year-badge">2013</span>
+                    <p data-t="desc_i5s">Touch ID pioneer—powerful performance in a compact frame.</p>
+                    <a href="https://m.gsmarena.com/apple_iphone_5s-5685.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.4s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/410/m_samsung-galaxy-s5-1.png" alt="Galaxy S5">
+                </div>
+                <div class="info">
+                    <h2>Galaxy S5</h2>
+                    <span class="year-badge">2014</span>
+                    <p data-t="desc_s5">Flagship: waterproof design plus built-in heart-rate sensor.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_s5-6033.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.5s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/3301/m_samsung-galaxy-note-4-sm-n910h-2.png" alt="Galaxy Note 4">
+                </div>
+                <div class="info">
+                    <h2>Galaxy Note 4</h2>
+                    <span class="year-badge">2014</span>
+                    <p data-t="desc_note4">Phablet powerhouse with precision S Pen functionality.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_note_4-6434.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.6s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/241715/m_samsung-galaxy-a20s-2.png" alt="Galaxy A20s">
+                </div>
+                <div class="info">
+                    <h2>Galaxy A20s</h2>
+                    <span class="year-badge">2019</span>
+                    <p data-t="desc_a20s">Budget champ: triple-lens cameras and all-day battery.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_a20s-9852.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.7s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/402688/m_samsung-galaxy-a71-1.png" alt="Galaxy A71">
+                </div>
+                <div class="info">
+                    <h2>Galaxy A71</h2>
+                    <span class="year-badge">2020</span>
+                    <p data-t="desc_a71">AMOLED stunner with versatile quad-camera array.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_a71-9995.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.8s;">
+                <div class="img-container">
+                    <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a23.jpg" alt="Galaxy A23">
+                </div>
+                <div class="info">
+                    <h2>Galaxy A23</h2>
+                    <span class="year-badge">2022</span>
+                    <p data-t="desc_a23">5G workhorse with massive 5000 mAh battery.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_a23-11373.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
+            <div class="phone-card" style="animation-delay: 0.9s;">
+                <div class="img-container">
+                    <img src="https://resim.epey.com/872682/m_samsung-galaxy-s23-fe-2.png" alt="Galaxy S23 FE">
+                </div>
+                <div class="info">
+                    <h2>Galaxy S23 FE</h2>
+                    <span class="year-badge">2023</span>
+                    <p data-t="desc_s23">Fan Edition: flagship performance at a friendlier price.</p>
+                    <a href="https://m.gsmarena.com/samsung_galaxy_s23_fe-12520.php" target="_blank" class="view-btn" data-t="btn_view">View Info ➜</a>
+                </div>
+            </div>
+
         </div>
 
-        <div class="phone-card" style="animation-delay: 0.3s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/4/m_apple-iphone-5s-8.png" alt="iPhone 5s">
-          </div>
-          <div class="info">
-            <h2>iPhone 5s</h2>
-            <span class="year-badge">2013</span>
-            <p>Touch ID pioneer—powerful performance in a compact frame.</p>
-            <a href="https://m.gsmarena.com/apple_iphone_5s-5685.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
+        <footer>
+            <p>© 2026 Ashley Íris. All images credited to GSM Arena or epey.</p>
+            <p>
+                <a href="https://ashley0143.xyz/optout" data-t="footer_opt">Tracking Opt-out</a>
+            </p>
+        </footer>
 
-        <div class="phone-card" style="animation-delay: 0.4s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/410/m_samsung-galaxy-s5-1.png" alt="Galaxy S5">
-          </div>
-          <div class="info">
-            <h2>Galaxy S5</h2>
-            <span class="year-badge">2014</span>
-            <p>Flagship: waterproof design plus built-in heart-rate sensor.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_s5-6033.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-        <div class="phone-card" style="animation-delay: 0.5s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/3301/m_samsung-galaxy-note-4-sm-n910h-2.png" alt="Galaxy Note 4">
-          </div>
-          <div class="info">
-            <h2>Galaxy Note 4</h2>
-            <span class="year-badge">2014</span>
-            <p>Phablet powerhouse with precision S Pen functionality.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_note_4-6434.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-        <div class="phone-card" style="animation-delay: 0.6s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/241715/m_samsung-galaxy-a20s-2.png" alt="Galaxy A20s">
-          </div>
-          <div class="info">
-            <h2>Galaxy A20s</h2>
-            <span class="year-badge">2019</span>
-            <p>Budget champ: triple-lens cameras and all-day battery.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_a20s-9852.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-        <div class="phone-card" style="animation-delay: 0.7s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/402688/m_samsung-galaxy-a71-1.png" alt="Galaxy A71">
-          </div>
-          <div class="info">
-            <h2>Galaxy A71</h2>
-            <span class="year-badge">2020</span>
-            <p>AMOLED stunner with versatile quad-camera array.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_a71-9995.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-        <div class="phone-card" style="animation-delay: 0.8s;">
-          <div class="img-container">
-            <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a23.jpg" alt="Galaxy A23">
-          </div>
-          <div class="info">
-            <h2>Galaxy A23</h2>
-            <span class="year-badge">2022</span>
-            <p>5G workhorse with massive 5000 mAh battery.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_a23-11373.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-        <div class="phone-card" style="animation-delay: 0.9s;">
-          <div class="img-container">
-            <img src="https://resim.epey.com/872682/m_samsung-galaxy-s23-fe-2.png" alt="Galaxy S23 FE">
-          </div>
-          <div class="info">
-            <h2>Galaxy S23 FE</h2>
-            <span class="year-badge">2023</span>
-            <p>Fan Edition: flagship performance at a friendlier price.</p>
-            <a href="https://m.gsmarena.com/samsung_galaxy_s23_fe-12520.php" target="_blank" class="view-btn">View Info ➜</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align: center;">
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
-      </div>
-
-      <footer>
-        <p>© 2026 Ashley Íris. All images credited to GSM Arena or epey.</p>
-        <p>
-            <a href="https://ashley0143.xyz/optout" class="privacy-btn">Tracking Opt-out</a>
-        </p>
-      </footer>
     </div>
 
     <script>
-    (function(){
-      const STORAGE_KEY = '_hs_store';
-      const DISABLED_KEY = '_hs_disabled';
-      let disabled = localStorage.getItem(DISABLED_KEY) === '1';
-      let events = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      function record(evt) {
-        if (disabled) return;
-        events.push(evt);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(events)); } catch (e) { /* ignore */ }
-      }
-      const startTime = performance.now();
-      window.addEventListener('DOMContentLoaded', () => record({ t: Date.now(), type: 'dom_content_loaded', duration: Math.round(performance.now() - startTime) }));
-      window.addEventListener('load', () => record({ t: Date.now(), type: 'window_load', duration: Math.round(performance.now()) }));
-      document.addEventListener('click', e => record({ t: Date.now(), type: 'click', target: e.target.tagName }));
-      document.addEventListener('submit', e => record({ t: Date.now(), type: 'form_submit', form: e.target.id || e.target.name || null }));
-      document.addEventListener('copy', () => record({ t: Date.now(), type: 'copy' }));
-      let maxDepth = 0;
-      window.addEventListener('scroll', () => {
-        const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100));
-        if (depth > maxDepth) {
-          maxDepth = depth;
-          record({ t: Date.now(), type: 'scroll_depth', value: maxDepth });
+        const translations = {
+            en: {
+                page_title: "📱 My Phones",
+                page_desc: "A history of the tech I've daily driven",
+                btn_view: "View Info ➜",
+                footer_opt: "Tracking Opt-out",
+                desc_nokia: "Sturdy QWERTY marvel, perfect for nonstop texting and calls.",
+                desc_gm: "Android One device: pure, up-to-date Android experience.",
+                desc_i5s: "Touch ID pioneer—powerful performance in a compact frame.",
+                desc_s5: "Flagship: waterproof design plus built-in heart-rate sensor.",
+                desc_note4: "Phablet powerhouse with precision S Pen functionality.",
+                desc_a20s: "Budget champ: triple-lens cameras and all-day battery.",
+                desc_a71: "AMOLED stunner with versatile quad-camera array.",
+                desc_a23: "5G workhorse with massive 5000 mAh battery.",
+                desc_s23: "Fan Edition: flagship performance at a friendlier price."
+            },
+            es: {
+                page_title: "📱 Mis Teléfonos",
+                page_desc: "Una historia de la tecnología que he usado a diario",
+                btn_view: "Ver Info ➜",
+                footer_opt: "No rastrear",
+                desc_nokia: "Maravilla QWERTY robusta, perfecta para mensajes y llamadas sin parar.",
+                desc_gm: "Dispositivo Android One: experiencia Android pura y actualizada.",
+                desc_i5s: "Pionero del Touch ID: rendimiento potente en un marco compacto.",
+                desc_s5: "Buque insignia: diseño resistente al agua y sensor de ritmo cardíaco.",
+                desc_note4: "Phablet potente con funcionalidad precisa de S Pen.",
+                desc_a20s: "Campeón económico: cámaras de triple lente y batería para todo el día.",
+                desc_a71: "Impresionante AMOLED con versátil matriz de cuatro cámaras.",
+                desc_a23: "Caballo de batalla 5G con enorme batería de 5000 mAh.",
+                desc_s23: "Fan Edition: rendimiento insignia a un precio más amigable."
+            },
+            pt: {
+                page_title: "📱 Meus Celulares",
+                page_desc: "Um histórico da tecnologia que usei no dia a dia~",
+                btn_view: "Ver Info ➜",
+                footer_opt: "Sair do rastreamento",
+                desc_nokia: "Maravilha QWERTY robusta, perfeita para mensagens e chamadas sem parar.",
+                desc_gm: "Dispositivo Android One: experiência Android pura e atualizada.",
+                desc_i5s: "Pioneiro do Touch ID: desempenho poderoso em um corpo compacto.",
+                desc_s5: "Flagship: design à prova d'água e sensor de batimentos cardíacos.",
+                desc_note4: "Phablet poderoso com funcionalidade precisa da S Pen.",
+                desc_a20s: "Campeão econômico: câmeras triplas e bateria para o dia todo.",
+                desc_a71: "Impressionante AMOLED com versátil conjunto de quatro câmeras.",
+                desc_a23: "Máquina de trabalho 5G com enorme bateria de 5000 mAh.",
+                desc_s23: "Fan Edition: desempenho de topo a um preço mais amigável."
+            },
+            id: {
+                page_title: "📱 HP Saya",
+                page_desc: "Riwayat teknologi yang saya gunakan sehari-hari~",
+                btn_view: "Lihat Info ➜",
+                footer_opt: "Keluar dari pelacakan",
+                desc_nokia: "Keajaiban QWERTY yang kokoh, sempurna untuk SMS dan telepon nonstop.",
+                desc_gm: "Perangkat Android One: pengalaman Android murni dan terkini.",
+                desc_i5s: "Pelopor Touch ID—performa kuat dalam bingkai ringkas.",
+                desc_s5: "Flagship: desain tahan air plus sensor detak jantung bawaan.",
+                desc_note4: "Phablet bertenaga dengan fungsionalitas S Pen yang presisi.",
+                desc_a20s: "Juara anggaran: kamera tiga lensa dan baterai seharian.",
+                desc_a71: "AMOLED memukau dengan susunan quad-camera serbaguna.",
+                desc_a23: "Pekerja keras 5G dengan baterai besar 5000 mAh.",
+                desc_s23: "Fan Edition: performa flagship dengan harga lebih bersahabat."
+            },
+            ar: {
+                page_title: "📱 هواتفي",
+                page_desc: "تاريخ التقنية التي استخدمتها يومياً~ ",
+                btn_view: "عرض المعلومات ➜",
+                footer_opt: "إلغاء التتبع",
+                desc_nokia: "أعجوبة لوحة مفاتيح QWERTY المتينة، مثالية للمراسلة والمكالمات المستمرة.",
+                desc_gm: "جهاز Android One: تجربة أندرويد صافية ومحدثة.",
+                desc_i5s: "رائد بصمة الإصبع Touch ID — أداء قوي في إطار مضغوط.",
+                desc_s5: "الرائد: تصميم مقاوم للماء بالإضافة إلى مستشعر معدل ضربات القلب المدمج.",
+                desc_note4: "قوة الفابلت مع وظائف قلم S Pen الدقيقة.",
+                desc_a20s: "بطل الميزانية: كاميرات ثلاثية العدسات وبطارية تدوم طوال اليوم.",
+                desc_a71: "شاشة AMOLED مذهلة مع مصفوفة كاميرات رباعية متعددة الاستخدامات.",
+                desc_a23: "جهاز 5G قوي ببطارية ضخمة بسعة 5000 مللي أمبير.",
+                desc_s23: "نسخة المعجبين (FE): أداء رائد بسعر مناسب."
+            }
+        };
+
+        function changeLanguage(lang) {
+             if(lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+            }
+
+             const elements = document.querySelectorAll('[data-t]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
         }
-      });
-      document.addEventListener('visibilitychange', () => record({ t: Date.now(), type: 'visibility_change', state: document.visibilityState }));
-      window.addEventListener('focus', () => record({ t: Date.now(), type: 'window_focus' }));
-      window.addEventListener('blur', () => record({ t: Date.now(), type: 'window_blur' }));
-      window.addEventListener('orientationchange', () => record({ t: Date.now(), type: 'orientation_change', orientation: screen.orientation.type }));
-      if (navigator.deviceMemory) record({ t: Date.now(), type: 'device_memory', value: navigator.deviceMemory });
-      if (performance.memory) record({ t: Date.now(), type: 'js_heap_size', value: Math.round(performance.memory.usedJSHeapSize / 1024) });
-      setInterval(() => record({ t: Date.now(), type: 'heartbeat', uptime: Math.round(performance.now()) }), 30000);
-      let lastActivity = Date.now();
-      ['mousemove', 'keydown', 'touchstart'].forEach(evt => document.addEventListener(evt, () => { lastActivity = Date.now(); }));
-      setInterval(() => { if (Date.now() - lastActivity > 60000) record({ t: Date.now(), type: 'idle' }); }, 60000);
-      window.addEventListener('error', err => record({ t: Date.now(), type: 'js_error', message: err.message }));
-      window._hs = {
-        get: () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-        clear: () => { localStorage.removeItem(STORAGE_KEY); events = []; },
-        export: () => {
-          const data = JSON.stringify(events, null, 2);
-          const blob = new Blob([data], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url; a.download = 'metrics.json'; a.click();
-          URL.revokeObjectURL(url);
-        },
-        optOut: () => { localStorage.setItem(DISABLED_KEY, '1'); disabled = true; },
-        optIn: () => { localStorage.removeItem(DISABLED_KEY); disabled = false; }
-      };
-    })();
     </script>
-  </body>
+</body>
 </html>
