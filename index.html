@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashley Íris 🌸</title>
     <meta name="theme-color" content="#ffc2d1">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -33,10 +33,10 @@
             color: var(--text-main);
             overflow-x: hidden;
             background-image: radial-gradient(var(--primary-pink) 1px, transparent 1px);
-            background-size: 30px 30px; /* Cute dot pattern */
+            background-size: 30px 30px;
         }
 
-        /* --- Floating Navigation --- */
+        /* --- Navigation --- */
         nav {
             position: sticky;
             top: 20px;
@@ -56,7 +56,6 @@
         }
 
         .nav-logo { font-family: 'Comic Neue', cursive; font-weight: bold; font-size: 1.2rem; color: var(--deep-pink); }
-        
         .nav-links { display: flex; gap: 20px; font-size: 0.95rem; }
         .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 700; }
         .nav-links a:hover { color: var(--deep-pink); transform: translateY(-2px); }
@@ -73,218 +72,301 @@
             outline: none;
         }
 
-        /* --- Layout Container --- */
-        .container {
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 850px; margin: 40px auto; padding: 0 20px; }
 
-        /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
+        /* --- Hero --- */
+        .hero { text-align: center; margin-bottom: 50px; position: relative; }
 
         .avatar-container {
             position: relative;
             display: inline-block;
+            margin-bottom: 15px;
         }
 
         .avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 6px solid white; box-shadow: 0 10px 25px rgba(255, 143, 171, 0.4);
             animation: float 6s ease-in-out infinite;
+            display: block;
         }
 
         .status-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: #fff;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: absolute; bottom: 5px; right: 5px;
+            background: #fff; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--primary-pink);
             animation: float 6s ease-in-out infinite reverse;
+            z-index: 2;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
         h1 { margin: 15px 0 5px 0; font-size: 1.8rem; color: var(--text-main); }
         .aka { color: var(--deep-pink); font-family: 'Comic Neue', cursive; font-size: 2.2rem; margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
         .bio-short { max-width: 600px; margin: 15px auto; line-height: 1.6; }
 
-        /* --- Cards & Sections --- */
+        /* --- Cards --- */
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 2px solid white;
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
+            background: var(--glass-bg); backdrop-filter: blur(10px);
+            border: 2px solid white; border-radius: var(--radius);
+            padding: 30px; margin-bottom: 30px; box-shadow: var(--shadow);
         }
-
         h2 {
-            color: var(--deep-pink);
-            font-family: 'Comic Neue', cursive;
-            font-size: 1.8rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--deep-pink); font-family: 'Comic Neue', cursive;
+            font-size: 1.8rem; margin-top: 0; display: flex; align-items: center; gap: 10px;
         }
-
         h2::after {
-            content: '';
-            flex: 1;
-            height: 2px;
+            content: ''; flex: 1; height: 2px;
             background: repeating-linear-gradient(to right, var(--primary-pink) 0, var(--primary-pink) 5px, transparent 5px, transparent 10px);
             opacity: 0.5;
         }
 
-        /* --- Identity Tags --- */
-        .tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
-        .tag {
-            background: white;
-            padding: 6px 14px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            border: 1px solid #ffe5ec;
-            color: var(--text-dim);
-        }
-        .tag.fav { background: #ffe5ec; color: var(--deep-pink); border-color: var(--primary-pink); font-weight: bold; }
-        
-        .pronoun-alert {
+        /* --- Identity Popup Styling --- */
+        details.identity-popup {
             background: #fff0f3;
-            border-left: 5px solid var(--deep-pink);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        /* --- Multilingual Pronoun Explainer --- */
-        .lang-pronoun-guide {
-            background: #fff;
-            padding: 15px;
+            border: 2px solid var(--primary-pink);
             border-radius: 15px;
-            margin-top: 20px;
-            font-size: 0.9em;
-            border: 2px dashed var(--soft-blue);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        /* --- Social Grid --- */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
+        details.identity-popup summary {
+            padding: 15px;
+            font-weight: bold;
+            color: var(--deep-pink);
+            cursor: pointer;
+            list-style: none;
+            text-align: center;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .social-link {
+        details.identity-popup summary:hover { background: rgba(255,255,255,0.5); }
+        details.identity-popup summary::-webkit-details-marker { display: none; }
+        details.identity-popup[open] { background: #fff; }
+        details.identity-popup[open] summary { border-bottom: 1px dashed var(--primary-pink); margin-bottom: 10px; }
+
+        .identity-content { padding: 15px; animation: slideDown 0.3s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .identity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .identity-col h3 { font-size: 1.1rem; color: var(--soft-blue); margin: 0 0 10px 0; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+
+        .pref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; }
+        .pref-list li { margin-bottom: 6px; display: flex; align-items: baseline; gap: 8px; }
+        .pref-icon { width: 20px; text-align: center; }
+
+        /* Copyable Names Style */
+        .copyable { cursor: copy; border-bottom: 1px dashed var(--text-dim); transition: 0.2s; position: relative; }
+        .copyable:hover { color: var(--deep-pink); border-bottom-style: solid; background: #fff0f3; border-radius: 4px; padding: 0 4px; }
+        .copyable:active { transform: scale(0.95); }
+
+        .heart { color: #d10069; } .okay { color: #55cdfc; } .joke { color: #ffab00; } .avoid { color: #888; opacity: 0.7; }
+        .legend { margin-top: 20px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.1); font-size: 0.85rem; text-align: center; color: var(--text-dim); }
+        .legend span { margin: 0 10px; }
+
+        .pronoun-alert { background: #fff0f3; border-left: 5px solid var(--deep-pink); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.95rem; }
+        .lang-pronoun-guide { background: #fff; padding: 15px; border-radius: 15px; margin-top: 20px; font-size: 0.9em; border: 2px dashed var(--soft-blue); }
+
+        /* --- Skills --- */
+        .skill-category { margin-bottom: 15px; }
+        .skill-title { font-size: 0.9rem; text-transform: uppercase; color: var(--soft-blue); font-weight: bold; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
+        .tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .tag { background: white; padding: 6px 14px; border-radius: 12px; font-size: 0.9rem; border: 1px solid #ffe5ec; color: var(--text-dim); }
+        .tag.fav { background: #ffe5ec; color: var(--deep-pink); border-color: var(--primary-pink); font-weight: bold; }
+
+        /* --- Artists Grid --- */
+        .artist-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding-top: 10px;
+            max-height: 380px;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .artist-grid.expanded { max-height: 8000px; }
+
+        .artist-item {
+            width: 110px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: white;
-            padding: 15px;
-            border-radius: 18px;
-            text-decoration: none;
-            color: var(--text-main);
-            border: 2px solid transparent;
-            font-weight: 700;
-            gap: 8px;
+            text-align: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .social-link:hover {
-            border-color: var(--primary-pink);
-            transform: translateY(-4px);
-            box-shadow: 0 5px 15px rgba(255, 143, 171, 0.25);
+        .artist-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 10px 20px rgba(255, 143, 171, 0.2);
         }
 
-        .social-link i { font-size: 1.5rem; color: var(--soft-blue); }
-        .social-link:hover i { color: var(--deep-pink); }
+        .artist-item img {
+            width: 90px; height: 90px; border-radius: 50%;
+            object-fit: cover; border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: border-color 0.3s ease;
+        }
 
-     /* --- Cute Terminal & Sys Info --- */
-.kawaii-terminal {
-    background: #1e1e2e; /* Catppuccin Mocha Dark */
-    color: #cdd6f4;
-    padding: 0;
-    border-radius: 12px;
-    font-family: 'JetBrains Mono', 'Consolas', monospace;
-    border: 2px solid #fab387; /* Peach border */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    font-size: 0.85rem;
-    line-height: 1.6;
-}
+        .artist-item:hover img { border-color: var(--primary-pink); }
+        .artist-item span { font-size: 0.85rem; font-weight: bold; color: var(--text-main); line-height: 1.2; }
 
-.term-bar {
-    background: #181825;
-    padding: 8px 15px;
-    display: flex;
-    gap: 8px;
-    border-bottom: 2px solid #313244;
-}
+        .show-more-btn {
+            display: block; width: 100%; padding: 12px; margin-top: 15px;
+            background: rgba(255,255,255,0.8); border: 2px dashed var(--soft-blue);
+            color: var(--soft-blue); font-weight: bold; text-align: center;
+            border-radius: 12px; cursor: pointer; transition: 0.2s;
+        }
+        .show-more-btn:hover { background: var(--soft-blue); color: white; border-style: solid; }
 
-.term-dot { width: 12px; height: 12px; border-radius: 50%; }
-.term-dot.red { background: #f38ba8; }
-.term-dot.yellow { background: #f9e2af; }
-.term-dot.green { background: #a6e3a1; }
+        .artist-credit {
+            display: block; text-align: center; margin-top: 10px;
+            font-size: 0.75em; color: var(--text-dim); opacity: 0.7;
+        }
+        .artist-credit a { color: var(--deep-pink); text-decoration: none; }
 
-.term-content { padding: 20px; }
-
-.term-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px 30px;
-    margin-top: 15px;
-}
-
-/* Mobile: Stack columns */
-@media (max-width: 600px) {
-    .term-grid { grid-template-columns: 1fr; }
-}
-
-.p { color: #f5c2e7; font-weight: bold; } /* Pink Keys */
-.b { color: #89b4fa; } /* Blue Values */
-.g { color: #a6e3a1; } /* Green Accents */
-.y { color: #f9e2af; } /* Yellow Accents */
-
-        /* --- Projects & Articles --- */
+        /* --- Projects & Socials --- */
         .project-list { display: flex; flex-direction: column; gap: 15px; }
         .project-item {
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
-            border-left: 4px solid var(--soft-blue);
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            background: white; padding: 15px; border-radius: 15px;
+            border-left: 4px solid var(--soft-blue); text-decoration: none;
+            color: var(--text-main); display: flex; align-items: center; gap: 15px;
         }
         .project-item:hover { border-left-color: var(--deep-pink); transform: translateX(5px); }
         .project-icon { font-size: 1.5rem; width: 40px; text-align: center; }
 
-        footer { text-align: center; margin-top: 50px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-dim); }
-        
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .social-link {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: white; padding: 15px; border-radius: 18px; text-decoration: none;
+            color: var(--text-main); border: 2px solid transparent; font-weight: 700; gap: 8px;
+        }
+        .social-link:hover { border-color: var(--primary-pink); transform: translateY(-4px); box-shadow: 0 5px 15px rgba(255, 143, 171, 0.25); }
+        .social-link i { font-size: 1.5rem; color: var(--soft-blue); }
+        .social-link:hover i { color: var(--deep-pink); }
+
+        /* --- Terminal --- */
+        .kawaii-terminal {
+            background: #1e1e2e; color: #cdd6f4; padding: 0; border-radius: 12px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace; border: 2px solid #fab387;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; font-size: 0.85rem; line-height: 1.6;
+        }
+        .term-bar { background: #181825; padding: 8px 15px; display: flex; gap: 8px; border-bottom: 2px solid #313244; }
+        .term-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .term-dot.red { background: #f38ba8; } .term-dot.yellow { background: #f9e2af; } .term-dot.green { background: #a6e3a1; }
+        .term-content { padding: 20px; }
+        .term-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 30px; margin-top: 15px; }
+        @media (max-width: 600px) { .term-grid { grid-template-columns: 1fr; } }
+        .p { color: #f5c2e7; font-weight: bold; } .b { color: #89b4fa; } .g { color: #a6e3a1; } .y { color: #f9e2af; }
+
+        /* --- Time in My Area Card --- */
+        .time-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            border: 2px dashed var(--soft-blue);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .time-container:hover { background: rgba(255, 255, 255, 0.8); border-style: solid; }
+        .time-container:active { transform: scale(0.98); }
+
+        .clock {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--deep-pink);
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+            letter-spacing: -2px;
+        }
+
+        .date {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-top: 5px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-top: 3px solid white;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+        footer p { margin: 5px 0; }
+        .footer-heart { color: var(--deep-pink); }
+
+        .privacy-box {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: var(--text-dim);
+            border-top: 1px dashed var(--soft-blue);
+            padding-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Toast Notification --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--deep-pink);
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(251, 111, 146, 0.4);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
         /* RTL Support */
         body[dir="rtl"] { text-align: right; font-family: 'Tahoma', 'Nunito', sans-serif; }
         body[dir="rtl"] h2::after { margin-right: 10px; margin-left: 0; }
         body[dir="rtl"] .project-item { border-left: none; border-right: 4px solid var(--soft-blue); }
         body[dir="rtl"] .project-item:hover { border-right-color: var(--deep-pink); transform: translateX(-5px); }
+        body[dir="rtl"] .status-badge { right: auto; left: 5px; }
 
     </style>
+
+    <noscript>
+        <style>
+            .artist-grid { max-height: none !important; overflow: visible; }
+            .show-more-btn { display: none !important; }
+        </style>
+    </noscript>
 </head>
 <body>
 
@@ -305,7 +387,7 @@
     </nav>
 
     <div class="container">
-        
+
         <header class="hero" id="about">
             <div class="avatar-container">
                 <img src="https://codeberg.org/avatars/6faeff434a11fb732c1799f250ee923eaae3d5545cc2ea116d7b42a1b2b1e814?size=512" alt="Ashley Avatar" class="avatar">
@@ -313,10 +395,10 @@
             </div>
             <h1 id="legalName">Güneş Şevval Arjinya Melisoy</h1>
             <p class="aka">aka Ashley Íris Celeste</p>
-            
+
             <div class="bio-short">
                 <p data-t="bio_main">
-                    <b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 I play piano & love <b>alt pop</b>. 
+                    <b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 I play piano & love <b>alt pop</b>.
                     ✈️ Geography, Space & Aviation geek. 🐧 GNU/Linux & Privacy fighter.
                 </p>
                 <p style="display:none;opacity: 0.7; font-size: 0.9em;" data-t="bio_sub">
@@ -324,49 +406,305 @@
                 </p>
             </div>
         </header>
-
-        <section class="card">
+<section class="card">
             <h2 data-t="identity_title">Identity & Pronouns 💗</h2>
-            
+
             <div class="pronoun-alert">
-                <i class="fas fa-exclamation-circle"></i> 
+                <i class="fas fa-exclamation-circle"></i>
                 <span data-t="pronoun_warning">⚠️ I am NOT okay with any pronouns other than <b>it/its</b> and <b>she/her</b> (sometimes)!</span>
             </div>
 
-            <div class="tags-group">
-                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="pref_names">Preferred Names:</strong>
-                <span class="tag fav">Ashley</span>
-                <span class="tag fav">Ashley Íris</span>
-                <span class="tag fav">Íris</span>
-                <span class="tag fav">Ashy</span>
-                <span class="tag fav">Güneş Şevval Arjinya Melisoy</span>
-                <span class="tag">Mizuki</span>
-            </div>
+            <details class="identity-popup">
+                <summary>
+                    <span>🏷️ Click to view full Identity, Names & Terms</span>
+                    <i class="fas fa-chevron-down"></i>
+                </summary>
 
-            <div class="tags-group">
-                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="pronouns_header">Pronouns:</strong>
-                <span class="tag fav">it/its</span>
-                <span class="tag fav">she/her</span>
-                <span class="tag">per/pers</span>
-            </div>
+                <div class="identity-content">
 
-            <div class="tags-group">
-                <strong style="width:100%; display:block; margin-bottom:5px; color:var(--deep-pink);" data-t="terms_header">Terms:</strong>
-                <span class="tag fav">doggirl/puppy</span>
-                <span class="tag fav">women</span>
-                <span class="tag fav">girl</span>
-                <span class="tag fav">robot</span>
-                <span class="tag fav">Bandito</span>
-                <span class="tag fav">Wifey</span>
-                <span class="tag fav">Pet</span>
-            </div>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #ffc2d1;">
+                        <img src="https://cdn.pronouns.cc/flags/4adef43cc917de6a1f83090da7a05c487956ef64db8874ad9165da229e26c838.webp" title="Trans Woman" alt="Trans Woman Flag" style="height: 35px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <img src="https://cdn.pronouns.page/images/01K8NGDNEAZ098XA6VAAZVJFNH-flag.png" title="Pupgender" alt="Pupgender Flag" style="height: 35px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <img src="https://cdn.pronouns.cc/flags/6d11976322caee2ebcf8de4723bfcebe11c7fc22d30029a33d3c6c6f7ae7c2b2.webp" title="Finsexual" alt="Finsexual Flag" style="height: 35px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <img src="https://cdn.pronouns.cc/flags/cd85b11fc0f109f2a58617dfef007cfffacc142f7b9aef6a92943948559d66ce.webp" title="Polyamorous" alt="Polyamorous Flag" style="height: 35px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <img src="https://cdn.pronouns.cc/flags/55ae1acda583e9cb08681aed5e4787ac243ade8d0347580c7819ae2479596101.webp" title="Voidpunk" alt="Voidpunk Flag" style="height: 35px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="identity-grid">
+                        <div class="identity-col">
+                            <h3 data-t="id_names">Names</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Güneş Şevval Arjinya Melisoy</span> [irl]</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Ashley</span></li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Ashley Íris</span></li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Íris</span></li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Ashy</span></li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> <span class="copyable" onclick="copyText(this.innerText)">Mizuki</span></li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> Ash</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> Dedname</li>
+                            </ul>
+                        </div>
+
+                        <div class="identity-col">
+                            <h3 data-t="id_pronouns">Pronouns</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> it/its</li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> she/her</li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> per/pers</li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> they/them</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> he/him</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> xi/xim</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> literally anything else</li>
+                            </ul>
+                        </div>
+
+                        <div class="identity-col">
+                            <h3 data-t="id_honorifics">Honorifics</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> [no honorific]</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> ms.</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> ma'am</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> mr</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> sir</li>
+                            </ul>
+                        </div>
+
+                        <div class="identity-col">
+                            <h3 data-t="id_desc">Person and family descriptions</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> women</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> puppy/dog</li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> cat/kitty</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> girl</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> Bandito</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> sis</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> robot</li>
+                                <li><span class="pref-icon okay"><i class="fas fa-thumbs-up"></i></span> person</li>
+                                <li><span class="pref-icon joke"><i class="fas fa-face-smile"></i></span> man</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> citizen of dema</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> dude</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> bro</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> human</li>
+                            </ul>
+                        </div>
+
+                        <div class="identity-col">
+                            <h3 data-t="id_compliments">Compliments (am not any of these but)</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> cute (i wish i was)</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> sexy (i wish i was)</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> hotie (i wish i was)</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> beautiful (i wish i was)</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> handsome</li>
+                            </ul>
+                        </div>
+
+                        <div class="identity-col">
+                            <h3 data-t="id_relationship">Relationship descriptions</h3>
+                            <ul class="pref-list">
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> Wifey</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> darling</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> doll</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> girlfriend</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> pet</li>
+                                <li><span class="pref-icon heart"><i class="fas fa-heart"></i></span> other fem terms lol am too lazy sorry</li>
+                                <li><span class="pref-icon avoid"><i class="fas fa-thumbs-down"></i></span> boyfriend</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <span class="heart"><i class="fas fa-heart"></i> Favourite</span>
+                        <span class="okay"><i class="fas fa-thumbs-up"></i> Okay</span>
+                        <span class="joke"><i class="fas fa-face-smile"></i> Jokingly</span>
+                        <span class="avoid"><i class="fas fa-thumbs-down"></i> Avoid</span>
+                    </div>
+                </div>
+            </details>
 
             <div class="lang-pronoun-guide" id="pronounGuide" style="display:none;">
                 <b data-t="guide_title">🌍 How to refer to me in this language:</b>
                 <p id="guideText" style="margin-top: 5px; line-height: 1.5;"></p>
             </div>
         </section>
+        <section class="card">
+            <h2 data-t="edu_title">Education 🎓</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <div class="project-icon">🧠</div>
+                    <div>
+                        <b>Topkapı University</b><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;" data-t="edu_topkapi">Computer Science & AI/ML • Grade 1</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-icon">🌐</div>
+                    <div>
+                        <b>Anadolu University</b><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;" data-t="edu_anadolu">Web Development • Grade 1</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+    <style>
+    /* --- 4000x Better Skills Section --- */
+    .skills-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .skill-column {
+        background: rgba(255, 255, 255, 0.4);
+        border: 2px solid white;
+        border-radius: 20px;
+        padding: 25px;
+        transition: transform 0.3s ease;
+    }
+
+    .skill-column:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 143, 171, 0.15);
+    }
+
+    .skill-header {
+        font-family: 'Comic Neue', cursive;
+        font-size: 1.4rem;
+        color: var(--deep-pink);
+        margin-bottom: 20px;
+        border-bottom: 2px dashed var(--soft-blue);
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .proficiency-group {
+        margin-bottom: 20px;
+    }
+
+    .proficiency-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        display: block;
+        color: var(--text-dim);
+    }
+
+    /* Color coding the proficiency headers */
+    .expert-label { color: #d10069; } /* Deep Pink */
+    .mid-label { color: #55cdfc; }    /* Blue */
+    .learn-label { color: #ffab00; }  /* Orange/Yellow */
+
+    .tech-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tech-tag {
+        background: white;
+        padding: 8px 14px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-main);
+        border: 1px solid #ffe5ec;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .tech-tag:hover {
+        transform: scale(1.05) rotate(2deg);
+        border-color: var(--primary-pink);
+        box-shadow: 0 4px 10px rgba(255, 143, 171, 0.2);
+        color: var(--deep-pink);
+    }
+
+    .tech-tag i {
+        color: var(--soft-blue);
+    }
+
+    .tech-tag:hover i {
+        color: var(--deep-pink);
+    }
+
+    /* AI Specific Styles */
+    .ai-tag {
+        background: linear-gradient(135deg, #fff0f3 0%, #fff 100%);
+        border-color: var(--primary-pink);
+    }
+</style>
+
+<section class="card">
+    <h2 data-t="skills_title">Technical Arsenal 🛠️</h2>
+
+    <div class="skills-wrapper">
+
+        <div class="skill-column">
+            <div class="skill-header">
+                <i class="fas fa-code"></i> Languages & Scripting
+            </div>
+
+            <div class="proficiency-group">
+                <span class="proficiency-label expert-label">✨ Mastery / High Exp</span>
+                <div class="tech-grid">
+                    <span class="tech-tag"><i class="fas fa-terminal"></i> Common Lisp</span>
+                    <span class="tech-tag"><i class="fas fa-microchip"></i> Assembly (ASM)</span>
+                    <span class="tech-tag"><i class="fas fa-c"></i> C / C++</span>
+                    <span class="tech-tag"><i class="fab fa-microsoft"></i> C#</span>
+                    <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                    <span class="tech-tag"><i class="fab fa-html5"></i> HTML5 & CSS3</span>
+                </div>
+            </div>
+
+            <div class="proficiency-group">
+                <span class="proficiency-label mid-label">🔹 Intermediate</span>
+                <div class="tech-grid">
+                    <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                    <span class="tech-tag"><i class="fas fa-terminal"></i> PowerShell</span>
+                    <span class="tech-tag"><i class="fas fa-file-code"></i> Bash / Shell</span>
+                </div>
+            </div>
+
+            <div class="proficiency-group">
+                <span class="proficiency-label learn-label">🌱 Learning / Beginner</span>
+                <div class="tech-grid">
+                    <span class="tech-tag"><i class="fab fa-rust"></i> Rust</span>
+                    <span class="tech-tag"><i class="fas fa-gem"></i> Ruby</span>
+                    <span class="tech-tag"><i class="fas fa-flask"></i> Elixir</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-column">
+            <div class="skill-header">
+                <i class="fas fa-brain"></i> AI & Machine Learning
+            </div>
+
+            <div class="proficiency-group">
+                <span class="proficiency-label expert-label">🧠 Research Areas & Tech</span>
+
+                <div class="tech-grid">
+                    <span class="tech-tag ai-tag"><i class="fas fa-network-wired"></i> Deep Learning</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-language"></i> NLP (Transformers)</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-robot"></i> Reinforcement Learning</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-eye"></i> Computer Vision (CNNs)</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-project-diagram"></i> PyTorch Ecosystem</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-cubes"></i> TensorFlow</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-chart-line"></i> Statistical ML</span>
+                    <span class="tech-tag ai-tag"><i class="fas fa-layer-group"></i> GANs & Diffusion</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
         <section class="card" id="contact">
             <h2 data-t="socials_title">Contact & Socials 🌐</h2>
             <div class="social-grid">
@@ -400,57 +738,120 @@
             </div>
         </section>
 
-<section class="card">
-    <h2 data-t="sys_title">Sys Info 🖥️</h2>
-    
-    <div class="kawaii-terminal">
-        <div class="term-bar">
-            <div class="term-dot red"></div>
-            <div class="term-dot yellow"></div>
-            <div class="term-dot green"></div>
-        </div>
+        <section class="card">
+            <h2 data-t="music_title">Artists I Like 🎧</h2>
+            <div id="artistGrid" class="artist-grid">
 
-        <div class="term-content">
-            <div>
-                <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/twenty-one-pilots_1749415182.jpg" alt="TØP"><span>Twenty One Pilots</span></div>
+
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/the-weeknd_1726735090.jpg" alt="The Weeknd"><span>The Weeknd</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/future_1742220591.jpg" alt="Future"><span>Future</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/asap-rocky_1769005461.jpg" alt="ASAP Rocky"><span>A$AP Rocky</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/2pac_1462716187.jpg" alt="2Pac"><span>2Pac</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/the-notorious-big_1498698392.jpg" alt="Biggie"><span>Notorious B.I.G</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/metro-boomin_1755252257.jpg" alt="Metro"><span>Metro Boomin</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/tyler-the-creator_1753098069.jpg" alt="Tyler"><span>Tyler, The Creator</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/jane-remover_1763039099.jpg" alt="Jane Remover"><span>Jane Remover</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/quadeca_1752538797.jpg" alt="Quadeca"><span>Quadeca</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/lil-wayne_1749078095.jpg" alt="Lil Wayne"><span>Lil Wayne</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/pusha-t_1650991476.jpg" alt="Pusha T"><span>Pusha T</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/nas_1731842307.jpg" alt="Nas"><span>Nas</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/westside-gunn_1761913202.jpg" alt="Westside Gunn"><span>Westside Gunn</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/50-cent_1570829024.jpg" alt="50 Cent"><span>50 Cent</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/ninajirachi_1754626673.jpg" alt="Ninajirachi"><span>Ninajirachi</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/kero-kero-bonito_1619027723.jpg" alt="KKB"><span>Kero Kero Bonito</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/danny-brown_1758675393.jpg" alt="Danny Brown"><span>Danny Brown</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/cynthoni_1722629635.jpg" alt="Cynthoni"><span>Cynthoni</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/femtanyl_1715713755.jpg" alt="Femtanyl"><span>Femtanyl</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/daft-punk_1614006871.jpg" alt="Daft Punk"><span>Daft Punk</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/issbrokie_1766162252.jpg" alt="Issbrokie"><span>Issbrokie</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/swans_1748584919.jpg" alt="Swans"><span>Swans</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/gorillaz_1757624371.jpg" alt="Gorillaz"><span>Gorillaz</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/kendrick-lamar_1732363413.jpg" alt="Kendrick"><span>Kendrick Lamar</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/doechii_1725015036.jpg" alt="Doechii"><span>Doechii</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/travis-scott_1690805836.jpg" alt="Travis"><span>Travis Scott</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/charli-xcx_1762894480.jpg" alt="Charli XCX"><span>Charli XCX</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/mitski_1768487311.jpg" alt="Mitski"><span>Mitski</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/daddy-yankee_1527016729.jpg" alt="Daddy Yankee"><span>Daddy Yankee</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/ashnikko_1755094972.jpg" alt="Ashnikko"><span>Ashnikko</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/billie-eilish_1715908817.jpg" alt="Billie"><span>Billie Eilish</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/agust-d_1682275779.jpg" alt="Agust D"><span>Agust D</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/cl_1633712705.jpg" alt="CL"><span>CL</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/skrillex_1762891928.jpg" alt="Skrillex"><span>Skrillex</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/psy_1570897698.jpg" alt="PSY"><span>PSY</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/underscores_1633539292.jpg" alt="Underscores"><span>Underscores</span></div>
+
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/inabakumori_1738191862.jpg" alt="Inabakumori"><span>Inabakumori</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/black-eyed-peas_1717226759.jpg" alt="Black Eyed Peas"><span>Black Eyed Peas</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/tokyo-machine_1738550271.jpg" alt="Tokyo Machine"><span>Tokyo Machine</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/nitro-fun_1738561275.jpg" alt="Nitro Fun"><span>Nitro Fun</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/giga_1739351763.jpg" alt="Giga"><span>Giga</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/deco27_1731585322.jpg" alt="DECO*27"><span>DECO*27</span></div>
+                <div class="artist-item"><img src="https://yt3.googleusercontent.com/ytc/AIdro_mzMPXMRObwV18US8XIsVzapEc2RuqWJhNokzj8iswv16I=s160-c-k-c0x00ffffff-no-rj" alt="Maretu"><span>Maretu</span></div>
+                <div class="artist-item"><img src="https://duckduckgo.com/i/692d35578771dcaf.jpg" alt="Wowaka"><span>Wowaka</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/2ne1_1723290536.jpg" alt="2NE1"><span>2NE1</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/i-dle_1748002747.jpg" alt="(G)I-DLE"><span>(G)I-DLE</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/twice_1765640988.jpg" alt="Twice"><span>Twice</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/red-velvet_1748002771.jpg" alt="Red Velvet"><span>Red Velvet</span></div>
+                <div class="artist-item"><img src="https://cdn.albumoftheyear.org/artists/sq/babymetal_1746272909.jpg" alt="BABYMETAL"><span>BABYMETAL</span></div>
             </div>
-            
-            <div class="term-grid">
-                <div>
-                    <div><span class="p">OS</span>: <span class="b">Windows 11 Pro (25H2)</span></div>
-                    <div><span class="p">Host</span>: <span class="b">Victus by HP 15-fb2xxx</span></div>
-                    <div><span class="p">Kernel</span>: <span class="b">WIN32_NT 10.0.26220</span></div>
-                    <div><span class="p">Shell</span>: <span class="b">hyfetch</span></div>
-                    <div><span class="p">Theme</span>: <span class="p">Custom - #FFABCC</span></div>
+
+            <span class="artist-credit">Thank you <a href="https://www.albumoftheyear.org" target="_blank">albumoftheyear.org</a> for the images!</span>
+            <button class="show-more-btn" onclick="toggleArtists()">Show All Artists ▼</button>
+        </section>
+
+        <section class="card">
+            <h2 data-t="sys_title">Sys Info 🖥️</h2>
+            <div class="kawaii-terminal">
+                <div class="term-bar">
+                    <div class="term-dot red"></div>
+                    <div class="term-dot yellow"></div>
+                    <div class="term-dot green"></div>
                 </div>
-
-                <div>
-                    <div><span class="p">CPU</span>: <span class="b">AMD Ryzen 5 8645HS (12)</span></div>
-                    <div><span class="p">GPU</span>: <span class="b">NVIDIA GeForce RTX 3050 6GB</span></div>
-                    <div><span class="p">Mem</span>: <span class="y">15.23 Gib</span></div>
-                    <div><span class="p">Display</span>: <span class="b">1920x1080 @ 144Hz (16")</span></div>
-                    <div><span class="p">Term</span>: <span class="b">Windows Terminal</span></div>
+                <div class="term-content">
+                    <div>
+                        <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ hyfetch
+                    </div>
+                    <div class="term-grid">
+                        <div>
+                            <div><span class="p">OS</span>: <span class="b">Windows 11 Pro (25H2)</span></div>
+                            <div><span class="p">Host</span>: <span class="b">Victus by HP 15-fb2xxx</span></div>
+                            <div><span class="p">Kernel</span>: <span class="b">WIN32_NT 10.0.26220</span></div>
+                            <div><span class="p">Shell</span>: <span class="b">hyfetch</span></div>
+                            <div><span class="p">Theme</span>: <span class="p">Custom - #FFABCC</span></div>
+                        </div>
+                        <div>
+                            <div><span class="p">CPU</span>: <span class="b">AMD Ryzen 5 8645HS (12)</span></div>
+                            <div><span class="p">GPU</span>: <span class="b">NVIDIA GeForce RTX 3050 6GB</span></div>
+                            <div><span class="p">Mem</span>: <span class="y">15.23 Gib</span></div>
+                            <div><span class="p">Display</span>: <span class="b">1920x1080 @ 144Hz (16")</span></div>
+                            <div><span class="p">Term</span>: <span class="b">Windows Terminal</span></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span style="animation: blink 1s infinite; background: #cdd6f4; width: 8px; height: 15px; display: inline-block; vertical-align: middle;"></span>
+                    </div>
                 </div>
             </div>
-
-            <br>
-            <div>
-                <span class="g">ashley@QTLAPTOP3</span>:<span class="b">~</span>$ <span style="animation: blink 1s infinite; background: #cdd6f4; width: 8px; height: 15px; display: inline-block; vertical-align: middle;"></span>
+            <div style="text-align: right; margin-top: 10px;">
+                <a href="https://ashleyirispup.cat/opinion/blog/windows.html" style="font-size: 0.85rem; font-weight:bold; color: var(--deep-pink); text-decoration:none;" data-t="windows_link">
+                    ✨ wonder how i use windows? ➜
+                </a>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div style="text-align: right; margin-top: 10px;">
-        <a href="https://ashleyirispup.cat/opinion/blog/windows.html" style="font-size: 0.85rem; font-weight:bold; color: var(--deep-pink); text-decoration:none;" data-t="windows_link">
-            ✨ wonder how i use windows? ➜
-        </a>
-    </div>
-</section>
+        <section class="card">
+            <h2 data-t="time_title">Time in My Area 🕰️</h2>
+            <div class="time-container" onclick="copyText(this.innerText)">
+                <div id="clock" class="clock">00:00:00</div>
+                <div id="date" class="date">Loading date...</div>
+            </div>
+        </section>
 
         <section class="card" id="projects">
             <h2 data-t="projects_title">Projects & Content 🔗</h2>
             <div class="project-list">
-                
                 <a href="https://poketube.fun" class="project-item">
                     <div class="project-icon">📺</div>
                     <div>
@@ -458,7 +859,6 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="proj_poke">Your all-in-one privacy app.</span>
                     </div>
                 </a>
-
                 <a href="https://github.com/discord-unspy/discord-unspy" class="project-item">
                     <div class="project-icon">🛡️</div>
                     <div>
@@ -466,7 +866,6 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="proj_unspy">Better privacy for Discord.</span>
                     </div>
                 </a>
-
                 <a href="my-phones.html" class="project-item">
                     <div class="project-icon">📱</div>
                     <div>
@@ -474,7 +873,6 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_phones_desc">A showcase of devices I've daily driven.</span>
                     </div>
                 </a>
-
                 <a href="misinformation/index.html" class="project-item">
                     <div class="project-icon">🕵️‍♀️</div>
                     <div>
@@ -482,7 +880,6 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_misinfo_desc">Clearing up rumors (e.g. DuckDuckGo).</span>
                     </div>
                 </a>
-
                 <a href="https://ashleyirispup.cat/opinion" class="project-item">
                     <div class="project-icon">🗣️</div>
                     <div>
@@ -490,11 +887,9 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_opinions_desc">Most of my website lives here.</span>
                     </div>
                 </a>
-
                 <div style="margin-top: 10px; border-top: 2px dashed #ffcfe0; padding-top: 10px;">
                     <small style="color: var(--soft-blue); font-weight: bold; text-transform: uppercase;" data-t="rants_header">Software Rants</small>
                 </div>
-
                 <a href="https://ashleyirispup.cat/gnuandlinux" class="project-item" style="border-left-color: var(--text-main);">
                     <div class="project-icon">🐧</div>
                     <div>
@@ -502,26 +897,258 @@
                         <span style="font-size: 0.85em; opacity: 0.8;" data-t="link_linux">Why I don't just call it "Linux".</span>
                     </div>
                 </a>
-
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>© 2026 Ashley Íris. Made with 💗, 💙, and 🤍.</p>
-        <p>Hosted at ashleyirispup.cat</p>
+        <p class="footer-heart">Made with 💗, 💙, and 🤍.</p>
+        <p>© 2026 Ashley Íris.</p>
+        <p style="opacity: 0.6; font-size: 0.8em; margin-top: 10px;">Hosted at ashleyirispup.cat</p>
+
+        <style>
+ .privacy-wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.privacy-details {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 650px;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(255, 143, 171, 0.1);
+    overflow: hidden;
+}
+
+.privacy-details[open] {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(255, 143, 171, 0.2);
+    transform: translateY(-5px);
+}
+
+.privacy-details summary {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--deep-pink);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    transition: background 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.privacy-details summary:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.privacy-details summary::-webkit-details-marker { display: none; }
+
+.privacy-content {
+    padding: 20px 25px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.7;
+    border-top: 2px dashed var(--soft-blue);
+    animation: fadeIn 0.4s ease;
+}
+
+.privacy-section {
+    margin-bottom: 20px;
+}
+
+.privacy-section h4 {
+    margin: 0 0 8px 0;
+    color: var(--soft-blue);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.privacy-list {
+    margin: 5px 0 10px 0;
+    padding-left: 20px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.privacy-list li { margin-bottom: 4px; }
+
+.disclaimer {
+    font-size: 0.8rem;
+    background: #fff0f3;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--deep-pink);
+    color: var(--text-main);
+    margin-top: 15px;
+}
+
+.source-btn {
+    display: inline-block;
+    background: #24292e;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    transition: transform 0.2s;
+}
+
+.source-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.privacy-details hr {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin: 15px 0;
+}
+        </style>
+    <div class="privacy-wrapper">
+    <details class="privacy-details">
+        <summary>
+            <i class="fas fa-shield-halved"></i> <span>Privacy Policy</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; opacity: 0.6;"></i>
+        </summary>
+
+        <div class="privacy-content">
+
+            <div class="privacy-section">
+                <h4><i class="fab fa-github"></i> Hosting & Source</h4>
+                <p>
+                    This website is hosted via <b>GitHub Pages</b>. GitHub may collect your IP address and user agent for security and diagnostic purposes (standard server logs).
+                </p>
+                <p>
+                    This site is free software! You can verify exactly what code is running in your browser:
+                </p>
+                <a href="https://github.com/ashley0143/ashley0143.github.io" class="source-btn" target="_blank">
+                    <i class="fas fa-code-branch"></i> View Source Code
+                </a>
+            </div>
+
+            <hr>
+
+            <div class="privacy-section">
+                <h4><i class="fas fa-user-secret"></i> Data Collection</h4>
+                <p>
+                    <b>I do not track you.</b> This website does not use cookies, trackers, analytics scripts (like Google Analytics), or store any personal data about you. It is a static HTML site.
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="privacy-section">
+                <h4><i class="fas fa-network-wired"></i> 3rd Party Connections</h4>
+                <p>
+                    To make this website look pretty and load content, your browser makes direct connections to the following services. These providers may see your IP address during content retrieval:
+                </p>
+                <ul class="privacy-list">
+                    <li><b>AlbumOfTheYear.org:</b> Loads artist images dynamically.</li>
+                    <li><b>Codeberg / GitHub:</b> Loads avatar images and profile assets.</li>
+                    <li><b>Google Fonts:</b> Loads the 'Nunito' and 'Comic Neue' typefaces.</li>
+                    <li><b>Font Awesome:</b> Loads the icons (via CDN).</li>
+                    <li><b>Pronouns.cc / Pronouns.page:</b> Loads identity flags.</li>
+                </ul>
+
+                <div class="disclaimer">
+                    <b>Note:</b> While I try to list all connections, we may occasionally connect to other third-party services not explicitly listed here to load additional assets or features as the site evolves.
+                </div>
+            </div>
+
+        </div>
+    </details>
+</div>
     </footer>
 
+    <div id="toast">Copied to clipboard! ✨</div>
+
     <script>
+        function toggleArtists() {
+            const grid = document.getElementById('artistGrid');
+            grid.classList.toggle('expanded');
+            const btn = document.querySelector('.show-more-btn');
+            if(grid.classList.contains('expanded')) {
+                btn.innerText = "Show Less ▲";
+            } else {
+                btn.innerText = "Show All Artists ▼";
+            }
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = {
+                timeZone: 'Europe/Istanbul',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const dateOptions = {
+                timeZone: 'Europe/Istanbul',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const currentLang = document.querySelector('.lang-select').value;
+            const localeMap = {
+                'en': 'en-CA',
+                'es': 'es-ES',
+                'pt': 'pt-BR',
+                'id': 'id-ID',
+                'ar': 'ar-SA'
+            };
+            const locale = localeMap[currentLang] || 'en-CA';
+
+            const timeString = new Intl.DateTimeFormat(locale, timeOptions).format(now);
+            const dateString = new Intl.DateTimeFormat(locale, dateOptions).format(now);
+
+            document.getElementById('clock').innerText = timeString;
+            document.getElementById('date').innerText = dateString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        }
+
         const translations = {
             en: {
                 nav_about: "About", nav_projects: "Projects", nav_contact: "Socials",
                 bio_main: "<b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 I play piano & love <b>alt pop</b>. ✈️ Geography, Space & Aviation geek. 🐧 GNU/Linux & Privacy fighter.",
                 bio_sub: "(it/its or she/her) • Turkish • Doggirl (woof~)",
                 identity_title: "Identity & Pronouns 💗",
-                pronoun_warning: "⚠️ I am NOT okay with any pronouns other than <b>it/its</b> and <b>she/her</b> (sometimes)!",
-                pref_names: "Preferred Names:", pronouns_header: "Pronouns:", terms_header: "Terms:",
+
+                // Identity Headers (New)
+                id_names: "Names",
+                id_pronouns: "Pronouns",
+                id_honorifics: "Honorifics",
+                id_desc: "Person and family descriptions",
+                id_compliments: "Compliments (am not any of these but)",
+                id_relationship: "Relationship descriptions",
+
                 socials_title: "Contact & Socials 🌐", sys_title: "Sys Info 🖥️", windows_link: "wonder how i use windows?",
                 projects_title: "Projects & Content 🔗",
                 proj_poke: "Your all-in-one privacy app.", proj_unspy: "Better privacy for Discord.",
@@ -529,15 +1156,33 @@
                 link_misinfo: "Misinformation Hub", link_misinfo_desc: "Clearing up rumors (e.g. DuckDuckGo).",
                 link_opinions: "My Opinions", link_opinions_desc: "Most of my website lives here.",
                 rants_header: "Software Rants", link_linux: "Why I don't just call it \"Linux\".",
-                guide_title: "", guide_text: ""
+                guide_title: "", guide_text: "",
+
+                edu_title: "Education 🎓",
+                edu_topkapi: "Computer Science & AI/ML • Grade 1",
+                edu_anadolu: "Web Development • Grade 1",
+                music_title: "Artists I Like 🎧",
+
+                skills_title: "Coding Experience 💻",
+                skill_high: "Expert / High Experience",
+                skill_mid: "Intermediate / Medium Experience",
+                skill_low: "Beginner / Learning",
+
+                time_title: "Time in My Area 🕰️"
             },
             es: {
                 nav_about: "Sobre Mí", nav_projects: "Proyectos", nav_contact: "Sociales",
                 bio_main: "<b>¡Hola!</b> 🌈 Anarco queer & libsoc. 🎹 Toco el piano y amo el <b>alt pop</b>. ✈️ Fan de geografía, espacio y aviación. 🐧 GNU/Linux & Privacidad.",
                 bio_sub: "(it/its o ella) • Turca • Doggirl (guau~)",
                 identity_title: "Identidad y Pronombres 💗",
-                pronoun_warning: "⚠️ ¡NO acepto otros pronombres que no sean <b>it/its</b> y <b>ella</b> (a veces)!",
-                pref_names: "Nombres Preferidos:", pronouns_header: "Pronombres:", terms_header: "Términos:",
+
+                id_names: "Nombres",
+                id_pronouns: "Pronombres",
+                id_honorifics: "Honoríficos",
+                id_desc: "Descripciones personales y familiares",
+                id_compliments: "Cumplidos (no soy ninguno, pero...)",
+                id_relationship: "Descripciones de relación",
+
                 socials_title: "Contacto 🌐", sys_title: "Info Sistema 🖥️", windows_link: "¿cómo uso windows?",
                 projects_title: "Proyectos y Contenido 🔗",
                 proj_poke: "Tu app de privacidad todo en uno.", proj_unspy: "Mejor privacidad para Discord.",
@@ -546,15 +1191,31 @@
                 link_opinions: "Mis Opiniones", link_opinions_desc: "La mayor parte de mi web está aquí.",
                 rants_header: "Quejas de Software", link_linux: "Por qué no lo llamo solo \"Linux\".",
                 guide_title: "🌍 Guía de Pronombres en Español:",
-                guide_text: "En español, prefiero el trato femenino (Ella/La). Si usas lenguaje neutro, 'Elle' es aceptable, pero por favor evita el masculino. 'It' (eso/aquello) es difícil de traducir directamente como pronombre personal, así que el femenino es la opción más segura."
+                guide_text: "En español, prefiero el trato femenino (Ella/La). Si usas lenguaje neutro, 'Elle' es aceptable, pero por favor evita el masculino. 'It' (eso/aquello) es difícil de traducir directamente como pronombre personal, así que el femenino es la opción más segura.",
+
+                edu_title: "Educación 🎓",
+                edu_topkapi: "Ciencias de la Computación y IA/ML • 1er Año",
+                edu_anadolu: "Desarrollo Web • 1er Año",
+                music_title: "Artistas que Me Gustan 🎧",
+                skills_title: "Experiencia en Código 💻",
+                skill_high: "Experto / Experiencia Alta",
+                skill_mid: "Intermedio / Experiencia Media",
+                skill_low: "Principiante / Aprendiendo",
+                time_title: "Hora en mi Zona 🕰️"
             },
             pt: {
                 nav_about: "Sobre", nav_projects: "Projetos", nav_contact: "Social",
                 bio_main: "<b>Oie!</b> 🌈 Anarco queer & libsoc. 🎹 Toco piano e amo <b>alt pop</b>. ✈️ Geek de geografia, espaço e aviação. 🐧 GNU/Linux & Privacidade.",
                 bio_sub: "(it/its ou ela) • Turca • Doggirl (woof~)",
                 identity_title: "Identidade e Pronomes 💗",
-                pronoun_warning: "⚠️ NÃO aceito outros pronomes além de <b>it/its</b> e <b>ela</b> (às vezes)!",
-                pref_names: "Nomes Preferidos:", pronouns_header: "Pronomes:", terms_header: "Termos:",
+
+                id_names: "Nomes",
+                id_pronouns: "Pronomes",
+                id_honorifics: "Honoríficos",
+                id_desc: "Descrições pessoais e familiares",
+                id_compliments: "Elogios (não sou, mas...)",
+                id_relationship: "Descrições de relacionamento",
+
                 socials_title: "Contato 🌐", sys_title: "Info Sistema 🖥️", windows_link: "como uso windows?",
                 projects_title: "Projetos e Conteúdo 🔗",
                 proj_poke: "Sua app de privacidade tudo-em-um.", proj_unspy: "Melhor privacidade para Discord.",
@@ -563,15 +1224,31 @@
                 link_opinions: "Minhas Opiniões", link_opinions_desc: "A maior parte do meu site vive aqui.",
                 rants_header: "Rants de Software", link_linux: "Por que não chamo apenas de \"Linux\".",
                 guide_title: "🌍 Guia de Pronomes em Português:",
-                guide_text: "Em português, por favor use o feminino (Ela/Dela). Se usar linguagem neutra (elu/delu), também está ok, mas evite o masculino. A tradução literal de 'It' não funciona bem para pessoas em PT, então o feminino é preferido."
+                guide_text: "Em português, por favor use o feminino (Ela/Dela). Se usar linguagem neutra (elu/delu), também está ok, mas evite o masculino. A tradução literal de 'It' não funciona bem para pessoas em PT, então o feminino é preferido.",
+
+                edu_title: "Educação 🎓",
+                edu_topkapi: "Ciência da Computação e IA/ML • 1º Ano",
+                edu_anadolu: "Desenvolvimento Web • 1º Ano",
+                music_title: "Artistas que Curto 🎧",
+                skills_title: "Experiência em Código 💻",
+                skill_high: "Expert / Experiência Alta",
+                skill_mid: "Intermediário / Experiência Média",
+                skill_low: "Iniciante / Aprendendo",
+                time_title: "Hora na Minha Área 🕰️"
             },
             id: {
                 nav_about: "Tentang", nav_projects: "Proyek", nav_contact: "Sosial",
                 bio_main: "<b>Haai!</b> 🌈 Anarco queer & libsoc. 🎹 Main piano & suka <b>alt pop</b>. ✈️ Geek geografi, angkasa & penerbangan. 🐧 GNU/Linux & Privasi.",
                 bio_sub: "(it/its atau dia/nya) • Turki • Doggirl (guk~)",
                 identity_title: "Identitas & Kata Ganti 💗",
-                pronoun_warning: "⚠️ Saya TIDAK oke dengan kata ganti selain <b>it/its</b> dan <b>she/her</b>!",
-                pref_names: "Nama Pilihan:", pronouns_header: "Kata Ganti:", terms_header: "Istilah:",
+
+                id_names: "Nama",
+                id_pronouns: "Kata Ganti",
+                id_honorifics: "Sebutan Kehormatan",
+                id_desc: "Deskripsi pribadi dan keluarga",
+                id_compliments: "Pujian (saya bukan ini, tapi...)",
+                id_relationship: "Deskripsi hubungan",
+
                 socials_title: "Kontak & Sosial 🌐", sys_title: "Info Sistem 🖥️", windows_link: "kok pake windows?",
                 projects_title: "Proyek & Konten 🔗",
                 proj_poke: "Aplikasi privasi all-in-one.", proj_unspy: "Privasi lebih baik untuk Discord.",
@@ -580,15 +1257,31 @@
                 link_opinions: "Opini Saya", link_opinions_desc: "Sebagian besar web saya ada di sini.",
                 rants_header: "Keluhan Software", link_linux: "Kenapa gak cuma panggil \"Linux\".",
                 guide_title: "🌍 Panduan Kata Ganti (Indonesian):",
-                guide_text: "Bahasa Indonesia umumnya netral gender (Dia/Nya), jadi ini mudah! Silakan gunakan Dia/Nya. Jika berbicara dalam konteks Inggris campur, tetap gunakan it/its atau she/her."
+                guide_text: "Bahasa Indonesia umumnya netral gender (Dia/Nya), jadi ini mudah! Silakan gunakan Dia/Nya. Jika berbicara dalam konteks Inggris campur, tetap gunakan it/its atau she/her.",
+
+                edu_title: "Pendidikan 🎓",
+                edu_topkapi: "Ilmu Komputer & AI/ML • Tahun 1",
+                edu_anadolu: "Pengembangan Web • Tahun 1",
+                music_title: "Artis Favorit 🎧",
+                skills_title: "Pengalaman Coding 💻",
+                skill_high: "Mahir / Pengalaman Tinggi",
+                skill_mid: "Menengah / Pengalaman Sedang",
+                skill_low: "Pemula / Belajar",
+                time_title: "Waktu di Area Saya 🕰️"
             },
             ar: {
                 nav_about: "عني", nav_projects: "مشاريع", nav_contact: "تواصل",
                 bio_main: "<b>أهلاً!</b> 🌈 أناركو كوير & اشتراكية تحررية. 🎹 أعزف البيانو وأحب الـ <b>alt pop</b>. ✈️ مهووسة بالجغرافيا والفضاء والطيران. 🐧 GNU/Linux والخصوصية.",
                 bio_sub: "(هي/ها) • تركية • Doggirl (woof~)",
                 identity_title: "الهوية والضمائر 💗",
-                pronoun_warning: "⚠️ لا أقبل أي ضمائر غير <b>it/its</b> و <b>هي/ها</b> (أحياناً)!",
-                pref_names: "الأسماء المفضلة:", pronouns_header: "الضمائر:", terms_header: "المصطلحات:",
+
+                id_names: "الأسماء",
+                id_pronouns: "الضمائر",
+                id_honorifics: "الألقاب التشريفية",
+                id_desc: "أوصاف الشخص والعائلة",
+                id_compliments: "مجاملات (لست أيًا من هؤلاء ولكن)",
+                id_relationship: "أوصاف العلاقات",
+
                 socials_title: "التواصل الاجتماعي 🌐", sys_title: "نظام التشغيل 🖥️", windows_link: "كيف أستعمل ويندوز؟",
                 projects_title: "المحتوى والمشاريع 🔗",
                 proj_poke: "تطبيق الخصوصية الشامل.", proj_unspy: "خصوصية أفضل لـ Discord.",
@@ -597,7 +1290,17 @@
                 link_opinions: "آرائي", link_opinions_desc: "معظم موقعي موجود هنا.",
                 rants_header: "نقد البرمجيات", link_linux: "لماذا لا أسميه \"Linux\" فقط.",
                 guide_title: "🌍 دليل الضمائر بالعربية:",
-                guide_text: "بما أن اللغة العربية تعتمد على الجنس القواعدي، يرجى استخدام صيغة المؤنث (هي/أنتِ) عند الحديث معي أو عني. استخدام المذكر غير مقبول."
+                guide_text: "بما أن اللغة العربية تعتمد على الجنس القواعدي، يرجى استخدام صيغة المؤنث (هي/أنتِ) عند الحديث معي أو عني. استخدام المذكر غير مقبول.",
+
+                edu_title: "التعليم 🎓",
+                edu_topkapi: "علوم الحاسوب والذكاء الاصطناعي • السنة الأولى",
+                edu_anadolu: "تطوير الويب • السنة الأولى",
+                music_title: "فنانين أحبهم 🎧",
+                skills_title: "خبرة البرمجة 💻",
+                skill_high: "خبير / خبرة عالية",
+                skill_mid: "متوسط / خبرة متوسطة",
+                skill_low: "مبتدئ / قيد التعلم",
+                time_title: "الوقت في منطقتي 🕰️"
             }
         };
 
@@ -621,7 +1324,7 @@
             // Handle Pronoun Guide Visibility
             const guideBox = document.getElementById('pronounGuide');
             const guideText = document.getElementById('guideText');
-            
+
             if (lang !== 'en') {
                 guideBox.style.display = 'block';
                 guideBox.querySelector('[data-t="guide_title"]').innerText = translations[lang].guide_title;
@@ -629,6 +1332,9 @@
             } else {
                 guideBox.style.display = 'none';
             }
+
+            // Force time update to show correct date language immediately
+            updateTime();
         }
     </script>
 </body>
